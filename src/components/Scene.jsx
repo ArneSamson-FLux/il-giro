@@ -3,28 +3,46 @@ import Cooktop from './kitchen/Cooktop.jsx'
 import Sink from './kitchen/Sink.jsx'
 import Tower from './kitchen/Tower.jsx'
 
-import useMaterials from '../store/useMaterials.jsx'
+import useConfig from '../store/useConfig.jsx'
 
 export default function Scene() {
 
-    const { woodMaterialTexture, marbleMaterialTexture } = useMaterials();
-        
+    const { woodMaterialTexture, marbleMaterialTexture, sinkAmount, cooktopAmount, towerAmount } = useConfig();
+    
+
+    const islands = [];
+    for (let i = 0; i < sinkAmount; i++){
+        islands.push(
+            <Sink
+                key={'sink'+i}
+                position={[0, 0, -1.5 - i]}
+                materialTextureUrl={marbleMaterialTexture}
+            />
+        )
+    }
+    for(let i =0; i < cooktopAmount; i++){
+        islands.push(
+            <Cooktop
+                key={'cooktop'+i}
+                position={[0, 0, 1.5 + i]}
+                materialTextureUrl={woodMaterialTexture}
+            />
+        )
+    }
+    for(let i =0; i < towerAmount; i++){
+        islands.push(
+            <Tower
+                key={'tower'+i}
+                position={[1 + i , 0.5, 0]}
+                materialTextureUrl={woodMaterialTexture}
+            />
+        )
+    }
+    
 
     return <>
 
-        <Cooktop
-            position={[0, 0, 1.5]}
-            materialTextureUrl={woodMaterialTexture}
-        />
-        <Sink
-            position={[0, 0, -1.5]}
-            materialTextureUrl={marbleMaterialTexture}
-        />
-
-        <Tower
-            position={[1, 0.5, 0]}
-            materialTextureUrl={woodMaterialTexture}
-        />
+        {islands}
     
     </>
 }
