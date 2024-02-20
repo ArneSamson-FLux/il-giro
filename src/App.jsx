@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 
 import * as THREE from 'three'
 import {Canvas} from '@react-three/fiber'
-import Experience from './components/Experience.jsx'
+import Experience from './Experience.jsx'
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))

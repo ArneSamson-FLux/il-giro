@@ -1,6 +1,7 @@
 import { useThree, extend, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html, Text } from '@react-three/drei';
-
+import Scene from './components/Scene.jsx';
+import Lights from './components/Lights.jsx';
 
 export default function Experience() {
 
@@ -10,10 +11,12 @@ export default function Experience() {
             enableDamping={true}
             makeDefault //used to make the orbit controls the default controls and disable them when using the gizzmo
     />
-
+    <Lights/>
     <Html>
       <h1>hello</h1>
     </Html>
+
+    <Scene/>
 
   </>
 
