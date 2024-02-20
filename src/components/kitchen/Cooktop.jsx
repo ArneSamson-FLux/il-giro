@@ -10,7 +10,7 @@ export default function Cooktop({position, materialTextureUrl}){
         <mesh
             position={position}
         >
-            <cylinderGeometry args={[1, 1, 2, 32]}/>
+            <cylinderGeometry args={[0.5, 0.5, 1, 32]}/>
             <meshStandardMaterial
                 map={texture}
             />
