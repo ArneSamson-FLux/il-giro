@@ -17,6 +17,14 @@ export default function Scene() {
                 key={'sink'+i}
                 position={[0, 0, -1.5 - i]}
                 materialUrl={metalMaterialUrl}
+                props={
+                    {
+                        position: [-1, 0, 0],
+                        rotation: [0, 0, 0],
+                        scale: [1, 1, 1],
+                    }
+                }
+                bevelled = {true}
             />
         )
     }
@@ -26,6 +34,15 @@ export default function Scene() {
                 key={'cooktop'+i}
                 position={[0, 0, 1.5 + i]}
                 materialUrl={woodMaterialUrl}
+                props={
+                    {
+                        position: [1, 0, 0],
+                        rotation: [0, 0, 0],
+                        scale: [1, 1, 1],
+                    }
+                }
+                bevelled = {true}
+
             />
         )
     }
@@ -35,6 +52,15 @@ export default function Scene() {
                 key={'tower'+i}
                 position={[1 + i , 0.5, 0]}
                 materialUrl={leatherMaterialUrl}
+                props={
+                    {
+                        position: [0, 0, -1],
+                        rotation: [0, 0, 0],
+                        scale: [1, 1, 1],
+                    }
+                }
+                bevelled = {true}
+
             />
         )
     }
