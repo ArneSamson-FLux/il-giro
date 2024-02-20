@@ -12,9 +12,6 @@ export default function Experience() {
             makeDefault //used to make the orbit controls the default controls and disable them when using the gizzmo
     />
     <Lights/>
-    <Html>
-      <h1>hello</h1>
-    </Html>
 
     <Scene/>
 
