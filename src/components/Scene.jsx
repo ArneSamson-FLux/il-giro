@@ -6,7 +6,7 @@ export default function Scene() {
     return <>
 
         <Cooktop
-            
+            position={[0, 0, 2]}
         />
         <Sink
             position={[0, 0, -2]}
