@@ -1,6 +1,8 @@
 {
     "woodMaterial": {
         "textureUrl": "https://doc.babylonjs.com/img/extensions/proceduraltextures/woodpt.PNG"
-
+    },
+    "marbleMaterial": {
+        "textureUrl": "https://doc.babylonjs.com/img/extensions/proceduraltextures/marblept.PNG"
     }
 }

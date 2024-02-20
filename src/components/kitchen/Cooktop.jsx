@@ -1,17 +1,20 @@
 import React from 'react';
 import * as THREE from 'three'
 
-import { WoodMaterial } from '../Materials.jsx'
+// import { WoodMaterial } from '../Materials.jsx'
 
 
 
-export default function Cooktop({position}){
+export default function Cooktop({position, materialTextureUrl}){
+
     return <>
         <mesh
             position={position}
         >
             <cylinderGeometry args={[1, 1, 2, 32]}/>
-            <WoodMaterial/>
+            <meshStandardMaterial
+                {...materialTextureUrl}
+            />
         </mesh>
     </>
 }
