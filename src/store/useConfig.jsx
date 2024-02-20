@@ -21,9 +21,9 @@ export default create((set) => {
         marbleMaterialTexture: null,
 
         //config settings
-        sinkAmount: 5,
-        cooktopAmount: 2,
-        towerAmount: 3
+        sinkAmount: 1,
+        cooktopAmount: 1,
+        towerAmount: 1
 
     }
 })
