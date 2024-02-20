@@ -1,8 +1,11 @@
 {
     "woodMaterial": {
-        "textureUrl": "https://doc.babylonjs.com/img/extensions/proceduraltextures/woodpt.PNG"
+        "albedoUrl": "/materials/oak/albedo.jpg",
+        "normalUrl": "/materials/oak/normal.jpg",
+        "roughnessUrl": "/materials/oak/roughness.jpg",
+        "displacementUrl": "/materials/oak/displacement.jpg"
     },
-    "marbleMaterial": {
-        "textureUrl": "https://doc.babylonjs.com/img/extensions/proceduraltextures/marblept.PNG"
+    "metalMaterial": {
+        "textureUrl": "/materials/metal/albedo.jpg"
     }
 }

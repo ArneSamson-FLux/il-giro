@@ -4,7 +4,8 @@ import { useTexture } from '@react-three/drei'
 
 export default function Cooktop({position, materialTextureUrl}){
 
-    const texture = useTexture(materialTextureUrl);
+    const albedoTexture = useTexture(materialTextureUrl);
+    console.log(materialTextureUrl);
 
     return <>
         <mesh
@@ -12,7 +13,7 @@ export default function Cooktop({position, materialTextureUrl}){
         >
             <cylinderGeometry args={[0.5, 0.5, 1, 32]}/>
             <meshStandardMaterial
-                map={texture}
+                map={albedoTexture}
             />
         </mesh>
     </>
