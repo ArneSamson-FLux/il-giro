@@ -1,11 +1,10 @@
 import React from 'react';
 import * as THREE from 'three'
-
-// import { WoodMaterial } from '../Materials.jsx'
-
-
+import { useTexture } from '@react-three/drei'
 
 export default function Cooktop({position, materialTextureUrl}){
+
+    const texture = useTexture(materialTextureUrl);
 
     return <>
         <mesh
@@ -13,7 +12,7 @@ export default function Cooktop({position, materialTextureUrl}){
         >
             <cylinderGeometry args={[1, 1, 2, 32]}/>
             <meshStandardMaterial
-                {...materialTextureUrl}
+                map={texture}
             />
         </mesh>
     </>
