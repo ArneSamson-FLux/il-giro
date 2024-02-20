@@ -2,9 +2,11 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture } from '@react-three/drei'
 
-export default function Sink({position, materialTextureUrl}){
+export default function Sink({position, materialUrl}){    
 
-    const texture = useTexture(materialTextureUrl);
+    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
+    const normalTexture = useTexture(materialUrl+"normal.jpg");
+    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
 
     return <>
         <mesh
@@ -12,7 +14,9 @@ export default function Sink({position, materialTextureUrl}){
         >
             <cylinderGeometry args={[0.5, 0.5, 1, 32]}/>
             <meshStandardMaterial
-                map={texture}
+                map={albedoTexture}
+                normalMap={normalTexture}
+                roughnessMap={roughnessTexture}
             />
         </mesh>
     </>

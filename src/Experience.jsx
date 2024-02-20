@@ -9,10 +9,9 @@ export default function Experience() {
 
     <OrbitControls
             enableDamping={true}
-            makeDefault //used to make the orbit controls the default controls and disable them when using the gizzmo
+            makeDefault
     />
     <Lights/>
-
     <Scene/>
 
   </>

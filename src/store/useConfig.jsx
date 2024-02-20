@@ -9,16 +9,18 @@ export default create((set) => {
         .then(data => {
             configData = data;
             set({
-                woodMaterialTextureUrl: configData.woodMaterial.albedoUrl,
-                metalMaterialTextureUrl: configData.metalMaterial.textureUrl
+                woodMaterialUrl: configData.woodMaterial.Url,
+                metalMaterialUrl: configData.metalMaterial.Url,
+                leatherMaterialUrl: configData.leatherMaterial.Url
             });
         })
         .catch(error => console.error('Error fetching texture:', error));
 
     return{
         //materials
-        woodMaterialTextureUrl: null,
-        metalMaterialTextureUrl: null,
+        woodMaterialUrl: null,
+        metalMaterialUrl: null,
+        leatherMaterialUrl: null,
 
         //config settings
         sinkAmount: 1,

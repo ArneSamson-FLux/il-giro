@@ -1,11 +1,11 @@
 {
     "woodMaterial": {
-        "albedoUrl": "/materials/oak/albedo.jpg",
-        "normalUrl": "/materials/oak/normal.jpg",
-        "roughnessUrl": "/materials/oak/roughness.jpg",
-        "displacementUrl": "/materials/oak/displacement.jpg"
+        "Url": "/materials/oak/"
     },
     "metalMaterial": {
-        "textureUrl": "/materials/metal/albedo.jpg"
+        "Url": "/materials/metal/"
+    },
+    "leatherMaterial": {
+        "Url": "/materials/leather/"
     }
 }

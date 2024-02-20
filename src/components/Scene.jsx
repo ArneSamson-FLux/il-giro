@@ -7,7 +7,7 @@ import useConfig from '../store/useConfig.jsx'
 
 export default function Scene() {
 
-    const { woodMaterialTextureUrl, metalMaterialTextureUrl, sinkAmount, cooktopAmount, towerAmount } = useConfig();
+    const { woodMaterialUrl, metalMaterialUrl, leatherMaterialUrl ,sinkAmount, cooktopAmount, towerAmount } = useConfig();
     
 
     const islands = [];
@@ -16,7 +16,7 @@ export default function Scene() {
             <Sink
                 key={'sink'+i}
                 position={[0, 0, -1.5 - i]}
-                materialTextureUrl={metalMaterialTextureUrl}
+                materialUrl={metalMaterialUrl}
             />
         )
     }
@@ -25,7 +25,7 @@ export default function Scene() {
             <Cooktop
                 key={'cooktop'+i}
                 position={[0, 0, 1.5 + i]}
-                materialTextureUrl={woodMaterialTextureUrl}
+                materialUrl={woodMaterialUrl}
             />
         )
     }
@@ -34,7 +34,7 @@ export default function Scene() {
             <Tower
                 key={'tower'+i}
                 position={[1 + i , 0.5, 0]}
-                materialTextureUrl={woodMaterialTextureUrl}
+                materialUrl={leatherMaterialUrl}
             />
         )
     }
