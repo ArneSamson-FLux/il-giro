@@ -41,7 +41,7 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {true}
+                bevelled = {false}
 
             />
         )

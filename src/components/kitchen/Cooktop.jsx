@@ -2,7 +2,7 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function Cooktop({position, materialUrl, props}){
+export default function Cooktop({position, materialUrl, bevelled, props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -27,14 +27,16 @@ export default function Cooktop({position, materialUrl, props}){
                 rotation={[0, -1.484, 0]}
                 scale={[1, 1.1, 1]}
             >
+            {!bevelled && (
                 <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.bevel006.geometry}
-                material={material}
-                position={[0, -1.036, 0]}
-                scale={[1, 0.068, 1]}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.bevel006.geometry}
+                    material={material}
+                    position={[0, -1.036, 0]}
+                    scale={[1, 0.068, 1]}
                 />
+            )}
             </mesh>
         </group>
     </>
