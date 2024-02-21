@@ -5,18 +5,20 @@ import { useTexture, useGLTF } from '@react-three/drei'
 import Tap1 from './accessoires/Tap1';
 import Tap2 from './accessoires/Tap2';
 
-export default function Sink({materialUrl, bevelled, props}){    
+export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , props}){    
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
+    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
-        roughnessMap: roughnessTexture
+        roughnessMap: roughnessTexture,
+        metalnessMap: metallnesTexture
     });
 
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb",);
@@ -47,16 +49,18 @@ export default function Sink({materialUrl, bevelled, props}){
                     material={material}
                 />
             </mesh>
-            {/* <Tap1
-                materialUrl={materialUrl}
-                bevelled={bevelled}
-                props={{rotation: [0, 0, 0]}}
-            /> */}
-            <Tap2
-                materialUrl={materialUrl}
-                bevelled={bevelled}
-                props={{rotation: [0, 0, 0]}}
-            />
+            {tapType === "tap1" && <Tap1
+                    materialUrl={accessoryMaterialUrl}
+                    bevelled={bevelled}
+                    props={{rotation: [0, 0, 0]}}
+                />
+            }
+            {tapType === "tap2" && <Tap2
+                    materialUrl={accessoryMaterialUrl}
+                    bevelled={bevelled}
+                    props={{rotation: [0, 0, 0]}}
+                />
+            }
          </group>
     </>
 }

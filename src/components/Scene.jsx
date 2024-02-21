@@ -71,6 +71,23 @@ export default function Scene() {
         }
     })
 
+    const {levaTapMaterial, levaTapType
+    } = useControls("tap", {
+        levaTapMaterial: {
+            value: materialUrls[1],
+            label: 'Tap Material',
+            options: materialUrls
+        },
+        levaTapType: {
+            value: "tap1",
+            label: 'Tap Type',
+            options: {
+                tap1: 'tap1',
+                tap2: 'tap2'
+            }
+        }
+    })
+
     const islands = [];
 
     for (let i = 0; i < levaSinkAmount; i++){
@@ -86,6 +103,8 @@ export default function Scene() {
                     }
                 }
                 bevelled = {levaSinkBevelled}
+                accessoryMaterialUrl={levaTapMaterial}
+                tapType={levaTapType}
             />
         )
     }
