@@ -2,6 +2,7 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
+
 export default function Cooktop({materialUrl, bevelled, props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
@@ -9,7 +10,7 @@ export default function Cooktop({materialUrl, bevelled, props}){
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
-    
+
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
