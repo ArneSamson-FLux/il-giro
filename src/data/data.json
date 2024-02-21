@@ -9,10 +9,10 @@
         "leatherMaterial": {
             "url": "/materials/leather/"
         },
-        "basketMaterial": {
-            "url": "/materials/basket/"
+        "solidSurfaceMaterial": {
+            "url": "/materials/solidsurface/"
         },
-        "microtoppingMaterial": {
+        "microTopping": {
             "url": "/materials/microtopping/"
         }
     }
