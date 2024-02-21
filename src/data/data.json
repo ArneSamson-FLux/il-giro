@@ -11,6 +11,9 @@
         },
         "basketMaterial": {
             "url": "/materials/basket/"
+        },
+        "microtoppingMaterial": {
+            "url": "/materials/microtopping/"
         }
     }
 }
