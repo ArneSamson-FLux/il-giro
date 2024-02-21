@@ -18,32 +18,36 @@ export default function Cooktop({position, materialUrl, bevelled, props}){
         roughnessMap: roughnessTexture
     });
 
-    const { nodes, materials } = useGLTF("./models/geo-low.glb");
+    const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
 
     return <>
         <group {...props} dispose={null}>
             <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.Cylinder005.geometry}
-                material={material}
-                position={[0, 0.7, 0]}
-                rotation={[0, -1.484, 0]}
-                scale={[1, 1.1, 1]}
-            >
-            {!bevelled && (
-                <mesh
                     castShadow
                     receiveShadow
-                    geometry={nodes.bevel006.geometry}
+                    geometry={nodes.top.geometry}
                     material={material}
-                    position={[0, -1.036, 0]}
-                    scale={[1, 0.068, 1]}
+                    position={[0, 1.193, 0]}
+                    rotation={[0, -1.484, 0]}
+                    scale={[1, 1.1, 1]}
+            >
+                <mesh
+                    visible={bevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["bevelled-under"].geometry}
+                    material={material}
                 />
-            )}
+                <mesh
+                    visible={!bevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["straight-under"].geometry}
+                    material={material}
+                />
             </mesh>
         </group>
     </>
 }
 
-useGLTF.preload('./models/geo-low.glb')
+useGLTF.preload('./models/kitchen-low.glb')

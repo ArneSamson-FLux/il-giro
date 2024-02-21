@@ -15,7 +15,7 @@ export default function Scene() {
         islands.push(
             <Sink
                 key={'sink'+i}
-                position={[0, 0, -1.5 - i]}
+                position={[1, 0, 0 - i]}
                 materialUrl={materialUrls[0]}
                 props={
                     {
@@ -33,7 +33,7 @@ export default function Scene() {
             <Cooktop
                 key={'cooktop'+i}
                 position={[0, 0, 1.5 + i]}
-                materialUrl={materialUrls[3]}
+                materialUrl={materialUrls[1]}
                 props={
                     {
                         position: [1, 0, 0],
