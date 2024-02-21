@@ -11,7 +11,7 @@ export default function Scene() {
     const { materialUrls ,sinkAmount, cooktopAmount, towerAmount } = useConfig();
 
     //useControls
-    const { levaSinkAmount, levaCooktopAmount, levaTowerAmount, levaSinkMaterial, levaCooktopMaterial, levaTowerMaterial
+    const { levaSinkAmount, levaCooktopAmount, levaTowerAmount, levaSinkMaterial, levaCooktopMaterial, levaTowerMaterial, levaSinkBevelled, levaCooktopBevelled, levaTowerBevelled
     } = useControls({
         levaSinkAmount: {
             value: sinkAmount,
@@ -48,6 +48,18 @@ export default function Scene() {
             value: materialUrls[2],
             label: 'Tower Material',
             options: materialUrls
+        },
+        levaSinkBevelled: {
+            value: true,
+            label: 'Sink Bevelled'
+        },
+        levaCooktopBevelled: {
+            value: true,
+            label: 'Cooktop Bevelled'
+        },
+        levaTowerBevelled: {
+            value: false,
+            label: 'Tower Bevelled'
         }
     })
 
@@ -65,7 +77,7 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {true}
+                bevelled = {levaSinkBevelled}
             />
         )
     }
@@ -82,7 +94,7 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {false}
+                bevelled = {levaCooktopBevelled}
 
             />
         )
@@ -100,7 +112,7 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {true}
+                bevelled = {levaTowerBevelled}
 
             />
         )
