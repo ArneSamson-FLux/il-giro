@@ -17,6 +17,15 @@
         },
         "innox": {
             "url": "/materials/innox/"
+        },
+        "gold": {
+            "url": "/materials/gold/"
+        },
+        "bronze": {
+            "url": "/materials/bronze/"
+        },
+        "copper":{
+            "url": "/materials/copper/"
         }
     }
 }
