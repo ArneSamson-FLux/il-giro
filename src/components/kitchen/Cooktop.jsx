@@ -9,9 +9,7 @@ export default function Cooktop({materialUrl, bevelled, props}){
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
-    normalTexture.colorSpace = THREE.SRGBColorSpace;
-    roughnessTexture.colorSpace = THREE.SRGBColorSpace;
-
+    
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
