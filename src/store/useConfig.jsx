@@ -18,7 +18,7 @@ export default create((set) => {
         materialUrls: [],
 
         //config settings
-        sinkAmount: 2,
+        sinkAmount: 1,
         cooktopAmount: 1,
         towerAmount: 1
 
