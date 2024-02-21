@@ -13,10 +13,11 @@ export default function Tap1({materialUrl, bevelled, props}){
 
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
-        normalMap: normalTexture,
-        roughnessMap: roughnessTexture,
+        // normalMap: normalTexture,
+        // roughnessMap: roughnessTexture,
         metalnessMap: metallnesTexture,
         metalness: 1,
+        roughness: 0
 
     });
     
