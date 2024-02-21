@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function Sink({position, materialUrl, bevelled, props}){
+export default function Sink({materialUrl, bevelled, props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");

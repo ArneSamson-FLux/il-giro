@@ -2,7 +2,7 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function Cooktop({position, materialUrl, bevelled, props}){
+export default function Cooktop({materialUrl, bevelled, props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");

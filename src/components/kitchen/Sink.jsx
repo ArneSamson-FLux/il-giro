@@ -2,7 +2,7 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function Sink({position, materialUrl, bevelled, props}){    
+export default function Sink({materialUrl, bevelled, props}){    
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -18,7 +18,7 @@ export default function Sink({position, materialUrl, bevelled, props}){
         roughnessMap: roughnessTexture
     });
 
-    const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
+    const { nodes, materials } = useGLTF("./models/kitchen-low.glb",);
 
     return <>
         <group {...props} dispose={null}>
