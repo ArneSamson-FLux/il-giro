@@ -1,11 +1,16 @@
 {
-    "woodMaterial": {
-        "url": "/materials/oak/"
-    },
-    "metalMaterial": {
-        "url": "/materials/metal/"
-    },
-    "leatherMaterial": {
-        "url": "/materials/leather/"
+    "materials":{
+        "woodMaterial": {
+            "url": "/materials/oak/"
+        },
+        "metalMaterial": {
+            "url": "/materials/metal/"
+        },
+        "leatherMaterial": {
+            "url": "/materials/leather/"
+        },
+        "basketMaterial": {
+            "url": "/materials/basket/"
+        }
     }
 }
