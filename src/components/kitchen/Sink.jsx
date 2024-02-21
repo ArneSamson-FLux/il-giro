@@ -10,15 +10,18 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
+    const metallnessTexture = useTexture(materialUrl+"metallic.jpg");
+
+    metallnessTexture.name = "metalnessMap";
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
-        normalMap: normalTexture,
+        // normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture
+        metalnessMap: metallnessTexture,
+        metalness: 1,
     });
 
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb",);

@@ -15,7 +15,8 @@ export default function Sink({materialUrl, bevelled, props}){
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture
+        metalnessMap: metallnesTexture,
+        metalness: 1,
     });
 
     const { nodes, materials } = useGLTF("./models/kitchen-high.glb");

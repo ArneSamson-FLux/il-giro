@@ -15,7 +15,9 @@ export default function Tap1({materialUrl, bevelled, props}){
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture
+        metalnessMap: metallnesTexture,
+        metalness: 1,
+
     });
     
     const { nodes, materials } = useGLTF("/models/tap2.glb");
