@@ -14,7 +14,7 @@ export default function Cooktop({materialUrl, bevelled, props}){
 
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
-        // normalMap: normalTexture,
+        normalMap: normalTexture,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnesTexture,
         metalness: 1,

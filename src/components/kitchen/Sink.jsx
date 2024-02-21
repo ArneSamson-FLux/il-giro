@@ -18,7 +18,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
-        // normalMap: normalTexture,
+        normalMap: normalTexture,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
