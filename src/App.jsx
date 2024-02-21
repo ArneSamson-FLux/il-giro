@@ -25,6 +25,7 @@ root.render(
       toneMapping: THREE.ACESFilmicToneMapping,
       outoutColorSpace: THREE.SRGBColorSpace,
     }}
+    shadows={true}
   >
     <Experience/>
   </Canvas>
