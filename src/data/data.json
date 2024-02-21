@@ -1,0 +1,11 @@
+{
+    "woodMaterial": {
+        "url": "/materials/oak/"
+    },
+    "metalMaterial": {
+        "url": "/materials/metal/"
+    },
+    "leatherMaterial": {
+        "url": "/materials/leather/"
+    }
+}

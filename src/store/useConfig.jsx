@@ -4,14 +4,14 @@ import {TextureLoader, MeshStandardMaterial, SRGBColorSpace, ClampToEdgeWrapping
 export default create((set) => {    
     let configData;
 
-    fetch('/data.json')
+    fetch('/src/data/data.json')
         .then(response => response.json())
         .then(data => {
             configData = data;
             set({
-                woodMaterialUrl: configData.woodMaterial.Url,
-                metalMaterialUrl: configData.metalMaterial.Url,
-                leatherMaterialUrl: configData.leatherMaterial.Url
+                woodMaterialUrl: configData.woodMaterial.url,
+                metalMaterialUrl: configData.metalMaterial.url,
+                leatherMaterialUrl: configData.leatherMaterial.url
             });
         })
         .catch(error => console.error('Error fetching texture:', error));
