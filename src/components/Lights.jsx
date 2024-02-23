@@ -6,7 +6,7 @@ export default function Lights()
 {
     const lightRef = useRef()
 
-    // const helper = useShadowHelper(lightRef)
+    const helper = useShadowHelper(lightRef)
 
     return <>
         <directionalLight
