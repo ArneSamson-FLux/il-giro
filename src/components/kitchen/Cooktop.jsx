@@ -2,6 +2,8 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
+import Stovetops from './accessoires/Stovetops.jsx'
+
 
 export default function Cooktop({materialUrl, bevelled, props}){
 
@@ -48,7 +50,15 @@ export default function Cooktop({materialUrl, bevelled, props}){
                     material={material}
                 />
             </mesh>
+        <Stovetops
+            props={
+                {
+                    position: [0, 0.957, 0.12],
+                }
+            }
+        />
         </group>
+
     </>
 }
 
