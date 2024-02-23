@@ -16,31 +16,47 @@ export default function Experience() {
             enableDamping={true}
             makeDefault
     />
-    <Environment
-      files={"/HDR/myHDR.hdr"}
-      background={false}
-      //rotate the HDR
-    />
 
     {/* <Environment
-      background={true}
+      files={"/HDR/4.hdr"}
+      background={false}
+    /> */}
+
+    <Environment
+      files={"/HDR/4.hdr"}
+      background={false}
     >
       <Lightformer
           visible={true}
           form="rect"
-          intensity={2}
+          intensity={1}
           position={new THREE.Vector3().setFromSphericalCoords(
-            1, // distance
-            0.7, // phi
-            1.3 // theta
+            2, // distance
+            1.2, // phi
+            1.5 // theta
           )}
           rotation={[0, 0, 0]}
-          scale={[10, 10, 10]}
+          scale={[5, 2, 5]}
           target={[0, 0, 0]}
           castShadow={false}
           receiveShadow={false}
         />
-    </Environment> */}
+        <Lightformer
+          visible={true}
+          form="rect"
+          intensity={2}
+          position={new THREE.Vector3().setFromSphericalCoords(
+            1.5, // distance
+            1, // phi
+            4.2 // theta
+          )}
+          rotation={[0, 0, 0]}
+          scale={[5, 2, 5]}
+          target={[0, 0, 0]}
+          castShadow={false}
+          receiveShadow={false}
+        />
+    </Environment>
     <Lights/>
     <Scene/>
 
