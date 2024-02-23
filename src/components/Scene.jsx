@@ -158,6 +158,22 @@ export default function Scene() {
             <planeGeometry attach="geometry" args={[100, 100]} />
             <shadowMaterial attach="material" opacity={0.3} />
         </mesh>
+
+        {/* <mesh
+            position={[0, 0, 0]}
+            rotation={[0, 0, 0]}
+            scale={[1, 1, 1]}
+        >
+            <sphereGeometry attach="geometry" args={[1, 32, 32]} />
+            <meshStandardMaterial
+                attach="material"
+                color="white"
+                metalness={1}
+                roughness={0}
+                envMapIntensity={2}
+                envMap={null}
+            />
+        </mesh> */}
     
     </>
 }
