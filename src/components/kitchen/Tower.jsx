@@ -4,6 +4,7 @@ import { useTexture, useGLTF } from '@react-three/drei'
 
 import Fridge from './accessoires/Fridge.jsx';
 import Oven from './accessoires/Oven.jsx';
+import LiquorStand from './accessoires/LiquorStand.jsx';
 
 export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,props}){
 
@@ -51,6 +52,8 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
             {fridgeOrOven === "oven"
             && <Oven/>
             }
+
+            <LiquorStand/>
 
         </group>
         
