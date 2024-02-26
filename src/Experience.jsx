@@ -15,12 +15,8 @@ export default function Experience() {
     <OrbitControls
             enableDamping={true}
             makeDefault
+            maxPolarAngle={Math.PI / 2}
     />
-
-    {/* <Environment
-      files={"/HDR/4.hdr"}
-      background={false}
-    /> */}
 
     <Environment
       files={"/HDR/4.hdr"}
