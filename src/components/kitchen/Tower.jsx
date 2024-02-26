@@ -6,7 +6,7 @@ import Fridge from './accessoires/Fridge.jsx';
 import Oven from './accessoires/Oven.jsx';
 import LiquorStand from './accessoires/LiquorStand.jsx';
 
-export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,props}){
+export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -31,17 +31,49 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.tower.geometry}
+                geometry={nodes["tower-straight"].geometry}
                 material={material}
             >
+                {/* //door */}
                 <mesh
                     castShadow
                     receiveShadow
-                    geometry={nodes.door.geometry}
+                    geometry={nodes.door001.geometry}
                     material={material}
                     position={[0.388, 1.088, 0.316]}
                     scale={[1, 1.1, 1]}
                     rotation={[0, doorOpening, 0]}
+                >
+                    <mesh
+                        visible={bevelled}
+                        castShadow
+                        receiveShadow
+                        geometry={nodes["door-bevel"].geometry}
+                        material={material}
+                    />
+                    <mesh
+                        visible={!bevelled}
+                        castShadow
+                        receiveShadow
+                        geometry={nodes["door-straight"].geometry}
+                        material={material}
+                    />
+                </mesh>
+
+                {/* tower underside */}
+                <mesh
+                    visible={bevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["tower-bevel"].geometry}
+                    material={material}
+                />
+                <mesh
+                    visible={!bevelled}
+                    castShadow
+                    receiveShadow
+                    geometry={nodes["tower-straight002"].geometry}
+                    material={material}
                 />
             </mesh>
 
@@ -53,7 +85,9 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
             && <Oven/>
             }
 
-            <LiquorStand/>
+            <LiquorStand
+                materialUrl={accessoryMaterialUrl}
+            />
 
         </group>
         
