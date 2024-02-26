@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function Sink({materialUrl, bevelled, props}){
+export default function Sink({materialUrl, bevelled, doorOpening, props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -19,7 +19,7 @@ export default function Sink({materialUrl, bevelled, props}){
         metalness: 1,
     });
 
-    const { nodes, materials } = useGLTF("./models/kitchen-high.glb");
+    const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
 
 
     return <>
@@ -27,25 +27,17 @@ export default function Sink({materialUrl, bevelled, props}){
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.top001.geometry}
+                geometry={nodes.tower.geometry}
                 material={material}
-                position={[0, 1.193, 0]}
-                rotation={[0, -1.484, 0]}
-                scale={[1, 1.1, 1]}
             >
                 <mesh
-                    visible={bevelled}
                     castShadow
                     receiveShadow
-                    geometry={nodes["bevelled-under001"].geometry}
+                    geometry={nodes.door.geometry}
                     material={material}
-                />
-                <mesh
-                    visible={!bevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["straight-under001"].geometry}
-                    material={material}
+                    position={[0.388, 1.088, 0.316]}
+                    scale={[1, 1.1, 1]}
+                    rotation={[0, doorOpening, 0]}
                 />
             </mesh>
         </group>
@@ -53,4 +45,4 @@ export default function Sink({materialUrl, bevelled, props}){
     </>
 }
 
-useGLTF.preload('./models/kitchen-high.glb')
+useGLTF.preload('./models/kitchen-high-hollow.glb')

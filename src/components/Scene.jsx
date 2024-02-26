@@ -49,7 +49,7 @@ export default function Scene() {
             options: materialUrls
         },
         levaTowerMaterial: {
-            value: materialUrls[2],
+            value: materialUrls[4],
             label: 'Tower Material',
             options: materialUrls
         }
@@ -103,9 +103,20 @@ export default function Scene() {
     const {LevaSinkBowlMat
     } = useControls("sinkBowl", {
         LevaSinkBowlMat: {
-            value: materialUrls[1],
+            value: materialUrls[8],
             label: 'Sink Bowl Material',
             options: materialUrls
+        }
+    })
+
+    const {levaDoorOpening
+    } = useControls("door", {
+        levaDoorOpening: {
+            value: 0,
+            min: 0,
+            max: 2,
+            step: 0.05,
+            label: 'Door Opening'
         }
     })
 
@@ -118,7 +129,7 @@ export default function Scene() {
                 materialUrl={levaSinkMaterial}
                 props={
                     {
-                        position: [-1 - i, 0, 0],
+                        position: [-1.5 - i, 0, 0],
                         rotation: [0, 0.5, 0],
                         scale: [1, 1, 1],
                     }
@@ -137,7 +148,7 @@ export default function Scene() {
                 materialUrl={levaCooktopMaterial}
                 props={
                     {
-                        position: [1 + i, 0, 0],
+                        position: [1.5 + i, 0, 0],
                         rotation: [0, -0.5, 0],
                         scale: [1, 1, 1],
                     }
@@ -161,6 +172,7 @@ export default function Scene() {
                     }
                 }
                 bevelled = {levaTowerBevelled}
+                doorOpening = {levaDoorOpening}
 
             />
         )
