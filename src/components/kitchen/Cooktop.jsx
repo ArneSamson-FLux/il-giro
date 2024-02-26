@@ -2,10 +2,11 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-import Stovetops from './accessoires/Stovetops.jsx'
+import GasStove from './accessoires/GasStove.jsx'
+import ElectricStove from './accessoires/ElectricStove.jsx';
 
 
-export default function Cooktop({materialUrl, bevelled, props}){
+export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -50,13 +51,32 @@ export default function Cooktop({materialUrl, bevelled, props}){
                     material={material}
                 />
             </mesh>
-        <Stovetops
-            props={
-                {
-                    position: [0, 0.957, 0.12],
+
+        
+
+
+        {stoveType === "gas" &&
+            <GasStove
+                props={
+                    {
+                        position: [0, 0.957, 0.12],
+                    }
                 }
-            }
-        />
+            />
+        }
+        
+        {stoveType === "electric" &&
+            <ElectricStove
+                props={
+                    {
+                        position: [0, 0.97, 0.1],
+                        scale: [0.9, 0.9, 0.9],
+                        rotation: [0, 0, 0],
+                    }
+                }
+            />
+        }
+
         </group>
 
     </>
