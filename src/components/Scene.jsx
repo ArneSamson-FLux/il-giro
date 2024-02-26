@@ -100,6 +100,15 @@ export default function Scene() {
         }
     })
 
+    const {LevaSinkBowlMat
+    } = useControls("sinkBowl", {
+        LevaSinkBowlMat: {
+            value: materialUrls[1],
+            label: 'Sink Bowl Material',
+            options: materialUrls
+        }
+    })
+
     const islands = [];
 
     for (let i = 0; i < levaSinkAmount; i++){
@@ -117,6 +126,7 @@ export default function Scene() {
                 bevelled = {levaSinkBevelled}
                 accessoryMaterialUrl={levaTapMaterial}
                 tapType={levaTapType}
+                sinkBowlMaterial={LevaSinkBowlMat}
             />
         )
     }

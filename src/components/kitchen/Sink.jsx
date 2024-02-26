@@ -2,10 +2,12 @@ import React from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-import Tap1 from './accessoires/Tap1';
-import Tap2 from './accessoires/Tap2';
+import Tap1 from './accessoires/Tap1.jsx';
+import Tap2 from './accessoires/Tap2.jsx';
 
-export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , props}){    
+import SinkBowl from './accessoires/SinkBowl.jsx';
+
+export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){    
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -24,14 +26,14 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
         metalness: 1,
     });
 
-    const { nodes, materials } = useGLTF("./models/kitchen-low.glb",);
+    const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
 
     return <>
         <group {...props} dispose={null}>
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.top.geometry}
+                geometry={nodes.top002.geometry}
                 material={material}
                 position={[0, 1.193, 0]}
                 rotation={[0, -1.484, 0]}
@@ -41,14 +43,14 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     visible={bevelled}
                     castShadow
                     receiveShadow
-                    geometry={nodes["bevelled-under"].geometry}
+                    geometry={nodes["bevelled-under002"].geometry}
                     material={material}
                 />
                 <mesh
                     visible={!bevelled}
                     castShadow
                     receiveShadow
-                    geometry={nodes["straight-under"].geometry}
+                    geometry={nodes["straight-under002"].geometry}
                     material={material}
                 />
             </mesh>
@@ -64,8 +66,14 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     props={{rotation: [0, 0, 0]}}
                 />
             }
+
+            <SinkBowl
+                materialUrl={sinkBowlMaterial}
+                props={{rotation: [0, 0, 0]}}
+            />
+
          </group>
     </>
 }
 
-useGLTF.preload('./models/kitchen-low.glb')
+useGLTF.preload('./models/kitchen-low-sink.glb')
