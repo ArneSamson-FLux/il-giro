@@ -112,7 +112,7 @@ export default function Scene() {
     const {levaDoorOpening
     } = useControls("door", {
         levaDoorOpening: {
-            value: 0,
+            value: 1,
             min: 0,
             max: 2,
             step: 0.05,

@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
+import Fridge from './accessoires/Fridge.jsx';
+
 export default function Sink({materialUrl, bevelled, doorOpening, props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
@@ -40,7 +42,11 @@ export default function Sink({materialUrl, bevelled, doorOpening, props}){
                     rotation={[0, doorOpening, 0]}
                 />
             </mesh>
+
+            <Fridge/>
+            
         </group>
+        
 
     </>
 }
