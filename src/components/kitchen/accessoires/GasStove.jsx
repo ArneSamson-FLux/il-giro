@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function Stovetops({props}){
-    const { nodes, materials } = useGLTF("./models/stovetops.glb");
+export default function GasStove({props}){
+    const { nodes, materials } = useGLTF("./models/gas-stove.glb");
     return (
         <group {...props} dispose={null}>
             <mesh
@@ -102,4 +102,4 @@ export default function Stovetops({props}){
     );
 }
 
-useGLTF.preload('/models/stovetops.glb')
+useGLTF.preload('/models/gas-stove.glb')
