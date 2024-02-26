@@ -1,20 +1,54 @@
 import React from 'react'
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
+import { useControls } from 'leva'
 
 
 export default function Effects() {
+
+    const { levaAOIntensity, levaAORadius, levaAODistanceFalloff, levaAOScreenSpaceRadius, levaAOHalfRes
+    } = useControls("AO", {
+        levaAOIntensity: {
+            value: 8,
+            min: 0,
+            max: 10,
+            step: 0.1,
+            label: 'Intensity'
+        },
+        levaAORadius: {
+            value: 50,
+            min: 0,
+            max: 100,
+            step: 1,
+            label: 'Radius'
+        },
+        levaAODistanceFalloff: {
+            value: 0.2,
+            min: 0,
+            max: 1,
+            step: 0.01,
+            label: 'Distance Falloff'
+        },
+        levaAOScreenSpaceRadius: {
+            value: true,
+            label: 'Screen Space Radius'
+        },
+        levaAOHalfRes: {
+            value: true,
+            label: 'Half Res'
+        }
+    })
+
     return (
         <EffectComposer
             disableNormalPass
             multisampling={8}
         >
             <N8AO
-                quality='Ultra'
-                aoRadius={50}
-                distanceFalloff={0.2}
-                intensity={8}
-                screenSpaceRadius
-                halfRes={true}
+                intensity={levaAOIntensity}
+                aoRadius={levaAORadius}
+                distanceFalloff={levaAODistanceFalloff}
+                screenSpaceRadius={levaAOScreenSpaceRadius}
+                halfRes={levaAOHalfRes}
             />
         </EffectComposer>
     )
