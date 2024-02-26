@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom/client'
 
 import * as THREE from 'three'
 import {Canvas} from '@react-three/fiber'
+import { EffectComposer, N8AO } from "@react-three/postprocessing";
+
 import Experience from './Experience.jsx'
+import Effects from './Effects/Effects.jsx'
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
@@ -17,6 +20,7 @@ const camSettings = {
   position: [0, 2, 5],
 }
 
+
 root.render(
   <Canvas
     camera={camSettings}
@@ -27,6 +31,8 @@ root.render(
     }}
     shadows={true}
   >
+    <Effects/>
+
     <Experience/>
   </Canvas>
 )
