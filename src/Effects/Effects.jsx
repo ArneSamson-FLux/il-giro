@@ -5,7 +5,7 @@ import { useControls } from 'leva'
 
 export default function Effects() {
 
-    const { levaAOIntensity, levaAORadius, levaAODistanceFalloff, levaAOScreenSpaceRadius, levaAOHalfRes
+    const { levaAOIntensity, levaAORadius, levaAODistanceFalloff, levaAOScreenSpaceRadius, levaAOHalfRes, levaColor
     } = useControls("AO", {
         levaAOIntensity: {
             value: 8,
@@ -35,6 +35,9 @@ export default function Effects() {
         levaAOHalfRes: {
             value: true,
             label: 'Half Res'
+        },
+        levaColor: {
+            value: "#000000",
         }
     })
 
@@ -49,6 +52,7 @@ export default function Effects() {
                 distanceFalloff={levaAODistanceFalloff}
                 screenSpaceRadius={levaAOScreenSpaceRadius}
                 halfRes={levaAOHalfRes}
+                color={levaColor}
             />
         </EffectComposer>
     )
