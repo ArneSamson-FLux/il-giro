@@ -112,7 +112,7 @@ export default function Scene() {
     const {levaDoorOpening
     } = useControls("door", {
         levaDoorOpening: {
-            value: 1,
+            value: 1.5,
             min: 0,
             max: 2,
             step: 0.01,
@@ -129,6 +129,15 @@ export default function Scene() {
                 fridge: 'fridge',
                 oven: 'oven'
             }
+        }
+    })
+
+    const {levaTowerAccessoryMaterial
+    } = useControls("towerAccessory", {
+        levaTowerAccessoryMaterial: {
+            value: materialUrls[5],
+            label: 'Tower Accessory Material',
+            options: materialUrls
         }
     })
 
@@ -186,6 +195,7 @@ export default function Scene() {
                 bevelled = {levaTowerBevelled}
                 doorOpening = {levaDoorOpening}
                 fridgeOrOven = {levaFridgeOrOven}
+                accessoryMaterialUrl={levaTowerAccessoryMaterial}
 
             />
         )
