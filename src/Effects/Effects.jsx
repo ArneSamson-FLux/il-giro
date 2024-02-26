@@ -37,7 +37,7 @@ export default function Effects() {
             label: 'Half Res'
         },
         levaColor: {
-            value: "#000000",
+            value: "#0c0048",
         }
     })
 
