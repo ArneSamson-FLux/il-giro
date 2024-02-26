@@ -115,8 +115,20 @@ export default function Scene() {
             value: 1,
             min: 0,
             max: 2,
-            step: 0.05,
+            step: 0.01,
             label: 'Door Opening'
+        }
+    })
+
+    const {levaFridgeOrOven
+    } = useControls("fridgeOrOven", {
+        levaFridgeOrOven: {
+            value: "fridge",
+            label: 'Fridge or Oven',
+            options: {
+                fridge: 'fridge',
+                oven: 'oven'
+            }
         }
     })
 
@@ -173,6 +185,7 @@ export default function Scene() {
                 }
                 bevelled = {levaTowerBevelled}
                 doorOpening = {levaDoorOpening}
+                fridgeOrOven = {levaFridgeOrOven}
 
             />
         )
