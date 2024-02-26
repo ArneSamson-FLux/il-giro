@@ -3,8 +3,9 @@ import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
 import Fridge from './accessoires/Fridge.jsx';
+import Oven from './accessoires/Oven.jsx';
 
-export default function Sink({materialUrl, bevelled, doorOpening, props}){
+export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,props}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -43,8 +44,14 @@ export default function Sink({materialUrl, bevelled, doorOpening, props}){
                 />
             </mesh>
 
-            <Fridge/>
-            
+            {fridgeOrOven === "fridge"
+            && <Fridge/>
+            }
+
+            {fridgeOrOven === "oven"
+            && <Oven/>
+            }
+
         </group>
         
 
