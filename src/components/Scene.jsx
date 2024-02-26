@@ -88,6 +88,18 @@ export default function Scene() {
         }
     })
 
+    const {LevaStoveType
+    } = useControls("stove", {
+        LevaStoveType: {
+            value: "gas",
+            label: 'Stove Type',
+            options: {
+                gas: 'gas',
+                electric: 'electric'
+            }
+        }
+    })
+
     const islands = [];
 
     for (let i = 0; i < levaSinkAmount; i++){
@@ -97,8 +109,8 @@ export default function Scene() {
                 materialUrl={levaSinkMaterial}
                 props={
                     {
-                        position: [-1, 0, 0 - i],
-                        rotation: [0, 0, 0],
+                        position: [-1 - i, 0, 0],
+                        rotation: [0, 0.5, 0],
                         scale: [1, 1, 1],
                     }
                 }
@@ -112,16 +124,16 @@ export default function Scene() {
         islands.push(
             <Cooktop
                 key={'cooktop'+i}
-                position={[0, 0, 1.5 + i]}
                 materialUrl={levaCooktopMaterial}
                 props={
                     {
-                        position: [1, 0, 0 - i],
-                        rotation: [0, 0, 0],
+                        position: [1 + i, 0, 0],
+                        rotation: [0, -0.5, 0],
                         scale: [1, 1, 1],
                     }
                 }
                 bevelled = {levaCooktopBevelled}
+                stoveType={LevaStoveType}
 
             />
         )
@@ -130,7 +142,6 @@ export default function Scene() {
         islands.push(
             <Tower
                 key={'tower'+i}
-                position={[1 + i , 0.5, 0]}
                 materialUrl={levaTowerMaterial}
                 props={
                     {
