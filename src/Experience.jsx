@@ -16,6 +16,10 @@ export default function Experience() {
             enableDamping={true}
             makeDefault
             maxPolarAngle={Math.PI / 2}
+            //enableZoom={false}
+            enablePan={false}
+            enableRotate={true}
+            
     />
 
     <Environment
