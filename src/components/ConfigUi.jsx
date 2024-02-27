@@ -42,7 +42,10 @@ export default function ConfigUi() {
         setApplianceType,
 
         towerAccessoryMaterial,
-        setTowerAccessoryMaterial
+        setTowerAccessoryMaterial,
+
+        doorOpeningRotation,
+        setDoorOpeningRotation
     } = useConfig();
 
     const [loaded, setLoaded] = useState(false);
@@ -298,6 +301,19 @@ export default function ConfigUi() {
 
                         </div>
                     }
+
+                    <div>
+                        <p>Open doors and shelves:</p>
+                        <input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step={0.01}
+                            value={doorOpeningRotation}
+                            onChange={(e) => setDoorOpeningRotation(e.target.value)}
+                        />
+
+                    </div>
 
                 </div>
             }
