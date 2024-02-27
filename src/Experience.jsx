@@ -1,8 +1,10 @@
 import { useThree, extend, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html, Text, Environment, Lightformer } from '@react-three/drei';
+import * as THREE from 'three';
+
+import ConfigUi from './components/ConfigUi.jsx';
 import Scene from './components/Scene.jsx';
 import Lights from './components/Lights.jsx';
-import * as THREE from 'three';
 
 import { Perf } from 'r3f-perf'
 
@@ -57,7 +59,11 @@ export default function Experience() {
           receiveShadow={false}
         />
     </Environment>
+   
+    <ConfigUi/>
+   
     <Lights/>
+   
     <Scene/>
 
   </>
