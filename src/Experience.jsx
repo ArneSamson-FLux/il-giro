@@ -59,9 +59,7 @@ export default function Experience() {
           receiveShadow={false}
         />
     </Environment>
-   
-    <ConfigUi/>
-   
+      
     <Lights/>
    
     <Scene/>
