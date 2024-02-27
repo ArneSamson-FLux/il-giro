@@ -9,8 +9,23 @@
         "leatherMaterial": {
             "url": "/materials/leather/"
         },
-        "basketMaterial": {
-            "url": "/materials/basket/"
+        "solidSurfaceMaterial": {
+            "url": "/materials/solidsurface/"
+        },
+        "microTopping": {
+            "url": "/materials/microtopping/"
+        },
+        "innox": {
+            "url": "/materials/innox/"
+        },
+        "gold": {
+            "url": "/materials/gold/"
+        },
+        "bronze": {
+            "url": "/materials/bronze/"
+        },
+        "copper":{
+            "url": "/materials/copper/"
         }
     }
 }
