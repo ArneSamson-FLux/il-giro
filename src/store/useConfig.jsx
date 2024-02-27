@@ -8,14 +8,22 @@ export default create((set) => {
         .then(response => response.json())
         .then(data => {
             materialData = data.materials;
-            const materialUrls = Object.values(materialData).map(material => material.url);
-            set({ materialUrls });
+            console.log('materialData:', materialData);
+            // const allMaterials = Object.values(materialData).map(material => material.url);
+
+            const allMaterials = Object.entries(materialData).map(([name, material]) => ({
+                name,
+                url: material.url
+            }));
+
+            console.log('allMaterials:', allMaterials);
+            set({ allMaterials });
         })
         .catch(error => console.error('Error fetching texture:', error));
 
     return{
         //materials
-        materialUrls: [],
+        allMaterials: [],
 
         //config settings_______________________________________________________________________________
         sinkAmount: 1,
