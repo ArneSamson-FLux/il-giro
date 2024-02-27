@@ -16,107 +16,18 @@ export default function Scene() {
         sinkMaterial,
         cooktopMaterial,
         towerMaterial, 
+        sinkBevelled,
+        cooktopBevelled,
+        towerBevelled,
+        tapMaterial,
+        tapType,
+        sinkBowlMaterial,
+        stoveType,
+        applianceType,
+        towerAccessoryMaterial
     } = useConfig();
 
     //useControls
-    const { levaSinkAmount, levaCooktopAmount, levaTowerAmount
-    } = useControls("amount", {
-        levaSinkAmount: {
-            value: sinkAmount,
-            min: 0,
-            max: 10,
-            step: 1,
-            label: 'Sink Amount'
-        },
-        levaCooktopAmount: {
-            value: cooktopAmount,
-            min: 0,
-            max: 10,
-            step: 1,
-            label: 'Cooktop Amount'
-        },
-        levaTowerAmount: {
-            value: towerAmount,
-            min: 0,
-            max: 10,
-            step: 1,
-            label: 'Tower Amount'
-        }
-    })
-
-    const { levaSinkMaterial, levaCooktopMaterial, levaTowerMaterial
-    } = useControls("material", {
-        levaSinkMaterial: {
-            value: materialUrls[0],
-            label: 'Sink Material',
-            options: materialUrls
-        },
-        levaCooktopMaterial: {
-            value: materialUrls[1],
-            label: 'Cooktop Material',
-            options: materialUrls
-        },
-        levaTowerMaterial: {
-            value: materialUrls[4],
-            label: 'Tower Material',
-            options: materialUrls
-        }
-    })
-
-    const {levaSinkBevelled, levaCooktopBevelled, levaTowerBevelled
-    } = useControls("bevel", {
-        levaSinkBevelled: {
-            value: true,
-            label: 'Sink Bevelled'
-        },
-        levaCooktopBevelled: {
-            value: true,
-            label: 'Cooktop Bevelled'
-        },
-        levaTowerBevelled: {
-            value: false,
-            label: 'Tower Bevelled'
-        }
-    })
-
-    const {levaTapMaterial, levaTapType
-    } = useControls("tap", {
-        levaTapMaterial: {
-            value: materialUrls[1],
-            label: 'Tap Material',
-            options: materialUrls
-        },
-        levaTapType: {
-            value: "tap1",
-            label: 'Tap Type',
-            options: {
-                tap1: 'tap1',
-                tap2: 'tap2'
-            }
-        }
-    })
-
-    const {LevaStoveType
-    } = useControls("stove", {
-        LevaStoveType: {
-            value: "gas",
-            label: 'Stove Type',
-            options: {
-                gas: 'gas',
-                electric: 'electric'
-            }
-        }
-    })
-
-    const {LevaSinkBowlMat
-    } = useControls("sinkBowl", {
-        LevaSinkBowlMat: {
-            value: materialUrls[8],
-            label: 'Sink Bowl Material',
-            options: materialUrls
-        }
-    })
-
     const {levaDoorOpening
     } = useControls("door", {
         levaDoorOpening: {
@@ -128,34 +39,15 @@ export default function Scene() {
         }
     })
 
-    const {levaFridgeOrOven
-    } = useControls("fridgeOrOven", {
-        levaFridgeOrOven: {
-            value: "fridge",
-            label: 'Fridge or Oven',
-            options: {
-                fridge: 'fridge',
-                oven: 'oven'
-            }
-        }
-    })
-
-    const {levaTowerAccessoryMaterial
-    } = useControls("towerAccessory", {
-        levaTowerAccessoryMaterial: {
-            value: materialUrls[5],
-            label: 'Tower Accessory Material',
-            options: materialUrls
-        }
-    })
-
     const islands = [];
 
     for (let i = 0; i < sinkAmount; i++){
         islands.push(
             <Sink
                 key={'sink'+i}
-                materialUrl={sinkMaterial}
+                materialUrl={
+                    sinkMaterial ? sinkMaterial : materialUrls[0]
+                }
                 props={
                     {
                         position: [-1.5 - i, 0, 0],
@@ -163,18 +55,24 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {levaSinkBevelled}
-                accessoryMaterialUrl={levaTapMaterial}
-                tapType={levaTapType}
-                sinkBowlMaterial={LevaSinkBowlMat}
+                bevelled = {sinkBevelled}
+                accessoryMaterialUrl={
+                    tapMaterial ? tapMaterial : materialUrls[1]
+                }
+                tapType={tapType}
+                sinkBowlMaterial={
+                    sinkBowlMaterial ? sinkBowlMaterial : materialUrls[8]
+                }
             />
         )
     }
-    for(let i =0; i < levaCooktopAmount; i++){
+    for(let i =0; i < cooktopAmount; i++){
         islands.push(
             <Cooktop
                 key={'cooktop'+i}
-                materialUrl={levaCooktopMaterial}
+                materialUrl={
+                    cooktopMaterial ? cooktopMaterial : materialUrls[1]
+                }
                 props={
                     {
                         position: [1.5 + i, 0, 0],
@@ -182,17 +80,19 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {levaCooktopBevelled}
-                stoveType={LevaStoveType}
+                bevelled = {cooktopBevelled}
+                stoveType={stoveType}
 
             />
         )
     }
-    for(let i =0; i < levaTowerAmount; i++){
+    for(let i =0; i < towerAmount; i++){
         islands.push(
             <Tower
                 key={'tower'+i}
-                materialUrl={levaTowerMaterial}
+                materialUrl={
+                    towerMaterial ? towerMaterial : materialUrls[4]
+                }
                 props={
                     {
                         position: [0, 0, -1 - i],
@@ -200,10 +100,12 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {levaTowerBevelled}
+                bevelled = {towerBevelled}
                 doorOpening = {levaDoorOpening}
-                fridgeOrOven = {levaFridgeOrOven}
-                accessoryMaterialUrl={levaTowerAccessoryMaterial}
+                fridgeOrOven = {applianceType}
+                accessoryMaterialUrl={
+                    towerAccessoryMaterial ? towerAccessoryMaterial : materialUrls[5]
+                }
 
             />
         )
