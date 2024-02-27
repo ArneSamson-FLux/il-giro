@@ -1,5 +1,5 @@
 import { useThree, extend, useFrame } from '@react-three/fiber';
-import { OrbitControls, Html, Text, Environment, Lightformer, CameraControls } from '@react-three/drei';
+import { OrbitControls, Html, Text, Environment, Lightformer, CameraControls, ContactShadows, SoftShadows } from '@react-three/drei';
 import * as THREE from 'three';
 
 import ConfigUi from './components/ConfigUi.jsx';
@@ -14,7 +14,7 @@ export default function Experience() {
 
     <Perf position="top-left" />
 
-    <OrbitControls
+    {/* <OrbitControls
             enableDamping={true}
             makeDefault
             maxPolarAngle={Math.PI / 2}
@@ -24,7 +24,16 @@ export default function Experience() {
             target={[0, 1, -1]}
             position={[0, 0, 4]}
             
+    /> */}
+
+    <CameraControls
+      draggingSmoothTime={0.2}
+      maxPolarAngle={Math.PI / 2}
+      maxDistance={10}
+      minDistance={2}
+      setOrbitPoint={[0, 1, -1]}
     />
+
 
     <Environment
       files={"/HDR/4.hdr"}
@@ -63,7 +72,15 @@ export default function Experience() {
     </Environment>
       
     <Lights/>
-   
+
+    {/* <ContactShadows opacity={0.2} scale={5} blur={0.1} far={10} resolution={512} color="#000000"  frames={1}/> */}
+
+        <SoftShadows
+          size={50}
+          samples={20}
+          focus={2}
+        />
+
     <Scene/>
 
   </>
