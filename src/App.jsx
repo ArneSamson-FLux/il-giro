@@ -12,8 +12,12 @@ import Experience from './Experience.jsx'
 import Effects from './Effects/Effects.jsx'
 import ConfigUi from './components/ConfigUi.jsx'
 
+// import useScene from './store/useScene.jsx'
+
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
+
+// const { cameraCoords } = useScene()
 
 const camSettings = {
   fov: 75,
