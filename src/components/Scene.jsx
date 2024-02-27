@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import Cooktop from './kitchen/Cooktop.jsx'
 import Sink from './kitchen/Sink.jsx'
 import Tower from './kitchen/Tower.jsx'
-import { useControls } from 'leva'
+// import { useControls } from 'leva'
 
 import useConfig from '../store/useConfig.jsx'
 
@@ -24,20 +24,9 @@ export default function Scene() {
         sinkBowlMaterial,
         stoveType,
         applianceType,
-        towerAccessoryMaterial
+        towerAccessoryMaterial,
+        doorOpeningRotation
     } = useConfig();
-
-    //useControls
-    const {levaDoorOpening
-    } = useControls("door", {
-        levaDoorOpening: {
-            value: 1.5,
-            min: 0,
-            max: 2,
-            step: 0.01,
-            label: 'Door Opening'
-        }
-    })
 
     const islands = [];
 
@@ -101,7 +90,7 @@ export default function Scene() {
                     }
                 }
                 bevelled = {towerBevelled}
-                doorOpening = {levaDoorOpening}
+                doorOpening = {doorOpeningRotation}
                 fridgeOrOven = {applianceType}
                 accessoryMaterialUrl={
                     towerAccessoryMaterial ? towerAccessoryMaterial : allMaterials[5].url
