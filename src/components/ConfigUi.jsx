@@ -125,9 +125,13 @@ export default function ConfigUi() {
                             className='config-ui__amounts ui-page'
                         >   
                             <h2>Amounts</h2>
+                            
                             <p>Select the number of islands you want.</p>
-                            <div>
-                                <p>Amount of sinks: <span className='config-ui__amounts__amount'>{sinkAmount}</span></p>
+                            
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
+                                <p>Amount of sinks:</p>
                                 <input
                                     type="number"
                                     value={sinkAmount}
@@ -140,7 +144,7 @@ export default function ConfigUi() {
                             </div>
 
                             <div
-                                className='config-ui__amounts__per-element'
+                                className='config-ui__align-row__per-element'
                             >
                                 <p>Amount of cooktops: </p>
                                 <input
@@ -153,8 +157,10 @@ export default function ConfigUi() {
                                 />
                             </div>
 
-                            <div>
-                                <p>Amount of towers: {towerAmount}</p>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
+                                <p>Amount of towers: </p>
                                 <input
                                     type="number"
                                     value={towerAmount}
@@ -174,7 +180,9 @@ export default function ConfigUi() {
                         >
                             <h2>The Sink</h2>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Sink Material:</p>
                                 <select
                                     onChange={(e) => setSinkMaterial(e.target.value)}
@@ -184,7 +192,9 @@ export default function ConfigUi() {
                                 </select>
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Sink Bevelled:</p>
                                 <input 
                                     type="checkbox" 
@@ -193,7 +203,9 @@ export default function ConfigUi() {
                                 />
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Tap Material:</p>
                                 <select 
                                     value={tapMaterial}    
@@ -203,7 +215,9 @@ export default function ConfigUi() {
                                 </select>
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Tap Type:</p>
                                 <select onChange={(e) => setTapType(e.target.value)}>
                                     <option value="tap1">Standard tap</option>
@@ -211,7 +225,9 @@ export default function ConfigUi() {
                                 </select>
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Sink Bowl Material:</p>
                                 <select 
                                     value={sinkBowlMaterial}
@@ -231,7 +247,9 @@ export default function ConfigUi() {
 
                             <h2>The Cooktop</h2>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Cooktop Material:</p>
                                 <select 
                                     value={cooktopMaterial}
@@ -241,7 +259,9 @@ export default function ConfigUi() {
                                 </select>
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Cooktop Bevelled:</p>
                                 <input 
                                     type="checkbox" 
@@ -251,7 +271,9 @@ export default function ConfigUi() {
                             </div>
 
                                 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Stove Type:</p>
                                 <select onChange={(e) => setStoveType(e.target.value)}>
                                     <option value="gas">Gas</option>
@@ -269,7 +291,9 @@ export default function ConfigUi() {
 
                             <h2>The Tower</h2>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Tower Material:</p>
                                 <select 
                                     value={towerMaterial}
@@ -279,7 +303,9 @@ export default function ConfigUi() {
                                 </select>
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Tower Bevelled:</p>
                                 <input
                                     type="checkbox"
@@ -288,7 +314,9 @@ export default function ConfigUi() {
                                 />
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Appliance Type:</p>
                                 <select onChange={(e) => setApplianceType(e.target.value)}>
                                     <option value="oven">Oven</option>
@@ -296,7 +324,9 @@ export default function ConfigUi() {
                                 </select>
                             </div>
 
-                            <div>
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
                                 <p>Tower Accessory Material:</p>
                                 <select
                                     value={towerAccessoryMaterial}    
