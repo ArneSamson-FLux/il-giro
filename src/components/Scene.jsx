@@ -105,13 +105,21 @@ export default function Scene() {
 
         {islands}
 
-        <mesh
+        {/* <mesh
             position={[0, 0, 0]}
             rotation={[-Math.PI / 2, 0, 0]}
             receiveShadow
         >
             <planeGeometry attach="geometry" args={[100, 100]} />
             <shadowMaterial attach="material" opacity={0.3} />
+        </mesh> */}
+
+        <mesh
+            position={[0, -0.05, 0]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            receiveShadow
+        >
+            <planeGeometry attach="geometry" args={[100, 100]} />
         </mesh>
 
         {/* <mesh
