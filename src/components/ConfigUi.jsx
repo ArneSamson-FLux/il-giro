@@ -80,6 +80,18 @@ export default function ConfigUi() {
     }, [allMaterials, sinkMaterial, setSinkMaterial, cooktopMaterial, setCooktopMaterial, towerMaterial, setTowerMaterial, tapMaterial, setTapMaterial, sinkBowlMaterial, setSinkBowlMaterial, towerAccessoryMaterial, setTowerAccessoryMaterial]);
 
 
+    const [step, setStep] = useState(0);
+
+    const handleNext = () => {
+        if(step === 3) return;
+        setStep(step + 1);
+    }
+
+    const handleBack = () => {
+        if(step === 0) return;
+        setStep(step - 1);
+    }
+
     return (
         <>
             {!loaded && <p>Loading UI...</p>}
@@ -87,154 +99,206 @@ export default function ConfigUi() {
             {loaded &&    <div
                     className='config-ui'
                 >
-                    <div>
-                        <p>Sink Amount: {sinkAmount}</p>
-                        <input
-                            type="number"
-                            value={sinkAmount}
-                            max={3}
-                            min={0}
-                            //if value is lower than 10, set the value to the input value
-                            onChange={(e) => setSinkAmount(e.target.value < 3 ? e.target.value : 3)}
-  
-                        />
-                    </div>
 
-                    <div>
-                        <p>Cooktop Amount: {cooktopAmount}</p>
-                        <input
-                            type="number"
-                            value={cooktopAmount}
-                            max={3}
-                            min={0}
-                            //if value is lower than 10, set the value to the input value
-                            onChange={(e) => setCooktopAmount(e.target.value < 3 ? e.target.value : 3)}
-                        />
-                    </div>
+                    <button
+                        onClick={handleNext}
+                    >
+                        Next
+                    </button>
 
-                    <div>
-                        <p>Tower Amount: {towerAmount}</p>
-                        <input
-                            type="number"
-                            value={towerAmount}
-                            max={3}
-                            min={0}
-                            //if value is lower than 10, set the value to the input value
-                            onChange={(e) => setTowerAmount(e.target.value < 3 ? e.target.value : 3)}
-                        />
-                    </div>
+                    <button
+                        onClick={handleBack}
+                    >
+                        Back
+                    </button>
 
+                    {step === 0 &&
+                        <div
+                            className='config-ui__amounts ui-page'
+                        >   
+                            <h2>Amounts</h2>
+                            <p>Select the number of islands you want</p>
+                            <div>
+                                <p>Amount of sinks: {sinkAmount}</p>
+                                <input
+                                    type="number"
+                                    value={sinkAmount}
+                                    max={3}
+                                    min={0}
+                                    //if value is lower than 10, set the value to the input value
+                                    onChange={(e) => setSinkAmount(e.target.value < 3 ? e.target.value : 3)}
+        
+                                />
+                            </div>
 
-                    <div>
-                        <p>Sink Material:</p>
-                        <select
-                            onChange={(e) => setSinkMaterial(e.target.value)}
-                            value={sinkMaterial}
-                        >                            
-                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                        </select>
-                    </div>
+                            <div>
+                                <p>CAmount of cooktops: {cooktopAmount}</p>
+                                <input
+                                    type="number"
+                                    value={cooktopAmount}
+                                    max={3}
+                                    min={0}
+                                    //if value is lower than 10, set the value to the input value
+                                    onChange={(e) => setCooktopAmount(e.target.value < 3 ? e.target.value : 3)}
+                                />
+                            </div>
 
-                    <div>
-                        <p>Cooktop Material:</p>
-                        <select 
-                            value={cooktopMaterial}
-                            onChange={(e) => setCooktopMaterial(e.target.value)}
+                            <div>
+                                <p>Amount of towers: {towerAmount}</p>
+                                <input
+                                    type="number"
+                                    value={towerAmount}
+                                    max={3}
+                                    min={0}
+                                    //if value is lower than 10, set the value to the input value
+                                    onChange={(e) => setTowerAmount(e.target.value < 3 ? e.target.value : 3)}
+                                />
+                            </div>
+
+                        </div>
+                    }
+
+                    {step === 1 &&
+                        <div
+                            className='config-ui__materials ui-page config-ui__sink'
                         >
-                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                        </select>
-                    </div>
+                            <h2>The Sink</h2>
 
-                    <div>
-                        <p>Tower Material:</p>
-                        <select 
-                            value={towerMaterial}
-                            onChange={(e) => setTowerMaterial(e.target.value)}
+                            <div>
+                                <p>Sink Material:</p>
+                                <select
+                                    onChange={(e) => setSinkMaterial(e.target.value)}
+                                    value={sinkMaterial}
+                                >                            
+                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                </select>
+                            </div>
+
+                            <div>
+                                <p>Sink Bevelled:</p>
+                                <input 
+                                    type="checkbox" 
+                                    checked={sinkBevelled}
+                                    onChange={(e) => setSinkBevelled(e.target.checked)} 
+                                />
+                            </div>
+
+                            <div>
+                                <p>Tap Material:</p>
+                                <select 
+                                    value={tapMaterial}    
+                                    onChange={(e) => setTapMaterial(e.target.value)}
+                                >
+                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                </select>
+                            </div>
+
+                            <div>
+                                <p>Tap Type:</p>
+                                <select onChange={(e) => setTapType(e.target.value)}>
+                                    <option value="tap1">Standard tap</option>
+                                    <option value="tap2">Quooker tap</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <p>Sink Bowl Material:</p>
+                                <select 
+                                    value={sinkBowlMaterial}
+                                    onChange={(e) => setSinkBowlMaterial(e.target.value)}
+                                >
+                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                </select>
+                            </div>
+
+                        </div>
+                    }
+
+                    {step === 2 &&
+                        <div
+                            className='config-ui__materials ui-page config-ui__cooktop'
                         >
-                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                        </select>
-                    </div>
 
-                    <div>
-                        <p>Sink Bevelled:</p>
-                        <input 
-                            type="checkbox" 
-                            checked={sinkBevelled}
-                            onChange={(e) => setSinkBevelled(e.target.checked)} 
-                        />
-                    </div>
+                            <h2>The Cooktop</h2>
 
-                    <div>
-                        <p>Cooktop Bevelled:</p>
-                        <input 
-                            type="checkbox" 
-                            checked={cooktopBevelled}
-                            onChange={(e) => setCooktopBevelled(e.target.checked)} 
-                        />
-                    </div>
+                            <div>
+                                <p>Cooktop Material:</p>
+                                <select 
+                                    value={cooktopMaterial}
+                                    onChange={(e) => setCooktopMaterial(e.target.value)}
+                                >
+                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                </select>
+                            </div>
 
-                    <div>
-                        <p>Tower Bevelled:</p>
-                        <input
-                            type="checkbox"
-                            checked={towerBevelled}
-                            onChange={(e) => setTowerBevelled(e.target.checked)}
-                        />
-                    </div>
-                    
-                    <div>
-                        <p>Tap Material:</p>
-                        <select 
-                            value={tapMaterial}    
-                            onChange={(e) => setTapMaterial(e.target.value)}
+                            <div>
+                                <p>Cooktop Bevelled:</p>
+                                <input 
+                                    type="checkbox" 
+                                    checked={cooktopBevelled}
+                                    onChange={(e) => setCooktopBevelled(e.target.checked)} 
+                                />
+                            </div>
+
+                                
+                            <div>
+                                <p>Stove Type:</p>
+                                <select onChange={(e) => setStoveType(e.target.value)}>
+                                    <option value="gas">Gas</option>
+                                    <option value="electric">Electric</option>
+                                </select>
+                            </div>
+                        
+                        </div>
+                    }
+
+                    {step === 3 &&
+                        <div
+                            className='config-ui__materials ui-page config-ui__tower'
                         >
-                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                        </select>
-                    </div>
 
-                    <div>
-                        <p>Tap Type:</p>
-                        <select onChange={(e) => setTapType(e.target.value)}>
-                            <option value="tap1">Standard tap</option>
-                            <option value="tap2">Quooker tap</option>
-                        </select>
-                    </div>
+                            <h2>The Tower</h2>
 
-                    <div>
-                        <p>Sink Bowl Material:</p>
-                        <select 
-                            value={sinkBowlMaterial}
-                            onChange={(e) => setSinkBowlMaterial(e.target.value)}
-                        >
-                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                        </select>
-                    </div>
+                            <div>
+                                <p>Tower Material:</p>
+                                <select 
+                                    value={towerMaterial}
+                                    onChange={(e) => setTowerMaterial(e.target.value)}
+                                >
+                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                </select>
+                            </div>
 
-                    <div>
-                        <p>Stove Type:</p>
-                        <select onChange={(e) => setStoveType(e.target.value)}>
-                            <option value="gas">Gas</option>
-                            <option value="electric">Electric</option>
-                        </select>
-                    </div>
+                            <div>
+                                <p>Tower Bevelled:</p>
+                                <input
+                                    type="checkbox"
+                                    checked={towerBevelled}
+                                    onChange={(e) => setTowerBevelled(e.target.checked)}
+                                />
+                            </div>
 
-                    <div>
-                        <p>Appliance Type:</p>
-                        <select onChange={(e) => setApplianceType(e.target.value)}>
-                            <option value="oven">Oven</option>
-                            <option value="fridge">Fridge</option>
-                        </select>
-                    </div>
+                            <div>
+                                <p>Appliance Type:</p>
+                                <select onChange={(e) => setApplianceType(e.target.value)}>
+                                    <option value="oven">Oven</option>
+                                    <option value="fridge">Fridge</option>
+                                </select>
+                            </div>
 
-                    <div>
-                        <p>Tower Accessory Material:</p>
-                        <select
-                            value={towerAccessoryMaterial}    
-                            onChange={(e) => setTowerAccessoryMaterial(e.target.value)}
-                        >
-                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                        </select>
-                    </div>
+                            <div>
+                                <p>Tower Accessory Material:</p>
+                                <select
+                                    value={towerAccessoryMaterial}    
+                                    onChange={(e) => setTowerAccessoryMaterial(e.target.value)}
+                                >
+                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                </select>
+                            </div>
+
+                        </div>
+                    }
+
                 </div>
             }
         </>
