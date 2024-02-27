@@ -9,7 +9,160 @@ body,
     overflow: hidden;
     margin: 0;
 
+    color: var(--off-black);
+
+    --off-black: #272727;
+    --off-white: #fafafa;
+
+    --trans-grey: #eaeaea;
+
+    --heading-family: "Josefin Sans", sans-serif;
+    --body-family: "Noto Traditional Nushu", sans-serif;
+
+    --heading1-size: 48px;
+    --heading1-line-height: 54px;
+    --heading1-weight: 400;
+
+    --heading2-size: 42px;
+    --heading2-line-height: 42px;
+    --heading2-weight: 400;
+
+    --heading3-size: 36px;
+    --heading3-line-height: 42px;
+    --heading3-weight: 400;
+    --heading3-color: #9b9b9b;
+
+    --heading4-size: 30px;
+    --heading4-line-height: 36px;
+    --heading4-weight: 400;
+
+    --heading5-size: 16px;
+    --heading5-line-height: 24px;
+    --heading5-weight: 700;
+
+    --body-size: 16px;
+    --body-line-height: 30px;
+    --body-weight: 400;
+
+    --link-size: 18px;
+    --link-line-height: 24px;
+    --link-weight: 400;
+
+    --button-weight: 700;
 }
+
+h1{
+    font-family: var(--heading-family);
+    font-size: var(--heading1-size);
+    font-weight: var(--heading1-weight);
+    line-height: var(--heading1-line-height);
+}
+
+h2{
+    font-family: var(--heading-family);
+    font-size: var(--heading2-size);
+    font-weight: var(--heading2-weight);
+    line-height: var(--heading2-line-height);
+}
+
+h3{
+    font-family: var(--heading-family);
+    font-size: var(--heading3-size);
+    font-weight: var(--heading3-weight);
+    line-height: var(--heading3-line-height);
+    color: var(--heading3-color);
+}
+
+h4{
+    font-family: var(--heading-family);
+    font-size: var(--heading4-size);
+    font-weight: var(--heading4-weight);
+    line-height: var(--heading4-line-height);
+}
+
+h5{
+    font-family: var(--heading-family);
+    font-size: var(--heading5-size);
+    font-weight: var(--heading5-weight);
+    line-height: var(--heading5-line-height);
+}
+
+strong{
+    font-weight: 700;
+}
+
+p{
+    font-family: var(--body-family);
+    font-size: var(--body-size);
+    font-weight: var(--body-weight);
+    line-height: var(--body-line-height);
+}
+
+a{
+    font-family: var(--body-family);
+    font-size: var(--link-size);
+    font-weight: var(--link-weight);
+    line-height: var(--link-line-height);
+    color: var(--off-black);
+    text-decoration: none;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+button{
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+input{
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--trans-grey);
+    background-color: transparent;
+    color: var(--off-black);
+    font-size: 13px;
+    height: var(--body-size);
+}
+input[type="range"]{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--trans-grey);
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid var(--off-black);
+    height: var(--body-size);
+    width: var(--body-size);
+    border-radius: 3px;
+    background: var(--off-white);
+    cursor: pointer;
+    margin-top: 0px;
+    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus {
+    /* outline: none; */
+}
+input[type=range]::-ms-track {
+    cursor: pointer;
+  
+    background: transparent; 
+    border-color: transparent;
+    color: transparent;
+}
+
+.no-select{
+    user-select: none;
+}
+
+
+
+
 
 .config-ui{
     display: flex;
@@ -26,7 +179,7 @@ body,
     width: 300px;
     height: 100vh;
     overflow: auto;
-    background-color: #aeaeae;
+    background-color: var(--off-white);
     padding: 20px;
     box-shadow: -10px 0 20px -1px #333;
 }
@@ -37,6 +190,28 @@ body,
     align-items: baseline;
     justify-content: center;
     width: 100%;
-    background-color: #f0f0f0;
     margin: 20px 0;
+}
+
+.config-ui__nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.config-ui__amounts__amount{
+    font-family: var(--heading-family);
+    font-size: var(--heading5-size);
+    font-weight: var(--heading5-weight);
+    line-height: var(--heading5-line-height);
+}
+
+.config-ui__amounts__per-element{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
 }

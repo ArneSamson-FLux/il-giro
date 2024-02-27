@@ -103,26 +103,31 @@ export default function ConfigUi() {
                     className='config-ui'
                 >
 
-                    <button
-                        onClick={handleNext}
+                    <div
+                        className='no-select config-ui__nav'
                     >
-                        Next
-                    </button>
 
-                    <button
-                        onClick={handleBack}
-                    >
-                        Back
-                    </button>
+                        <button
+                            onClick={handleBack}
+                        >
+                            <a>Back</a>
+                        </button>
+  
+                        <button
+                            onClick={handleNext}
+                        >
+                            <a>Next</a>
+                        </button>
+                    </div>
 
                     {step === 0 &&
                         <div
                             className='config-ui__amounts ui-page'
                         >   
                             <h2>Amounts</h2>
-                            <p>Select the number of islands you want</p>
+                            <p>Select the number of islands you want.</p>
                             <div>
-                                <p>Amount of sinks: {sinkAmount}</p>
+                                <p>Amount of sinks: <span className='config-ui__amounts__amount'>{sinkAmount}</span></p>
                                 <input
                                     type="number"
                                     value={sinkAmount}
@@ -134,8 +139,10 @@ export default function ConfigUi() {
                                 />
                             </div>
 
-                            <div>
-                                <p>CAmount of cooktops: {cooktopAmount}</p>
+                            <div
+                                className='config-ui__amounts__per-element'
+                            >
+                                <p>Amount of cooktops: </p>
                                 <input
                                     type="number"
                                     value={cooktopAmount}
@@ -303,7 +310,7 @@ export default function ConfigUi() {
                     }
 
                     <div>
-                        <p>Open doors and shelves:</p>
+                        <h5>Open doors and shelves:</h5>
                         <input
                             type="range"
                             min="0"
