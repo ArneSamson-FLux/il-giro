@@ -55,22 +55,22 @@ export default function ConfigUi() {
 
             switch(true){
                 case !sinkMaterial:
-                    setSinkMaterial(allMaterials[0].url);
+                    setSinkMaterial(allMaterials[1].url);
                     break;
                 case !cooktopMaterial:
                     setCooktopMaterial(allMaterials[1].url);
                     break;
                 case !towerMaterial:
-                    setTowerMaterial(allMaterials[4].url);
+                    setTowerMaterial(allMaterials[1].url);
                     break;
                 case !tapMaterial:
-                    setTapMaterial(allMaterials[2].url);
+                    setTapMaterial(allMaterials[7].url);
                     break;
                 case !sinkBowlMaterial:
                     setSinkBowlMaterial(allMaterials[8].url);
                     break;
                 case !towerAccessoryMaterial:
-                    setTowerAccessoryMaterial(allMaterials[3].url);
+                    setTowerAccessoryMaterial(allMaterials[8].url);
                     break;
                 default:
             }
