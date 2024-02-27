@@ -14,6 +14,8 @@ body,
     --off-black: #272727;
     --off-white: #fafafa;
 
+    --light-grey: #9b9b9b;
+
     --trans-grey: #eaeaea;
 
     --heading-family: "Josefin Sans", sans-serif;
@@ -30,7 +32,6 @@ body,
     --heading3-size: 36px;
     --heading3-line-height: 42px;
     --heading3-weight: 400;
-    --heading3-color: #9b9b9b;
 
     --heading4-size: 30px;
     --heading4-line-height: 36px;
@@ -70,7 +71,7 @@ h3{
     font-size: var(--heading3-size);
     font-weight: var(--heading3-weight);
     line-height: var(--heading3-line-height);
-    color: var(--heading3-color);
+    color: var(--light-grey);
 }
 
 h4{
@@ -191,12 +192,12 @@ input[type=range]::-ms-track {
     position: absolute;
     top: 0;
     right: 0;
-    width: 300px;
+    width: auto;
     height: 100vh;
     overflow: auto;
     background-color: var(--off-white);
     padding: 20px;
-    box-shadow: -10px 0 20px -1px #333;
+    border: var(--light-grey) 1px solid;
 }
 
 .ui-page{
