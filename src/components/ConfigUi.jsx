@@ -166,7 +166,6 @@ export default function ConfigUi() {
                                     value={towerAmount}
                                     max={3}
                                     min={0}
-                                    //if value is lower than 10, set the value to the input value
                                     onChange={(e) => setTowerAmount(e.target.value < 3 ? e.target.value : 3)}
                                 />
                             </div>
@@ -183,7 +182,7 @@ export default function ConfigUi() {
                             <div
                                 className='config-ui__align-row__per-element'
                             >
-                                <p>Sink Material:</p>
+                                <p>Sink Island Material:</p>
                                 <select
                                     onChange={(e) => setSinkMaterial(e.target.value)}
                                     value={sinkMaterial}
@@ -211,7 +210,12 @@ export default function ConfigUi() {
                                     value={tapMaterial}    
                                     onChange={(e) => setTapMaterial(e.target.value)}
                                 >
-                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                    {
+                                        allMaterials
+                                        .filter(material => ['metal', 'innox', 'gold', 'bronze', 'copper'].includes(material.name))
+                                        .map((material, index) => (
+                                            <option key={index} value={material.url}>{material.name}</option>
+                                    ))}
                                 </select>
                             </div>
 
@@ -228,12 +232,17 @@ export default function ConfigUi() {
                             <div
                                 className='config-ui__align-row__per-element'
                             >
-                                <p>Sink Bowl Material:</p>
+                                <p>Sink Material:</p>
                                 <select 
                                     value={sinkBowlMaterial}
                                     onChange={(e) => setSinkBowlMaterial(e.target.value)}
                                 >
-                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                    {
+                                        allMaterials
+                                        .filter(material => ['metal', 'innox', 'gold', 'bronze', 'copper'].includes(material.name))
+                                        .map((material, index) => (
+                                            <option key={index} value={material.url}>{material.name}</option>
+                                    ))}
                                 </select>
                             </div>
 
@@ -332,7 +341,12 @@ export default function ConfigUi() {
                                     value={towerAccessoryMaterial}    
                                     onChange={(e) => setTowerAccessoryMaterial(e.target.value)}
                                 >
-                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
+                                    {
+                                        allMaterials
+                                        .filter(material => ['metal', 'innox', 'gold', 'bronze', 'copper'].includes(material.name))
+                                        .map((material, index) => (
+                                            <option key={index} value={material.url}>{material.name}</option>
+                                    ))}
                                 </select>
                             </div>
 
