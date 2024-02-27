@@ -8,7 +8,15 @@ import useConfig from '../store/useConfig.jsx'
 
 export default function Scene() {
 
-    const { materialUrls ,sinkAmount, cooktopAmount, towerAmount } = useConfig();
+    const {
+        materialUrls,
+        sinkAmount, 
+        cooktopAmount, 
+        towerAmount, 
+        sinkMaterial,
+        cooktopMaterial,
+        towerMaterial, 
+    } = useConfig();
 
     //useControls
     const { levaSinkAmount, levaCooktopAmount, levaTowerAmount
@@ -143,11 +151,11 @@ export default function Scene() {
 
     const islands = [];
 
-    for (let i = 0; i < levaSinkAmount; i++){
+    for (let i = 0; i < sinkAmount; i++){
         islands.push(
             <Sink
                 key={'sink'+i}
-                materialUrl={levaSinkMaterial}
+                materialUrl={sinkMaterial}
                 props={
                     {
                         position: [-1.5 - i, 0, 0],
