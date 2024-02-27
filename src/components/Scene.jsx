@@ -9,7 +9,7 @@ import useConfig from '../store/useConfig.jsx'
 export default function Scene() {
 
     const {
-        materialUrls,
+        allMaterials,
         sinkAmount, 
         cooktopAmount, 
         towerAmount, 
@@ -46,7 +46,7 @@ export default function Scene() {
             <Sink
                 key={'sink'+i}
                 materialUrl={
-                    sinkMaterial ? sinkMaterial : materialUrls[0]
+                    sinkMaterial ? sinkMaterial : allMaterials[0].url
                 }
                 props={
                     {
@@ -57,11 +57,11 @@ export default function Scene() {
                 }
                 bevelled = {sinkBevelled}
                 accessoryMaterialUrl={
-                    tapMaterial ? tapMaterial : materialUrls[1]
+                    tapMaterial ? tapMaterial : allMaterials[1].url
                 }
                 tapType={tapType}
                 sinkBowlMaterial={
-                    sinkBowlMaterial ? sinkBowlMaterial : materialUrls[8]
+                    sinkBowlMaterial ? sinkBowlMaterial : allMaterials[8].url
                 }
             />
         )
@@ -71,7 +71,7 @@ export default function Scene() {
             <Cooktop
                 key={'cooktop'+i}
                 materialUrl={
-                    cooktopMaterial ? cooktopMaterial : materialUrls[1]
+                    cooktopMaterial ? cooktopMaterial : allMaterials[1].url
                 }
                 props={
                     {
@@ -91,7 +91,7 @@ export default function Scene() {
             <Tower
                 key={'tower'+i}
                 materialUrl={
-                    towerMaterial ? towerMaterial : materialUrls[4]
+                    towerMaterial ? towerMaterial : allMaterials[4].url
                 }
                 props={
                     {
@@ -104,7 +104,7 @@ export default function Scene() {
                 doorOpening = {levaDoorOpening}
                 fridgeOrOven = {applianceType}
                 accessoryMaterialUrl={
-                    towerAccessoryMaterial ? towerAccessoryMaterial : materialUrls[5]
+                    towerAccessoryMaterial ? towerAccessoryMaterial : allMaterials[5].url
                 }
 
             />
