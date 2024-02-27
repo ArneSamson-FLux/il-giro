@@ -1,5 +1,5 @@
 import { useThree, extend, useFrame } from '@react-three/fiber';
-import { OrbitControls, Html, Text, Environment, Lightformer } from '@react-three/drei';
+import { OrbitControls, Html, Text, Environment, Lightformer, CameraControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 import ConfigUi from './components/ConfigUi.jsx';
@@ -18,9 +18,11 @@ export default function Experience() {
             enableDamping={true}
             makeDefault
             maxPolarAngle={Math.PI / 2}
-            //enableZoom={false}
+            minPolarAngle={Math.PI / 6}
             enablePan={false}
             enableRotate={true}
+            target={[0, 1, -1]}
+            position={[0, 0, 4]}
             
     />
 
