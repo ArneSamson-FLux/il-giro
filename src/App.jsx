@@ -6,8 +6,11 @@ import * as THREE from 'three'
 import {Canvas} from '@react-three/fiber'
 import { EffectComposer, N8AO } from "@react-three/postprocessing";
 
+import { Leva } from 'leva'
+
 import Experience from './Experience.jsx'
 import Effects from './Effects/Effects.jsx'
+import ConfigUi from './components/ConfigUi.jsx'
 
 
 const root = ReactDOM.createRoot(document.querySelector('#root'))
@@ -22,17 +25,31 @@ const camSettings = {
 
 
 root.render(
-  <Canvas
-    camera={camSettings}
-    gl = {{
-      antialias: true,
-      toneMapping: THREE.ACESFilmicToneMapping,
-      outoutColorSpace: THREE.SRGBColorSpace,
-    }}
-    shadows={true}
-  >
-    <Effects/>
+  <>
+    <Canvas
+      camera={camSettings}
+      gl = {{
+        antialias: true,
+        toneMapping: THREE.ACESFilmicToneMapping,
+        outoutColorSpace: THREE.SRGBColorSpace,
+      }}
+      shadows={true}
+    >
+      <Effects/>
 
-    <Experience/>
-  </Canvas>
+      <Experience/>
+    </Canvas>
+
+    <div
+      className='config-wrapper'
+    >
+      <ConfigUi/>
+    </div>
+
+
+    <Leva
+      collapsed
+    />
+  </>
+
 )
