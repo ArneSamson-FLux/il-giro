@@ -1,15 +1,15 @@
 {
     "materials":{
-        "woodMaterial": {
+        "wood": {
             "url": "/materials/oak/"
         },
-        "metalMaterial": {
+        "metal": {
             "url": "/materials/metal/"
         },
-        "leatherMaterial": {
+        "leather": {
             "url": "/materials/leather/"
         },
-        "solidSurfaceMaterial": {
+        "solidSurface": {
             "url": "/materials/solidsurface/"
         },
         "microTopping": {
