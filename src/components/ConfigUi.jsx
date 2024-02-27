@@ -4,7 +4,7 @@ import useConfig from '../store/useConfig';
 export default function ConfigUi() {
 
     const {
-        materialUrls,
+        allMaterials,
 
         sinkAmount,
         setSinkAmount,
@@ -92,45 +92,58 @@ export default function ConfigUi() {
 
 
                     <div>
-                        <p>Sink Material: {sinkMaterial}</p>
+                        <p>Sink Material:</p>
                         <select onChange={(e) => setSinkMaterial(e.target.value)}>
-                            {materialUrls.map((url, index) => <option key={index} value={url}>{url}</option>)}
+                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
                         </select>
                     </div>
 
                     <div>
-                        <p>Cooktop Material: {cooktopMaterial}</p>
+                        <p>Cooktop Material:</p>
                         <select onChange={(e) => setCooktopMaterial(e.target.value)}>
-                            {materialUrls.map((url, index) => <option key={index} value={url}>{url}</option>)}
+                            {/* {materialUrls.map((url, index) => <option key={index} value={url}>{url}</option>)} */}
+                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
                         </select>
                     </div>
 
                     <div>
                         <p>Tower Material: {towerMaterial}</p>
                         <select onChange={(e) => setTowerMaterial(e.target.value)}>
-                            {materialUrls.map((url, index) => <option key={index} value={url}>{url}</option>)}
+                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
                         </select>
                     </div>
 
                     <div>
                         <p>Sink Bevelled: {sinkBevelled}</p>
-                        <input type="checkbox" onChange={(e) => setSinkBevelled(e.target.checked)} />
+                        <input 
+                            type="checkbox" 
+                            checked={sinkBevelled}
+                            onChange={(e) => setSinkBevelled(e.target.checked)} 
+                        />
                     </div>
 
                     <div>
                         <p>Cooktop Bevelled: {cooktopBevelled}</p>
-                        <input type="checkbox" onChange={(e) => setCooktopBevelled(e.target.checked)} />
+                        <input 
+                            type="checkbox" 
+                            checked={cooktopBevelled}
+                            onChange={(e) => setCooktopBevelled(e.target.checked)} 
+                        />
                     </div>
 
                     <div>
                         <p>Tower Bevelled: {towerBevelled}</p>
-                        <input type="checkbox" onChange={(e) => setTowerBevelled(e.target.checked)} />
+                        <input
+                            type="checkbox"
+                            checked={towerBevelled}
+                            onChange={(e) => setTowerBevelled(e.target.checked)}
+                        />
                     </div>
                     
                     <div>
                         <p>Tap Material: {tapMaterial}</p>
                         <select onChange={(e) => setTapMaterial(e.target.value)}>
-                            {materialUrls.map((url, index) => <option key={index} value={url}>{url}</option>)}
+                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
                         </select>
                     </div>
 
@@ -145,7 +158,7 @@ export default function ConfigUi() {
                     <div>
                         <p>Sink Bowl Material: {sinkBowlMaterial}</p>
                         <select onChange={(e) => setSinkBowlMaterial(e.target.value)}>
-                            {materialUrls.map((url, index) => <option key={index} value={url}>{url}</option>)}
+                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
                         </select>
                     </div>
 
@@ -168,7 +181,7 @@ export default function ConfigUi() {
                     <div>
                         <p>Tower Accessory Material: {towerAccessoryMaterial}</p>
                         <select onChange={(e) => setTowerAccessoryMaterial(e.target.value)}>
-                            {materialUrls.map((url, index) => <option key={index} value={url}>{url}</option>)}
+                            {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
                         </select>
                     </div>
                 </div>
