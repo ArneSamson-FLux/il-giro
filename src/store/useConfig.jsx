@@ -8,7 +8,7 @@ export default create((set) => {
         .then(response => response.json())
         .then(data => {
             materialData = data.materials;
-            console.log('materialData:', materialData);
+            // console.log('materialData:', materialData);
             // const allMaterials = Object.values(materialData).map(material => material.url);
 
             const allMaterials = Object.entries(materialData).map(([name, material]) => ({
@@ -16,7 +16,7 @@ export default create((set) => {
                 url: material.url
             }));
 
-            console.log('allMaterials:', allMaterials);
+            // console.log('allMaterials:', allMaterials);
             set({ allMaterials });
         })
         .catch(error => console.error('Error fetching texture:', error));
@@ -31,10 +31,10 @@ export default create((set) => {
         towerAmount: 1,
 
         sinkMaterial: null,
-        cookTopMaterial: null,
+        cooktopMaterial: null,
         towerMaterial: null,
 
-        sinkBevelled: false,
+        sinkBevelled: true,
         cooktopBevelled: false,
         towerBevelled: true,
 
