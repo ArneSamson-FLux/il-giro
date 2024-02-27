@@ -71,7 +71,7 @@ export default function Scene() {
             <Cooktop
                 key={'cooktop'+i}
                 materialUrl={
-                    cooktopMaterial ? cooktopMaterial : allMaterials[1].url
+                    cooktopMaterial ? cooktopMaterial : allMaterials[0].url
                 }
                 props={
                     {
