@@ -52,6 +52,10 @@ body,
     --button-weight: 700;
 }
 
+canvas{
+    transform: translateX(-15%);
+}
+
 h1{
     font-family: var(--heading-family);
     font-size: var(--heading1-size);
@@ -127,6 +131,8 @@ select{
     color: var(--off-black);
     font-size: 13px;
     font-weight: 700;
+    width: 150px;
+    text-align: start;
 }
 
 input{
@@ -138,6 +144,9 @@ input{
     font-size: 13px;
     font-weight: 700;
     height: var(--body-size);
+    width: 150px;
+    text-align: start;
+
 }
 input[type="range"]{
     appearance: none;
@@ -192,7 +201,7 @@ input[type=range]::-ms-track {
     position: absolute;
     top: 0;
     right: 0;
-    width: auto;
+    width: 500px;
     height: 100vh;
     overflow: auto;
     background-color: var(--off-white);
