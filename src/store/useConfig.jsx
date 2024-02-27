@@ -49,6 +49,8 @@ export default create((set) => {
 
         towerAccessoryMaterial: null,
 
+        doorOpeningRotation: 1.5,
+
         //Actions_______________________________________________________________________________________
         setSinkAmount: (amount) => set({sinkAmount: amount}),
         setCooktopAmount: (amount) => set({cooktopAmount: amount}),
@@ -78,7 +80,10 @@ export default create((set) => {
         setApplianceType: (type) => set({applianceType: type}),
 
         //tower accessory
-        setTowerAccessoryMaterial: (material) => set({towerAccessoryMaterial: material})
+        setTowerAccessoryMaterial: (material) => set({towerAccessoryMaterial: material}),
+
+        //door opening
+        setDoorOpeningRotation: (rotation) => set({doorOpeningRotation: rotation})
 
     }
 })
