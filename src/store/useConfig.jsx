@@ -10,8 +10,8 @@ export default create((set) => {
         .then(data => {
             categoryData = data.categories;
             materialData = data.materials;
-            console.log('materialData:', materialData);
-            console.log('categoryData:', categoryData);
+            // console.log('materialData:', materialData);
+            // console.log('categoryData:', categoryData);
 
             const allCategories = {};
             Object.entries(categoryData).forEach(([category, materials]) => {
@@ -26,7 +26,7 @@ export default create((set) => {
                 url: material.url
             }));
 
-            console.log('allMaterials:', allMaterials);
+            // console.log('allMaterials:', allMaterials);
             console.log('allCategories:', allCategories);
 
             set({ allMaterials, allCategories });
