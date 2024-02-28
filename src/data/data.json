@@ -7,7 +7,7 @@
         "micro topping": ["micro topping"]
     },
     "materials":{
-        "wood": {
+        "oak": {
             "url": "/materials/oak/"
         },
         "metal": {
