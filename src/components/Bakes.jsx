@@ -10,9 +10,13 @@ export function BakePlane({props}){
     alphaMap1.flipY = false;
 
     return (
-        <group {...props} dispose={null}>
+        <group 
+            {...props} 
+            dispose={null
+        }>
             <mesh
                 geometry={nodes.Plane002.geometry}
+                renderOrder={1}
             >
                 <meshBasicMaterial
                     attach="material"
@@ -21,7 +25,9 @@ export function BakePlane({props}){
                     metalness={0}
                     roughness={1}
                     transparent
-                    opacity={0.7}
+                    opacity={0.8}
+                    // depthTest={false}
+                    depthWrite={false}
                 />
             </mesh>
       </group>
@@ -38,8 +44,7 @@ export function BakePlaneSmall({props}){
     return (
         <group 
             {...props} 
-            ispose={null}
-            // renderOrder={1}    
+            dispose={null}
         >
             <mesh
                 geometry={nodes.Plane002.geometry}
@@ -51,7 +56,7 @@ export function BakePlaneSmall({props}){
                     metalness={0}
                     roughness={1}
                     transparent
-                    opacity={0.7}
+                    opacity={0.8}
                 />
             </mesh>
       </group>
