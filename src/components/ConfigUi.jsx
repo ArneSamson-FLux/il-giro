@@ -275,17 +275,6 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Tap Material:</p>
-                                {/* <select 
-                                    value={tapMaterial}    
-                                    onChange={(e) => setTapMaterial(e.target.value)}
-                                >
-                                    {
-                                        allCategories.metal
-                                        .map((material, index) => (
-                                            <option key={index} value={material.url}>{material.name}</option>
-                                        ))
-                                    }
-                                </select> */}
 
                                 <div className="config-ui__material-options material-selection">
                                     <div className="config-ui__material-options__category">
@@ -308,7 +297,10 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Tap Type:</p>
-                                <select onChange={(e) => setTapType(e.target.value)}>
+                                <select 
+                                    onChange={(e) => setTapType(e.target.value)}
+                                    value={tapType}
+                                >
                                     <option value="tap1">Standard tap</option>
                                     <option value="tap2">Quooker tap</option>
                                 </select>
@@ -350,12 +342,27 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Cooktop Material:</p>
-                                <select 
-                                    value={cooktopMaterial}
-                                    onChange={(e) => setCooktopMaterial(e.target.value)}
-                                >
-                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                                </select>
+
+                                <div className="config-ui__material-options material-selection">
+                                    {Object.entries(allCategories).map(([category, materials]) => (
+                                        <div key={category}>
+                                            <p>{category}</p>
+                                            <div className="config-ui__material-options__category">
+                                                {materials.map((material, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="config-ui__material-options__option"
+                                                        style={{
+                                                            backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                        }}
+                                                        onClick={() => setCooktopMaterial(material.url)}
+                                                    ></div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                
                             </div>
 
                             <div
@@ -374,7 +381,10 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Stove Type:</p>
-                                <select onChange={(e) => setStoveType(e.target.value)}>
+                                <select 
+                                    onChange={(e) => setStoveType(e.target.value)}
+                                    value={stoveType}
+                                >
                                     <option value="gas">Gas</option>
                                     <option value="electric">Electric</option>
                                 </select>
@@ -394,12 +404,25 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Tower Material:</p>
-                                <select 
-                                    value={towerMaterial}
-                                    onChange={(e) => setTowerMaterial(e.target.value)}
-                                >
-                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                                </select>
+                                <div className="config-ui__material-options material-selection">
+                                    {Object.entries(allCategories).map(([category, materials]) => (
+                                        <div key={category}>
+                                            <p>{category}</p>
+                                            <div className="config-ui__material-options__category">
+                                                {materials.map((material, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="config-ui__material-options__option"
+                                                        style={{
+                                                            backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                        }}
+                                                        onClick={() => setTowerMaterial(material.url)}
+                                                    ></div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
                             <div
@@ -417,7 +440,10 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Appliance Type:</p>
-                                <select onChange={(e) => setApplianceType(e.target.value)}>
+                                <select 
+                                    onChange={(e) => setApplianceType(e.target.value)}
+                                    value={applianceType}
+                                >
                                     <option value="oven">Oven</option>
                                     <option value="fridge">Fridge</option>
                                 </select>
@@ -427,17 +453,21 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Tower Accessory Material:</p>
-                                <select
-                                    value={towerAccessoryMaterial}    
-                                    onChange={(e) => setTowerAccessoryMaterial(e.target.value)}
-                                >
-                                    {
-                                        allCategories.metal
-                                        .map((material, index) => (
-                                            <option key={index} value={material.url}>{material.name}</option>
-                                        ))
-                                    }
-                                </select>
+
+                                <div className="config-ui__material-options material-selection">
+                                    <div className="config-ui__material-options__category">
+                                        {allCategories.metal.map((material, index) => (
+                                            <div
+                                                key={index}
+                                                className="config-ui__material-options__option"
+                                                style={{
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                }}
+                                                onClick={() => setTowerAccessoryMaterial(material.url)}
+                                            ></div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
