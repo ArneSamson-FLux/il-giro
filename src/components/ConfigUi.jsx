@@ -140,20 +140,23 @@ export default function ConfigUi() {
 
     return (
         <>
+        <div className='config-wrapper'>
+
+            <div
+                className='config-ui__zoom-out'
+            >
+                <button
+                    onClick={handleZoom}
+                >
+                    <a>Zoom out</a>
+                </button>
+            </div>
             {!loaded && <p>Loading UI...</p>}
+
             
             {loaded &&    <div
                     className='config-ui'
                 >
-                    <div
-                        className='config-ui__zoom-out'
-                    >
-                        <button
-                            onClick={handleZoom}
-                        >
-                            <a>Zoom out</a>
-                        </button>
-                    </div>
 
                     <div
                         className='no-select config-ui__nav'
@@ -232,15 +235,29 @@ export default function ConfigUi() {
                             <h2>The Sink</h2>
 
                             <div
-                                className='config-ui__align-row__per-element'
+                                className='config-ui__align-row__per-element '
                             >
                                 <p>Sink Island Material:</p>
-                                <select
-                                    onChange={(e) => setSinkMaterial(e.target.value)}
-                                    value={sinkMaterial}
-                                >                            
-                                    {allMaterials.map((material, index) => <option key={index} value={material.url}>{material.name}</option>)}
-                                </select>
+
+                                <div className="config-ui__material-options material-selection">
+                                    {Object.entries(allCategories).map(([category, materials]) => (
+                                        <div key={category}>
+                                            <p>{category}</p>
+                                            <div className="config-ui__material-options__category">
+                                                {materials.map((material, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="config-ui__material-options__option"
+                                                        style={{
+                                                            backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                        }}
+                                                        onClick={() => setSinkMaterial(material.url)}
+                                                    ></div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
                             <div
@@ -258,7 +275,7 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Tap Material:</p>
-                                <select 
+                                {/* <select 
                                     value={tapMaterial}    
                                     onChange={(e) => setTapMaterial(e.target.value)}
                                 >
@@ -268,7 +285,23 @@ export default function ConfigUi() {
                                             <option key={index} value={material.url}>{material.name}</option>
                                         ))
                                     }
-                                </select>
+                                </select> */}
+
+                                <div className="config-ui__material-options material-selection">
+                                    <div className="config-ui__material-options__category">
+                                        {allCategories.metal.map((material, index) => (
+                                            <div
+                                                key={index}
+                                                className="config-ui__material-options__option"
+                                                style={{
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                }}
+                                                onClick={() => setTapMaterial(material.url)}
+                                            ></div>
+                                        ))}
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div
@@ -285,19 +318,24 @@ export default function ConfigUi() {
                                 className='config-ui__align-row__per-element'
                             >
                                 <p>Sink Material:</p>
-                                <select 
-                                    value={sinkBowlMaterial}
-                                    onChange={(e) => setSinkBowlMaterial(e.target.value)}
-                                >
-                                    {
-                                        allCategories.metal
-                                        .map((material, index) => (
-                                            <option key={index} value={material.url}>{material.name}</option>
-                                        ))
-                                    }
-                                </select>
+
+                                <div className="config-ui__material-options material-selection">
+                                    <div className="config-ui__material-options__category">
+                                        {allCategories.metal.map((material, index) => (
+                                            <div
+                                                key={index}
+                                                className="config-ui__material-options__option"
+                                                style={{
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                }}
+                                                onClick={() => setSinkBowlMaterial(material.url)}
+                                            ></div>
+                                        ))}
+                                    </div>
+                                </div>
+
                             </div>
-                            
+
                         </div>
                     }
 
@@ -420,6 +458,8 @@ export default function ConfigUi() {
 
                 </div>
             }
+            
+        </div>
         </>
     );
 };
