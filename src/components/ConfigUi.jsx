@@ -113,22 +113,18 @@ export default function ConfigUi() {
     const checkPage = (e) => {
         switch(e){
             case 0:
-                console.log(e);
                 setCurrentPage(0);
                 setCameraFocus([0, 1, 0]);
             break;  
             case 1:
-                console.log(e);
                 setCurrentPage(1);
                 setCameraFocus([-1.5, 0, 0]);
             break;
             case 2:
-                console.log(e);
                 setCurrentPage(2);
                 setCameraFocus([1.5, 0, 0]);
             break;
             case 3:
-                console.log(e);
                 setCurrentPage(3);
                 setCameraFocus([0, 1, -1.5]);
             break;
