@@ -25,7 +25,10 @@ export default function Scene() {
         stoveType,
         applianceType,
         towerAccessoryMaterial,
-        doorOpeningRotation
+        doorOpeningRotation,
+
+        currentPage,
+        setCurrentPage,
     } = useConfig();
 
     const islands = [];
@@ -99,7 +102,6 @@ export default function Scene() {
             />
         )
     }
-    
 
     return <>
 
@@ -118,6 +120,11 @@ export default function Scene() {
             position={[0, -0.05, 0]}
             rotation={[-Math.PI / 2, 0, 0]}
             receiveShadow
+            // onClick={
+            //     (e) => {
+            //         setCurrentPage(0);
+            //     }
+            // }
         >
             <planeGeometry attach="geometry" args={[100, 100]} />
         </mesh>
