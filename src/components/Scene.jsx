@@ -120,30 +120,9 @@ export default function Scene() {
             position={[0, -0.05, 0]}
             rotation={[-Math.PI / 2, 0, 0]}
             receiveShadow
-            // onClick={
-            //     (e) => {
-            //         setCurrentPage(0);
-            //     }
-            // }
         >
             <planeGeometry attach="geometry" args={[100, 100]} />
         </mesh>
-
-        {/* <mesh
-            position={[0, 0, 0]}
-            rotation={[0, 0, 0]}
-            scale={[1, 1, 1]}
-        >
-            <sphereGeometry attach="geometry" args={[1, 32, 32]} />
-            <meshStandardMaterial
-                attach="material"
-                color="white"
-                metalness={1}
-                roughness={0}
-                envMapIntensity={2}
-                envMap={null}
-            />
-        </mesh> */}
     
     </>
 }
