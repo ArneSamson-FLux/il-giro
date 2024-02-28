@@ -51,6 +51,8 @@ export default create((set) => {
 
         doorOpeningRotation: 1.5,
 
+        currentPage: 0,
+
         //Actions_______________________________________________________________________________________
         setSinkAmount: (amount) => set({sinkAmount: amount}),
         setCooktopAmount: (amount) => set({cooktopAmount: amount}),
@@ -83,7 +85,10 @@ export default create((set) => {
         setTowerAccessoryMaterial: (material) => set({towerAccessoryMaterial: material}),
 
         //door opening
-        setDoorOpeningRotation: (rotation) => set({doorOpeningRotation: rotation})
+        setDoorOpeningRotation: (rotation) => set({doorOpeningRotation: rotation}),
+
+        //page
+        setCurrentPage: (page) => set({currentPage: page})
 
     }
 })
