@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import * as THREE from 'three'
-import { useTexture, useGLTF } from '@react-three/drei'
+import { useTexture, useGLTF, useCursor } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber';
 
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
 
+import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
-
 
 export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
@@ -27,15 +28,47 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
 
-    const { setCurrentPage } = useConfig();
+    const { setCurrentPage, currentPage } = useConfig();
+
+    const { isHovering, setIsHovering } = useScene();
+
+    let localHover = false;
+
+    useCursor(isHovering, "hover")
+
+    const cookTopRef = useRef();
+
+    useFrame(() => {
+        if (localHover){
+            if(currentPage !== 2) {
+                cookTopRef.current.position.y = Math.sin(performance.now() / 500) / 10 + 0.1;
+            }
+        } else {
+            cookTopRef.current.position.y = 0;
+        }
+    })
 
     return <>
         <group 
+            ref={cookTopRef}
             {...props} 
             dispose={null}
             onClick={
                 (e) => {
                     setCurrentPage(2);
+                    e.stopPropagation();
+                }
+            }
+            onPointerOver={
+                (e) => {
+                    // setIsHovering(true);
+                    localHover = true;
+                }
+            }
+            onPointerOut={
+                (e) => {
+                    // setIsHovering(false);
+                    localHover = false;
                 }
             }
         >

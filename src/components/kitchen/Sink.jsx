@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
 
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
@@ -31,31 +32,47 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
 
-    // const { isHovering, setIsHovering } = useScene();
+    const { isHovering, setIsHovering } = useScene();
 
-    // useCursor(isHovering, "hover")
+    let localHover = false;
 
-    const { setCurrentPage } = useConfig();
+    useCursor(isHovering, "hover")
+
+    const { setCurrentPage, currentPage } = useConfig();
+
+    const sinkRef = useRef();
+
+    useFrame(() => {
+        if (localHover){
+            if(currentPage !== 1) {
+                sinkRef.current.position.y = Math.sin(performance.now() / 500) / 10 + 0.1;
+            }
+        } else {
+            sinkRef.current.position.y = 0;
+        }
+    })
 
     return <>
         <group
+            ref={sinkRef}
             {...props} 
             dispose={null}
-            // onPointerOver={
-            //     (e) => {
-            //         setIsHovering(true);
-            //         console.log("hovering")
-            //     }
-            // }
-            // onPointerOut={
-            //     (e) => {
-            //         setIsHovering(false);
-            //         console.log("not hovering")
-            //     }
-            // }
+            onPointerOver={
+                (e) => {
+                    // setIsHovering(true);
+                    localHover = true;
+                }
+            }
+            onPointerOut={
+                (e) => {
+                    // setIsHovering(false);
+                    localHover = false;
+                }
+            }
             onClick={
                 (e) => {
                     setCurrentPage(1);
+                    e.stopPropagation();
                 }
             }
         >
