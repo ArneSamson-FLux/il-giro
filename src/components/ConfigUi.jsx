@@ -13,6 +13,7 @@ export default function ConfigUi() {
 
     const {
         allMaterials,
+        allCategories,
 
         sinkAmount,
         setSinkAmount,
@@ -262,11 +263,11 @@ export default function ConfigUi() {
                                     onChange={(e) => setTapMaterial(e.target.value)}
                                 >
                                     {
-                                        allMaterials
-                                        .filter(material => ['metal', 'innox', 'gold', 'bronze', 'copper'].includes(material.name))
+                                        allCategories.metal
                                         .map((material, index) => (
                                             <option key={index} value={material.url}>{material.name}</option>
-                                    ))}
+                                        ))
+                                    }
                                 </select>
                             </div>
 
@@ -289,14 +290,14 @@ export default function ConfigUi() {
                                     onChange={(e) => setSinkBowlMaterial(e.target.value)}
                                 >
                                     {
-                                        allMaterials
-                                        .filter(material => ['metal', 'innox', 'gold', 'bronze', 'copper'].includes(material.name))
+                                        allCategories.metal
                                         .map((material, index) => (
                                             <option key={index} value={material.url}>{material.name}</option>
-                                    ))}
+                                        ))
+                                    }
                                 </select>
                             </div>
-
+                            
                         </div>
                     }
 
@@ -393,11 +394,11 @@ export default function ConfigUi() {
                                     onChange={(e) => setTowerAccessoryMaterial(e.target.value)}
                                 >
                                     {
-                                        allMaterials
-                                        .filter(material => ['metal', 'innox', 'gold', 'bronze', 'copper'].includes(material.name))
+                                        allCategories.metal
                                         .map((material, index) => (
                                             <option key={index} value={material.url}>{material.name}</option>
-                                    ))}
+                                        ))
+                                    }
                                 </select>
                             </div>
 
@@ -421,4 +422,4 @@ export default function ConfigUi() {
             }
         </>
     );
-}
+};
