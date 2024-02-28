@@ -110,6 +110,12 @@ export default function ConfigUi() {
         setCurrentPage(currentPage - 1);
     }
 
+    const handleZoom = () => {
+        if(currentPage === 0) return;
+        checkPage(0);
+        setCurrentPage(0);
+    }
+
     const checkPage = (e) => {
         switch(e){
             case 0:
@@ -138,6 +144,15 @@ export default function ConfigUi() {
             {loaded &&    <div
                     className='config-ui'
                 >
+                    <div
+                        className='config-ui__zoom-out'
+                    >
+                        <button
+                            onClick={handleZoom}
+                        >
+                            <a>Zoom out</a>
+                        </button>
+                    </div>
 
                     <div
                         className='no-select config-ui__nav'
