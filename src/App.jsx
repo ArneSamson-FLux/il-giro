@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client'
 
 import * as THREE from 'three'
 import {Canvas} from '@react-three/fiber'
-import { EffectComposer, N8AO } from "@react-three/postprocessing";
 
 import { Leva } from 'leva'
 
@@ -39,17 +38,12 @@ root.render(
 
       <Experience/>
     </Canvas>
-{/* 
-    <div
-      className='config-wrapper'
-    > */}
-      <ConfigUi/>
-    {/* </div> */}
 
+    <ConfigUi/>
 
     <Leva
       collapsed
-      hidden
+      // hidden
     />
   </>
 
