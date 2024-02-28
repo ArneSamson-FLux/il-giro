@@ -42,18 +42,20 @@ export default function Effects() {
     })
 
     return (
-        <EffectComposer
-            disableNormalPass
-            multisampling={8}
-        >
-            <N8AO
-                intensity={levaAOIntensity}
-                aoRadius={levaAORadius}
-                distanceFalloff={levaAODistanceFalloff}
-                screenSpaceRadius={levaAOScreenSpaceRadius}
-                halfRes={levaAOHalfRes}
-                color={levaColor}
-            />
-        </EffectComposer>
+        <>
+            <EffectComposer
+                disableNormalPass
+                multisampling={8}
+            >
+                {/* <N8AO
+                    intensity={levaAOIntensity}
+                    aoRadius={levaAORadius}
+                    distanceFalloff={levaAODistanceFalloff}
+                    screenSpaceRadius={levaAOScreenSpaceRadius}
+                    halfRes={levaAOHalfRes}
+                    color={levaColor}
+                /> */}
+            </EffectComposer>
+        </>
     )
 }
