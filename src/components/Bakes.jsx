@@ -2,26 +2,51 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function BakePlane({props}){
+export function BakePlane({props}){
 
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
 
-    // const alphaMap = new THREE.TextureLoader().load( './images/bakes/tower-alpha2.jpg' );
-    //use useTexture
-
-    const alphaMap = useTexture('./images/bakes/tower-alpha2.jpg');
-    alphaMap.flipY = false;
+    const alphaMap1 = useTexture('./images/bakes/bake.jpg');
+    alphaMap1.flipY = false;
 
     return (
         <group {...props} dispose={null}>
             <mesh
                 geometry={nodes.Plane002.geometry}
-                // material={materials["Material.002"]}
-                scale={[2.762, 1, 4.565]}
             >
                 <meshBasicMaterial
                     attach="material"
-                    alphaMap={alphaMap}
+                    alphaMap={alphaMap1}
+                    color="#000"
+                    metalness={0}
+                    roughness={1}
+                    transparent
+                    opacity={0.7}
+                />
+            </mesh>
+      </group>
+    );
+}
+
+export function BakePlaneSmall({props}){
+
+    const { nodes, materials } = useGLTF("./models/bake-plat.glb");
+
+    const alphaMap1 = useTexture('./images/bakes/bake2.jpg');
+    alphaMap1.flipY = false;
+
+    return (
+        <group 
+            {...props} 
+            ispose={null}
+            // renderOrder={1}    
+        >
+            <mesh
+                geometry={nodes.Plane002.geometry}
+            >
+                <meshBasicMaterial
+                    attach="material"
+                    alphaMap={alphaMap1}
                     color="#000"
                     metalness={0}
                     roughness={1}
