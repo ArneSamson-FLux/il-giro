@@ -53,7 +53,10 @@ export default function ConfigUi() {
         setTowerAccessoryMaterial,
 
         doorOpeningRotation,
-        setDoorOpeningRotation
+        setDoorOpeningRotation,
+
+        currentPage,
+        setCurrentPage
     } = useConfig();
 
     const [loaded, setLoaded] = useState(false);
@@ -90,46 +93,44 @@ export default function ConfigUi() {
         }
     }, [allMaterials, sinkMaterial, setSinkMaterial, cooktopMaterial, setCooktopMaterial, towerMaterial, setTowerMaterial, tapMaterial, setTapMaterial, sinkBowlMaterial, setSinkBowlMaterial, towerAccessoryMaterial, setTowerAccessoryMaterial]);
 
-
-    const [step, setStep] = useState(0);
+    useEffect(() => {
+        // console.log('currentPage:', currentPage);
+        checkPage(currentPage);
+    }, [currentPage, setCurrentPage]);
 
     const handleNext = () => {
-        if(step === 3) return;
-        setStep(step + 1);
-        checkPage(step + 1);
+        if(currentPage === 3) return;
+        checkPage(currentPage + 1);
+        setCurrentPage(currentPage + 1);
     }
 
     const handleBack = () => {
-        if(step === 0) return;
-        setStep(step - 1);
-        checkPage(step - 1);
+        if(currentPage === 0) return;
+        checkPage(currentPage - 1);
+        setCurrentPage(currentPage - 1);
     }
 
     const checkPage = (e) => {
         switch(e){
             case 0:
                 console.log(e);
-                console.log('step 0');
-                setCameraFocus([0, 0, 0]);
-                console.log(cameraFocus);
+                setCurrentPage(0);
+                setCameraFocus([0, 1, 0]);
             break;  
             case 1:
                 console.log(e);
-                console.log('step 1');
+                setCurrentPage(1);
                 setCameraFocus([-1.5, 0, 0]);
-                console.log(cameraFocus);
             break;
             case 2:
                 console.log(e);
-                console.log('step 2');
+                setCurrentPage(2);
                 setCameraFocus([1.5, 0, 0]);
-                console.log(cameraFocus);
             break;
             case 3:
                 console.log(e);
-                console.log('step 3');
-                setCameraFocus([0, 0, -1.5]);
-                console.log(cameraFocus);
+                setCurrentPage(3);
+                setCameraFocus([0, 1, -1.5]);
             break;
         }
     }
@@ -159,7 +160,7 @@ export default function ConfigUi() {
                         </button>
                     </div>
 
-                    {step === 0 &&
+                    {currentPage === 0 &&
                         <div
                             className='config-ui__amounts ui-page'
                         >   
@@ -212,7 +213,7 @@ export default function ConfigUi() {
                         </div>
                     }
 
-                    {step === 1 &&
+                    {currentPage === 1 &&
                         <div
                             className='config-ui__materials ui-page config-ui__sink'
                         >
@@ -288,7 +289,7 @@ export default function ConfigUi() {
                         </div>
                     }
 
-                    {step === 2 &&
+                    {currentPage === 2 &&
                         <div
                             className='config-ui__materials ui-page config-ui__cooktop'
                         >
@@ -332,7 +333,7 @@ export default function ConfigUi() {
                         </div>
                     }
 
-                    {step === 3 &&
+                    {currentPage === 3 &&
                         <div
                             className='config-ui__materials ui-page config-ui__tower'
                         >
