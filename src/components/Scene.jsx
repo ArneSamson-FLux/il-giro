@@ -4,6 +4,8 @@ import Sink from './kitchen/Sink.jsx'
 import Tower from './kitchen/Tower.jsx'
 // import { useControls } from 'leva'
 
+import BakePlane from './Bakes.jsx'
+
 import useConfig from '../store/useConfig.jsx'
 
 export default function Scene() {
@@ -116,13 +118,20 @@ export default function Scene() {
             <shadowMaterial attach="material" opacity={0.3} />
         </mesh> */}
 
-        <mesh
+        {/* <mesh
             position={[0, -0.05, 0]}
             rotation={[-Math.PI / 2, 0, 0]}
             receiveShadow
-        >
-            <planeGeometry attach="geometry" args={[100, 100]} />
-        </mesh>
+        > */}
+            {/* <planeGeometry attach="geometry" args={[100, 100]} /> */}
+            {/* <shadowMaterial attach="material" opacity={0.3} /> */}
+        {/* </mesh> */}
+
+        <BakePlane
+            props={{position: [0, -0.0, -1]}}
+        />
+
+
     
     </>
 }
