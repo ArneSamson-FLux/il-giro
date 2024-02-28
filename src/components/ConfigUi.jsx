@@ -1,7 +1,15 @@
 import React,{useState, useEffect} from 'react';
 import useConfig from '../store/useConfig';
+import useScene from '../store/useScene';
 
 export default function ConfigUi() {
+
+    const {
+        cameraCoords,
+        setCameraCoords,
+        cameraFocus,
+        setCameraFocus
+    } = useScene();
 
     const {
         allMaterials,
@@ -88,11 +96,42 @@ export default function ConfigUi() {
     const handleNext = () => {
         if(step === 3) return;
         setStep(step + 1);
+        checkPage(step + 1);
     }
 
     const handleBack = () => {
         if(step === 0) return;
         setStep(step - 1);
+        checkPage(step - 1);
+    }
+
+    const checkPage = (e) => {
+        switch(e){
+            case 0:
+                console.log(e);
+                console.log('step 0');
+                setCameraFocus([0, 0, 0]);
+                console.log(cameraFocus);
+            break;  
+            case 1:
+                console.log(e);
+                console.log('step 1');
+                setCameraFocus([-1.5, 0, 0]);
+                console.log(cameraFocus);
+            break;
+            case 2:
+                console.log(e);
+                console.log('step 2');
+                setCameraFocus([1.5, 0, 0]);
+                console.log(cameraFocus);
+            break;
+            case 3:
+                console.log(e);
+                console.log('step 3');
+                setCameraFocus([0, 0, -1.5]);
+                console.log(cameraFocus);
+            break;
+        }
     }
 
     return (
