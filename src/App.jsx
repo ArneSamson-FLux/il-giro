@@ -39,12 +39,12 @@ root.render(
 
       <Experience/>
     </Canvas>
-
+{/* 
     <div
       className='config-wrapper'
-    >
+    > */}
       <ConfigUi/>
-    </div>
+    {/* </div> */}
 
 
     <Leva
