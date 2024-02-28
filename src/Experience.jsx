@@ -14,14 +14,15 @@ export default function Experience() {
 
   const camera = useRef()
 
-  const { cameraCoords, cameraFocus } = useScene()
+  const { cameraCoords, cameraFocus, setCameraFocus } = useScene()
 
   useEffect(() => {
-    console.log('camerafocus', cameraFocus)
+    // console.log('camerafocus', cameraFocus)
 
     camera.current.moveTo(...cameraFocus, true)
+
   }
-  , [cameraFocus])
+  , [cameraFocus, setCameraFocus])
 
   return <>
 
