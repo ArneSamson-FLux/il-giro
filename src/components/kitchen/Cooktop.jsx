@@ -1,7 +1,8 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
+import gsap from 'gsap';
 
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
@@ -32,19 +33,25 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const { isHovering, setIsHovering } = useScene();
 
-    let localHover = false;
+    const [hovered, hover] = useState(null);
 
-    useCursor(isHovering, "hover")
+    useCursor(hovered, "pointer")
 
     const cookTopRef = useRef();
 
     useFrame(() => {
-        if (localHover){
+        if (hovered){
             if(currentPage !== 2) {
-                cookTopRef.current.position.y = Math.sin(performance.now() / 500) / 10 + 0.1;
+                gsap.to(cookTopRef.current.position, {
+                    y: 0.2,
+                    duration: 0.5,
+                })
             }
         } else {
-            cookTopRef.current.position.y = 0;
+            gsap.to(cookTopRef.current.position, {
+                y: 0,
+                duration: 0.5,
+            })
         }
     })
 
@@ -62,13 +69,13 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             onPointerOver={
                 (e) => {
                     // setIsHovering(true);
-                    localHover = true;
+                    hover(true);
                 }
             }
             onPointerOut={
                 (e) => {
                     // setIsHovering(false);
-                    localHover = false;
+                hover(false);
                 }
             }
         >

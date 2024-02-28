@@ -1,7 +1,11 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
+
+import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
@@ -34,21 +38,31 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const { isHovering, setIsHovering } = useScene();
 
-    let localHover = false;
-
-    useCursor(isHovering, "hover")
-
+    
+    
     const { setCurrentPage, currentPage } = useConfig();
-
+    
+    const [hovered, hover] = useState(null);
+    
+    useCursor(hovered, "pointer")
+    
     const sinkRef = useRef();
+    // const gsap = useGSAP();
 
     useFrame(() => {
-        if (localHover){
+        if (hovered){
             if(currentPage !== 1) {
-                sinkRef.current.position.y = Math.sin(performance.now() / 500) / 10 + 0.1;
+                // sinkRef.current.position.y = Math.sin(performance.now() / 2500) / 10 + 0.1;
+                gsap.to(sinkRef.current.position, {
+                    y: 0.2,
+                    duration: 0.5,
+                })
             }
         } else {
-            sinkRef.current.position.y = 0;
+            gsap.to(sinkRef.current.position, {
+                y: 0,
+                duration: 0.5,
+            })
         }
     })
 
@@ -60,13 +74,13 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
             onPointerOver={
                 (e) => {
                     // setIsHovering(true);
-                    localHover = true;
+                    hover(true);
                 }
             }
             onPointerOut={
                 (e) => {
                     // setIsHovering(false);
-                    localHover = false;
+                    hover(false);
                 }
             }
             onClick={
@@ -118,7 +132,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 props={{rotation: [0, 0, 0]}}
             />
 
-         </group>
+        </group>
     </>
 }
 

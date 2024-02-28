@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
+import gsap from 'gsap';
 
 import Fridge from './accessoires/Fridge.jsx';
 import Oven from './accessoires/Oven.jsx';
@@ -33,19 +34,25 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
 
     const { isHovering, setIsHovering } = useScene();
 
-    let localHover = false;
+    const [hovered, hover] = useState(null);
 
-    useCursor(isHovering, "hover")
+    useCursor(hovered, "pointer")
 
     const towerRef = useRef();
 
     useFrame(() => {
-        if (localHover){
+        if (hovered){
             if(currentPage !== 3) {
-                towerRef.current.position.y = Math.sin(performance.now() / 500) / 10 + 0.1;
+                gsap.to(towerRef.current.position, {
+                    y: 0.2,
+                    duration: 0.5,
+                })
             }
         } else {
-            towerRef.current.position.y = 0;
+            gsap.to(towerRef.current.position, {
+                y: 0,
+                duration: 0.5,
+            })
         }
     })
 
@@ -62,12 +69,12 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
             }
             onPointerOver={
                 (e) => {
-                    localHover = true;
+                    hover(true);
                 }
             }
             onPointerOut={
                 (e) => {
-                    localHover = false;
+                    hover(false);
                 }
             }
         >
