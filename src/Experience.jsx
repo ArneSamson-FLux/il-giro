@@ -1,37 +1,38 @@
+import React, { Suspense, useRef, useState, useEffect } from 'react';
 import { useThree, extend, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html, Text, Environment, Lightformer, CameraControls, ContactShadows, SoftShadows } from '@react-three/drei';
 import * as THREE from 'three';
 
-import ConfigUi from './components/ConfigUi.jsx';
 import Scene from './components/Scene.jsx';
 import Lights from './components/Lights.jsx';
+
+import useScene from './store/useScene.jsx'
 
 import { Perf } from 'r3f-perf'
 
 export default function Experience() {
 
+  const camera = useRef()
+
+  const { cameraCoords, cameraFocus } = useScene()
+
+  useEffect(() => {
+    console.log('camerafocus', cameraFocus)
+
+    camera.current.moveTo(...cameraFocus, true)
+  }
+  , [cameraFocus])
+
   return <>
 
     <Perf position="top-left" />
-
-    {/* <OrbitControls
-            enableDamping={true}
-            makeDefault
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 6}
-            enablePan={false}
-            enableRotate={true}
-            target={[0, 1, -1]}
-            position={[0, 0, 4]}
-            
-    /> */}
 
     <CameraControls
       draggingSmoothTime={0.2}
       maxPolarAngle={Math.PI / 2}
       maxDistance={10}
       minDistance={2}
-      setOrbitPoint={[0, 1, -1]}
+      ref={camera}
     />
 
 
