@@ -1,4 +1,11 @@
 {
+    "categories": {
+        "wood": ["oak"],
+        "metal": ["metal", "innox", "gold", "bronze", "copper"],
+        "leather": ["leather"],
+        "solid surface": ["solid surface"],
+        "micro topping": ["micro topping"]
+    },
     "materials":{
         "wood": {
             "url": "/materials/oak/"
@@ -9,10 +16,10 @@
         "leather": {
             "url": "/materials/leather/"
         },
-        "solidSurface": {
+        "solid surface": {
             "url": "/materials/solidsurface/"
         },
-        "microTopping": {
+        "micro topping": {
             "url": "/materials/microtopping/"
         },
         "innox": {

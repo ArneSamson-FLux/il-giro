@@ -3,27 +3,40 @@ import {TextureLoader, MeshStandardMaterial, SRGBColorSpace, ClampToEdgeWrapping
 
 export default create((set) => {    
     let materialData;
+    let categoryData;
 
     fetch('/src/data/data.json')
         .then(response => response.json())
         .then(data => {
+            categoryData = data.categories;
             materialData = data.materials;
-            // console.log('materialData:', materialData);
-            // const allMaterials = Object.values(materialData).map(material => material.url);
+            console.log('materialData:', materialData);
+            console.log('categoryData:', categoryData);
+
+            const allCategories = {};
+            Object.entries(categoryData).forEach(([category, materials]) => {
+                allCategories[category] = materials.map(materialName => ({
+                    name: materialName,
+                    url: materialData[materialName]?.url || '' // Get material URL from material data
+                }));
+            });
 
             const allMaterials = Object.entries(materialData).map(([name, material]) => ({
                 name,
                 url: material.url
             }));
 
-            // console.log('allMaterials:', allMaterials);
-            set({ allMaterials });
+            console.log('allMaterials:', allMaterials);
+            console.log('allCategories:', allCategories);
+
+            set({ allMaterials, allCategories });
         })
         .catch(error => console.error('Error fetching texture:', error));
 
     return{
         //materials
         allMaterials: [],
+        allCategories: [],
 
         //config settings_______________________________________________________________________________
         sinkAmount: 1,
