@@ -6,6 +6,8 @@ import Fridge from './accessoires/Fridge.jsx';
 import Oven from './accessoires/Oven.jsx';
 import LiquorStand from './accessoires/LiquorStand.jsx';
 
+import useConfig from '../../store/useConfig.jsx';
+
 export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
@@ -25,9 +27,18 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
 
     const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
 
+    const { setCurrentPage } = useConfig();
 
     return <>
-        <group {...props} dispose={null}>
+        <group 
+            {...props} 
+            dispose={null}
+            onClick={
+                (e) => {
+                    setCurrentPage(3);
+                }
+            }
+        >
             <mesh
                 castShadow
                 receiveShadow

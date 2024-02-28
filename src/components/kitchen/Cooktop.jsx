@@ -5,6 +5,8 @@ import { useTexture, useGLTF } from '@react-three/drei'
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
 
+import useConfig from '../../store/useConfig.jsx';
+
 
 export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
@@ -25,8 +27,18 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
 
+    const { setCurrentPage } = useConfig();
+
     return <>
-        <group {...props} dispose={null}>
+        <group 
+            {...props} 
+            dispose={null}
+            onClick={
+                (e) => {
+                    setCurrentPage(2);
+                }
+            }
+        >
             <mesh
                     castShadow
                     receiveShadow

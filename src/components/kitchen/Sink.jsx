@@ -1,11 +1,14 @@
 import React from 'react';
 import * as THREE from 'three'
-import { useTexture, useGLTF } from '@react-three/drei'
+import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
 
 import SinkBowl from './accessoires/SinkBowl.jsx';
+
+import useScene from '../../store/useScene.jsx';
+import useConfig from '../../store/useConfig.jsx';
 
 export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){    
 
@@ -28,8 +31,34 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
 
+    // const { isHovering, setIsHovering } = useScene();
+
+    // useCursor(isHovering, "hover")
+
+    const { setCurrentPage } = useConfig();
+
     return <>
-        <group {...props} dispose={null}>
+        <group
+            {...props} 
+            dispose={null}
+            // onPointerOver={
+            //     (e) => {
+            //         setIsHovering(true);
+            //         console.log("hovering")
+            //     }
+            // }
+            // onPointerOut={
+            //     (e) => {
+            //         setIsHovering(false);
+            //         console.log("not hovering")
+            //     }
+            // }
+            onClick={
+                (e) => {
+                    setCurrentPage(1);
+                }
+            }
+        >
             <mesh
                 castShadow
                 receiveShadow
