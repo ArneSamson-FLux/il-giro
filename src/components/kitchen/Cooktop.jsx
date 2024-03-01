@@ -29,6 +29,10 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
         metalness: 1,
     });
 
+    const tabletopMaterial = new THREE.MeshStandardMaterial({
+        map: albedoTexture,
+    });
+
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
 
     const { setCurrentPage, currentPage } = useConfig();
@@ -101,6 +105,12 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                     receiveShadow
                     geometry={nodes["straight-under"].geometry}
                     material={material}
+                />
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.tabletop.geometry}
+                    material={tabletopMaterial}
                 />
             </mesh>
 

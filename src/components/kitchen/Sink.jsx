@@ -36,6 +36,10 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
         metalness: 1,
     });
 
+    const tabletopMaterial = new THREE.MeshStandardMaterial({
+        map: albedoTexture,
+    });
+
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
 
     const { isHovering, setIsHovering } = useScene();
@@ -89,7 +93,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.top002.geometry}
+                geometry={nodes.top.geometry}
                 material={material}
                 position={[0, 1.193, 0]}
                 rotation={[0, -1.484, 0]}
@@ -99,15 +103,21 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     visible={bevelled}
                     castShadow
                     receiveShadow
-                    geometry={nodes["bevelled-under002"].geometry}
+                    geometry={nodes["bevelled-under"].geometry}
                     material={material}
                 />
                 <mesh
                     visible={!bevelled}
                     castShadow
                     receiveShadow
-                    geometry={nodes["straight-under002"].geometry}
+                    geometry={nodes["straight-under"].geometry}
                     material={material}
+                />
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.tabletop.geometry}
+                    material={tabletopMaterial}
                 />
             </mesh>
             {tapType === "tap1" && <Tap1

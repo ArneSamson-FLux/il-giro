@@ -27,7 +27,7 @@ export default function SinkBowl({props, materialUrl}) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.sink.geometry}
+        geometry={nodes.sink001.geometry}
         material={material}
         position={[0, 0.917, 0.26]}
         scale={[0.197, 0.261, 0.197]}
