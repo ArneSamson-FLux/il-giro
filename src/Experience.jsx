@@ -4,7 +4,7 @@ import { OrbitControls, Html, Text, Environment, Lightformer, CameraControls, Co
 import * as THREE from 'three';
 
 import Scene from './components/Scene.jsx';
-import Lights from './components/Lights.jsx';
+import Lights from './components/lighting&shadows/Lights.jsx';
 
 import useScene from './store/useScene.jsx'
 
