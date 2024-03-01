@@ -36,9 +36,6 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
     const { isHovering, setIsHovering } = useScene();
 
     const [hovered, hover] = useState(null);
-    const [ shadowOpacity, setShadowOpacity ] = useState(0.9);
-    const [ shadowScale, setShadowScale ] = useState([1, 1, 1]);
-    const [ shadowPosition, setShadowPosition ] = useState([0, 0, 0]);
 
     useCursor(hovered, "pointer")
 
@@ -50,22 +47,12 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 gsap.to(cookTopRef.current.position, {
                     y: 0.2,
                     duration: 0.5,
-                    onUpdate: () => {
-                        if (shadowOpacity > 0.6 ) {
-                            setShadowOpacity(shadowOpacity - 0.015);
-                        }
-                    }
                 })
             }
         } else {
             gsap.to(cookTopRef.current.position, {
                 y: 0,
                 duration: 0.5,
-                onUpdate: () => {
-                    if (shadowOpacity < 0.9 ) { 
-                        setShadowOpacity(shadowOpacity + 0.015);
-                    }
-                }
             })
         }
     })
@@ -83,13 +70,11 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             }
             onPointerOver={
                 (e) => {
-                    // setIsHovering(true);
                     hover(true);
                 }
             }
             onPointerOut={
                 (e) => {
-                    // setIsHovering(false);
                 hover(false);
                 }
             }
@@ -147,12 +132,9 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             <BakePlaneSmall
                 props={
                     {
-                        position: shadowPosition
+                        position: [0, 0, 0]
                     }
                 }
-                opacityValue={shadowOpacity}
-                isHovering={hovered}
-
             />
 
         </group>
