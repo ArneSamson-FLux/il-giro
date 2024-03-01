@@ -5,7 +5,7 @@ export default create((set) => {
     let materialData;
     let categoryData;
 
-    fetch('/src/data/data.json')
+    fetch('/data.json')
         .then(response => response.json())
         .then(data => {
             categoryData = data.categories;
