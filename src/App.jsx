@@ -43,7 +43,7 @@ root.render(
 
     <Leva
       collapsed
-      // hidden
+      hidden
     />
   </>
 
