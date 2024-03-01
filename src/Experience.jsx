@@ -77,11 +77,11 @@ export default function Experience() {
 
     {/* <ContactShadows opacity={0.2} scale={5} blur={0.1} far={10} resolution={512} color="#000000"  frames={1}/> */}
 
-        <SoftShadows
+        {/* <SoftShadows
           size={50}
           samples={20}
           focus={2}
-        />
+        /> */}
 
     <Scene/>
 
