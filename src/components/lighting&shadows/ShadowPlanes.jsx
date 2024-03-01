@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export function BakePlane({props}){
+export function BakePlane({props, opacityValue}){
 
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
 
@@ -25,7 +25,7 @@ export function BakePlane({props}){
                     metalness={0}
                     roughness={1}
                     transparent
-                    opacity={0.8}
+                    opacity={opacityValue}
                     // depthTest={false}
                     depthWrite={false}
                 />
@@ -34,7 +34,7 @@ export function BakePlane({props}){
     );
 }
 
-export function BakePlaneSmall({props}){
+export function BakePlaneSmall({props, opacityValue}){
 
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
 
@@ -56,7 +56,9 @@ export function BakePlaneSmall({props}){
                     metalness={0}
                     roughness={1}
                     transparent
-                    opacity={0.8}
+                    opacity={opacityValue}
+                    depthWrite={false}
+
                 />
             </mesh>
       </group>

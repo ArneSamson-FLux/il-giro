@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import useShadowHelper from '../helper/useShadowHelper'
+import useShadowHelper from '../../helper/useShadowHelper.jsx'
 
 export default function Lights()
 {
