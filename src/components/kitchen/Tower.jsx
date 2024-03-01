@@ -166,6 +166,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 }
             }
             opacityValue={shadowOpacity}
+            isHovering={hovered}
         />
         
 

@@ -152,6 +152,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 }
             }
             opacityValue={shadowOpacity}
+            isHovering={hovered}
 
         />
     </>

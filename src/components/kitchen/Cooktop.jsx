@@ -153,6 +153,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 }
             }
             opacityValue={shadowOpacity}
+            isHovering={hovered}
 
         />
 
