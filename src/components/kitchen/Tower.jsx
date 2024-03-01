@@ -10,7 +10,6 @@ import LiquorStand from './accessoires/LiquorStand.jsx';
 
 import {BakePlane} from '../lighting&shadows/ShadowPlanes.jsx'
 
-
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
