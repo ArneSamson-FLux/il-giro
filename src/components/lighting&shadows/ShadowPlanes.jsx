@@ -4,9 +4,14 @@ import { useTexture, useGLTF } from '@react-three/drei'
 import gsap from 'gsap';
 import { useFrame } from '@react-three/fiber';
 
+import useConfig from '../../store/useConfig.jsx';
+import { op } from '@tensorflow/tfjs';
+
 
 export function BakePlane({props, opacityValue, isHovering}){
     
+    const { currentPage } = useConfig();
+
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
     
     const alphaMap1 = useTexture('./images/bakes/bake.jpg');
@@ -15,20 +20,11 @@ export function BakePlane({props, opacityValue, isHovering}){
     const bigPlaneRef = useRef();
 
     useFrame(() => {
-        if(isHovering){
-            if(bigPlaneRef.current){
-                gsap.to(bigPlaneRef.current.position, {
-                    z: -1.1,
-                    duration: 0.5,
-                });
-                
-            }
-        } else {
-            if(bigPlaneRef.current){
-                gsap.to(bigPlaneRef.current.position, {
-                    z: -1,
-                    duration: 0.5,
-                });
+        if(bigPlaneRef.current){
+            bigPlaneRef.current.position.y =  - bigPlaneRef.current.parent.position.y
+            bigPlaneRef.current.position.z =  - bigPlaneRef.current.parent.position.y
+            if(bigPlaneRef.current.children[0].material){
+                bigPlaneRef.current.children[0].material.opacity = (1 - (bigPlaneRef.current.parent.position.y * 1.5)) * 1;
             }
         }
     });
@@ -60,6 +56,8 @@ export function BakePlane({props, opacityValue, isHovering}){
 }
 
 export function BakePlaneSmall({props, opacityValue, isHovering}){
+    
+    const { currentPage } = useConfig();
 
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
 
@@ -69,20 +67,11 @@ export function BakePlaneSmall({props, opacityValue, isHovering}){
     const smallPlaneRef = useRef();
 
     useFrame(() => {
-        if(isHovering){
-
-            if(smallPlaneRef.current){
-                gsap.to(smallPlaneRef.current.position, {
-                    z: -0.1,
-                    duration: 0.5,
-                });
-            }
-        } else {
-            if(smallPlaneRef.current){
-                gsap.to(smallPlaneRef.current.position, {
-                    z: 0,
-                    duration: 0.5,
-                });
+        if(smallPlaneRef.current){
+            smallPlaneRef.current.position.y =  - smallPlaneRef.current.parent.position.y
+            smallPlaneRef.current.position.z =  - smallPlaneRef.current.parent.position.y
+            if(smallPlaneRef.current.children[0].material){
+                smallPlaneRef.current.children[0].material.opacity = (1 - (smallPlaneRef.current.parent.position.y * 1.5)) * 1;
             }
         }
     }
@@ -104,7 +93,7 @@ export function BakePlaneSmall({props, opacityValue, isHovering}){
                     metalness={0}
                     roughness={1}
                     transparent
-                    opacity={opacityValue}
+                    // opacity={opacityValue}
                     depthWrite={false}
 
                 />

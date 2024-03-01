@@ -41,7 +41,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
     const [hovered, setHover] = useState(null);
     const [ shadowOpacity, setShadowOpacity ] = useState(0.9);
     const [ shadowScale, setShadowScale ] = useState([1, 1, 1]);
-    const [ shadowPosition, setShadowPosition ] = useState([0, 0, -1]);
+    const [ shadowPosition, setShadowPosition ] = useState([0, 0, 0]);
 
     useCursor(hovered, "pointer")
 
@@ -53,22 +53,12 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 gsap.to(towerRef.current.position, {
                     y: 0.2,
                     duration: 0.5,
-                    onUpdate: () => {
-                        if (shadowOpacity > 0.6 ) {
-                            setShadowOpacity(shadowOpacity - 0.015);
-                        }
-                    }
                 })  
             }
         } else {
             gsap.to(towerRef.current.position, {
                 y: 0,
                 duration: 0.5,
-                onUpdate: () => {
-                    if (shadowOpacity < 0.9 ) { 
-                        setShadowOpacity(shadowOpacity + 0.015);
-                    }
-                }
             })
         }
     })
@@ -156,18 +146,19 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 materialUrl={accessoryMaterialUrl}
             />
 
+            <BakePlane
+                props={
+                    {
+                        position: shadowPosition,
+                        scale: shadowScale,
+                    }
+                }
+                opacityValue={shadowOpacity}
+                isHovering={hovered}
+            />
+
         </group>
 
-        <BakePlane
-            props={
-                {
-                    position: shadowPosition,
-                    scale: shadowScale,
-                }
-            }
-            opacityValue={shadowOpacity}
-            isHovering={hovered}
-        />
         
 
     </>

@@ -38,7 +38,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
     const [hovered, hover] = useState(null);
     const [ shadowOpacity, setShadowOpacity ] = useState(0.9);
     const [ shadowScale, setShadowScale ] = useState([1, 1, 1]);
-    const [ shadowPosition, setShadowPosition ] = useState([1.5, 0, 0]);
+    const [ shadowPosition, setShadowPosition ] = useState([0, 0, 0]);
 
     useCursor(hovered, "pointer")
 
@@ -144,18 +144,19 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             />
         }
 
+            <BakePlaneSmall
+                props={
+                    {
+                        position: shadowPosition
+                    }
+                }
+                opacityValue={shadowOpacity}
+                isHovering={hovered}
+
+            />
+
         </group>
 
-        <BakePlaneSmall
-            props={
-                {
-                    position: shadowPosition
-                }
-            }
-            opacityValue={shadowOpacity}
-            isHovering={hovered}
-
-        />
 
     </>
 }
