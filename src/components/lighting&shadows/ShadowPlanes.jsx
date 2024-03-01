@@ -1,16 +1,10 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
-import gsap from 'gsap';
 import { useFrame } from '@react-three/fiber';
 
-import useConfig from '../../store/useConfig.jsx';
-import { op } from '@tensorflow/tfjs';
-
-
-export function BakePlane({props, opacityValue, isHovering}){
+export function BakePlane({props}){
     
-    const { currentPage } = useConfig();
 
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
     
@@ -46,8 +40,6 @@ export function BakePlane({props, opacityValue, isHovering}){
                     metalness={0}
                     roughness={1}
                     transparent
-                    opacity={opacityValue}
-                    // depthTest={false}
                     depthWrite={false}
                 />
             </mesh>
@@ -55,10 +47,8 @@ export function BakePlane({props, opacityValue, isHovering}){
     );
 }
 
-export function BakePlaneSmall({props, opacityValue, isHovering}){
+export function BakePlaneSmall({props}){
     
-    const { currentPage } = useConfig();
-
     const { nodes, materials } = useGLTF("./models/bake-plat.glb");
 
     const alphaMap1 = useTexture('./images/bakes/bake2.jpg');
@@ -93,7 +83,6 @@ export function BakePlaneSmall({props, opacityValue, isHovering}){
                     metalness={0}
                     roughness={1}
                     transparent
-                    // opacity={opacityValue}
                     depthWrite={false}
 
                 />
