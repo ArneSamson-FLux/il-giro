@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
@@ -8,10 +8,14 @@ import Fridge from './accessoires/Fridge.jsx';
 import Oven from './accessoires/Oven.jsx';
 import LiquorStand from './accessoires/LiquorStand.jsx';
 
+import {BakePlane} from '../lighting&shadows/ShadowPlanes.jsx'
+
+
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
+import { set } from 'mongoose';
 
-export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
+export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
@@ -34,7 +38,10 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
 
     const { isHovering, setIsHovering } = useScene();
 
-    const [hovered, hover] = useState(null);
+    const [hovered, setHover] = useState(null);
+    const [ shadowOpacity, setShadowOpacity ] = useState(0.9);
+    const [ shadowScale, setShadowScale ] = useState([1, 1, 1]);
+    const [ shadowPosition, setShadowPosition ] = useState([0, 0, -1]);
 
     useCursor(hovered, "pointer")
 
@@ -46,12 +53,22 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
                 gsap.to(towerRef.current.position, {
                     y: 0.2,
                     duration: 0.5,
-                })
+                    onUpdate: () => {
+                        if (shadowOpacity > 0.6 ) {
+                            setShadowOpacity(shadowOpacity - 0.015);
+                        }
+                    }
+                })  
             }
         } else {
             gsap.to(towerRef.current.position, {
                 y: 0,
                 duration: 0.5,
+                onUpdate: () => {
+                    if (shadowOpacity < 0.9 ) { 
+                        setShadowOpacity(shadowOpacity + 0.015);
+                    }
+                }
             })
         }
     })
@@ -69,12 +86,12 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
             }
             onPointerOver={
                 (e) => {
-                    hover(true);
+                    setHover(true);
                 }
             }
             onPointerOut={
                 (e) => {
-                    hover(false);
+                    setHover(false);
                 }
             }
         >
@@ -140,6 +157,16 @@ export default function Sink({materialUrl, bevelled, doorOpening, fridgeOrOven ,
             />
 
         </group>
+
+        <BakePlane
+            props={
+                {
+                    position: shadowPosition,
+                    scale: shadowScale,
+                }
+            }
+            opacityValue={shadowOpacity}
+        />
         
 
     </>

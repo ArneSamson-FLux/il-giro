@@ -7,6 +7,8 @@ import gsap from 'gsap';
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
 
+import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
+
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
@@ -34,6 +36,9 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
     const { isHovering, setIsHovering } = useScene();
 
     const [hovered, hover] = useState(null);
+    const [ shadowOpacity, setShadowOpacity ] = useState(0.9);
+    const [ shadowScale, setShadowScale ] = useState([1, 1, 1]);
+    const [ shadowPosition, setShadowPosition ] = useState([1.5, 0, 0]);
 
     useCursor(hovered, "pointer")
 
@@ -45,12 +50,22 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 gsap.to(cookTopRef.current.position, {
                     y: 0.2,
                     duration: 0.5,
+                    onUpdate: () => {
+                        if (shadowOpacity > 0.6 ) {
+                            setShadowOpacity(shadowOpacity - 0.015);
+                        }
+                    }
                 })
             }
         } else {
             gsap.to(cookTopRef.current.position, {
                 y: 0,
                 duration: 0.5,
+                onUpdate: () => {
+                    if (shadowOpacity < 0.9 ) { 
+                        setShadowOpacity(shadowOpacity + 0.015);
+                    }
+                }
             })
         }
     })
@@ -130,6 +145,16 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
         }
 
         </group>
+
+        <BakePlaneSmall
+            props={
+                {
+                    position: shadowPosition
+                }
+            }
+            opacityValue={shadowOpacity}
+
+        />
 
     </>
 }

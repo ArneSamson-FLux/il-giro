@@ -12,6 +12,8 @@ import Tap2 from './accessoires/Tap2.jsx';
 
 import SinkBowl from './accessoires/SinkBowl.jsx';
 
+import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
+
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
@@ -37,31 +39,40 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
 
     const { isHovering, setIsHovering } = useScene();
-
-    
     
     const { setCurrentPage, currentPage } = useConfig();
     
     const [hovered, hover] = useState(null);
+    const [ shadowOpacity, setShadowOpacity ] = useState(0.9);
+    const [ shadowScale, setShadowScale ] = useState([1, 1, 1]);
+    const [ shadowPosition, setShadowPosition ] = useState([-1.5, 0, 0]);
     
     useCursor(hovered, "pointer")
     
     const sinkRef = useRef();
-    // const gsap = useGSAP();
 
     useFrame(() => {
         if (hovered){
             if(currentPage !== 1) {
-                // sinkRef.current.position.y = Math.sin(performance.now() / 2500) / 10 + 0.1;
                 gsap.to(sinkRef.current.position, {
                     y: 0.2,
                     duration: 0.5,
+                    onUpdate: () => {
+                        if (shadowOpacity > 0.6 ) {
+                            setShadowOpacity(shadowOpacity - 0.015);
+                        }
+                    }
                 })
             }
         } else {
             gsap.to(sinkRef.current.position, {
                 y: 0,
                 duration: 0.5,
+                onUpdate: () => {
+                    if (shadowOpacity < 0.9 ) {
+                        setShadowOpacity(shadowOpacity + 0.015);
+                    }
+                }
             })
         }
     })
@@ -133,6 +144,16 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
             />
 
         </group>
+
+        <BakePlaneSmall
+            props={
+                {
+                    position: shadowPosition
+                }
+            }
+            opacityValue={shadowOpacity}
+
+        />
     </>
 }
 
