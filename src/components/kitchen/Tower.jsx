@@ -13,7 +13,6 @@ import {BakePlane} from '../lighting&shadows/ShadowPlanes.jsx'
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
-import { set } from 'mongoose';
 
 export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
