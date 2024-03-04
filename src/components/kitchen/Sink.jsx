@@ -77,6 +77,8 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
             }
 
+            event.stopPropagation();
+
             return;
         }
     );

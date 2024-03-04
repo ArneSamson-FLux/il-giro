@@ -73,6 +73,8 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
             }
 
+            event.stopPropagation();
+
             return;
         }
     );

@@ -69,6 +69,8 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
             }
 
+            event.stopPropagation();
+
             return;
         }
     );
