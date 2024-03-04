@@ -15,6 +15,7 @@ import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
+import { set } from 'mongoose';
 
 export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){    
 
@@ -46,8 +47,10 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     const { setCurrentPage, currentPage, dragMode } = useConfig();
     
     const [hovered, hover] = useState(null);
+
+    const [needPointer, setNeedPointer] = useState(false);
     
-    useCursor(hovered, "pointer")
+    useCursor(needPointer, "pointer")
     
     const sinkRef = useRef();
 
@@ -69,6 +72,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 name='sink-hovers-group'
                  onPointerOver={
                     (e) => {
+                        setNeedPointer(true);
                         if(dragMode) return;
                         hover(true);
                         e.stopPropagation();
@@ -76,6 +80,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 }
                 onPointerOut={
                     (e) => {
+                        setNeedPointer(false);
                         hover(false);
                         e.stopPropagation();
                     }

@@ -35,13 +35,15 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
 
-    const { setCurrentPage, currentPage } = useConfig();
+    const { setCurrentPage, currentPage, dragMode } = useConfig();
 
     const { isHovering, setIsHovering } = useScene();
 
     const [hovered, hover] = useState(null);
 
-    useCursor(hovered, "pointer")
+    const [needPointer, setNeedPointer] = useState(false);
+
+    useCursor(needPointer, "pointer")
 
     const cookTopRef = useRef();
 
@@ -73,20 +75,24 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 name='cooktop-hovers-group'
                 onClick={
                     (e) => {
+                        if(dragMode) return
                         setCurrentPage(2);
                         e.stopPropagation();
                     }
                 }
                 onPointerOver={
                     (e) => {
+                        setNeedPointer(true);
+                        if(dragMode) return;
                         hover(true);
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
-                    hover(false);
-                    e.stopPropagation();
+                        setNeedPointer(false);
+                        hover(false);
+                        e.stopPropagation();
                     }
                 }
             >

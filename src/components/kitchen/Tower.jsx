@@ -32,13 +32,15 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
 
-    const { setCurrentPage, currentPage } = useConfig();
+    const { setCurrentPage, currentPage, dragMode } = useConfig();
 
     const { isHovering, setIsHovering } = useScene();
 
     const [hovered, setHover] = useState(null);
 
-    useCursor(hovered, "pointer")
+    const [needPointer, setNeedPointer] = useState(false);
+
+    useCursor(needPointer, "pointer")
 
     const towerRef = useRef();
 
@@ -70,18 +72,22 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 name='tower-hovers-group'
                 onClick={
                     (e) => {
+                        if(dragMode) return
                         setCurrentPage(3);
                         e.stopPropagation();
                     }
                 }
                 onPointerOver={
                     (e) => {
+                        setNeedPointer(true);
+                        if(dragMode) return;
                         setHover(true);
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
+                        setNeedPointer(false);
                         setHover(false);
                         e.stopPropagation();
                     }
