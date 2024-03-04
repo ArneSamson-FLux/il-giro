@@ -95,7 +95,19 @@ export default function ConfigUi() {
 
 
         }
-    }, [allMaterials, sinkMaterial, setSinkMaterial, cooktopMaterial, setCooktopMaterial, towerMaterial, setTowerMaterial, tapMaterial, setTapMaterial, sinkBowlMaterial, setSinkBowlMaterial, towerAccessoryMaterial, setTowerAccessoryMaterial]);
+    }, [allMaterials,
+        sinkMaterial,
+        setSinkMaterial,
+        cooktopMaterial,
+        setCooktopMaterial,
+        towerMaterial,
+        setTowerMaterial,
+        tapMaterial,
+        setTapMaterial,
+        sinkBowlMaterial, 
+        setSinkBowlMaterial,
+        towerAccessoryMaterial,
+        setTowerAccessoryMaterial]);
 
     useEffect(() => {
         // console.log('currentPage:', currentPage);
