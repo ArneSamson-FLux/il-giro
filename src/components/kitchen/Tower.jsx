@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
+import { useDrag } from "@use-gesture/react";
 
 import Fridge from './accessoires/Fridge.jsx';
 import Oven from './accessoires/Oven.jsx';
@@ -32,7 +33,8 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
 
-    const { setCurrentPage, currentPage, dragMode } = useConfig();
+    const { setCurrentPage, currentPage, dragMode, isDraggingTower, setIsDraggingTower, setIsDragging } = useConfig();
+    const { setCameraFocus } = useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -42,13 +44,35 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const towerRef = useRef();
 
+    const [position, setPosition] = useState([0, 0, -1]);
+
+    //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        position: currentPage !== 3 && hovered ? [0, 0.2, -1.5] : [0, 0, -1.5],
+        position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        scale: isDraggingTower ? [1.1, 1.1, 1.1] : [1, 1, 1],
         config: { 
                 tension: 250, 
                 friction: 50,
             }
     });
+
+    const planeIntersectPoint = new THREE.Vector3();
+    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+
+    const dragPos = useDrag(
+        ({ active, event }) => {
+            setIsDraggingTower (active);
+            setIsDragging(active);
+
+            if(active){
+                event.ray.intersectPlane(floorPlane, planeIntersectPoint);
+                setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
+            }
+
+            return;
+        }
+    );
+    //_____________________________________________________________________________________________________________
 
     return <>
         <a.group 
@@ -57,17 +81,10 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
             {...props} 
             dispose={null}
             position={springProps.position}
-
+            {...springProps}
         >
             <group
                 name='tower-hovers-group'
-                onClick={
-                    (e) => {
-                        if(dragMode) return
-                        setCurrentPage(3);
-                        e.stopPropagation();
-                    }
-                }
                 onPointerOver={
                     (e) => {
                         setNeedPointer(true);
@@ -82,7 +99,16 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         setHover(false);
                         e.stopPropagation();
                     }
-                }    
+                }
+                onClick={
+                    (e) => {
+                        if(dragMode) return;
+                        setCurrentPage(3);
+                        setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        e.stopPropagation();
+                    }
+                }
+                {...(dragMode ? dragPos() : {})}           
             >
                 <mesh
                     name='tower-mesh'

@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
+import { useDrag } from "@use-gesture/react";
 
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
@@ -35,9 +36,10 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
 
-    const { setCurrentPage, currentPage, dragMode } = useConfig();
+    const { setCurrentPage, currentPage, dragMode, setIsDragging, isDraggingCooktop, setIsDraggingCooktop } = useConfig();
+    const { setCameraFocus } = useScene();
 
-    const [hovered, hover] = useState(null);
+    const [hovered, setHover] = useState(null);
 
     const [needPointer, setNeedPointer] = useState(false);
 
@@ -45,13 +47,36 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const cookTopRef = useRef();
 
+    const [position, setPosition] = useState([1.5, 0, 0]);
+
+    //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        position: currentPage !== 2 && hovered ? [1.5, 0.2, 0] : [1.5, 0, 0],
+        position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
+        rotation: isDraggingCooktop ? [0, 0, 0] : [0, -0.5, 0],
         config: { 
                 tension: 250, 
                 friction: 50,
             }
     });
+
+    const planeIntersectPoint = new THREE.Vector3();
+    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+
+    const dragPos = useDrag(
+        ({ active, event }) => {
+            setIsDraggingCooktop (active);
+            setIsDragging(active);
+
+            if(active){
+                event.ray.intersectPlane(floorPlane, planeIntersectPoint);
+                setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
+            }
+
+            return;
+        }
+    );
+    //_____________________________________________________________________________________________________________
 
     return <>
         <a.group 
@@ -59,33 +84,35 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             ref={cookTopRef}
             {...props} 
             dispose={null}
-            position={springProps.position}
+            {...springProps}
             
         >
             <group
                 name='cooktop-hovers-group'
-                onClick={
-                    (e) => {
-                        if(dragMode) return
-                        setCurrentPage(2);
-                        e.stopPropagation();
-                    }
-                }
                 onPointerOver={
                     (e) => {
                         setNeedPointer(true);
                         if(dragMode) return;
-                        hover(true);
+                        setHover(true);
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
                         setNeedPointer(false);
-                        hover(false);
+                        setHover(false);
                         e.stopPropagation();
                     }
                 }
+                onClick={
+                    (e) => {
+                        if(dragMode) return;
+                        setCurrentPage(2);
+                        setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        e.stopPropagation();
+                    }
+                }
+                {...(dragMode ? dragPos() : {})}          
             >
 
                 <mesh
