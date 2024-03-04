@@ -56,7 +56,7 @@ export default create((set) => {
 
         sinkBowlMaterial: null,
 
-        stoveType: 'gas',
+        stoveType: 'electric',
 
         applianceType: 'oven',
 
@@ -67,6 +67,7 @@ export default create((set) => {
         currentPage: 0,
 
         dragMode: false,
+        isDragging: false,
 
         //Actions_______________________________________________________________________________________
         setSinkAmount: (amount) => set({sinkAmount: amount}),
@@ -107,6 +108,7 @@ export default create((set) => {
 
         //drag mode
         setDragMode: (mode) => set({dragMode: mode}),
+        setIsDragging: (dragging) => set({isDragging: dragging}),
 
     }
 })
