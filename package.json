@@ -16,6 +16,7 @@
     "@react-three/fiber": "^8.15.16",
     "@react-three/postprocessing": "^2.16.0",
     "@types/three": "^0.161.2",
+    "@use-gesture/react": "^10.3.0",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "postprocessing": "^6.34.3",
