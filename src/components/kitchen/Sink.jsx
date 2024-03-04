@@ -44,7 +44,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const { isHovering, setIsHovering } = useScene();
     
-    const { setCurrentPage, currentPage } = useConfig();
+    const { setCurrentPage, currentPage, dragMode } = useConfig();
     
     const [hovered, hover] = useState(null);
     
@@ -92,6 +92,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 }
                 onClick={
                     (e) => {
+                        if(dragMode) return;
                         setCurrentPage(1);
                         e.stopPropagation();
                     }

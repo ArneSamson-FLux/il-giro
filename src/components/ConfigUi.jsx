@@ -57,7 +57,10 @@ export default function ConfigUi() {
         setDoorOpeningRotation,
 
         currentPage,
-        setCurrentPage
+        setCurrentPage,
+
+        dragMode,
+        setDragMode,
     } = useConfig();
 
     const [loaded, setLoaded] = useState(false);
@@ -117,6 +120,11 @@ export default function ConfigUi() {
         setCurrentPage(0);
     }
 
+    const handleDragMode = () => {
+        setDragMode(!dragMode);
+    }
+
+
     const checkPage = (e) => {
         switch(e){
             case 0:
@@ -143,14 +151,30 @@ export default function ConfigUi() {
         <div className='config-wrapper'>
 
             <div
-                className='config-ui__zoom-out'
+                className='config-ui__extra-buttons'
             >
-                <button
-                    onClick={handleZoom}
+                <div
+                    className='config-ui__zoom-out'
                 >
-                    <a>Zoom out</a>
-                </button>
+                    <button
+                        onClick={handleZoom}
+                    >
+                        <a>Zoom out</a>
+                    </button>
+                </div>
+
+                <div
+                    className='config-ui__reposition'
+                >
+                    <button
+                        onClick={handleDragMode}
+                    >
+                        <a>Reposition</a>
+                    </button>
+                </div>
             </div>
+
+
             {!loaded && <p>Loading UI...</p>}
 
             

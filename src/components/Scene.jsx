@@ -1,8 +1,9 @@
 import * as THREE from 'three'
+import { GridHelper } from 'three'
+
 import Cooktop from './kitchen/Cooktop.jsx'
 import Sink from './kitchen/Sink.jsx'
 import Tower from './kitchen/Tower.jsx'
-// import { useControls } from 'leva'
 
 import useConfig from '../store/useConfig.jsx'
 
@@ -29,6 +30,8 @@ export default function Scene() {
 
         currentPage,
         setCurrentPage,
+
+        dragMode
     } = useConfig();
 
     const islands = [];
@@ -107,24 +110,10 @@ export default function Scene() {
 
         {islands}
 
-        {/* <mesh
-            position={[0, 0, 0]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            receiveShadow
-        >
-            <planeGeometry attach="geometry" args={[100, 100]} />
-            <shadowMaterial attach="material" opacity={0.3} />
-        </mesh> */}
-
-        {/* <mesh
-            position={[0, -0.05, 0]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            receiveShadow
-        > */}
-            {/* <planeGeometry attach="geometry" args={[100, 100]} /> */}
-            {/* <shadowMaterial attach="material" opacity={0.3} /> */}
-        {/* </mesh> */}
-
+        <gridHelper
+            visible={dragMode}
+            args={[10, 10, 0x000000, 0x000000]} 
+        />
     
     </>
 }
