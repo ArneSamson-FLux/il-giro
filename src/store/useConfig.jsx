@@ -43,24 +43,24 @@ export default create((set) => {
         cooktopAmount: 1,
         towerAmount: 1,
 
-        sinkMaterial: null,
-        cooktopMaterial: null,
-        towerMaterial: null,
+        sinkMaterial: "../src/assets/placeholder/",
+        cooktopMaterial: "../src/assets/placeholder/",
+        towerMaterial: "../src/assets/placeholder/",
 
         sinkBevelled: true,
         cooktopBevelled: false,
         towerBevelled: true,
 
-        tapMaterial: null,
+        tapMaterial: "../src/assets/placeholder/",
         tapType: 'tap1',
 
-        sinkBowlMaterial: null,
+        sinkBowlMaterial: "../src/assets/placeholder/",
 
         stoveType: 'electric',
 
         applianceType: 'oven',
 
-        towerAccessoryMaterial: null,
+        towerAccessoryMaterial: "../src/assets/placeholder/",
 
         doorOpeningRotation: 1.5,
 

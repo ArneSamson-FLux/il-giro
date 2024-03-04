@@ -66,33 +66,15 @@ export default function ConfigUi() {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if(allMaterials[0]){
+        if(allMaterials[8]){
             setLoaded(true);
 
-            //switch case to set the default material for each component
-
-            switch(true){
-                case !sinkMaterial:
-                    setSinkMaterial(allMaterials[1].url);
-                    break;
-                case !cooktopMaterial:
-                    setCooktopMaterial(allMaterials[1].url);
-                    break;
-                case !towerMaterial:
-                    setTowerMaterial(allMaterials[1].url);
-                    break;
-                case !tapMaterial:
-                    setTapMaterial(allMaterials[7].url);
-                    break;
-                case !sinkBowlMaterial:
-                    setSinkBowlMaterial(allMaterials[8].url);
-                    break;
-                case !towerAccessoryMaterial:
-                    setTowerAccessoryMaterial(allMaterials[8].url);
-                    break;
-                default:
-            }
-
+            setSinkMaterial(allMaterials[1].url);
+            setCooktopMaterial(allMaterials[1].url);
+            setTowerMaterial(allMaterials[1].url);
+            setTapMaterial(allMaterials[7].url);
+            setSinkBowlMaterial(allMaterials[8].url);
+            setTowerAccessoryMaterial(allMaterials[8].url);
 
         }
     }, [allMaterials,
