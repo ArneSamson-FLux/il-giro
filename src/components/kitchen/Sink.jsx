@@ -2,8 +2,7 @@ import React, {useRef, useState} from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import gsap from 'gsap';
-import { useGSAP } from "@gsap/react";
+import { useSpring, a } from '@react-spring/three';
 
 import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 
@@ -52,34 +51,25 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     
     const sinkRef = useRef();
 
-    useFrame(() => {
-        if (hovered){
-            if(currentPage !== 1) {
-                gsap.to(sinkRef.current.position, {
-                    y: 0.2,
-                    duration: 0.5,
-                })
-            }
-        } else {
-            gsap.to(sinkRef.current.position, {
-                y: 0,
-                duration: 0.5,
-            })
-        }
-    })
+    const springProps = useSpring({
+        position: currentPage !== 1 && hovered ? [-1.5, 0.2, 0] : [-1.5, 0, 0],
+        config: { duration: 200 }
+    });
 
     return <>
-        <group
+        <a.group
             name='sink-group'
             ref={sinkRef}
             {...props} 
             dispose={null}
+            position={springProps.position}
             
         >
             <group
                 name='sink-hovers-group'
                  onPointerOver={
                     (e) => {
+                        if(dragMode) return;
                         hover(true);
                         e.stopPropagation();
                     }
@@ -160,7 +150,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 }
 
             />
-        </group>
+        </a.group>
 
     </>
 }
