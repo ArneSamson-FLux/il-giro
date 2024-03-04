@@ -63,12 +63,36 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     return <>
         <group 
+            name='cooktop-group'
             ref={cookTopRef}
             {...props} 
             dispose={null}
             
         >
-            <mesh
+            <group
+                name='cooktop-hovers-group'
+                onClick={
+                    (e) => {
+                        setCurrentPage(2);
+                        e.stopPropagation();
+                    }
+                }
+                onPointerOver={
+                    (e) => {
+                        hover(true);
+                        e.stopPropagation();
+                    }
+                }
+                onPointerOut={
+                    (e) => {
+                    hover(false);
+                    e.stopPropagation();
+                    }
+                }
+            >
+
+                <mesh
+                    name='cooktop-mesh'
                     castShadow
                     receiveShadow
                     geometry={nodes.top.geometry}
@@ -76,72 +100,54 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                     position={[0, 1.193, 0]}
                     rotation={[0, -1.484, 0]}
                     scale={[1, 1.1, 1]}
+                >
+                    <mesh
+                        name='cooktop-bevelled-mesh'
+                        visible={bevelled}
+                        castShadow
+                        receiveShadow
+                        geometry={nodes["bevelled-under"].geometry}
+                        material={material}
+                    />
+                    <mesh
+                        name='cooktop-straight-mesh'
+                        visible={!bevelled}
+                        castShadow
+                        receiveShadow
+                        geometry={nodes["straight-under"].geometry}
+                        material={material}
+                    />
+                    <mesh
+                        name='cooktop-tabletop-mesh'
+                        castShadow
+                        receiveShadow
+                        geometry={nodes.tabletop.geometry}
+                        material={tabletopMaterial}
+                    />
+                </mesh>
 
-                    onClick={
-                        (e) => {
-                            setCurrentPage(2);
-                            e.stopPropagation();
+                {stoveType === "gas" &&
+                    <GasStove
+                        props={
+                            {
+                                position: [0, 0.957, 0.12],
+                            }
                         }
-                    }
-                    onPointerOver={
-                        (e) => {
-                            hover(true);
-                            e.stopPropagation();
-                        }
-                    }
-                    onPointerOut={
-                        (e) => {
-                        hover(false);
-                        e.stopPropagation();
-                        }
-                    }
-            >
-                <mesh
-                    visible={bevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["bevelled-under"].geometry}
-                    material={material}
-                />
-                <mesh
-                    visible={!bevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["straight-under"].geometry}
-                    material={material}
-                />
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.tabletop.geometry}
-                    material={tabletopMaterial}
-                />
-            </mesh>
-
-        
-
-
-        {stoveType === "gas" &&
-            <GasStove
-                props={
-                    {
-                        position: [0, 0.957, 0.12],
-                    }
+                    />
                 }
-            />
-        }
-        
-        {stoveType === "electric" &&
-            <ElectricStove
-                props={
-                    {
-                        position: [0, 0.97, 0.1],
-                        scale: [0.9, 0.9, 0.9],
-                        rotation: [0, 0, 0],
-                    }
+                
+                {stoveType === "electric" &&
+                    <ElectricStove
+                        props={
+                            {
+                                position: [0, 0.97, 0.1],
+                                scale: [0.9, 0.9, 0.9],
+                                rotation: [0, 0, 0],
+                            }
+                        }
+                    />
                 }
-            />
-        }
+            </group>
 
             <BakePlaneSmall
                 props={

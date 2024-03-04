@@ -23,8 +23,13 @@ export default function LiquorStand({props, materialUrl}){
 
     const { nodes, materials } = useGLTF("./models/liquorStand.glb");
     return (
-        <group {...props} dispose={null}>
+        <group
+            name='liquorStand'
+            {...props}
+            dispose={null}
+        >
             <mesh
+                name='liquorStandMesh'
                 castShadow
                 receiveShadow
                 geometry={nodes.liquorStand.geometry}

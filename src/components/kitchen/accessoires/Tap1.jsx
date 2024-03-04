@@ -23,8 +23,13 @@ export default function Tap1({materialUrl, bevelled, props}){
     const { nodes, materials } = useGLTF("/models//tap1.glb");
     
     return (
-        <group {...props} dispose={null}>
+        <group 
+            name="tap1-group"
+            {...props} 
+            dispose={null}
+        >
             <mesh
+                name="tap1-mesh"
                 castShadow
                 receiveShadow
                 geometry={nodes.Tap1.geometry}

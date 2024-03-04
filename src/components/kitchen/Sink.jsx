@@ -70,21 +70,15 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     return <>
         <group
+            name='sink-group'
             ref={sinkRef}
             {...props} 
             dispose={null}
             
         >
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.top.geometry}
-                material={material}
-                position={[0, 1.193, 0]}
-                rotation={[0, -1.484, 0]}
-                scale={[1, 1.1, 1]}
-
-                onPointerOver={
+            <group
+                name='sink-hovers-group'
+                 onPointerOver={
                     (e) => {
                         hover(true);
                         e.stopPropagation();
@@ -104,43 +98,58 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 }
             >
                 <mesh
-                    visible={bevelled}
+                    name='sink-mesh'
                     castShadow
                     receiveShadow
-                    geometry={nodes["bevelled-under"].geometry}
+                    geometry={nodes.top.geometry}
                     material={material}
-                />
-                <mesh
-                    visible={!bevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["straight-under"].geometry}
-                    material={material}
-                />
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.tabletop.geometry}
-                    material={tabletopMaterial}
-                />
-            </mesh>
-            {tapType === "tap1" && <Tap1
-                    materialUrl={accessoryMaterialUrl}
-                    bevelled={bevelled}
-                    props={{rotation: [0, 0, 0]}}
-                />
-            }
-            {tapType === "tap2" && <Tap2
-                    materialUrl={accessoryMaterialUrl}
-                    bevelled={bevelled}
-                    props={{rotation: [0, 0, 0]}}
-                />
-            }
+                    position={[0, 1.193, 0]}
+                    rotation={[0, -1.484, 0]}
+                    scale={[1, 1.1, 1]}
+                >
+                    <mesh
+                        name='sink-bevel-mesh'
+                        visible={bevelled}
+                        castShadow
+                        receiveShadow
+                        geometry={nodes["bevelled-under"].geometry}
+                        material={material}
+                    />
+                    <mesh
+                        name='sink-straight-mesh'
+                        visible={!bevelled}
+                        castShadow
+                        receiveShadow
+                        geometry={nodes["straight-under"].geometry}
+                        material={material}
+                    />
+                    <mesh
+                        name='sink-tabletop-mesh'
+                        castShadow
+                        receiveShadow
+                        geometry={nodes.tabletop.geometry}
+                        material={tabletopMaterial}
+                    />
+                </mesh>
 
-            <SinkBowl
-                materialUrl={sinkBowlMaterial}
-                props={{rotation: [0, 0, 0]}}
-            />
+                {tapType === "tap1" && <Tap1
+                        materialUrl={accessoryMaterialUrl}
+                        bevelled={bevelled}
+                        props={{rotation: [0, 0, 0]}}
+                    />
+                }
+                {tapType === "tap2" && <Tap2
+                        materialUrl={accessoryMaterialUrl}
+                        bevelled={bevelled}
+                        props={{rotation: [0, 0, 0]}}
+                    />
+                }
+
+                <SinkBowl
+                    materialUrl={sinkBowlMaterial}
+                    props={{rotation: [0, 0, 0]}}
+                />
+            </group>
 
             <BakePlaneSmall
                 props={

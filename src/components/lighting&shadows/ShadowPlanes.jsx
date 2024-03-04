@@ -25,11 +25,13 @@ export function BakePlane({props}){
     
     return (
         <group 
+            name='bakePlane-group'
             ref={bigPlaneRef}
             {...props} 
             dispose={null}
         >
             <mesh
+                name='bakePlane-mesh'
                 geometry={nodes.Plane002.geometry}
                 renderOrder={1}
             >
@@ -69,11 +71,13 @@ export function BakePlaneSmall({props}){
 
     return (
         <group 
+            name='bakePlaneSmall-group'
             ref={smallPlaneRef}
             {...props} 
             dispose={null}
         >
             <mesh
+                name='bakePlaneSmall-mesh'
                 geometry={nodes.Plane002.geometry}
             >
                 <meshBasicMaterial

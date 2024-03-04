@@ -60,17 +60,14 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     return <>
         <group 
+            name='tower-group'
             ref={towerRef}
             {...props} 
             dispose={null}
 
         >
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes["tower-straight"].geometry}
-                material={material}
-                
+            <group
+                name='tower-hovers-group'
                 onClick={
                     (e) => {
                         setCurrentPage(3);
@@ -88,62 +85,77 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         setHover(false);
                         e.stopPropagation();
                     }
-                }
+                }    
             >
-                {/* //door */}
                 <mesh
+                    name='tower-mesh'
                     castShadow
                     receiveShadow
-                    geometry={nodes.door001.geometry}
+                    geometry={nodes["tower-straight"].geometry}
                     material={material}
-                    position={[0.388, 1.088, 0.316]}
-                    scale={[1, 1.1, 1]}
-                    rotation={[0, doorOpening, 0]}
                 >
+                    {/* //door */}
                     <mesh
+                        name='door-mesh'
+                        castShadow
+                        receiveShadow
+                        geometry={nodes.door001.geometry}
+                        material={material}
+                        position={[0.388, 1.088, 0.316]}
+                        scale={[1, 1.1, 1]}
+                        rotation={[0, doorOpening, 0]}
+                    >
+                        <mesh
+                            name='door-bevel-mesh'
+                            visible={bevelled}
+                            castShadow
+                            receiveShadow
+                            geometry={nodes["door-bevel"].geometry}
+                            material={material}
+                        />
+                        <mesh
+                            name='door-straight-mesh'
+                            visible={!bevelled}
+                            castShadow
+                            receiveShadow
+                            geometry={nodes["door-straight"].geometry}
+                            material={material}
+                        />
+                    </mesh>
+
+                    {/* tower underside */}
+                    <mesh
+                        name='tower-bevel-mesh'
                         visible={bevelled}
                         castShadow
                         receiveShadow
-                        geometry={nodes["door-bevel"].geometry}
+                        geometry={nodes["tower-bevel"].geometry}
                         material={material}
                     />
                     <mesh
+                        name='tower-straight-mesh'
                         visible={!bevelled}
                         castShadow
                         receiveShadow
-                        geometry={nodes["door-straight"].geometry}
+                        geometry={nodes["tower-straight002"].geometry}
                         material={material}
                     />
                 </mesh>
 
-                {/* tower underside */}
-                <mesh
-                    visible={bevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["tower-bevel"].geometry}
-                    material={material}
+                {fridgeOrOven === "fridge"
+                && <Fridge/>
+                }
+
+                {fridgeOrOven === "oven"
+                && <Oven/>
+                }
+
+                <LiquorStand
+                    materialUrl={accessoryMaterialUrl}
                 />
-                <mesh
-                    visible={!bevelled}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes["tower-straight002"].geometry}
-                    material={material}
-                />
-            </mesh>
 
-            {fridgeOrOven === "fridge"
-            && <Fridge/>
-            }
+            </group>
 
-            {fridgeOrOven === "oven"
-            && <Oven/>
-            }
-
-            <LiquorStand
-                materialUrl={accessoryMaterialUrl}
-            />
             <BakePlane
                 props={
                     {
@@ -152,7 +164,6 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 }
 
             />
-
 
         </group>
 
