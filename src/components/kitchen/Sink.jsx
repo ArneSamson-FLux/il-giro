@@ -41,8 +41,6 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     });
 
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
-
-    const { isHovering, setIsHovering } = useScene();
     
     const { setCurrentPage, currentPage, dragMode } = useConfig();
     
@@ -56,7 +54,10 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const springProps = useSpring({
         position: currentPage !== 1 && hovered ? [-1.5, 0.2, 0] : [-1.5, 0, 0],
-        config: { duration: 200 }
+        config: { 
+                tension: 250, 
+                friction: 50,
+            }
     });
 
     return <>

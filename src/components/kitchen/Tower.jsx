@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
-import gsap from 'gsap';
+import { useSpring, a } from '@react-spring/three';
 
 import Fridge from './accessoires/Fridge.jsx';
 import Oven from './accessoires/Oven.jsx';
@@ -34,8 +34,6 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const { setCurrentPage, currentPage, dragMode } = useConfig();
 
-    const { isHovering, setIsHovering } = useScene();
-
     const [hovered, setHover] = useState(null);
 
     const [needPointer, setNeedPointer] = useState(false);
@@ -44,28 +42,21 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const towerRef = useRef();
 
-    useFrame(() => {
-        if (hovered){
-            if(currentPage !== 3) {
-                gsap.to(towerRef.current.position, {
-                    y: 0.2,
-                    duration: 0.5,
-                })  
+    const springProps = useSpring({
+        position: currentPage !== 3 && hovered ? [0, 0.2, -1.5] : [0, 0, -1.5],
+        config: { 
+                tension: 250, 
+                friction: 50,
             }
-        } else {
-            gsap.to(towerRef.current.position, {
-                y: 0,
-                duration: 0.5,
-            })
-        }
-    })
+    });
 
     return <>
-        <group 
+        <a.group 
             name='tower-group'
             ref={towerRef}
             {...props} 
             dispose={null}
+            position={springProps.position}
 
         >
             <group
@@ -171,7 +162,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
             />
 
-        </group>
+        </a.group>
 
         
 

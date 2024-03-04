@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
-import gsap from 'gsap';
+import { useSpring, a } from '@react-spring/three';
 
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
@@ -37,8 +37,6 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const { setCurrentPage, currentPage, dragMode } = useConfig();
 
-    const { isHovering, setIsHovering } = useScene();
-
     const [hovered, hover] = useState(null);
 
     const [needPointer, setNeedPointer] = useState(false);
@@ -47,28 +45,21 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     const cookTopRef = useRef();
 
-    useFrame(() => {
-        if (hovered){
-            if(currentPage !== 2) {
-                gsap.to(cookTopRef.current.position, {
-                    y: 0.2,
-                    duration: 0.5,
-                })
+    const springProps = useSpring({
+        position: currentPage !== 2 && hovered ? [1.5, 0.2, 0] : [1.5, 0, 0],
+        config: { 
+                tension: 250, 
+                friction: 50,
             }
-        } else {
-            gsap.to(cookTopRef.current.position, {
-                y: 0,
-                duration: 0.5,
-            })
-        }
-    })
+    });
 
     return <>
-        <group 
+        <a.group 
             name='cooktop-group'
             ref={cookTopRef}
             {...props} 
             dispose={null}
+            position={springProps.position}
             
         >
             <group
@@ -163,8 +154,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 }
             />
 
-        </group>
-
+        </a.group>
 
     </>
 }
