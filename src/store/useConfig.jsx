@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import {TextureLoader, MeshStandardMaterial, SRGBColorSpace, ClampToEdgeWrapping, LinearFilter} from 'three';
 
 export default create((set) => {    
     let materialData;
@@ -43,24 +42,24 @@ export default create((set) => {
         cooktopAmount: 1,
         towerAmount: 1,
 
-        sinkMaterial: "../src/assets/placeholder/",
-        cooktopMaterial: "../src/assets/placeholder/",
-        towerMaterial: "../src/assets/placeholder/",
+        sinkMaterial: "./placeholder/",
+        cooktopMaterial: "./placeholder/",
+        towerMaterial: "./placeholder/",
 
         sinkBevelled: true,
         cooktopBevelled: false,
         towerBevelled: true,
 
-        tapMaterial: "../src/assets/placeholder/",
+        tapMaterial: "./placeholder/",
         tapType: 'tap1',
 
-        sinkBowlMaterial: "../src/assets/placeholder/",
+        sinkBowlMaterial: "./placeholder/",
 
         stoveType: 'electric',
 
         applianceType: 'oven',
 
-        towerAccessoryMaterial: "../src/assets/placeholder/",
+        towerAccessoryMaterial: "./placeholder/",
 
         doorOpeningRotation: 1.5,
 
