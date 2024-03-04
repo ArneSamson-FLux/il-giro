@@ -114,9 +114,9 @@ export default create((set) => {
         setDragMode: (mode) => set({dragMode: mode}),
         setIsDragging: (dragging) => set({isDragging: dragging}),
 
-        setIsDraggingSink: (dragging) => set({isDragginSink: dragging}),
-        setIsDraggingCooktop: (dragging) => set({isDragginCooktop: dragging}),
-        setIsDraggingTower: (dragging) => set({isDragginTower: dragging}),
+        setIsDraggingSink: (dragging) => set({isDraggingSink: dragging}),
+        setIsDraggingCooktop: (dragging) => set({isDraggingCooktop: dragging}),
+        setIsDraggingTower: (dragging) => set({isDraggingTower: dragging}),
 
     }
 })
