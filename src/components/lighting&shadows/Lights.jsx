@@ -17,10 +17,10 @@ export default function Lights()
             shadow-mapSize={ [ 1024, 1024 ] }
             shadow-camera-near={ 0.1 }
             shadow-camera-far={ 10 }
-            shadow-camera-top={ 3 }
-            shadow-camera-right={ 3 }
-            shadow-camera-bottom={ - 3 }
-            shadow-camera-left={ - 3 }
+            shadow-camera-top={ 5 }
+            shadow-camera-right={ 5 }
+            shadow-camera-bottom={ - 4 }
+            shadow-camera-left={ - 5 }
         />
         <ambientLight intensity={ 1.4 } />
     </>
