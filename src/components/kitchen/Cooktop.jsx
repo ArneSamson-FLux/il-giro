@@ -149,7 +149,8 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             <BakePlaneSmall
                 props={
                     {
-                        position: [0, 0, 0]
+                        position: [0, 0, 0],
+                        rotation: [0, 0.5, 0],
                     }
                 }
             />
