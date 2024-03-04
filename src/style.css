@@ -212,10 +212,13 @@ input[type=range]::-ms-track {
     padding: 20px;
     border: var(--light-grey) 1px solid;
 }
-.config-ui__zoom-out{
+.config-ui__extra-buttons{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
     position: absolute;
     top: 10px;
-    left: -120px;
+    left: -250px;
 }
 
 .ui-page{
