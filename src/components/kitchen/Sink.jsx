@@ -1,8 +1,9 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three';
+import { useDrag } from "@use-gesture/react";
 
 import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
 
@@ -16,8 +17,8 @@ import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){    
-
+export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){  
+    
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
@@ -41,7 +42,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
     
-    const { setCurrentPage, currentPage, dragMode } = useConfig();
+    const { setCurrentPage, currentPage, dragMode, isDragging, setIsDragging } = useConfig();
     
     const [hovered, hover] = useState(null);
 
@@ -51,13 +52,48 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     
     const sinkRef = useRef();
 
+    const [position, setPosition] = useState([-1.5, 0, 0]);
+
+    const planeIntersectPoint = new THREE.Vector3();
+    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+
     const springProps = useSpring({
-        position: currentPage !== 1 && hovered ? [-1.5, 0.2, 0] : [-1.5, 0, 0],
+        position: currentPage !== 1 && hovered ? [position[0], 0.2, 0] : [position[0], 0, 0],
         config: { 
                 tension: 250, 
                 friction: 50,
             }
     });
+
+    const [spring, api] = useSpring(() => ({
+        position: position,
+        scale: 1,
+        rotation: [0, 0.5, 0],
+        config: { friction: 10 }
+    }));
+
+    const dragPos = useDrag(
+        ({ active, timeStamp, event }) => {
+            setIsDragging(active);
+
+            if(active){
+                event.ray.intersectPlane(floorPlane, planeIntersectPoint);
+                setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
+            }
+
+            api.start({
+                position: position,
+                scale: active ? 1.1 : 1,
+                rotation: active ? [0, 0, 0] : [0, 0.5, 0],
+                config: {
+                    tension: 120,
+                    friction: 10,
+                }
+            });
+
+            return timeStamp;
+        }
+    );
 
     return <>
         <a.group
@@ -65,8 +101,9 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
             ref={sinkRef}
             {...props} 
             dispose={null}
-            position={springProps.position}
-            
+
+            {...spring}
+
         >
             <group
                 name='sink-hovers-group'
@@ -92,6 +129,8 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                         e.stopPropagation();
                     }
                 }
+                {...(dragMode ? dragPos() : {})}           
+
             >
                 <mesh
                     name='sink-mesh'
@@ -151,6 +190,8 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 props={
                     {
                         position: [0, 0, 0],
+                        // rotation: !isDragging ? [0, -0.5, 0] : [0, 0, 0],
+                        rotation: [0, -0.5, 0],
                     }
                 }
 
