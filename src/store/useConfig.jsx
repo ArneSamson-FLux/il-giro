@@ -69,6 +69,10 @@ export default create((set) => {
         dragMode: false,
         isDragging: false,
 
+        isDraggingSink: false,
+        isDraggingCooktop: false,
+        isDraggingTower: false,
+
         //Actions_______________________________________________________________________________________
         setSinkAmount: (amount) => set({sinkAmount: amount}),
         setCooktopAmount: (amount) => set({cooktopAmount: amount}),
@@ -109,6 +113,10 @@ export default create((set) => {
         //drag mode
         setDragMode: (mode) => set({dragMode: mode}),
         setIsDragging: (dragging) => set({isDragging: dragging}),
+
+        setIsDraggingSink: (dragging) => set({isDragginSink: dragging}),
+        setIsDraggingCooktop: (dragging) => set({isDragginCooktop: dragging}),
+        setIsDraggingTower: (dragging) => set({isDragginTower: dragging}),
 
     }
 })
