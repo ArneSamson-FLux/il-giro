@@ -5,8 +5,6 @@ import { useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
-import { Selection, Select, EffectComposer, Outline } from '@react-three/postprocessing'
-
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
 
@@ -42,9 +40,10 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
     
-    const { setCurrentPage, currentPage, dragMode, isDragging, setIsDragging } = useConfig();
+    const { setCurrentPage, currentPage, dragMode, isDraggingSink, setIsDraggingSink, setIsDragging } = useConfig();
+    const { setCameraFocus } = useScene();
     
-    const [hovered, hover] = useState(null);
+    const [hovered, setHover] = useState(null);
 
     const [needPointer, setNeedPointer] = useState(false);
     
@@ -54,26 +53,23 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     const [position, setPosition] = useState([-1.5, 0, 0]);
 
-    const planeIntersectPoint = new THREE.Vector3();
-    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-
+    //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        position: currentPage !== 1 && hovered ? [position[0], 0.2, 0] : [position[0], 0, 0],
+        position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        rotation: isDraggingSink ? [0, 0, 0] : [0, 0.5, 0],
+        scale: isDraggingSink ? [1.1, 1.1, 1.1] : [1, 1, 1],
         config: { 
                 tension: 250, 
                 friction: 50,
             }
     });
 
-    const [spring, api] = useSpring(() => ({
-        position: position,
-        scale: 1,
-        rotation: [0, 0.5, 0],
-        config: { friction: 10 }
-    }));
+    const planeIntersectPoint = new THREE.Vector3();
+    const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
 
     const dragPos = useDrag(
-        ({ active, timeStamp, event }) => {
+        ({ active, event }) => {
+            setIsDraggingSink(active);
             setIsDragging(active);
 
             if(active){
@@ -81,19 +77,10 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
             }
 
-            api.start({
-                position: position,
-                scale: active ? 1.1 : 1,
-                rotation: active ? [0, 0, 0] : [0, 0.5, 0],
-                config: {
-                    tension: 120,
-                    friction: 10,
-                }
-            });
-
-            return timeStamp;
+            return;
         }
     );
+    //_____________________________________________________________________________________________________________
 
     return <>
         <a.group
@@ -101,24 +88,22 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
             ref={sinkRef}
             {...props} 
             dispose={null}
-
-            {...spring}
-
+            {...springProps}
         >
             <group
                 name='sink-hovers-group'
-                 onPointerOver={
+                onPointerOver={
                     (e) => {
                         setNeedPointer(true);
                         if(dragMode) return;
-                        hover(true);
+                        setHover(true);
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
                         setNeedPointer(false);
-                        hover(false);
+                        setHover(false);
                         e.stopPropagation();
                     }
                 }
@@ -126,6 +111,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     (e) => {
                         if(dragMode) return;
                         setCurrentPage(1);
+                        setCameraFocus([position[0], position[1] + 1, position[2]]);
                         e.stopPropagation();
                     }
                 }
@@ -190,7 +176,6 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 props={
                     {
                         position: [0, 0, 0],
-                        // rotation: !isDragging ? [0, -0.5, 0] : [0, 0, 0],
                         rotation: [0, -0.5, 0],
                     }
                 }
