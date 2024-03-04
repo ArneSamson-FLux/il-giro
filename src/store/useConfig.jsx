@@ -66,6 +66,8 @@ export default create((set) => {
 
         currentPage: 0,
 
+        dragMode: false,
+
         //Actions_______________________________________________________________________________________
         setSinkAmount: (amount) => set({sinkAmount: amount}),
         setCooktopAmount: (amount) => set({cooktopAmount: amount}),
@@ -101,7 +103,10 @@ export default create((set) => {
         setDoorOpeningRotation: (rotation) => set({doorOpeningRotation: rotation}),
 
         //page
-        setCurrentPage: (page) => set({currentPage: page})
+        setCurrentPage: (page) => set({currentPage: page}),
+
+        //drag mode
+        setDragMode: (mode) => set({dragMode: mode}),
 
     }
 })
