@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import { GridHelper } from 'three'
-import { useSpring, a } from '@react-spring/three'
 
 import Cooktop from './kitchen/Cooktop.jsx'
 import Sink from './kitchen/Sink.jsx'
