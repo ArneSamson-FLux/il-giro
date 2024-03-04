@@ -70,8 +70,12 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
             if(active){
                 event.ray.intersectPlane(floorPlane, planeIntersectPoint);
-                setPosition([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
-            }
+                let newPosition = ([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
+
+                newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
+                newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
+
+                setPosition(newPosition);            }
 
             event.stopPropagation();
 
