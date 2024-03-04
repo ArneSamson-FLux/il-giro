@@ -7,6 +7,7 @@ import Scene from './components/Scene.jsx';
 import Lights from './components/lighting&shadows/Lights.jsx';
 
 import useScene from './store/useScene.jsx'
+import useConfig from './store/useConfig.jsx'
 
 import { Perf } from 'r3f-perf'
 
@@ -14,7 +15,9 @@ export default function Experience() {
 
   const camera = useRef()
 
-  const { cameraCoords, cameraFocus, setCameraFocus } = useScene()
+  const { cameraCoords, cameraFocus, setCameraFocus } = useScene();
+
+  const { isDragging } = useConfig();
 
   useEffect(() => {
     // console.log('camerafocus', cameraFocus)
@@ -34,6 +37,7 @@ export default function Experience() {
       maxDistance={10}
       minDistance={2}
       ref={camera}
+      enabled={!isDragging}
     />
 
 
