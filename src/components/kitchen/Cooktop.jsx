@@ -66,22 +66,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             ref={cookTopRef}
             {...props} 
             dispose={null}
-            onClick={
-                (e) => {
-                    setCurrentPage(2);
-                    e.stopPropagation();
-                }
-            }
-            onPointerOver={
-                (e) => {
-                    hover(true);
-                }
-            }
-            onPointerOut={
-                (e) => {
-                hover(false);
-                }
-            }
+            
         >
             <mesh
                     castShadow
@@ -91,6 +76,25 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                     position={[0, 1.193, 0]}
                     rotation={[0, -1.484, 0]}
                     scale={[1, 1.1, 1]}
+
+                    onClick={
+                        (e) => {
+                            setCurrentPage(2);
+                            e.stopPropagation();
+                        }
+                    }
+                    onPointerOver={
+                        (e) => {
+                            hover(true);
+                            e.stopPropagation();
+                        }
+                    }
+                    onPointerOut={
+                        (e) => {
+                        hover(false);
+                        e.stopPropagation();
+                        }
+                    }
             >
                 <mesh
                     visible={bevelled}

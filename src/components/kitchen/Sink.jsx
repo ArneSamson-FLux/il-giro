@@ -73,22 +73,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
             ref={sinkRef}
             {...props} 
             dispose={null}
-            onPointerOver={
-                (e) => {
-                    hover(true);
-                }
-            }
-            onPointerOut={
-                (e) => {
-                    hover(false);
-                }
-            }
-            onClick={
-                (e) => {
-                    setCurrentPage(1);
-                    e.stopPropagation();
-                }
-            }
+            
         >
             <mesh
                 castShadow
@@ -98,6 +83,25 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 position={[0, 1.193, 0]}
                 rotation={[0, -1.484, 0]}
                 scale={[1, 1.1, 1]}
+
+                onPointerOver={
+                    (e) => {
+                        hover(true);
+                        e.stopPropagation();
+                    }
+                }
+                onPointerOut={
+                    (e) => {
+                        hover(false);
+                        e.stopPropagation();
+                    }
+                }
+                onClick={
+                    (e) => {
+                        setCurrentPage(1);
+                        e.stopPropagation();
+                    }
+                }
             >
                 <mesh
                     visible={bevelled}

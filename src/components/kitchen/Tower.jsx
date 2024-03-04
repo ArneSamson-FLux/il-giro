@@ -63,28 +63,32 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
             ref={towerRef}
             {...props} 
             dispose={null}
-            onClick={
-                (e) => {
-                    setCurrentPage(3);
-                    e.stopPropagation();
-                }
-            }
-            onPointerOver={
-                (e) => {
-                    setHover(true);
-                }
-            }
-            onPointerOut={
-                (e) => {
-                    setHover(false);
-                }
-            }
+
         >
             <mesh
                 castShadow
                 receiveShadow
                 geometry={nodes["tower-straight"].geometry}
                 material={material}
+                
+                onClick={
+                    (e) => {
+                        setCurrentPage(3);
+                        e.stopPropagation();
+                    }
+                }
+                onPointerOver={
+                    (e) => {
+                        setHover(true);
+                        e.stopPropagation();
+                    }
+                }
+                onPointerOut={
+                    (e) => {
+                        setHover(false);
+                        e.stopPropagation();
+                    }
+                }
             >
                 {/* //door */}
                 <mesh
@@ -140,7 +144,6 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
             <LiquorStand
                 materialUrl={accessoryMaterialUrl}
             />
-
             <BakePlane
                 props={
                     {
@@ -149,6 +152,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 }
 
             />
+
 
         </group>
 
