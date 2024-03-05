@@ -228,9 +228,25 @@ input[type=range]::-ms-track {
 }
 .config-ui__zoom-out button{
     background-color: var(--trans-grey);
+
+    &:hover{
+        background-color: var(--light-grey);
+        path{
+            stroke: var(--off-white);
+        }
+
+    }
 }
 .config-ui__move button{
     background-color: var(--trans-grey);
+
+    &:hover{
+        background-color: var(--light-grey);
+        path{
+            stroke: var(--off-white);
+        }
+
+    }
 }
 .config-ui__move--active button{
     background-color: var(--dark-grey);
