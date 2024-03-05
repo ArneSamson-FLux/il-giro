@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 
 import * as THREE from 'three'
 import {Canvas} from '@react-three/fiber'
+import { Loader } from '@react-three/drei'
 
 import { Leva } from 'leva'
 
@@ -22,29 +23,68 @@ const camSettings = {
   position: [0, 2, 4],
 }
 
+const containerStyles = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 0,
+    transform: 'translateX(-15%)',
+    backgroundColor: '#fafafa'
+}
+const barStyles = {
+    backgroundColor: '#000000',
+}
+const dataStyles = {
+    color: '#272727',
+    fontSize: '16px',
+    lineHeight: '30px',
+    fontWeight: 400,
+}
+const innerStyles = {
+    width: '200px',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    gap: '20px',
+}
+
 
 root.render(
-  <>
-    <Canvas
-      camera={camSettings}
-      gl = {{
-        antialias: true,
-        toneMapping: THREE.ACESFilmicToneMapping,
-        outoutColorSpace: THREE.SRGBColorSpace,
-      }}
-      shadows={true}
-    >
-      <Effects/>
+    <>
+        <Canvas
+            camera={camSettings}
+            gl = {{
+            antialias: true,
+            toneMapping: THREE.ACESFilmicToneMapping,
+            outoutColorSpace: THREE.SRGBColorSpace,
+            }}
+            shadows={true}
+        >
+            <Effects/>
 
-      <Experience/>
-    </Canvas>
+            <Experience/>
+        </Canvas>
 
-    <ConfigUi/>
+        <Loader
+            containerStyles={containerStyles}
+            barStyles={barStyles}
+            dataStyles={dataStyles}
+            innerStyles={innerStyles}
+            dataInterpolation={(p) => `Loading kitchen: ${p.toFixed(2)}%`}
+        />
 
-    <Leva
-      collapsed
-      hidden
-    />
-  </>
+        <ConfigUi/>
+
+
+        <Leva
+            collapsed
+            hidden
+        />
+    </>
 
 )
