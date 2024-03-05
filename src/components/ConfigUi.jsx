@@ -94,7 +94,6 @@ export default function ConfigUi() {
         setTowerAccessoryMaterial]);
 
     useEffect(() => {
-        // console.log('currentPage:', currentPage);
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
 
