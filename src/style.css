@@ -15,6 +15,7 @@ body,
     --off-white: #fafafa;
 
     --light-grey: #9b9b9b;
+    --dark-grey: #4d4d4d;
 
     --trans-grey: #eaeaeacc;
 
@@ -231,6 +232,10 @@ input[type=range]::-ms-track {
 .config-ui__move button{
     background-color: var(--trans-grey);
 }
+.config-ui__move--active button{
+    background-color: var(--dark-grey);
+
+}
 
 .zoom-out__image{
     width: 20px;
@@ -245,6 +250,9 @@ input[type=range]::-ms-track {
 }
 .move__image path{
     stroke: var(--light-grey);
+}
+.move__image--active path{
+    stroke: var(--off-white);
 }
 
 .ui-page{
@@ -263,6 +271,12 @@ input[type=range]::-ms-track {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
+}
+.config-ui__nav__button--disabled{
+
+    &:hover{
+        cursor: not-allowed;
+    }
 }
 
 .config-ui__amounts__amount{
