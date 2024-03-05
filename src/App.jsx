@@ -65,6 +65,7 @@ root.render(
             outoutColorSpace: THREE.SRGBColorSpace,
             }}
             shadows={true}
+            dpr={window.devicePixelRatio}
         >
             <Effects/>
 
