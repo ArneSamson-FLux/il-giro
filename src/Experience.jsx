@@ -29,7 +29,10 @@ export default function Experience() {
 
   return <>
 
-    <Perf position="top-left" />
+    <Perf
+        position="top-left"
+        style={{ transform: 'translateX(15vw)'}}
+    />
 
     <CameraControls
       draggingSmoothTime={0.2}

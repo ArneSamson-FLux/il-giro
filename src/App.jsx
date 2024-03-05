@@ -57,6 +57,7 @@ const innerStyles = {
 root.render(
     <>
         <Canvas
+            className="canvas"
             camera={camSettings}
             gl = {{
             antialias: true,

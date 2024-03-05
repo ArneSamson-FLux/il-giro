@@ -53,7 +53,7 @@ body,
     --button-weight: 700;
 }
 
-canvas{
+.canvas{
     transform: translateX(-15%);
 }
 
