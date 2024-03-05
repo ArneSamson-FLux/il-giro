@@ -98,10 +98,6 @@ export default function ConfigUi() {
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
 
-    useEffect(() => {
-        console.log(sinkMaterial);
-    }, [sinkMaterial]);
-
     const handleNext = () => {
         if(currentPage === 3) return;
         checkPage(currentPage + 1);
@@ -293,10 +289,7 @@ export default function ConfigUi() {
                                                         style={{
                                                             backgroundImage: `url(${material.url}albedo.jpg)`, 
                                                         }}
-                                                        onClick={() => {
-                                                            setSinkMaterial(material.url);
-                                                            console.log('sinkMaterial:', material.url);
-                                                            }
+                                                        onClick={() => setSinkMaterial(material.url)
                                                         }
                                                     ></div>
                                                 ))}
