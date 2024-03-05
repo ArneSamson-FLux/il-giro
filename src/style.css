@@ -16,7 +16,7 @@ body,
 
     --light-grey: #9b9b9b;
 
-    --trans-grey: #eaeaea;
+    --trans-grey: #eaeaeacc;
 
     --heading-family: "Josefin Sans", sans-serif;
     --body-family: "Noto Traditional Nushu", sans-serif;
@@ -118,6 +118,11 @@ a{
 
 button{
 
+    padding: 5px 20px;
+    border-color: var(--light-grey);
+    border-width: 1px;
+    border-style: solid;
+
     &:hover{
         cursor: pointer;
     }
@@ -218,7 +223,28 @@ input[type=range]::-ms-track {
     flex-direction: row;
     position: absolute;
     top: 10px;
-    left: -250px;
+    left: -200px;
+}
+.config-ui__zoom-out button{
+    background-color: var(--trans-grey);
+}
+.config-ui__move button{
+    background-color: var(--trans-grey);
+}
+
+.zoom-out__image{
+    width: 20px;
+    height: 20px;
+}
+.zoom-out__image path{
+    stroke: var(--light-grey);
+}
+.move__image{
+    width: 20px;
+    height: 20px;
+}
+.move__image path{
+    stroke: var(--light-grey);
 }
 
 .ui-page{

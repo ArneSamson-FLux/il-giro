@@ -66,8 +66,10 @@ export default function ConfigUi() {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if(allMaterials[8]){
+        if(allMaterials[0]){
             setLoaded(true);
+
+            if(loaded) return;
 
             setSinkMaterial(allMaterials[1].url);
             setCooktopMaterial(allMaterials[1].url);
@@ -95,6 +97,10 @@ export default function ConfigUi() {
         // console.log('currentPage:', currentPage);
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
+
+    useEffect(() => {
+        console.log(sinkMaterial);
+    }, [sinkMaterial]);
 
     const handleNext = () => {
         if(currentPage === 3) return;
@@ -153,17 +159,28 @@ export default function ConfigUi() {
                     <button
                         onClick={handleZoom}
                     >
-                        <a>Zoom out</a>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
+                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M19 19L14.65 14.65" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     </button>
                 </div>
 
                 <div
-                    className='config-ui__reposition'
+                    className='config-ui__move'
                 >
                     <button
                         onClick={handleDragMode}
                     >
-                        <a>Reposition</a>
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className='move__image'>
+                            <path d="M4 8L1 11L4 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M8 4L11 1L14 4" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M14 18L11 21L8 18" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M18 8L21 11L18 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M1 11H21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M11 1V21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -183,13 +200,20 @@ export default function ConfigUi() {
                         <button
                             onClick={handleBack}
                         >
-                            <a>Back</a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 8H1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M8 15L1 8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
                         </button>
   
                         <button
                             onClick={handleNext}
                         >
-                            <a>Next</a>
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 8H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M8 1L15 8L8 15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+
                         </button>
                     </div>
 
@@ -269,7 +293,11 @@ export default function ConfigUi() {
                                                         style={{
                                                             backgroundImage: `url(${material.url}albedo.jpg)`, 
                                                         }}
-                                                        onClick={() => setSinkMaterial(material.url)}
+                                                        onClick={() => {
+                                                            setSinkMaterial(material.url);
+                                                            console.log('sinkMaterial:', material.url);
+                                                            }
+                                                        }
                                                     ></div>
                                                 ))}
                                             </div>
