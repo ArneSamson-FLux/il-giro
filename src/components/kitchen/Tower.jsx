@@ -48,7 +48,8 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         scale: isDraggingTower ? [1.1, 1.1, 1.1] : [1, 1, 1],
         config: { 
                 tension: 250, 

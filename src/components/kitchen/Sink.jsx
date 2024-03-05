@@ -55,7 +55,8 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
 
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         rotation: isDraggingSink ? [0, 0, 0] : [0, 0.5, 0],
         scale: isDraggingSink ? [1.1, 1.1, 1.1] : [1, 1, 1],
         config: { 

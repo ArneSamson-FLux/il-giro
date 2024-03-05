@@ -51,7 +51,8 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
         rotation: isDraggingCooktop ? [0, 0, 0] : [0, -0.5, 0],
         config: { 
