@@ -17,15 +17,11 @@ export default function GasStove({props}){
                 receiveShadow
                 geometry={nodes.SWITCHES.geometry}
                 material={materials["black_metal.003"]}
-                position={[0.122, 0.021, 0.167]}
-                scale={0.012}
             />
 
             <group
                 name='pit-1-group'
-                position={[0.184, 0.013, -0.055]}
-                rotation={[0, -Math.PI / 2, 0]}
-                scale={0.013}
+
             >
                 <mesh
                     name='pit-1-mesh-1'
@@ -58,9 +54,6 @@ export default function GasStove({props}){
             </group>
             <group
                 name='pit-2-group'
-                position={[-0.147, 0.021, -0.201]}
-                rotation={[0, -Math.PI / 2, 0]}
-                scale={0.015}
             >
                 <mesh
                     name='pit-2-mesh-1'
@@ -86,9 +79,6 @@ export default function GasStove({props}){
             </group>
             <group
                 name='pit-3-group'
-                position={[-0.147, 0.018, 0.091]}
-                rotation={[0, -Math.PI / 2, 0]}
-                scale={0.009}
             >
                 <mesh
                     name='pit-3-mesh-1'

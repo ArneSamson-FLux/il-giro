@@ -161,7 +161,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                     <GasStove
                         props={
                             {
-                                position: [0, 0.957, 0.12],
+                                position: [0, 0.967, 0.12],
                             }
                         }
                     />
