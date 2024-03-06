@@ -38,7 +38,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
         map: albedoTexture,
     });
 
-    const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
+    const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb");
     
     const { setCurrentPage, currentPage, dragMode, isDraggingSink, setIsDraggingSink, setIsDragging } = useConfig();
     const { setCameraFocus, setIsFocussedOnIsland } = useScene();
@@ -157,7 +157,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                         name='sink-tabletop-mesh'
                         castShadow
                         receiveShadow
-                        geometry={nodes.tabletop.geometry}
+                        geometry={nodes.tabletop001.geometry}
                         material={tabletopMaterial}
                     />
                 </mesh>
