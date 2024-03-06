@@ -10,7 +10,6 @@ import useScene from './store/useScene.jsx'
 import useConfig from './store/useConfig.jsx'
 
 import { Perf } from 'r3f-perf'
-import { set } from 'mongoose';
 
 export default function Experience() {
 
