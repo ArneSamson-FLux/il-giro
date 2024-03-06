@@ -73,9 +73,9 @@ export default function ConfigUi() {
 
             if(loaded) return;
 
-            setSinkMaterial(allMaterials[1].url);
-            setCooktopMaterial(allMaterials[1].url);
-            setTowerMaterial(allMaterials[1].url);
+            setSinkMaterial(allMaterials[5].url);
+            setCooktopMaterial(allMaterials[5].url);
+            setTowerMaterial(allMaterials[5].url);
             setTapMaterial(allMaterials[7].url);
             setSinkBowlMaterial(allMaterials[8].url);
             setTowerAccessoryMaterial(allMaterials[8].url);
