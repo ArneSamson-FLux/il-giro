@@ -34,7 +34,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
     const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
 
     const { setCurrentPage, currentPage, dragMode, isDraggingTower, setIsDraggingTower, setIsDragging } = useConfig();
-    const { setCameraFocus } = useScene();
+    const { setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -112,7 +112,8 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                     (e) => {
                         if(dragMode) return;
                         setCurrentPage(3);
-                        setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        setCameraFocus([position[0], position[1] + 1, position[2] ]);
+                        setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }
                 }

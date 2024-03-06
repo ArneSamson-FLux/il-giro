@@ -41,7 +41,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb",);
     
     const { setCurrentPage, currentPage, dragMode, isDraggingSink, setIsDraggingSink, setIsDragging } = useConfig();
-    const { setCameraFocus } = useScene();
+    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
     
     const [hovered, setHover] = useState(null);
 
@@ -120,6 +120,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                         if(dragMode) return;
                         setCurrentPage(1);
                         setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }
                 }

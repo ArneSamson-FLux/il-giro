@@ -37,7 +37,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
     const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
 
     const { setCurrentPage, currentPage, dragMode, setIsDragging, isDraggingCooktop, setIsDraggingCooktop } = useConfig();
-    const { setCameraFocus } = useScene();
+    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -116,6 +116,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                         if(dragMode) return;
                         setCurrentPage(2);
                         setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }
                 }
