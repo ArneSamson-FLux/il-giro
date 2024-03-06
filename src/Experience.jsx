@@ -10,22 +10,61 @@ import useScene from './store/useScene.jsx'
 import useConfig from './store/useConfig.jsx'
 
 import { Perf } from 'r3f-perf'
+import { set } from 'mongoose';
 
 export default function Experience() {
 
-  const camera = useRef()
+    const camera = useRef()
 
-  const { cameraCoords, cameraFocus, setCameraFocus } = useScene();
+    const { cameraCoords, cameraFocus, setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
 
-  const { isDragging } = useConfig();
+    const { isDragging, setCurrentPage, currentPage } = useConfig();
 
-  useEffect(() => {
-    // console.log('camerafocus', cameraFocus)
+    useEffect(() => {
+        
+        camera.current.moveTo(...cameraFocus, true)
 
-    camera.current.moveTo(...cameraFocus, true)
+    }
+    , [cameraFocus, setCameraFocus])
 
-  }
-  , [cameraFocus, setCameraFocus])
+    const defaultFocus = [0, 1, 0];
+    const [canZoomOut, setCanZoomOut] = useState(false);
+
+    useFrame((state) => {
+
+        if(!canZoomOut) {
+
+            const distance = state.camera.position.distanceTo(new THREE.Vector3(...cameraFocus));
+            if(distance > 3.8 && !isDragging) {
+
+                setCameraFocus(defaultFocus);
+                setCurrentPage(0);
+                setIsFocussedOnIsland(false);
+                setCanZoomOut(true);
+            }
+        }
+
+    });
+
+    useEffect(() => {
+
+        if(isFocussedOnIsland) {
+            
+            const timer = setTimeout(() => {
+                
+                setCanZoomOut(false);
+                
+            }, 3000);
+        }
+
+    }, [isFocussedOnIsland])
+
+    useEffect(() => {
+        if(camera.current) {
+            camera.current.dollyTo(4, false);
+        }
+    }, [camera.current])
+
 
   return <>
 
@@ -35,11 +74,12 @@ export default function Experience() {
     />
 
     <CameraControls
+      ref={camera}
       draggingSmoothTime={0.2}
       maxPolarAngle={Math.PI / 2}
-      maxDistance={10}
+      maxZoom={4}
+      maxDistance={4}
       minDistance={2}
-      ref={camera}
       enabled={!isDragging}
     />
 
