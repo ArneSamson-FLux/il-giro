@@ -122,7 +122,7 @@ export default function Scene() {
                     {
                         position: [0, -0.01, 0],
                         rotation: [-Math.PI / 2, 0, 0],
-                        scale: [10, 10, 10],
+                        scale: [7, 7, 1],
                     }
                 }
             />
