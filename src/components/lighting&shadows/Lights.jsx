@@ -22,6 +22,6 @@ export default function Lights()
             shadow-camera-bottom={ - 4 }
             shadow-camera-left={ - 5 }
         />
-        <ambientLight intensity={ 1.4 } />
+        {/* <ambientLight intensity={ 1.4 } /> */}
     </>
 }

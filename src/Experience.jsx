@@ -90,7 +90,7 @@ export default function Experience() {
       <Lightformer
           visible={true}
           form="rect"
-          intensity={1}
+          intensity={0.5}
           position={new THREE.Vector3().setFromSphericalCoords(
             2, // distance
             1.2, // phi
@@ -105,7 +105,7 @@ export default function Experience() {
         <Lightformer
           visible={true}
           form="rect"
-          intensity={2}
+          intensity={0.5}
           position={new THREE.Vector3().setFromSphericalCoords(
             1.5, // distance
             1, // phi
