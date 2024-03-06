@@ -54,7 +54,7 @@ export default function Experience() {
                 
                 setCanZoomOut(false);
                 
-            }, 3000);
+            }, 2000);
         }
 
     }, [isFocussedOnIsland])

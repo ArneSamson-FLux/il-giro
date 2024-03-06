@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import useConfig from '../store/useConfig';
 import useScene from '../store/useScene';
+import { set } from 'mongoose';
 
 export default function ConfigUi() {
 
@@ -8,7 +9,9 @@ export default function ConfigUi() {
         cameraCoords,
         setCameraCoords,
         cameraFocus,
-        setCameraFocus
+        setCameraFocus,
+        isFocussedOnIsland,
+        setIsFocussedOnIsland,
     } = useScene();
 
     const {
@@ -112,7 +115,6 @@ export default function ConfigUi() {
     const handleZoom = () => {
         if(currentPage === 0) return;
         checkPage(0);
-        // setCurrentPage(0);
     }
 
     const handleDragMode = () => {
@@ -125,6 +127,7 @@ export default function ConfigUi() {
             case 0:
                 setCurrentPage(0);
                 setCameraFocus([0, 1, 0]);
+                setIsFocussedOnIsland(false);
             break;  
             case 1:
                 setCurrentPage(1);
