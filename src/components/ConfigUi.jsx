@@ -112,7 +112,7 @@ export default function ConfigUi() {
     const handleZoom = () => {
         if(currentPage === 0) return;
         checkPage(0);
-        setCurrentPage(0);
+        // setCurrentPage(0);
     }
 
     const handleDragMode = () => {
