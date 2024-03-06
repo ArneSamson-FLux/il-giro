@@ -8,6 +8,8 @@ export default function SinkBowl({props, materialUrl}) {
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
     const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
+    const aoTexture = useTexture("./images/bakes/sink-bake.jpg");
+    aoTexture.flipY = false;
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -17,7 +19,9 @@ export default function SinkBowl({props, materialUrl}) {
         roughnessMap: roughnessTexture,
         metalnessMap: metallnesTexture,
         metalness: 1,
-        roughness: 0
+        roughness: 0,
+        aoMap: aoTexture,
+        aoMapIntensity: 1,
     });
 
   
