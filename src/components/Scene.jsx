@@ -5,6 +5,8 @@ import Cooktop from './kitchen/Cooktop.jsx'
 import Sink from './kitchen/Sink.jsx'
 import Tower from './kitchen/Tower.jsx'
 
+import ReflectivePlane from './lighting&shadows/ReflectivePlane.jsx'
+
 import useConfig from '../store/useConfig.jsx'
 
 export default function Scene() {
@@ -113,6 +115,16 @@ export default function Scene() {
             <gridHelper
                 visible={dragMode}
                 args={[10, 10, 0x000000, 0x000000]} 
+            />
+
+            <ReflectivePlane
+                props={
+                    {
+                        position: [0, -0.01, 0],
+                        rotation: [-Math.PI / 2, 0, 0],
+                        scale: [10, 10, 10],
+                    }
+                }
             />
 
             <color attach="background" args={dragMode ? [0xefefef] : [0xffffff]} />
