@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import useConfig from '../store/useConfig';
 import useScene from '../store/useScene';
-import { set } from 'mongoose';
 
 export default function ConfigUi() {
 
