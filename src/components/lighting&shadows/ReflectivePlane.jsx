@@ -30,8 +30,8 @@ export default function ReflectivePlane({props}){
                 // minDepthThreshold={0.5}
 
                 // color={0xF9f9f9}
-                // color={0xffffff}
-                color={0xd3d3d3}
+                color={0xffffff}
+                // color={0xd3d3d3}
                 mixStrength={1}
                 mirror={0.3}
                 resolution={1024}
