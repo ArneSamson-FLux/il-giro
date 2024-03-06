@@ -17,6 +17,8 @@ import useConfig from '../../store/useConfig.jsx';
 export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
+    const aoTexture = useTexture("./images/bakes/Tower-AO-bake.jpg");
+    aoTexture.flipY = false;
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
     const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
@@ -29,6 +31,8 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         roughnessMap: roughnessTexture,
         metalnessMap: metallnesTexture,
         metalness: 1,
+        aoMap: aoTexture,
+        aoMapIntensity: 1,
     });
 
     const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
