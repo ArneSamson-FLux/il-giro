@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 html,
 body,
 #root{
@@ -58,6 +62,7 @@ body,
 }
 
 h1{
+    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading1-size);
     font-weight: var(--heading1-weight);
@@ -65,6 +70,7 @@ h1{
 }
 
 h2{
+    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading2-size);
     font-weight: var(--heading2-weight);
@@ -72,6 +78,7 @@ h2{
 }
 
 h3{
+    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading3-size);
     font-weight: var(--heading3-weight);
@@ -80,6 +87,7 @@ h3{
 }
 
 h4{
+    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading4-size);
     font-weight: var(--heading4-weight);
@@ -87,6 +95,7 @@ h4{
 }
 
 h5{
+    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading5-size);
     font-weight: var(--heading5-weight);
@@ -203,17 +212,18 @@ input[type=range]::-ms-track {
     align-items: baseline;
     padding: 20px;
     margin: 50px 0;
-    height: 100vh;
+    height: 100%;
     overflow: scroll;
 }
 
 .config-wrapper{
     position: absolute;
-    top: 0;
+    top: 5vh;
     right: 0;
     width: 500px;
-    height: 100vh;
-    overflow: visible;
+    height: 80vh;
+    overflow-y: visible;
+    overflow-x: visible;
     background-color: var(--off-white);
     padding: 20px;
     border: var(--light-grey) 1px solid;
@@ -278,6 +288,10 @@ input[type=range]::-ms-track {
     justify-content: center;
     width: 100%;
     margin: 20px 0;
+}
+
+.ui-page__slider{
+    margin-bottom: 20px;
 }
 
 .config-ui__nav{

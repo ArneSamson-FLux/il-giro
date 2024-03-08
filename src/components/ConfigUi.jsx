@@ -222,9 +222,40 @@ export default function ConfigUi() {
                         <div
                             className='config-ui__amounts ui-page'
                         >   
-                            <h2>Amounts</h2>
+                            <h2>Overview</h2>
+
+                            <div
+                                className='config-ui__align-row__per-element'
+                            >
+                                <p>main material:</p>
+
+                                <div className="config-ui__material-options material-selection">
+                                    {Object.entries(allCategories).map(([category, materials]) => (
+                                        <div key={category}>
+                                            <p>{category}</p>
+                                            <div className="config-ui__material-options__category">
+                                                {materials.map((material, index) => (
+                                                    <div
+                                                        key={index}
+                                                        className="config-ui__material-options__option"
+                                                        style={{
+                                                            backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                        }}
+                                                        onClick={() => {
+                                                            setSinkMaterial(material.url)
+                                                            setCooktopMaterial(material.url)
+                                                            setTowerMaterial(material.url)
+                                                        }
+                                                        }
+                                                    ></div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                             
-                            <p>Select the number of islands you want.</p>
+                            {/* <p>Select the number of islands you want.</p>
                             
                             <div
                                 className='config-ui__align-row__per-element'
@@ -266,7 +297,7 @@ export default function ConfigUi() {
                                     min={0}
                                     onChange={(e) => setTowerAmount(e.target.value < 3 ? e.target.value : 3)}
                                 />
-                            </div>
+                            </div> */}
 
                         </div>
                     }
@@ -517,7 +548,9 @@ export default function ConfigUi() {
                         </div>
                     }
 
-                    <div>
+                    <div
+                        className='ui-page__slider'
+                    >
                         <h5>Open doors and shelves:</h5>
                         <input
                             type="range"
