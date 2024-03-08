@@ -67,10 +67,10 @@ export default function Experience() {
 
   return <>
 
-    <Perf
+    {/* <Perf
         position="top-left"
         style={{ transform: 'translateX(15vw)'}}
-    />
+    /> */}
 
     <CameraControls
       ref={camera}
