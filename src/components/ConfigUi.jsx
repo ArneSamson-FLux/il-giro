@@ -227,7 +227,7 @@ export default function ConfigUi() {
                             <div
                                 className='config-ui__align-row__per-element'
                             >
-                                <p>main material:</p>
+                                <h5>main material:</h5>
 
                                 <div className="config-ui__material-options material-selection">
                                     {Object.entries(allCategories).map(([category, materials]) => (
@@ -551,7 +551,7 @@ export default function ConfigUi() {
                     <div
                         className='ui-page__slider'
                     >
-                        <h5>Open doors and shelves:</h5>
+                        <p>Open doors and shelves:</p>
                         <input
                             type="range"
                             min="0"
