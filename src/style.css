@@ -23,8 +23,11 @@ body,
 
     --trans-grey: #eaeaeacc;
 
-    --heading-family: "Josefin Sans", sans-serif;
-    --body-family: "Noto Traditional Nushu", sans-serif;
+    /* --heading-family: "Josefin Sans", sans-serif; */
+    /* --heading-family: "Cinzel", serif; */
+    --heading-family: "Kaisei Decol", serif;
+    /* --body-family: "Noto Traditional Nushu", sans-serif; */
+    --body-family: "League Spartan", sans-serif;
 
     --heading1-size: 48px;
     --heading1-line-height: 54px;
