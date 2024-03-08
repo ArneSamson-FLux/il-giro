@@ -59,7 +59,7 @@ body,
 
     --button-weight: 700;
 
-    background-image: url("./public/images/UI/hero.png");
+    background-image: url("../public/images/UI/hero.png");
     background-position: center;
 
     background-repeat: no-repeat;
