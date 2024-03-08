@@ -21,6 +21,8 @@ export default function Lights()
             shadow-camera-right={ 5 }
             shadow-camera-bottom={ - 4 }
             shadow-camera-left={ - 5 }
+            shadow-bias={ 0.006}
+            shadow-normalBias={ 0.03 }
         />
         {/* <ambientLight intensity={ 1.4 } /> */}
     </>

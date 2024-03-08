@@ -17,7 +17,7 @@ import useConfig from '../../store/useConfig.jsx';
 export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    const aoTexture = useTexture("./images/bakes/Tower-AO-bake.jpg");
+    const aoTexture = useTexture("./images/bakes/tower-straight_Bake1_PBR_Ambient Occlusion.jpg");
     aoTexture.flipY = false;
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
@@ -31,8 +31,16 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         roughnessMap: roughnessTexture,
         metalnessMap: metallnesTexture,
         metalness: 1,
+    });
+
+    const towerMaterial = new THREE.MeshStandardMaterial({
+        map: albedoTexture,
+        normalMap: normalTexture,
+        roughnessMap: roughnessTexture,
+        metalnessMap: metallnesTexture,
+        metalness: 1,
         aoMap: aoTexture,
-        aoMapIntensity: 1,
+        aoMapIntensity: 0.7,
     });
 
     const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
@@ -128,7 +136,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                     castShadow
                     receiveShadow
                     geometry={nodes["tower-straight"].geometry}
-                    material={material}
+                    material={towerMaterial}
                 >
                     {/* //door */}
                     <mesh
