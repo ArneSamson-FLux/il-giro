@@ -56,37 +56,45 @@ const innerStyles = {
 
 root.render(
     <>
-        <Canvas
-            className="canvas"
-            camera={camSettings}
-            gl = {{
-            antialias: true,
-            toneMapping: THREE.ACESFilmicToneMapping,
-            outoutColorSpace: THREE.SRGBColorSpace,
-            }}
-            shadows={true}
-            dpr={window.devicePixelRatio}
+
+        <div
+            className='root-container'
         >
-            <Effects/>
+            <Canvas
+                className="canvas"
+                camera={camSettings}
+                gl = {{
+                antialias: true,
+                toneMapping: THREE.ACESFilmicToneMapping,
+                outoutColorSpace: THREE.SRGBColorSpace,
+                }}
+                shadows={true}
+                dpr={window.devicePixelRatio}
+                style={{
+                    height: '90vh',
+                }}
+            >
+                <Effects/>
 
-            <Experience/>
-        </Canvas>
+                <Experience/>
+            </Canvas>
 
-        <Loader
-            containerStyles={containerStyles}
-            barStyles={barStyles}
-            dataStyles={dataStyles}
-            innerStyles={innerStyles}
-            dataInterpolation={(p) => `Loading kitchen: ${p.toFixed(2)}%`}
-        />
+            <Loader
+                containerStyles={containerStyles}
+                barStyles={barStyles}
+                dataStyles={dataStyles}
+                innerStyles={innerStyles}
+                dataInterpolation={(p) => `Loading kitchen: ${p.toFixed(2)}%`}
+            />
 
-        <ConfigUi/>
+            <ConfigUi/>
 
 
-        <Leva
-            collapsed
-            hidden
-        />
+            <Leva
+                collapsed
+                hidden
+            />
+        </div>
     </>
 
 )
