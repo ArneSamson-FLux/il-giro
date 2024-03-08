@@ -189,7 +189,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         castShadow
                         receiveShadow
                         geometry={nodes["tower-bevel"].geometry}
-                        material={tower2material}
+                        material={material}
                     />
                     <mesh
                         name='tower-straight-mesh'
