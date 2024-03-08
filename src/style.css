@@ -58,10 +58,26 @@ body,
     --link-weight: 400;
 
     --button-weight: 700;
+
+    background-image: url("./public/images/UI/hero.png");
+    background-position: center;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.root-container{
+    width: 60vw;
+    height: 100%;
+    overflow: 'hidden';
+    margin: 50px;
 }
 
 .canvas{
-    transform: translateX(-15%);
+    width: 50vw;
+    height: 80vh;
+    border-radius: 16px;
 }
 
 h1{
@@ -106,10 +122,12 @@ h5{
 }
 
 strong{
+    margin: 0;
     font-weight: 700;
 }
 
 p{
+    margin: 0;
     font-family: var(--body-family);
     font-size: var(--body-size);
     font-weight: var(--body-weight);
@@ -117,6 +135,7 @@ p{
 }
 
 a{
+    margin: 0;
     font-family: var(--body-family);
     font-size: var(--link-size);
     font-weight: var(--link-weight);
@@ -214,22 +233,31 @@ input[type=range]::-ms-track {
     flex-direction: column;
     align-items: baseline;
     padding: 20px;
-    margin: 50px 0;
+    /* padding: 50px 0; */
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .config-wrapper{
     position: absolute;
-    top: 5vh;
+    top: 0;
     right: 0;
     width: 500px;
     height: 80vh;
-    overflow-y: visible;
-    overflow-x: visible;
-    background-color: var(--off-white);
-    padding: 20px;
-    border: var(--light-grey) 1px solid;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    /* background-color: var(--off-white); */
+    /* padding: 20px; */
+    margin: 50px 0 50px 50px;
+    border: var(--light-grey) 2px solid;
+    border-radius: 16px;    
+
+    background: var(--trans-grey);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 1px solid var(--off-white);
 }
 .config-ui__extra-buttons{
     display: flex;
@@ -322,7 +350,7 @@ input[type=range]::-ms-track {
 .config-ui__align-row__per-element{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 30px;
     border-bottom: 1px solid var(--off-black);
     width: 100%;

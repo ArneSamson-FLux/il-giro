@@ -71,7 +71,7 @@ root.render(
                 shadows={true}
                 dpr={window.devicePixelRatio}
                 style={{
-                    height: '90vh',
+                    height: '80vh',
                 }}
             >
                 <Effects/>
