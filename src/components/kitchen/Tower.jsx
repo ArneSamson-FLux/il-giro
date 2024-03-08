@@ -17,8 +17,13 @@ import useConfig from '../../store/useConfig.jsx';
 export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
+
     const aoTexture = useTexture("./images/bakes/tower-straight_Bake1_PBR_Ambient Occlusion.jpg");
     aoTexture.flipY = false;
+
+    const aoTexture2 = useTexture("./images/bakes/tower-straight.002_Bake1_PBR_Ambient Occlusion.jpg");
+    aoTexture2.flipY = false;
+
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
     const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
@@ -40,6 +45,16 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         metalnessMap: metallnesTexture,
         metalness: 1,
         aoMap: aoTexture,
+        aoMapIntensity: 0.7,
+    });
+
+    const tower2material = new THREE.MeshStandardMaterial({
+        map: albedoTexture,
+        normalMap: normalTexture,
+        roughnessMap: roughnessTexture,
+        metalnessMap: metallnesTexture,
+        metalness: 1,
+        aoMap: aoTexture2,
         aoMapIntensity: 0.7,
     });
 
@@ -174,7 +189,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         castShadow
                         receiveShadow
                         geometry={nodes["tower-bevel"].geometry}
-                        material={material}
+                        material={tower2material}
                     />
                     <mesh
                         name='tower-straight-mesh'
@@ -182,7 +197,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         castShadow
                         receiveShadow
                         geometry={nodes["tower-straight002"].geometry}
-                        material={material}
+                        material={tower2material}
                     />
                 </mesh>
 
