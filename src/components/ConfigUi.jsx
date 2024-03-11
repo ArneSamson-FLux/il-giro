@@ -628,13 +628,22 @@ export default function ConfigUi() {
                                         </span>
                                     </summary>
 
-                                    <select 
-                                        onChange={(e) => setStoveType(e.target.value)}
-                                        value={stoveType}
+                                    <div
+                                        className='config-ui__selection-buttons'
                                     >
-                                        <option value="gas">Gas</option>
-                                        <option value="electric">Electric</option>
-                                    </select>
+                                        <button
+                                            className={stoveType === 'gas' ? 'active-selection-button' : ''}
+                                            onClick={() => setStoveType('gas')}
+                                        >
+                                            Gas
+                                        </button>
+                                        <button
+                                            className={stoveType === 'electric' ? 'active-selection-button' : ''}
+                                            onClick={() => setStoveType('electric')}
+                                        >
+                                            Electric
+                                        </button>
+                                    </div>
                                 </details>
                             </div>
                         </div>
@@ -741,13 +750,22 @@ export default function ConfigUi() {
                                         </span>
                                     </summary>
 
-                                    <select
-                                        onChange={(e) => setApplianceType(e.target.value)}
-                                        value={applianceType}
+                                    <div
+                                        className='config-ui__selection-buttons'
                                     >
-                                        <option value="oven">Oven</option>
-                                        <option value="fridge">Fridge</option>
-                                    </select>
+                                        <button
+                                            className={applianceType === 'oven' ? 'active-selection-button' : ''}
+                                            onClick={() => setApplianceType('oven')}
+                                        >
+                                            Oven
+                                        </button>
+                                        <button
+                                            className={applianceType === 'fridge' ? 'active-selection-button' : ''}
+                                            onClick={() => setApplianceType('fridge')}
+                                        >
+                                            Fridge
+                                        </button>
+                                    </div>
                                 </details>
 
                                 <details
