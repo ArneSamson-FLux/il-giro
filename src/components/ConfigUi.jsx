@@ -310,7 +310,9 @@ export default function ConfigUi() {
 
                     {currentPage === 1 &&
                         <div
-                           
+                           style={{
+                                width: '100%',
+                           }}
                         >
                             <h2>The Sink</h2>
 
@@ -368,10 +370,15 @@ export default function ConfigUi() {
                                     />
                                 </details>
 
-                                <div
+                                <details
+                                    open
                                     className='config-ui__details'
                                 >
-                                    <p>Tap Material:</p>
+                                    <summary>Kraan Materiaal:
+                                        <span>
+                                            {' ' + tapMaterial.split('/').slice(-2, -1)[0]}
+                                        </span>
+                                    </summary>
 
                                     <div className="config-ui__material-options material-selection">
                                         <div className="config-ui__material-options__category">
@@ -388,12 +395,17 @@ export default function ConfigUi() {
                                         </div>
                                     </div>
 
-                                </div>
+                                </details>
 
-                                <div
+                                <details
+                                    open
                                     className='config-ui__details'
                                 >
-                                    <p>Tap Type:</p>
+                                    <summary>Kraan Type:
+                                        <span>
+                                            {tapType === 'tap1' ? ' standaard' : ' quooker'}
+                                        </span>
+                                    </summary>
                                     <select 
                                         onChange={(e) => setTapType(e.target.value)}
                                         value={tapType}
@@ -401,12 +413,17 @@ export default function ConfigUi() {
                                         <option value="tap1">Standard tap</option>
                                         <option value="tap2">Quooker tap</option>
                                     </select>
-                                </div>
+                                </details>
 
-                                <div
+                                <details
+                                    open
                                     className='config-ui__details'
                                 >
-                                    <p>Sink Material:</p>
+                                    <summary>Wasbak Materiaal:
+                                        <span>
+                                            {' ' + sinkBowlMaterial.split('/').slice(-2, -1)[0]}
+                                        </span>
+                                    </summary>
 
                                     <div className="config-ui__material-options material-selection">
                                         <div className="config-ui__material-options__category">
@@ -423,7 +440,7 @@ export default function ConfigUi() {
                                         </div>
                                     </div>
 
-                                </div>
+                                </details>
                             </div>
                         </div>
                     }
