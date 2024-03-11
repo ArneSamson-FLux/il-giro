@@ -236,8 +236,8 @@ input[type=range]::-ms-track {
     align-items: baseline;
     padding: 20px;
     height: 100%;
-    /* overflow-y: scroll;
-    overflow-x: hidden; */
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .config-ui::-webkit-scrollbar{
     display: none;

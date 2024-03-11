@@ -237,7 +237,7 @@ export default function ConfigUi() {
                                 </h1>
 
                                 <div
-                                    className='config-ui__scroll-container'
+                                    // className='config-ui__scroll-container'
                                 >
                                     <details
                                         open
@@ -368,7 +368,7 @@ export default function ConfigUi() {
                             </h1>
 
                             <div
-                                className='config-ui__scroll-container'
+                                // className='config-ui__scroll-container'
 
                             >
 
