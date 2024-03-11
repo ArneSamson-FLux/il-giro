@@ -355,6 +355,11 @@ input[type=range]::-ms-track {
     margin-top: 40px;
     width: 100%;
 }
+.material-category-details{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
+    gap: 0rem 0rem;
+}
 .config-ui__details summary{
     font-family: var(--heading-family);
     font-size: var(--heading5-size);
@@ -383,16 +388,13 @@ summary span{
 }
 
 .config-ui__material-options{
-    display: grid;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: 20px;
     margin-top: 20px;
 }
 .material-options__image{
     display: block;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .material-options__category-wrapper{
@@ -415,4 +417,9 @@ summary span{
     &:hover{
         cursor: pointer;
     }
+}
+
+.selected-material-n-category {
+    outline: 3px solid var(--dark-grey);
+    outline-offset: 2px;
 }

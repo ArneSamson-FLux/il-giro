@@ -221,91 +221,127 @@ export default function ConfigUi() {
                     </div>
 
                     {currentPage === 0 &&
+
                         <div
-                            className='config-ui__amounts ui-page'
-                        >   
-                            <h2>Overview</h2>
+                           style={{
+                                width: '100%',
+                           }}
+                        >
 
-                            <div
-                                className='config-ui__align-row__per-element'
-                            >
-                                <h5>main material:</h5>
+                            <div>   
+                                <h2>Overview</h2>
 
-                                <div className="config-ui__material-options material-selection">
-                                    {Object.entries(allCategories).map(([category, materials]) => (
-                                        <div key={category}>
-                                            <p>{category}</p>
+                                <div>
+                                    <details
+                                        open
+                                        className='config-ui__details'
+                                    >
+                                        <summary>Algemeen materiaal
+                                            <span>
+                                                {' ' + sinkMaterial.split('/').slice(-2, -1)[0]}
+                                            </span>
+                                        </summary>
+
+                                        <div className="config-ui__material-options material-selection material-category-details">
+                                            {Object.entries(allCategories).map(([category, materials]) => (
+                                                <div
+                                                    className='material-options__category-wrapper'
+                                                    key={category}
+                                                >
+                                                    <p>{category}</p>
+                                                    <div className="config-ui__material-options__category">
+                                                        <div
+                                                            className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
+                                                            onClick={() => {
+                                                                setMaterialCategory(category)
+                                                            }}
+                                                            style={{
+                                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
+                                                            }}
+                                                        ></div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </details>
+
+                                    <details
+                                        open
+                                        className='config-ui__details'
+                                    >
+                                        <summary>Keuze in categorie
+                                            <span> {materialCategory}</span>
+                                        </summary>
+
+                                        <div className="config-ui__material-options material-selection">
                                             <div className="config-ui__material-options__category">
-                                                {materials.map((material, index) => (
+                                                {allCategories[materialCategory].map((material, index) => (
                                                     <div
                                                         key={index}
-                                                        className="config-ui__material-options__option"
-                                                        // style={{
-                                                        //     backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                        // }}
+                                                        className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
                                                         onClick={() => {
                                                             setSinkMaterial(material.url)
                                                             setCooktopMaterial(material.url)
                                                             setTowerMaterial(material.url)
-                                                        }
-                                                        }
-                                                    >
-                                                    <img
-                                                        className='material-options__image'
-                                                        src={`${material.url}` + 'albedo.jpg'}
-                                                    />
+                                                        }}
+                                                        style={{
+                                                            backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                        }}
+                                                    ></div>
+                                                    ))}
+                                                </div>
+                                                </div>
+                                            </details>
 
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
+
                                 </div>
-                            </div>
-                            
-                            {/* <p>Select the number of islands you want.</p>
-                            
-                            <div
-                                className='config-ui__align-row__per-element'
-                            >
-                                <p>Amount of sinks:</p>
-                                <input
-                                    type="number"
-                                    value={sinkAmount}
-                                    max={3}
-                                    min={0}
-                                    //if value is lower than 10, set the value to the input value
-                                    onChange={(e) => setSinkAmount(e.target.value < 3 ? e.target.value : 3)}
-        
-                                />
-                            </div>
 
-                            <div
-                                className='config-ui__align-row__per-element'
-                            >
-                                <p>Amount of cooktops: </p>
-                                <input
-                                    type="number"
-                                    value={cooktopAmount}
-                                    max={3}
-                                    min={0}
-                                    //if value is lower than 10, set the value to the input value
-                                    onChange={(e) => setCooktopAmount(e.target.value < 3 ? e.target.value : 3)}
-                                />
-                            </div>
+                                
+                                {/* <p>Select the number of islands you want.</p>
+                                
+                                <div
+                                    className='config-ui__align-row__per-element'
+                                >
+                                    <p>Amount of sinks:</p>
+                                    <input
+                                        type="number"
+                                        value={sinkAmount}
+                                        max={3}
+                                        min={0}
+                                        //if value is lower than 10, set the value to the input value
+                                        onChange={(e) => setSinkAmount(e.target.value < 3 ? e.target.value : 3)}
+            
+                                    />
+                                </div>
 
-                            <div
-                                className='config-ui__align-row__per-element'
-                            >
-                                <p>Amount of towers: </p>
-                                <input
-                                    type="number"
-                                    value={towerAmount}
-                                    max={3}
-                                    min={0}
-                                    onChange={(e) => setTowerAmount(e.target.value < 3 ? e.target.value : 3)}
-                                />
-                            </div> */}
+                                <div
+                                    className='config-ui__align-row__per-element'
+                                >
+                                    <p>Amount of cooktops: </p>
+                                    <input
+                                        type="number"
+                                        value={cooktopAmount}
+                                        max={3}
+                                        min={0}
+                                        //if value is lower than 10, set the value to the input value
+                                        onChange={(e) => setCooktopAmount(e.target.value < 3 ? e.target.value : 3)}
+                                    />
+                                </div>
+
+                                <div
+                                    className='config-ui__align-row__per-element'
+                                >
+                                    <p>Amount of towers: </p>
+                                    <input
+                                        type="number"
+                                        value={towerAmount}
+                                        max={3}
+                                        min={0}
+                                        onChange={(e) => setTowerAmount(e.target.value < 3 ? e.target.value : 3)}
+                                    />
+                                </div> */}
+
+                            </div>
 
                         </div>
                     }
@@ -331,7 +367,7 @@ export default function ConfigUi() {
 
                                     </summary>
 
-                                    <div className="config-ui__material-options material-selection">
+                                    <div className="config-ui__material-options material-selection material-category-details">
                                         {Object.entries(allCategories).map(([category, materials]) => (
                                             <div
                                                 className='material-options__category-wrapper'
@@ -340,47 +376,46 @@ export default function ConfigUi() {
                                                 <p>{category}</p>
                                                 <div className="config-ui__material-options__category">
                                                     <div
-                                                        className="config-ui__material-options__option"
-                                                        onClick={() => setMaterialCategory(category)
-                                                        }
-                                                    >
-                                                        <img
-                                                            className='material-options__image'
-                                                            src={`${materials[0].url}` + 'albedo.jpg'}
-                                                        />
-                                                    </div>
+                                                        className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
+                                                        onClick={() => {
+                                                            setMaterialCategory(category)
+                                                            // setSinkMaterial(materials[0].url)
+                                                        }}
+                                                        style={{
+                                                            backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
+                                                        }}
+                                                    ></div>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
                                 </details>
 
-                                {materialCategory &&
-                                    <details
-                                        open
-                                        className='config-ui__details'                                    
-                                    >
-                                        <summary>
-                                            Keuzes in
-                                            <span> {materialCategory}</span>
-                                        </summary>
+                                <details
+                                    open
+                                    className='config-ui__details'                                    
+                                >
+                                    <summary>
+                                        Keuzes in categorie
+                                        <span> {materialCategory}</span>
+                                    </summary>
 
-                                        <div className="config-ui__material-options material-selection">
-                                            <div className="config-ui__material-options__category">
-                                                {allCategories[materialCategory].map((material, index) => (
-                                                    <div
+                                    <div className="config-ui__material-options material-selection">
+                                        <div className="config-ui__material-options__category">
+                                            {allCategories[materialCategory].map((material, index) => (
+                                                <div
                                                     key={index}
-                                                    className="config-ui__material-options__option"
+                                                    className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                    onClick={() => setSinkMaterial(material.url)}
                                                     style={{
                                                         backgroundImage: `url(${material.url}albedo.jpg)`, 
                                                     }}
-                                                    onClick={() => setSinkMaterial(material.url)}
-                                                    ></div>
-                                                    ))}
-                                            </div>
+                                                ></div>
+                                                ))}
                                         </div>
-                                    </details>
-                                }
+                                    </div>
+                                </details>
+                                
 
                                 <details
                                     open
