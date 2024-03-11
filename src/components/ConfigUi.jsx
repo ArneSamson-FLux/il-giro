@@ -230,7 +230,11 @@ export default function ConfigUi() {
                         >
 
                             <div>   
-                                <h2>Overview</h2>
+                                <h1
+                                    className='config-ui__title'
+                                >
+                                    <span>Overview</span>
+                                </h1>
 
                                 <div>
                                     <details
@@ -353,7 +357,12 @@ export default function ConfigUi() {
                                 width: '100%',
                            }}
                         >
-                            <h2>The Sink</h2>
+                            <h1
+                                className='config-ui__title'
+                            >
+                                <span>The</span>
+                                <pan>Sink</pan>
+                            </h1>
 
                             <div>
 
@@ -469,13 +478,22 @@ export default function ConfigUi() {
                                             {tapType === 'tap1' ? ' standaard' : ' quooker'}
                                         </span>
                                     </summary>
-                                    <select 
-                                        onChange={(e) => setTapType(e.target.value)}
-                                        value={tapType}
+                                    <div
+                                        className='config-ui__selection-buttons'
                                     >
-                                        <option value="tap1">Standard tap</option>
-                                        <option value="tap2">Quooker tap</option>
-                                    </select>
+                                        <button
+                                            className={tapType === 'tap1' ? 'active-selection-button' : ''}
+                                            onClick={() => setTapType('tap1')}
+                                        >
+                                            Standard tap
+                                        </button>
+                                        <button
+                                            className={tapType === 'tap2' ? 'active-selection-button' : ''}
+                                            onClick={() => setTapType('tap2')}
+                                        >
+                                            Quooker tap
+                                        </button>
+                                    </div>
                                 </details>
 
                                 <details
@@ -516,7 +534,12 @@ export default function ConfigUi() {
                             }}
                         >
 
-                            <h2>The Cooktop</h2>
+                            <h1
+                                className='config-ui__title'
+                            >
+                                <span>The</span>
+                                <span>Cooktop</span>
+                            </h1>
 
                             <div>
 
@@ -625,7 +648,12 @@ export default function ConfigUi() {
                                 }}
                         >
 
-                            <h2>The Tower</h2>
+                            <h1
+                                className='config-ui__title'
+                            >
+                                <span>The</span>
+                                <span>Tower</span>
+                            </h1>
 
                             <div>
 
