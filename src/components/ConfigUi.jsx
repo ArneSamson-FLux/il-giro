@@ -236,7 +236,9 @@ export default function ConfigUi() {
                                     <span>Overview</span>
                                 </h1>
 
-                                <div>
+                                <div
+                                    className='config-ui__scroll-container'
+                                >
                                     <details
                                         open
                                         className='config-ui__details'
@@ -365,7 +367,10 @@ export default function ConfigUi() {
                                 <span>Sink</span>
                             </h1>
 
-                            <div>
+                            <div
+                                className='config-ui__scroll-container'
+
+                            >
 
                                 <details
                                     open

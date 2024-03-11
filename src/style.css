@@ -236,8 +236,8 @@ input[type=range]::-ms-track {
     align-items: baseline;
     padding: 20px;
     height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
 }
 .config-ui::-webkit-scrollbar{
     display: none;
@@ -248,6 +248,24 @@ input[type=range]::-ms-track {
 }
 .config-ui__title span{
     display: block;
+}
+
+.config-ui__scroll-container{
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.config-ui__scroll-container::-webkit-scrollbar{
+    display: none;
+}
+.config-ui__scroll-container::-webkit-scrollbar-thumb{
+    display: none;
+}
+.config-ui__scroll-container::-webkit-scrollbar-track{
+    display: none;
+}
+.config-ui__scroll-container::-webkit-scrollbar-thumb{
+    display: none;
 }
 
 .config-wrapper{
