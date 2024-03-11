@@ -321,6 +321,22 @@ input[type=range]::-ms-track {
     stroke: var(--off-white);
 }
 
+.config-ui__selection-buttons{
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.config-ui__selection-buttons button{
+    padding: 10px;
+    border: 1px solid var(--off-black);
+    cursor: pointer;
+}
+.config-ui__selection-buttons button.active-selection-button{
+    border: 2px solid var(--off-white);
+}
+
+
 .ui-page{
     display: flex;
     flex-direction: column;
@@ -417,8 +433,8 @@ summary span{
     padding-bottom: 10px;
 }
 .config-ui__material-options__option{
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
 
     border: 1px solid var(--off-black);
 
