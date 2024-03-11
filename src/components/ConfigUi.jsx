@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import useConfig from '../store/useConfig';
 import useScene from '../store/useScene';
-import { div } from '@tensorflow/tfjs';
 
 export default function ConfigUi() {
 
