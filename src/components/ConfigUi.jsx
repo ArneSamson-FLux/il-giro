@@ -439,9 +439,10 @@ export default function ConfigUi() {
                                             ))}
                                         </div>
                                     </div>
-
                                 </details>
+
                             </div>
+                            
                         </div>
                     }
 

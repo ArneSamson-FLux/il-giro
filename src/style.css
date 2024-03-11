@@ -355,9 +355,19 @@ input[type=range]::-ms-track {
     margin-top: 40px;
     width: 100%;
 }
+.config-ui__details summary{
+    font-family: var(--heading-family);
+    font-size: var(--heading5-size);
+    font-weight: var(--heading5-weight);
+    line-height: var(--heading5-line-height);
+    cursor: pointer;
+}
+summary span{
+    color: var(--dark-grey);
+}
 
-.config-ui__details summary::-webkit-details-marker {
-    display: none;
+.config-ui__details summary::marker {
+    content: '';
 }
 
 .config-ui__details summary::after {
@@ -365,6 +375,7 @@ input[type=range]::-ms-track {
     float: right;
     font-size: 20px;
     cursor: pointer;
+    color: var(--dark-grey);
 }
 
 .config-ui__details[open] summary::after {
