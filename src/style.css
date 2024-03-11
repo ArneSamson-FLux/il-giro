@@ -1,4 +1,6 @@
 *{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -12,8 +14,6 @@ body,
     height: 100%;
     overflow: hidden;
     margin: 0;
-
-    color: var(--off-black);
 
     --off-black: #272727;
     --off-white: #fafafa;
@@ -59,11 +59,15 @@ body,
 
     --button-weight: 700;
 
-    background-image: url("../public/images/UI/hero.png");
+    /* background-image: url("/images/UI/hero.png"); */
+    background-image: url("/images/UI/bg2.png");
+    background-color: var(--off-white);
     background-position: center;
 
     background-repeat: no-repeat;
     background-size: cover;
+
+    color: var(--off-black);
     
 }
 
@@ -78,11 +82,12 @@ body,
 
 .canvas{
     width: 50vw;
-    border-radius: 16px;
+    /* border-radius: 16px; */
+    box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--off-black);
 }
 
 h1{
-    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading1-size);
     font-weight: var(--heading1-weight);
@@ -90,7 +95,6 @@ h1{
 }
 
 h2{
-    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading2-size);
     font-weight: var(--heading2-weight);
@@ -98,7 +102,6 @@ h2{
 }
 
 h3{
-    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading3-size);
     font-weight: var(--heading3-weight);
@@ -107,7 +110,6 @@ h3{
 }
 
 h4{
-    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading4-size);
     font-weight: var(--heading4-weight);
@@ -115,7 +117,6 @@ h4{
 }
 
 h5{
-    margin: 0;
     font-family: var(--heading-family);
     font-size: var(--heading5-size);
     font-weight: var(--heading5-weight);
@@ -123,7 +124,6 @@ h5{
 }
 
 strong{
-    margin: 0;
     font-weight: 700;
 }
 
@@ -151,10 +151,13 @@ a{
 
 button{
 
-    padding: 5px 20px;
-    border-color: var(--light-grey);
-    border-width: 1px;
-    border-style: solid;
+    padding: 20px 0px;
+    /* border-color: var(--light-grey); */
+    /* border-width: 1px;
+    border-style: solid; */
+    border: none;
+    background-color: var(--off-white);
+    
 
     &:hover{
         cursor: pointer;
@@ -179,12 +182,12 @@ input{
     border-color: var(--trans-grey);
     background-color: transparent;
     color: var(--off-black);
-    font-size: 13px;
-    font-weight: 700;
-    height: var(--body-size);
-    width: 150px;
-    text-align: start;
-
+}
+input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 input[type="range"]{
     appearance: none;
@@ -249,13 +252,13 @@ input[type=range]::-ms-track {
     overflow-x: hidden;
 
     border: var(--light-grey) 2px solid;
-    border-radius: 16px;    
+    /* border-radius: 16px;     */
 
-    background: var(--trans-grey);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: var(--off-white);
+    box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(8.5px);
     -webkit-backdrop-filter: blur(8.5px);
-    border: 1px solid var(--off-white);
+    border: 1px solid var(--off-black);
 }
 .config-ui__extra-buttons{
     display: flex;
@@ -345,34 +348,39 @@ input[type=range]::-ms-track {
     line-height: var(--heading5-line-height);
 }
 
-.config-ui__align-row__per-element{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 30px;
-    border-bottom: 1px solid var(--off-black);
+.config-ui__details{
+    margin-top: 40px;
     width: 100%;
-    padding: 30px 0;
 }
 
 .config-ui__material-options{
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     flex-direction: column;
     gap: 20px;
+    margin-top: 20px;
+}
+.material-options__image{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.material-options__category-wrapper{
+    width: 100%;
+    height: 100%;
 }
 .config-ui__material-options__category{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
+    gap: 3rem 0.5rem;
 
 }
 .config-ui__material-options__option{
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
 
-    border: 2px solid var(--trans-grey);
+    border: 1px solid var(--off-black);
 
     &:hover{
         cursor: pointer;
