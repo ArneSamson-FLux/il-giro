@@ -120,6 +120,8 @@ export default function ConfigUi() {
         setDragMode(!dragMode);
     }
 
+    const [ materialCategory, setMaterialCategory ] = useState('wood');
+
 
     const checkPage = (e) => {
         switch(e){
@@ -337,22 +339,48 @@ export default function ConfigUi() {
                                             >
                                                 <p>{category}</p>
                                                 <div className="config-ui__material-options__category">
-                                                    {materials.map((material, index) => (
-                                                        <div
-                                                            key={index}
-                                                            className="config-ui__material-options__option"
-                                                            style={{
-                                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                            }}
-                                                            onClick={() => setSinkMaterial(material.url)
-                                                            }
-                                                        ></div>
-                                                    ))}
+                                                    <div
+                                                        className="config-ui__material-options__option"
+                                                        onClick={() => setMaterialCategory(category)
+                                                        }
+                                                    >
+                                                        <img
+                                                            className='material-options__image'
+                                                            src={`${materials[0].url}` + 'albedo.jpg'}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
                                 </details>
+
+                                {materialCategory &&
+                                    <details
+                                        open
+                                        className='config-ui__details'                                    
+                                    >
+                                        <summary>
+                                            Keuzes in
+                                            <span> {materialCategory}</span>
+                                        </summary>
+
+                                        <div className="config-ui__material-options material-selection">
+                                            <div className="config-ui__material-options__category">
+                                                {allCategories[materialCategory].map((material, index) => (
+                                                    <div
+                                                    key={index}
+                                                    className="config-ui__material-options__option"
+                                                    style={{
+                                                        backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                    }}
+                                                    onClick={() => setSinkMaterial(material.url)}
+                                                    ></div>
+                                                    ))}
+                                            </div>
+                                        </div>
+                                    </details>
+                                }
 
                                 <details
                                     open
@@ -442,7 +470,7 @@ export default function ConfigUi() {
                                 </details>
 
                             </div>
-                            
+
                         </div>
                     }
 

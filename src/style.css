@@ -403,7 +403,7 @@ summary span{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
     gap: 3rem 0rem;
-    border-bottom: 1px dashed var(--off-black);
+    /* border-bottom: 1px dashed var(--off-black); */
     padding-bottom: 10px;
 }
 .config-ui__material-options__option{
