@@ -237,7 +237,7 @@ export default function ConfigUi() {
                                 </h2>
 
                                 <div
-                                    // className='config-ui__scroll-container'
+                                    className='config-ui__scroll-container'
                                 >
                                     <details
                                         open
@@ -368,7 +368,7 @@ export default function ConfigUi() {
                             </h1>
 
                             <div
-                                // className='config-ui__scroll-container'
+                                className='config-ui__scroll-container'
 
                             >
 
@@ -546,7 +546,9 @@ export default function ConfigUi() {
                                 <span>Cooktop</span>
                             </h1>
 
-                            <div>
+                            <div
+                                className='config-ui__scroll-container'
+                            >
 
                                 <details
                                     open
@@ -668,7 +670,9 @@ export default function ConfigUi() {
                                 <span>Tower</span>
                             </h1>
 
-                            <div>
+                            <div
+                                className='config-ui__scroll-container'
+                            >
 
                                 <details
                                     open

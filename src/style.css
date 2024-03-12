@@ -472,9 +472,20 @@ summary span{
     .config-wrapper{
         top: 70%;
         width: 100%;
+        height: 100%;
         right: 0;
     }
     .config-ui{
         margin-top: 0;
+    }
+    .config-ui__title{
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        /* margin-top: -70px; */
+        /* pointer-events: none; */
+    }
+    .config-ui__scroll-container{
+        padding-bottom: 600px;
     }
 }
