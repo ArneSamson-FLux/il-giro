@@ -243,7 +243,7 @@ export default function ConfigUi() {
                                         open
                                         className='config-ui__details'
                                     >
-                                        <summary>Algemeen materiaal
+                                        <summary>Algemeen Materiaal:
                                             <span>
                                                 {/* {' ' + sinkMaterial.split('/').slice(-2, -1)[0]} */}
                                                 {' ' + materialCategory}
@@ -277,7 +277,7 @@ export default function ConfigUi() {
                                         open
                                         className='config-ui__details'
                                     >
-                                        <summary>Keuze in categorie
+                                        <summary>Keuzes in categorie
                                             <span> {materialCategory}</span>
                                         </summary>
 
@@ -552,7 +552,7 @@ export default function ConfigUi() {
                                     open
                                     className='config-ui__details'
                                 >
-                                    <summary>Cooktop Material:
+                                    <summary>Module Materiaal Categorie:
                                         <span>
                                             {/* {' ' + cooktopMaterial.split('/').slice(-2, -1)[0]} */}
                                             {' ' + materialCategory}
@@ -675,7 +675,7 @@ export default function ConfigUi() {
                                     className='config-ui__details'
                                 >
 
-                                    <summary>Tower Material:
+                                    <summary>Module Materiaal Categorie:
                                         <span>
                                             {/* {' ' + towerMaterial.split('/').slice(-2, -1)[0]} */}
                                             {' ' + materialCategory}
