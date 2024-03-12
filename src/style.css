@@ -236,6 +236,7 @@ input[type=range]::-ms-track {
     align-items: baseline;
     padding: 20px;
     height: 100%;
+    margin-top: 120px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -284,7 +285,8 @@ input[type=range]::-ms-track {
     /* border: 1px solid var(--off-black); */
 
     position: absolute;
-    top: 10%;
+    /* top: 10%; */
+    top: 0;
     right: 70px;
 }
 .config-ui__extra-buttons{
@@ -374,6 +376,9 @@ input[type=range]::-ms-track {
     justify-content: space-between;
     width: 100%;
     margin-bottom: 20px;
+}
+.config-ui__nav button path{
+    stroke-width: 2.5px;
 }
 .config-ui__nav__button--disabled{
 
