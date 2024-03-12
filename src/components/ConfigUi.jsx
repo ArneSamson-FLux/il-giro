@@ -230,11 +230,11 @@ export default function ConfigUi() {
                         >
 
                             <div>   
-                                <h1
+                                <h2
                                     className='config-ui__title'
                                 >
                                     <span>Overview</span>
-                                </h1>
+                                </h2>
 
                                 <div
                                     // className='config-ui__scroll-container'

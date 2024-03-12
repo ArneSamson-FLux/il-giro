@@ -466,3 +466,15 @@ summary span{
     outline: 3px solid var(--dark-grey);
     outline-offset: 2px;
 }
+
+/*screens under 1000px*/
+@media(max-width: 1000px){
+    .config-wrapper{
+        top: 70%;
+        width: 100%;
+        right: 0;
+    }
+    .config-ui{
+        margin-top: 0;
+    }
+}
