@@ -10,6 +10,7 @@ import useScene from './store/useScene.jsx'
 import useConfig from './store/useConfig.jsx'
 
 import { Perf } from 'r3f-perf'
+import { update } from '@react-spring/three';
 
 export default function Experience() {
 
@@ -23,7 +24,16 @@ export default function Experience() {
         
         // camera.current.setOrbitPoint(...cameraFocus, true)
         camera.current.moveTo(...cameraFocus, true);
-        camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 150, 0, window.innerWidth, window.innerHeight)
+
+        window.addEventListener('resize', updateViewOffset);
+
+        return () => {
+            window.removeEventListener('resize', updateViewOffset);
+        }
+
+        // if(window.innerWidth > 1000){
+        //     camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 150, 0, window.innerWidth, window.innerHeight)
+        // }
 
     }
     , [cameraFocus, setCameraFocus])
@@ -65,6 +75,17 @@ export default function Experience() {
             camera.current.dollyTo(4, false);
         }
     }, [camera.current])
+
+    const updateViewOffset = () => {
+        if(window.innerWidth > 1000){
+            const widthOffset = 150;
+            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, widthOffset, 0, window.innerWidth, window.innerHeight);
+            camera.current.camera.updateProjectionMatrix();
+        }else{
+            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 0, 0, window.innerWidth, window.innerHeight);
+            camera.current.camera.updateProjectionMatrix();
+        }
+    }
 
 
   return <>
