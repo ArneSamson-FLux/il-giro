@@ -22,19 +22,16 @@ export default function Experience() {
 
     useEffect(() => {
         
-        // camera.current.setOrbitPoint(...cameraFocus, true)
         camera.current.moveTo(...cameraFocus, true);
+
+        updateViewOffset();
 
         window.addEventListener('resize', updateViewOffset);
 
         return () => {
             window.removeEventListener('resize', updateViewOffset);
         }
-
-        // if(window.innerWidth > 1000){
-        //     camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 150, 0, window.innerWidth, window.innerHeight)
-        // }
-
+        
     }
     , [cameraFocus, setCameraFocus])
 
