@@ -269,9 +269,9 @@ input[type=range]::-ms-track {
 }
 
 .config-wrapper{
-    top: 10%;
+    top: 15%;
     width: 25%;
-    height: 90%;
+    height: 85%;
     right: 50px;
     overflow-y: hidden;
     overflow-x: visible;
@@ -494,7 +494,6 @@ summary span{
     .config-ui__material-options__option{
         width: 35px;
         height: 35px;
-
     }
 
     .material-category-details{
