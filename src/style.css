@@ -236,7 +236,7 @@ input[type=range]::-ms-track {
     align-items: baseline;
     padding: 20px;
     height: 100%;
-    margin-top: 120px;
+    margin-top: 200px;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -370,6 +370,12 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__nav{
+    position: fixed;
+    top: 150px;
+    left: 0;
+    width: 100%;
+    padding: 0px 20px 0px 20px;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -476,7 +482,7 @@ summary span{
         right: 0;
     }
     .config-ui{
-        margin-top: 0;
+        margin-top: 50px;
     }
     .config-ui__title{
         flex-direction: row;
@@ -487,5 +493,8 @@ summary span{
     }
     .config-ui__scroll-container{
         padding-bottom: 600px;
+    }
+    .config-ui__nav{
+        top: 0;
     }
 }
