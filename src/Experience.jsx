@@ -21,7 +21,9 @@ export default function Experience() {
 
     useEffect(() => {
         
-        camera.current.moveTo(...cameraFocus, true)
+        // camera.current.setOrbitPoint(...cameraFocus, true)
+        camera.current.moveTo(...cameraFocus, true);
+        camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 150, 0, window.innerWidth, window.innerHeight)
 
     }
     , [cameraFocus, setCameraFocus])
@@ -80,6 +82,7 @@ export default function Experience() {
       maxDistance={4}
       minDistance={2}
       enabled={!isDragging}
+    //   setOrbitPoint={[2, 0, 0]}
     />
 
 
