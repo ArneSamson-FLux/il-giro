@@ -277,7 +277,7 @@ input[type=range]::-ms-track {
     /* border: var(--light-grey) 2px solid; */
     /* border-radius: 16px;     */
 
-    /* background: var(--trans-white); */
+    background: var(--trans-white);
     /* box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.4); */
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
@@ -285,40 +285,36 @@ input[type=range]::-ms-track {
 
     position: absolute;
     top: 10%;
-    right: 5%;
+    right: 70px;
 }
 .config-ui__extra-buttons{
     display: flex;
-    gap: 20px;
-    flex-direction: row;
+    gap: 10px;
+    flex-direction: column;
     position: absolute;
-    top: 10px;
-    left: -200px;
+    top: 50%;
+    left: 75px;
 }
 .config-ui__zoom-out button{
-    background-color: var(--trans-grey);
 
     &:hover{
-        background-color: var(--light-grey);
         path{
-            stroke: var(--off-white);
+            stroke: var(--light-grey);
         }
 
     }
 }
 .config-ui__move button{
-    background-color: var(--trans-grey);
 
     &:hover{
-        background-color: var(--light-grey);
         path{
-            stroke: var(--off-white);
+            stroke: var(--light-grey);
         }
 
     }
 }
 .config-ui__move--active button{
-    background-color: var(--dark-grey);
+
 }
 
 .zoom-out__image{
@@ -326,17 +322,17 @@ input[type=range]::-ms-track {
     height: 20px;
 }
 .zoom-out__image path{
-    stroke: var(--light-grey);
+    stroke: var(--dark-grey);
 }
 .move__image{
     width: 20px;
     height: 20px;
 }
 .move__image path{
-    stroke: var(--light-grey);
+    stroke: var(--dark-grey);
 }
 .move__image--active path{
-    stroke: var(--off-white);
+    stroke: var(--light-grey);
 }
 
 .config-ui__selection-buttons{
