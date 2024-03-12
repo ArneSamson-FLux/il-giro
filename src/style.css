@@ -236,9 +236,9 @@ input[type=range]::-ms-track {
     align-items: baseline;
     padding: 20px;
     height: 100%;
-    margin-top: 200px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    margin-top: 150px;
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
 }
 .config-ui::-webkit-scrollbar{
     display: none;
@@ -267,6 +267,11 @@ input[type=range]::-ms-track {
 }
 .config-ui__scroll-container::-webkit-scrollbar-thumb{
     display: none;
+}
+
+.config-ui__title-and-options{
+    height: 100%;
+    width: 100%;
 }
 
 .config-wrapper{
@@ -370,11 +375,11 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__nav{
-    position: fixed;
+    /* position: fixed;
     top: 150px;
-    left: 0;
-    width: 100%;
-    padding: 0px 20px 0px 20px;
+    left: 0; */
+    /* width: 100%;
+    padding: 0px 20px 0px 20px; */
 
     display: flex;
     flex-direction: row;
@@ -488,13 +493,18 @@ summary span{
         flex-direction: row;
         gap: 20px;
         justify-content: center;
-        /* margin-top: -70px; */
-        /* pointer-events: none; */
+        margin-top: -70px;
+        pointer-events: none;
     }
     .config-ui__scroll-container{
         padding-bottom: 600px;
     }
     .config-ui__nav{
         top: 0;
+        /* padding: 0 20px 0 20px; */
+    }
+    h1{
+        font-size: 30px;
+        line-height: 60px;
     }
 }

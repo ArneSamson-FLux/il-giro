@@ -224,86 +224,78 @@ export default function ConfigUi() {
                     {currentPage === 0 &&
 
                         <div
-                           style={{
-                                width: '100%',
-                           }}
+                            className='config-ui__title-and-options'
                         >
+                            <h2
+                                className='config-ui__title'
+                            >
+                                <span>Overview</span>
+                            </h2>
 
-                            <div>   
-                                <h2
-                                    className='config-ui__title'
+                            <div
+                                className='config-ui__scroll-container'
+                            >
+                                <details
+                                    open
+                                    className='config-ui__details'
                                 >
-                                    <span>Overview</span>
-                                </h2>
+                                    <summary>Algemeen Materiaal:
+                                        <span>
+                                            {/* {' ' + sinkMaterial.split('/').slice(-2, -1)[0]} */}
+                                            {' ' + materialCategory}
+                                        </span>
+                                    </summary>
 
-                                <div
-                                    className='config-ui__scroll-container'
-                                >
-                                    <details
-                                        open
-                                        className='config-ui__details'
-                                    >
-                                        <summary>Algemeen Materiaal:
-                                            <span>
-                                                {/* {' ' + sinkMaterial.split('/').slice(-2, -1)[0]} */}
-                                                {' ' + materialCategory}
-                                            </span>
-                                        </summary>
-
-                                        <div className="config-ui__material-options material-selection material-category-details">
-                                            {Object.entries(allCategories).map(([category, materials]) => (
-                                                <div
-                                                    className='material-options__category-wrapper'
-                                                    key={category}
-                                                >
-                                                    {/* <p>{category}</p> */}
-                                                    <div className="config-ui__material-options__category">
-                                                        <div
-                                                            className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
-                                                            onClick={() => {
-                                                                setMaterialCategory(category)
-                                                            }}
-                                                            style={{
-                                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
-                                                            }}
-                                                        ></div>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </details>
-
-                                    <details
-                                        open
-                                        className='config-ui__details'
-                                    >
-                                        <summary>Keuzes in categorie
-                                            <span> {materialCategory}</span>
-                                        </summary>
-
-                                        <div className="config-ui__material-options material-selection">
-                                            <div className="config-ui__material-options__category">
-                                                {allCategories[materialCategory].map((material, index) => (
+                                    <div className="config-ui__material-options material-selection material-category-details">
+                                        {Object.entries(allCategories).map(([category, materials]) => (
+                                            <div
+                                                className='material-options__category-wrapper'
+                                                key={category}
+                                            >
+                                                {/* <p>{category}</p> */}
+                                                <div className="config-ui__material-options__category">
                                                     <div
-                                                        key={index}
-                                                        className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                        className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                                         onClick={() => {
-                                                            setSinkMaterial(material.url)
-                                                            setCooktopMaterial(material.url)
-                                                            setTowerMaterial(material.url)
+                                                            setMaterialCategory(category)
                                                         }}
                                                         style={{
-                                                            backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                            backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
                                                         }}
                                                     ></div>
-                                                    ))}
                                                 </div>
-                                                </div>
-                                            </details>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </details>
 
+                                <details
+                                    open
+                                    className='config-ui__details'
+                                >
+                                    <summary>Keuzes in categorie
+                                        <span> {materialCategory}</span>
+                                    </summary>
 
-                                </div>
-
+                                    <div className="config-ui__material-options material-selection">
+                                        <div className="config-ui__material-options__category">
+                                            {allCategories[materialCategory].map((material, index) => (
+                                                <div
+                                                    key={index}
+                                                    className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                    onClick={() => {
+                                                        setSinkMaterial(material.url)
+                                                        setCooktopMaterial(material.url)
+                                                        setTowerMaterial(material.url)
+                                                    }}
+                                                    style={{
+                                                        backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                    }}
+                                                ></div>
+                                                ))}
+                                            </div>
+                                            </div>
+                                </details>
                             </div>
 
                         </div>
@@ -311,9 +303,7 @@ export default function ConfigUi() {
 
                     {currentPage === 1 &&
                         <div
-                           style={{
-                                width: '100%',
-                           }}
+                           className='config-ui__title-and-options'
                         >
                             <h1
                                 className='config-ui__title'
@@ -489,9 +479,7 @@ export default function ConfigUi() {
 
                     {currentPage === 2 &&
                         <div
-                            style={{
-                                width: '100%',
-                            }}
+                            className='config-ui__title-and-options'
                         >
 
                             <h1
@@ -613,9 +601,7 @@ export default function ConfigUi() {
 
                     {currentPage === 3 &&
                         <div
-                            style={{
-                                    width: '100%',
-                                }}
+                            className='config-ui__title-and-options'
                         >
 
                             <h1
