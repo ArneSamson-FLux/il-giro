@@ -304,51 +304,6 @@ export default function ConfigUi() {
 
                                 </div>
 
-                                
-                                {/* <p>Select the number of islands you want.</p>
-                                
-                                <div
-                                    className='config-ui__align-row__per-element'
-                                >
-                                    <p>Amount of sinks:</p>
-                                    <input
-                                        type="number"
-                                        value={sinkAmount}
-                                        max={3}
-                                        min={0}
-                                        //if value is lower than 10, set the value to the input value
-                                        onChange={(e) => setSinkAmount(e.target.value < 3 ? e.target.value : 3)}
-            
-                                    />
-                                </div>
-
-                                <div
-                                    className='config-ui__align-row__per-element'
-                                >
-                                    <p>Amount of cooktops: </p>
-                                    <input
-                                        type="number"
-                                        value={cooktopAmount}
-                                        max={3}
-                                        min={0}
-                                        //if value is lower than 10, set the value to the input value
-                                        onChange={(e) => setCooktopAmount(e.target.value < 3 ? e.target.value : 3)}
-                                    />
-                                </div>
-
-                                <div
-                                    className='config-ui__align-row__per-element'
-                                >
-                                    <p>Amount of towers: </p>
-                                    <input
-                                        type="number"
-                                        value={towerAmount}
-                                        max={3}
-                                        min={0}
-                                        onChange={(e) => setTowerAmount(e.target.value < 3 ? e.target.value : 3)}
-                                    />
-                                </div> */}
-
                             </div>
 
                         </div>
