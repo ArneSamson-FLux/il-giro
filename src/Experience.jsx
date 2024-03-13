@@ -79,7 +79,8 @@ export default function Experience() {
             camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, widthOffset, 0, window.innerWidth, window.innerHeight);
             camera.current.camera.updateProjectionMatrix();
         }else{
-            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 0, 0, window.innerWidth, window.innerHeight);
+            const heightOffset = 200;
+            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 0, heightOffset, window.innerWidth, window.innerHeight);
             camera.current.camera.updateProjectionMatrix();
         }
     }
