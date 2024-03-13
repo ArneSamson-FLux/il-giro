@@ -419,7 +419,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Kraan Type:
+                                <summary>Type kraan:
                                     <span>
                                         {tapType === 'tap1' ? ' standaard' : ' Quooker®'}
                                     </span>
@@ -446,7 +446,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Wasbak Materiaal:
+                                <summary>Spoelbak Materiaal:
                                     <span>
                                         {' ' + sinkBowlMaterial.split('/').slice(-2, -1)[0]}
                                     </span>
@@ -564,9 +564,9 @@ export default function ConfigUi() {
                                     open
                                     className='config-ui__details'
                                 >
-                                    <summary>Stove Type:
+                                    <summary>Type kookplaat:
                                         <span>
-                                            {stoveType === 'gas' ? ' gas' : ' electric'}
+                                            {stoveType === 'gas' ? ' gas' : ' elektrisch'}
                                         </span>
                                     </summary>
 
@@ -583,7 +583,7 @@ export default function ConfigUi() {
                                             className={stoveType === 'electric' ? 'active-selection-button' : ''}
                                             onClick={() => setStoveType('electric')}
                                         >
-                                            Electric
+                                            Elektrisch
                                         </button>
                                     </div>
                                 </details>
@@ -683,9 +683,9 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Appliance Type:
+                                <summary>Type toestel:
                                     <span>
-                                        {applianceType === 'oven' ? ' oven' : ' fridge'}
+                                        {applianceType === 'oven' ? ' oven' : ' wijnkoeler'}
                                     </span>
                                 </summary>
 
@@ -702,7 +702,7 @@ export default function ConfigUi() {
                                         className={applianceType === 'fridge' ? 'active-selection-button' : ''}
                                         onClick={() => setApplianceType('fridge')}
                                     >
-                                        Fridge
+                                        Wijnkoeler
                                     </button>
                                 </div>
                             </details>
@@ -711,7 +711,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Appliance Material:
+                                <summary>Accent Materiaal:
                                     <span>
                                         {' ' + towerAccessoryMaterial.split('/').slice(-2, -1)[0]}
                                     </span>
