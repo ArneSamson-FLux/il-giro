@@ -244,7 +244,7 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection material-category-details">
+                                <div className="config-ui__material-options  material-category-details">
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
                                             className='material-options__category-wrapper'
@@ -275,7 +275,7 @@ export default function ConfigUi() {
                                     <span> {materialCategory}</span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection">
+                                <div className="config-ui__material-options ">
                                     <div className="config-ui__material-options__category">
                                         {allCategories[materialCategory].map((material, index) => (
                                             <div
@@ -324,7 +324,7 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection material-category-details">
+                                <div className="config-ui__material-options  material-category-details">
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
                                             className='material-options__category-wrapper'
@@ -355,7 +355,7 @@ export default function ConfigUi() {
                                     <span> {materialCategory}</span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection">
+                                <div className="config-ui__material-options ">
                                     <div className="config-ui__material-options__category">
                                         {allCategories[materialCategory].map((material, index) => (
                                             <div
@@ -398,7 +398,7 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection">
+                                <div className="config-ui__material-options ">
                                     <div className="config-ui__material-options__category">
                                         {allCategories.metal.map((material, index) => (
                                             <div
@@ -452,7 +452,7 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection">
+                                <div className="config-ui__material-options ">
                                     <div className="config-ui__material-options__category">
                                         {allCategories.metal.map((material, index) => (
                                             <div
@@ -496,7 +496,7 @@ export default function ConfigUi() {
                                         </span>
                                     </summary>
 
-                                    <div className="config-ui__material-options material-selection material-category-details">
+                                    <div className="config-ui__material-options  material-category-details">
                                         {Object.entries(allCategories).map(([category, materials]) => (
                                             <div
                                                 className='material-options__category-wrapper'
@@ -526,7 +526,7 @@ export default function ConfigUi() {
                                         <span> {materialCategory}</span>
                                     </summary>
 
-                                    <div className="config-ui__material-options material-selection">
+                                    <div className="config-ui__material-options ">
                                         <div className="config-ui__material-options__category">
                                             {allCategories[materialCategory].map((material, index) => (
                                                 <div
@@ -616,7 +616,7 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection material-category-details">
+                                <div className="config-ui__material-options  material-category-details">
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
                                             className='material-options__category-wrapper'
@@ -646,7 +646,7 @@ export default function ConfigUi() {
                                     <span> {materialCategory}</span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection">
+                                <div className="config-ui__material-options ">
                                     <div className="config-ui__material-options__category">
                                         {allCategories[materialCategory].map((material, index) => (
                                             <div
@@ -717,7 +717,7 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options material-selection">
+                                <div className="config-ui__material-options ">
                                     <div className="config-ui__material-options__category">
                                         {allCategories.metal.map((material, index) => (
                                             <div
