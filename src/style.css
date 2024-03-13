@@ -72,13 +72,11 @@ body,
     
 }
 
+
+
 .root-container{
     width: 100%;
     height: 100%;
-    /* display: grid;
-    padding: 32px;
-    grid-template-columns: 1fr 400px;
-    gap: 32px; */
 }
 
 .canvas{
@@ -86,6 +84,8 @@ body,
     box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.4);
     border: 1px solid var(--off-black);
 }
+
+
 
 h1{
     font-family: var(--heading-family);
@@ -214,17 +214,30 @@ input[type=range]::-ms-track {
 }
 
 
-
-
-.no-select{
+.no-select {
     user-select: none;
 }
 
 
-.material-selection{
-    flex-direction: row;
-}
 
+
+.config-wrapper {
+    top: 0;
+    width: 25%;
+    height: 100%;
+    right: 50px;
+
+    overflow-y: hidden;
+    overflow-x: visible;
+
+    background: var(--trans-white);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+    position: absolute;
+
+    padding-top: 100px;
+}
 
 .config-ui{
     display: flex;
@@ -234,8 +247,6 @@ input[type=range]::-ms-track {
     overflow-x: visible;
     overflow-y: visible;
     margin-top: 0;
-    /* padding-top: 100px; */
-    /* height: calc(100% - 150px); */
     height: 100%;
 }
 .config-ui::-webkit-scrollbar{
@@ -270,22 +281,7 @@ input[type=range]::-ms-track {
 }
 
 
-.config-wrapper{
-    /* top: 15%; */
-    top: 0;
-    width: 25%;
-    height: 100%;
-    right: 50px;
 
-    overflow-y: hidden;
-    overflow-x: visible;
-
-    background: var(--trans-white);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-
-    position: absolute;
-}
 .config-ui__extra-buttons{
     display: flex;
     gap: 10px;
@@ -480,6 +476,7 @@ summary span{
         width: 100%;
         height: 45%;
         right: 0;
+        padding: 0;
     }
     .config-ui{
         padding: 15px 50px 20px 50px;
