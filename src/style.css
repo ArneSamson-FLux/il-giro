@@ -398,9 +398,13 @@ input[type=range]::-ms-track {
     padding: 40px 0px 5px 5px;
 }
 .material-category-details{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
-    gap: 0rem 0rem;
+    gap: 0rem 0rem; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 .config-ui__details summary{
     font-family: var(--heading-family);
@@ -440,14 +444,17 @@ summary span{
 }
 
 .material-options__category-wrapper{
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
 }
 .config-ui__material-options__category{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
-    gap: 1rem 0rem;
-    padding-bottom: 10px;
+    gap: 1rem 0rem; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 .config-ui__material-options__option{
     width: 45px;
@@ -501,12 +508,12 @@ summary span{
     }
 
     .material-category-details{
-        grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
-        gap: 0rem 1.5rem;
+        /* grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+        gap: 0rem 1.5rem; */
     }        
     .config-ui__material-options__category{
-        grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
-        gap: 0rem 1.5rem;
+        /* grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+        gap: 0rem 1.5rem; */
     }
 
     .config-ui__slider{
