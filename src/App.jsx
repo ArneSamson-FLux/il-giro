@@ -24,16 +24,7 @@ const camSettings = {
 }
 
 const containerStyles = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 0,
-    transform: 'translateX(-15%)',
+    zIndex: 4,
     backgroundColor: '#fafafa'
 }
 const barStyles = {
@@ -70,9 +61,9 @@ root.render(
                 }}
                 shadows={true}
                 dpr={window.devicePixelRatio}
-                style={{
-                    height: '80vh',
-                }}
+                // style={{
+                //     height: '80vh',
+                // }}
             >
                 <Effects/>
 
