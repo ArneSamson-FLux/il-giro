@@ -194,7 +194,7 @@ export default function ConfigUi() {
                 >
 
                     <div
-                        className='no-select config-ui__nav'
+                        className='config-ui__nav'
                     >
 
                         <button
@@ -751,7 +751,7 @@ export default function ConfigUi() {
                     }
 
                     <div
-                        className='ui-page__slider'
+                        className='config-ui__slider'
                     >
                         <p>Open doors and shelves:</p>
                         <input

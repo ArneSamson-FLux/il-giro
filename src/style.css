@@ -231,8 +231,9 @@ input[type=range]::-ms-track {
     align-items: baseline;
     padding: 20px 15px 20px 20px;
     overflow-x: visible;
-    margin-top: 150px;
-    height: calc(100% - 150px);
+    /* margin-top: 150px; */
+    /* height: calc(100% - 150px); */
+    height: 100%;
 }
 .config-ui::-webkit-scrollbar{
     display: none;
@@ -247,7 +248,8 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__scroll-container{
-    height: 85%;
+    /* height: 85%; */
+    height: 100%;
     overflow-y: scroll;
     overflow-x: visible;
 }
@@ -265,9 +267,10 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__title-and-options{
-    height: 850%;
+    /* height: 850%; */
+    height: 100%;
     width: 100%;
-    overflow-y: hidden;
+    overflow-y: visible;
 }
 
 .config-wrapper{
@@ -278,7 +281,7 @@ input[type=range]::-ms-track {
     right: 50px;
 
     overflow-y: hidden;
-    overflow-x: hidden;
+    overflow-x: visible;
 
     background: var(--trans-white);
     backdrop-filter: blur(4px);
@@ -359,10 +362,10 @@ input[type=range]::-ms-track {
     margin: 20px 0;
 }
 
-.ui-page__slider{
+.config-ui__slider{
     width: 100%;
-    height: 100%;
-    margin-top: 50px;
+    height: 10%;
+    padding-top: 50px;
     margin-bottom: 20px;
     border-top: solid 1px var(--off-black);
 }
