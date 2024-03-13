@@ -394,9 +394,8 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__details{
-    margin-top: 40px;
     width: 100%;
-    padding-left: 5px;
+    padding: 40px 0px 5px 5px;
 }
 .material-category-details{
     display: grid;
@@ -447,7 +446,7 @@ summary span{
 .config-ui__material-options__category{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
-    gap: 3rem 0rem;
+    gap: 1rem 0rem;
     padding-bottom: 10px;
 }
 .config-ui__material-options__option{
@@ -513,6 +512,7 @@ summary span{
     .config-ui__slider{
         margin-top: 0px;
         padding-top: 10px;
+        height: 120px;
     }
 
     h1{
