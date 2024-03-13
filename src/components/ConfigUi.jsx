@@ -148,10 +148,10 @@ export default function ConfigUi() {
     return (
         <>
         <div
-            className='config-ui__extra-buttons'
+            className='extra-buttons'
         >
             <div
-                className='config-ui__zoom-out'
+                className='extra-buttons__zoom-out'
             >
                 <button
                     onClick={handleZoom}                        
@@ -165,7 +165,7 @@ export default function ConfigUi() {
             </div>
 
             <div
-                className={dragMode ? 'config-ui__move--active' : 'config-ui__move'}
+                className={dragMode ? 'extra-buttons__move--active' : 'extra-buttons__move'}
             >
                 <button
                     onClick={handleDragMode}
@@ -239,30 +239,21 @@ export default function ConfigUi() {
                             >
                                 <summary>Algemeen Materiaal:
                                     <span>
-                                        {/* {' ' + sinkMaterial.split('/').slice(-2, -1)[0]} */}
                                         {' ' + materialCategory}
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options  material-category-details">
+                                <div className="config-ui__material-options">
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
-                                            className='material-options__category-wrapper'
-                                            key={category}
-                                        >
-                                            {/* <p>{category}</p> */}
-                                            <div className="config-ui__material-options__category">
-                                                <div
-                                                    className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
-                                                    onClick={() => {
-                                                        setMaterialCategory(category)
-                                                    }}
-                                                    style={{
-                                                        backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
-                                                    }}
-                                                ></div>
-                                            </div>
-                                        </div>
+                                            className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
+                                            onClick={() => {
+                                                setMaterialCategory(category)
+                                            }}
+                                            style={{
+                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
+                                            }}
+                                        ></div>
                                     ))}
                                 </div>
                             </details>
@@ -276,7 +267,6 @@ export default function ConfigUi() {
                                 </summary>
 
                                 <div className="config-ui__material-options ">
-                                    <div className="config-ui__material-options__category">
                                         {allCategories[materialCategory].map((material, index) => (
                                             <div
                                                 key={index}
@@ -290,9 +280,8 @@ export default function ConfigUi() {
                                                     backgroundImage: `url(${material.url}albedo.jpg)`, 
                                                 }}
                                             ></div>
-                                            ))}
-                                        </div>
-                                        </div>
+                                        ))}
+                                </div>
                             </details>
 
                         </div>
@@ -319,29 +308,23 @@ export default function ConfigUi() {
                             >
                                 <summary>Module Materiaal Categorie: 
                                     <span>
-                                        {/* {' ' + sinkMaterial.split('/').slice(-2, -1)[0]} */}
                                         {' ' + materialCategory}
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options  material-category-details">
+                                <div className="config-ui__material-options">
                                     {Object.entries(allCategories).map(([category, materials]) => (
+                                        
                                         <div
-                                            className='material-options__category-wrapper'
-                                            key={category}
-                                        >
-                                            <div className="config-ui__material-options__category">
-                                                <div
-                                                    className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
-                                                    onClick={() => {
-                                                        setMaterialCategory(category)
-                                                    }}
-                                                    style={{
-                                                        backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
-                                                    }}
-                                                ></div>
-                                            </div>
-                                        </div>
+                                            className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
+                                            onClick={() => {
+                                                setMaterialCategory(category)
+                                            }}
+                                            style={{
+                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
+                                            }}
+                                        ></div>
+                            
                                     ))}
                                 </div>
                             </details>
@@ -355,19 +338,17 @@ export default function ConfigUi() {
                                     <span> {materialCategory}</span>
                                 </summary>
 
-                                <div className="config-ui__material-options ">
-                                    <div className="config-ui__material-options__category">
-                                        {allCategories[materialCategory].map((material, index) => (
-                                            <div
-                                                key={index}
-                                                className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                onClick={() => setSinkMaterial(material.url)}
-                                                style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                }}
-                                            ></div>
-                                            ))}
-                                    </div>
+                                <div className="config-ui__material-options">
+                                    {allCategories[materialCategory].map((material, index) => (
+                                        <div
+                                            key={index}
+                                            className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                            onClick={() => setSinkMaterial(material.url)}
+                                            style={{
+                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                            }}
+                                        ></div>
+                                        ))}
                                 </div>
                             </details>
                             
@@ -399,18 +380,16 @@ export default function ConfigUi() {
                                 </summary>
 
                                 <div className="config-ui__material-options ">
-                                    <div className="config-ui__material-options__category">
-                                        {allCategories.metal.map((material, index) => (
-                                            <div
-                                                key={index}
-                                                className="config-ui__material-options__option"
-                                                style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                }}
-                                                onClick={() => setTapMaterial(material.url)}
-                                            ></div>
-                                        ))}
-                                    </div>
+                                    {allCategories.metal.map((material, index) => (
+                                        <div
+                                            key={index}
+                                            className="config-ui__material-options__option"
+                                            style={{
+                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                            }}
+                                            onClick={() => setTapMaterial(material.url)}
+                                        ></div>
+                                    ))}
                                 </div>
 
                             </details>
@@ -453,7 +432,6 @@ export default function ConfigUi() {
                                 </summary>
 
                                 <div className="config-ui__material-options ">
-                                    <div className="config-ui__material-options__category">
                                         {allCategories.metal.map((material, index) => (
                                             <div
                                                 key={index}
@@ -464,7 +442,6 @@ export default function ConfigUi() {
                                                 onClick={() => setSinkBowlMaterial(material.url)}
                                             ></div>
                                         ))}
-                                    </div>
                                 </div>
                             </details>
 

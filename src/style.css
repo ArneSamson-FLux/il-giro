@@ -214,11 +214,52 @@ input[type=range]::-ms-track {
 }
 
 
-.no-select {
-    user-select: none;
+.extra-buttons {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 75px;
 }
+.extra-buttons__zoom-out button {
 
+    &:hover {
+        path {
+            stroke: var(--light-grey);
+        }
 
+    }
+}
+.extra-buttons__move button {
+
+    &:hover {
+        path {
+            stroke: var(--light-grey);
+        }
+
+    }
+}
+.extra-buttons__move--active button {
+
+}
+.zoom-out__image {
+    width: 20px;
+    height: 20px;
+}
+.zoom-out__image path {
+    stroke: var(--dark-grey);
+}
+.move__image {
+    width: 20px;
+    height: 20px;
+}
+.move__image path {
+    stroke: var(--dark-grey);
+}
+.move__image--active path {
+    stroke: var(--light-grey);
+}
 
 
 .config-wrapper {
@@ -239,6 +280,7 @@ input[type=range]::-ms-track {
     padding-top: 100px;
 }
 
+
 .config-ui{
     display: flex;
     flex-direction: column;
@@ -252,6 +294,28 @@ input[type=range]::-ms-track {
 .config-ui::-webkit-scrollbar{
     display: none;
 }
+
+
+.config-ui__nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 5px;
+}
+.config-ui__nav button path {
+    stroke-width: 2.5px;
+}
+.config-ui__nav__button--disabled {
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+
 .config-ui__title{
     display: flex;
     flex-direction: column;
@@ -260,6 +324,7 @@ input[type=range]::-ms-track {
 .config-ui__title span{
     display: block;
 }
+
 
 .config-ui__options{
     height: 100%;
@@ -281,61 +346,11 @@ input[type=range]::-ms-track {
 }
 
 
-
-.config-ui__extra-buttons{
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    position: absolute;
-    top: 50%;
-    left: 75px;
-}
-.config-ui__zoom-out button{
-
-    &:hover{
-        path{
-            stroke: var(--light-grey);
-        }
-
-    }
-}
-.config-ui__move button{
-
-    &:hover{
-        path{
-            stroke: var(--light-grey);
-        }
-
-    }
-}
-.config-ui__move--active button{
-
-}
-
-.zoom-out__image{
-    width: 20px;
-    height: 20px;
-}
-.zoom-out__image path{
-    stroke: var(--dark-grey);
-}
-.move__image{
-    width: 20px;
-    height: 20px;
-}
-.move__image path{
-    stroke: var(--dark-grey);
-}
-.move__image--active path{
-    stroke: var(--light-grey);
-}
-
 .config-ui__selection-buttons{
     margin-top: 20px;
     display: flex;
     gap: 20px;
 }
-
 .config-ui__selection-buttons button{
     padding: 10px;
     border: 1px solid var(--off-white);
@@ -346,15 +361,6 @@ input[type=range]::-ms-track {
 }
 
 
-.ui-page{
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: center;
-    width: 100%;
-    margin: 20px 0;
-}
-
 .config-ui__slider{
     width: 100%;
     height: 200px;
@@ -364,45 +370,17 @@ input[type=range]::-ms-track {
     border-top: solid 1px var(--off-black);
 }
 
-.config-ui__nav{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
-    padding-left: 5px;
-}
-.config-ui__nav button path{
-    stroke-width: 2.5px;
-}
-.config-ui__nav__button--disabled{
-
-    &:hover{
-        cursor: not-allowed;
-    }
-}
-
-.config-ui__amounts__amount{
-    font-family: var(--heading-family);
-    font-size: var(--heading5-size);
-    font-weight: var(--heading5-weight);
-    line-height: var(--heading5-line-height);
-}
 
 .config-ui__details{
     width: 100%;
     padding: 20px 0px 20px 5px;
 }
-.material-category-details{
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
-    gap: 0rem 0rem; */
+/* .material-category-details{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1.5rem;
-}
+} */
 .config-ui__details summary{
     font-family: var(--heading-family);
     font-size: var(--heading5-size);
@@ -432,6 +410,10 @@ summary span{
 }
 
 .config-ui__material-options{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     margin-top: 20px;
 }
 .material-options__image{
@@ -445,15 +427,12 @@ summary span{
     width: auto;
     height: auto;
 }
-.config-ui__material-options__category{
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(25%, 25%), 1fr));
-    gap: 1rem 0rem; */
+/* .config-ui__material-options__category{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1.5rem;
-}
+} */
 .config-ui__material-options__option{
     width: 45px;
     height: 45px;
@@ -497,7 +476,7 @@ summary span{
         top: 0;
     }
 
-    .config-ui__extra-buttons{
+    .extra-buttons{
         flex-direction: row;
         gap: 20px;
         left: 50px;
