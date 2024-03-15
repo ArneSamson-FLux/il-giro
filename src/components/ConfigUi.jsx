@@ -132,15 +132,12 @@ export default function ConfigUi() {
             break;  
             case 1:
                 setCurrentPage(1);
-                // setCameraFocus([-1.5, 0.5, 0]);
             break;
             case 2:
                 setCurrentPage(2);
-                // setCameraFocus([1.5, 0.5, 0]);
             break;
             case 3:
                 setCurrentPage(3);
-                // setCameraFocus([0, 1, -1.5]);
             break;
         }
     }

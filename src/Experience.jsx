@@ -16,7 +16,7 @@ export default function Experience() {
 
     const camera = useRef()
 
-    const { cameraCoords, cameraFocus, setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
+    const { cameraFocus, setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
 
     const { isDragging, setCurrentPage, currentPage } = useConfig();
 
@@ -101,7 +101,6 @@ export default function Experience() {
       maxDistance={4}
       minDistance={2}
       enabled={!isDragging}
-    //   setOrbitPoint={[2, 0, 0]}
     />
 
 
