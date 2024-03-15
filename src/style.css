@@ -367,7 +367,6 @@ input[type=range]::-ms-track {
 .config-ui__details{
     width: 100%;
     padding: 20px 0px 20px 5px;
-    overflow: hidden;
     transition: opacity 0.5s ease-in-out;
 }
 .config-ui__details[open]{
@@ -399,10 +398,11 @@ summary span{
     cursor: pointer;
     color: var(--dark-grey);
     transition: transform 0.3s ease;
+    transform: scale(1);
 }
 .config-ui__details[open] summary::after {
     content: '-';
-    transform: rotate(-180deg);
+    transform: scale(1.5);
 }
 
 

@@ -1,4 +1,6 @@
 import React,{useState, useEffect} from 'react';
+import { useSpring, animated } from 'react-spring';
+
 import useConfig from '../store/useConfig';
 import useScene from '../store/useScene';
 
@@ -122,7 +124,11 @@ export default function ConfigUi() {
 
     const [ materialCategory, setMaterialCategory ] = useState('metal');
     const [ isSecondDetailsOpen, setIsSecondDetailsOpen ] = useState(false);
-
+    // const [ isOpen, setIsOpen ] = useState(false);
+    // const {height, opacity} = useSpring({
+    //     from: {height: 0, opacity: 0},
+    //     to: {height: !isOpen ? 'auto' : 0, opacity: !isOpen ? 1 : 0}
+    // });
 
     const checkPage = (e) => {
         switch(e){
@@ -142,6 +148,8 @@ export default function ConfigUi() {
             break;
         }
     }
+
+
 
     return (
         <>
@@ -246,6 +254,7 @@ export default function ConfigUi() {
                                 >
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
+                                            key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
                                                 setMaterialCategory(category)
@@ -267,7 +276,9 @@ export default function ConfigUi() {
                                     <span> {materialCategory}</span>
                                 </summary>
 
-                                <div className="config-ui__material-options ">
+                                <div
+                                    className="config-ui__material-options"
+                                >
                                     {allCategories[materialCategory].map((material, index) => (
                                         <div
                                             key={index}
@@ -316,6 +327,7 @@ export default function ConfigUi() {
                                 <div className="config-ui__material-options">
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
+                                            key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
                                                 setMaterialCategory(category)
@@ -473,6 +485,7 @@ export default function ConfigUi() {
                                 <div className="config-ui__material-options">
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
+                                            key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
                                                 setMaterialCategory(category)
@@ -582,6 +595,7 @@ export default function ConfigUi() {
                                 <div className="config-ui__material-options">
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
+                                            key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
                                                 setMaterialCategory(category)
