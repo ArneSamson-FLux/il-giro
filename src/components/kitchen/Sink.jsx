@@ -18,6 +18,8 @@ import useConfig from '../../store/useConfig.jsx';
 export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){  
     
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
+    albedoTexture.anisotropy = 16;
+
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
     const metallnessTexture = useTexture(materialUrl+"metallic.jpg");

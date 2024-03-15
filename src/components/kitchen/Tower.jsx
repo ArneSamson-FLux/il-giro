@@ -17,7 +17,7 @@ import useConfig from '../../store/useConfig.jsx';
 export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
     const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-
+    albedoTexture.anisotropy = 16;
     const aoTexture = useTexture("./images/bakes/tower-straight_Bake1_PBR_Ambient Occlusion.jpg");
     aoTexture.flipY = false;
 
