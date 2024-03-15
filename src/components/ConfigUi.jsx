@@ -341,7 +341,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'                                    
                             >
                                 <summary>
@@ -364,7 +363,6 @@ export default function ConfigUi() {
                             </details>
                             
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Rounded: 
@@ -380,7 +378,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Faucet material:
@@ -405,7 +402,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Faucet type:
@@ -432,7 +428,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Sink material:
@@ -499,7 +494,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Choices in
@@ -521,7 +515,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Rounded: 
@@ -538,7 +531,6 @@ export default function ConfigUi() {
                             </details>
                                 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Cooking fire type:
@@ -609,7 +601,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Choices in
@@ -630,7 +621,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Rounded: 
@@ -647,7 +637,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Appliance type:
@@ -675,7 +664,6 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Accent Material:

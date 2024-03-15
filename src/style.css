@@ -373,7 +373,6 @@ input[type=range]::-ms-track {
     opacity: 1;
 }
 .config-ui__details:not([open]) {
-    max-height: 0;
     opacity: 0.6;
 }
 .config-ui__details summary{
@@ -397,7 +396,7 @@ summary span{
     font-size: 20px;
     cursor: pointer;
     color: var(--dark-grey);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
     transform: scale(1);
 }
 .config-ui__details[open] summary::after {
