@@ -234,7 +234,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Algemeen Materiaal:
+                                <summary>Base material:
                                     <span>
                                         {' ' + materialCategory}
                                     </span>
@@ -259,7 +259,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Keuzes in categorie
+                                <summary>Choices in
                                     <span> {materialCategory}</span>
                                 </summary>
 
@@ -303,7 +303,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Module Materiaal Categorie: 
+                                <summary>Module material: 
                                     <span>
                                         {' ' + materialCategory}
                                     </span>
@@ -329,7 +329,7 @@ export default function ConfigUi() {
                                 className='config-ui__details'                                    
                             >
                                 <summary>
-                                    Keuzes in categorie
+                                    Choices in
                                     <span> {materialCategory}</span>
                                 </summary>
 
@@ -351,9 +351,9 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Afgerond: 
+                                <summary>Rounded: 
                                     <span>
-                                        {sinkBevelled ? ' ja' : ' neen'}
+                                        {sinkBevelled ? ' yes' : ' no'}
                                     </span>
                                 </summary>
                                 <input 
@@ -367,7 +367,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Kraan Materiaal:
+                                <summary>Faucet material:
                                     <span>
                                         {' ' + tapMaterial.split('/').slice(-2, -1)[0]}
                                     </span>
@@ -392,9 +392,9 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Type kraan:
+                                <summary>Faucet type:
                                     <span>
-                                        {tapType === 'tap1' ? ' standaard' : ' Quooker®'}
+                                        {tapType === 'tap1' ? ' Brandwood 3' : ' Bridge'}
                                     </span>
                                 </summary>
                                 <div
@@ -404,13 +404,13 @@ export default function ConfigUi() {
                                         className={tapType === 'tap1' ? 'active-selection-button' : ''}
                                         onClick={() => setTapType('tap1')}
                                     >
-                                        Standard tap
+                                        Brandwood 3
                                     </button>
                                     <button
                                         className={tapType === 'tap2' ? 'active-selection-button' : ''}
                                         onClick={() => setTapType('tap2')}
                                     >
-                                        Quooker tap
+                                        Bridge
                                     </button>
                                 </div>
                             </details>
@@ -419,7 +419,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Spoelbak Materiaal:
+                                <summary>Sink material:
                                     <span>
                                         {' ' + sinkBowlMaterial.split('/').slice(-2, -1)[0]}
                                     </span>
@@ -460,7 +460,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Module Materiaal Categorie:
+                                <summary>Module material:
                                     <span>
                                         {' ' + materialCategory}
                                     </span>
@@ -485,7 +485,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Keuzes in categorie
+                                <summary>Choices in
                                     <span> {materialCategory}</span>
                                 </summary>
 
@@ -507,9 +507,9 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Afgerond: 
+                                <summary>Rounded: 
                                     <span>
-                                        {cooktopBevelled ? ' ja' : ' neen'}
+                                        {cooktopBevelled ? ' yes' : ' no'}
                                     </span>
                                 </summary>
 
@@ -524,9 +524,9 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Type kookplaat:
+                                <summary>Cooking fire type:
                                     <span>
-                                        {stoveType === 'gas' ? ' gas' : ' elektrisch'}
+                                        {stoveType === 'gas' ? ' gas' : ' electric'}
                                     </span>
                                 </summary>
 
@@ -543,7 +543,7 @@ export default function ConfigUi() {
                                         className={stoveType === 'electric' ? 'active-selection-button' : ''}
                                         onClick={() => setStoveType('electric')}
                                     >
-                                        Elektrisch
+                                        Electric
                                     </button>
                                 </div>
                             </details>
@@ -569,7 +569,7 @@ export default function ConfigUi() {
                                 className='config-ui__details'
                             >
 
-                                <summary>Module Materiaal Categorie:
+                                <summary>Module material:
                                     <span>
                                         {' ' + materialCategory}
                                     </span>
@@ -594,7 +594,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Keuzes in categorie
+                                <summary>Choices in
                                     <span> {materialCategory}</span>
                                 </summary>
 
@@ -615,9 +615,9 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Afgerond: 
+                                <summary>Rounded: 
                                     <span>
-                                        {towerBevelled ? ' ja' : ' neen'}
+                                        {towerBevelled ? ' yes' : ' no'}
                                     </span>
                                 </summary>
 
@@ -632,9 +632,9 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Type toestel:
+                                <summary>Appliance type:
                                     <span>
-                                        {applianceType === 'oven' ? ' oven' : ' wijnkoeler'}
+                                        {applianceType === 'oven' ? ' oven' : ' wine cooler'}
                                     </span>
                                 </summary>
 
@@ -651,7 +651,7 @@ export default function ConfigUi() {
                                         className={applianceType === 'fridge' ? 'active-selection-button' : ''}
                                         onClick={() => setApplianceType('fridge')}
                                     >
-                                        Wijnkoeler
+                                        Wine cooler
                                     </button>
                                 </div>
                             </details>
@@ -660,7 +660,7 @@ export default function ConfigUi() {
                                 open
                                 className='config-ui__details'
                             >
-                                <summary>Accent Materiaal:
+                                <summary>Accent Material:
                                     <span>
                                         {' ' + towerAccessoryMaterial.split('/').slice(-2, -1)[0]}
                                     </span>
