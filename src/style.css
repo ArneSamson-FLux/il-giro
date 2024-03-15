@@ -360,7 +360,6 @@ input[type=range]::-ms-track {
     height: 200px;
     padding-top: 50px;
     margin-top: 50px;
-    /* margin-bottom: 20px; */
     border-top: solid 1px var(--off-black);
 }
 
