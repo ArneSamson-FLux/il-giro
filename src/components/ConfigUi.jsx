@@ -121,6 +121,7 @@ export default function ConfigUi() {
     }
 
     const [ materialCategory, setMaterialCategory ] = useState('metal');
+    const [ isSecondDetailsOpen, setIsSecondDetailsOpen ] = useState(false);
 
 
     const checkPage = (e) => {
@@ -195,7 +196,7 @@ export default function ConfigUi() {
                     >
 
                         <button
-                            style={currentPage === 0 ? {opacity: 0.4} : {opacity: 1}}
+                            style={currentPage === 0 ? {opacity: 0.1} : {opacity: 1}}
                             className={currentPage === 0 ? 'config-ui__nav__button--disabled' : ''}
                             onClick={handleBack}
                         >
@@ -206,7 +207,7 @@ export default function ConfigUi() {
                         </button>
   
                         <button
-                            style={currentPage === 3 ? {opacity: 0.4} : {opacity: 1}}
+                            style={currentPage === 3 ? {opacity: 0.1} : {opacity: 1}}
                             className={currentPage === 3 ? 'config-ui__nav__button--disabled' : ''}
                             onClick={handleNext}
                         >
@@ -240,12 +241,15 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                <div className="config-ui__material-options">
+                                <div
+                                    className="config-ui__material-options"
+                                >
                                     {Object.entries(allCategories).map(([category, materials]) => (
                                         <div
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
                                                 setMaterialCategory(category)
+                                                setIsSecondDetailsOpen(true)
                                             }}
                                             style={{
                                                 backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
@@ -256,7 +260,7 @@ export default function ConfigUi() {
                             </details>
 
                             <details
-                                open
+                                open={isSecondDetailsOpen}
                                 className='config-ui__details'
                             >
                                 <summary>Choices in
@@ -264,20 +268,20 @@ export default function ConfigUi() {
                                 </summary>
 
                                 <div className="config-ui__material-options ">
-                                        {allCategories[materialCategory].map((material, index) => (
-                                            <div
-                                                key={index}
-                                                className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                onClick={() => {
-                                                    setSinkMaterial(material.url)
-                                                    setCooktopMaterial(material.url)
-                                                    setTowerMaterial(material.url)
-                                                }}
-                                                style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                }}
-                                            ></div>
-                                        ))}
+                                    {allCategories[materialCategory].map((material, index) => (
+                                        <div
+                                            key={index}
+                                            className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                            onClick={() => {
+                                                setSinkMaterial(material.url)
+                                                setCooktopMaterial(material.url)
+                                                setTowerMaterial(material.url)
+                                            }}
+                                            style={{
+                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                            }}
+                                        ></div>
+                                    ))}
                                 </div>
                             </details>
 
