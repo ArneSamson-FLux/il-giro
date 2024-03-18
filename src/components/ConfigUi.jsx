@@ -126,6 +126,9 @@ export default function ConfigUi() {
     const [ isSecondDetailsOpen, setIsSecondDetailsOpen ] = useState(false);
 
     const checkPage = (e) => {
+
+        setIsSecondDetailsOpen(false)
+
         switch(e){
             case 0:
                 setCurrentPage(0);
@@ -325,6 +328,7 @@ export default function ConfigUi() {
                                             key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
+                                                setIsSecondDetailsOpen(true)
                                                 setMaterialCategory(category)
                                             }}
                                             style={{
@@ -336,6 +340,7 @@ export default function ConfigUi() {
                             </details>
 
                             <details
+                                open={isSecondDetailsOpen}
                                 className='config-ui__details'                                    
                             >
                                 <summary>
@@ -478,6 +483,7 @@ export default function ConfigUi() {
                                             key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
+                                                setIsSecondDetailsOpen(true)
                                                 setMaterialCategory(category)
                                             }}
                                             style={{
@@ -489,6 +495,7 @@ export default function ConfigUi() {
                             </details>
 
                             <details
+                                open={isSecondDetailsOpen}
                                 className='config-ui__details'
                             >
                                 <summary>Choices in
@@ -585,6 +592,7 @@ export default function ConfigUi() {
                                             key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
+                                                setIsSecondDetailsOpen(true)
                                                 setMaterialCategory(category)
                                             }}
                                             style={{
@@ -596,6 +604,7 @@ export default function ConfigUi() {
                             </details>
 
                             <details
+                                open={isSecondDetailsOpen}
                                 className='config-ui__details'
                             >
                                 <summary>Choices in
