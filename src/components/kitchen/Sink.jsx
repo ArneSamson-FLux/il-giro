@@ -16,7 +16,6 @@ import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
-import { log } from '@tensorflow/tfjs';
 
 export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){  
 
