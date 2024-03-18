@@ -27,6 +27,13 @@ export default function Tap1({materialUrl, props}){
             {...props} 
             dispose={null}
         >
+             <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes['3DGeom~3529_(C-3DGeom~3529_Defintion#3)'].geometry}
+                material={material}
+                position={[-0.029, 0.883, -0.026]}
+            />
             <mesh
                 castShadow
                 receiveShadow
