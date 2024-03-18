@@ -124,11 +124,6 @@ export default function ConfigUi() {
 
     const [ materialCategory, setMaterialCategory ] = useState('metal');
     const [ isSecondDetailsOpen, setIsSecondDetailsOpen ] = useState(false);
-    // const [ isOpen, setIsOpen ] = useState(false);
-    // const {height, opacity} = useSpring({
-    //     from: {height: 0, opacity: 0},
-    //     to: {height: !isOpen ? 'auto' : 0, opacity: !isOpen ? 1 : 0}
-    // });
 
     const checkPage = (e) => {
         switch(e){
