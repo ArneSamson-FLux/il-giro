@@ -15,12 +15,14 @@ import useConfig from '../../store/useConfig.jsx';
 
 export default function Cooktop({materialUrl, bevelled, stoveType, props}){
 
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    albedoTexture.anisotropy = 16;
+    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
+        materialUrl+"albedo.jpg",
+        materialUrl+"normal.jpg",
+        materialUrl+"roughness.jpg",
+        materialUrl+"metallic.jpg"
+    ]);
 
-    const normalTexture = useTexture(materialUrl+"normal.jpg");
-    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
+    albedoTexture.anisotropy = 16;
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -28,7 +30,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
     });
 

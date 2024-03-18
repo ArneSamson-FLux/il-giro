@@ -16,17 +16,20 @@ import useConfig from '../../store/useConfig.jsx';
 
 export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
 
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
+    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
+        materialUrl+"albedo.jpg",
+        materialUrl+"normal.jpg",
+        materialUrl+"roughness.jpg",
+        materialUrl+"metallic.jpg"
+    ]);
+
     albedoTexture.anisotropy = 16;
+    
     const aoTexture = useTexture("./images/bakes/tower-straight_Bake1_PBR_Ambient Occlusion.jpg");
     aoTexture.flipY = false;
 
     const aoTexture2 = useTexture("./images/bakes/tower-straight.002_Bake1_PBR_Ambient Occlusion.jpg");
     aoTexture2.flipY = false;
-
-    const normalTexture = useTexture(materialUrl+"normal.jpg");
-    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -34,7 +37,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
     });
 
@@ -42,7 +45,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
         aoMap: aoTexture,
         aoMapIntensity: 0.7,
@@ -52,7 +55,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
         aoMap: aoTexture2,
         aoMapIntensity: 0.7,

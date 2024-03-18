@@ -4,15 +4,16 @@ import { useTexture, useGLTF } from '@react-three/drei'
 
 export default function Tap1({materialUrl, bevelled, props}){
 
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
+    const [albedoTexture,  metallnessTexture] = useTexture([
+        materialUrl+"albedo.jpg",
+        materialUrl+"metallic.jpg"
+    ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
-
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
         roughness: 0
 
