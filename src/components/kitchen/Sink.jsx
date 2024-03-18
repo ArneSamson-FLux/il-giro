@@ -180,15 +180,30 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     materialUrl={materialUrl}
                 />
 
-                <Tap1
-                    props={
-                        {
-                            position: [0, 0, 0],
-                            rotation: [0, 0, 0],
+                {tapType === '1' && 
+                    <Tap1
+                        props={
+                            {
+                                position: [0, 0, 0],
+                                rotation: [0, 0, 0],
+                            }
                         }
-                    }
-                    materialUrl={accessoryMaterialUrl}
-                />
+                        materialUrl={accessoryMaterialUrl}
+                    />
+                }
+
+                {tapType === '2' &&
+
+                    <Tap2
+                        props={
+                            {
+                                position: [0, 0, 0],
+                                rotation: [0, 0, 0],
+                            }
+                        }
+                        materialUrl={accessoryMaterialUrl}
+                    />
+                }
 
             </group>
 
