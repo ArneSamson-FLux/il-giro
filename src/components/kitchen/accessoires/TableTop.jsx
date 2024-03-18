@@ -4,7 +4,7 @@ import { useTexture, useGLTF } from '@react-three/drei'
 
 export default function TableTop({props, materialUrl}){
 
-const albedoTexture = useTexture(materialUrl+"albedo.jpg");
+    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
     const normalTexture = useTexture(materialUrl+"normal.jpg");
     const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
     const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
@@ -18,7 +18,6 @@ const albedoTexture = useTexture(materialUrl+"albedo.jpg");
         metalnessMap: metallnesTexture,
         metalness: 0,
         roughness: 1,
-        aoMapIntensity: 0.9,
     });
 
 
