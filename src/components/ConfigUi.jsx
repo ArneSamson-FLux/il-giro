@@ -406,21 +406,21 @@ export default function ConfigUi() {
                             >
                                 <summary>Faucet type:
                                     <span>
-                                        {tapType === 'tap1' ? ' Brandwood 3' : ' Bridge'}
+                                        {tapType === '1' ? ' Brandwood 3' : ' Bridge'}
                                     </span>
                                 </summary>
                                 <div
                                     className='config-ui__selection-buttons'
                                 >
                                     <button
-                                        className={tapType === 'tap1' ? 'active-selection-button' : ''}
-                                        onClick={() => setTapType('tap1')}
+                                        className={tapType === '1' ? 'active-selection-button' : ''}
+                                        onClick={() => setTapType('1')}
                                     >
                                         Brandwood 3
                                     </button>
                                     <button
-                                        className={tapType === 'tap2' ? 'active-selection-button' : ''}
-                                        onClick={() => setTapType('tap2')}
+                                        className={tapType === '2' ? 'active-selection-button' : ''}
+                                        onClick={() => setTapType('2')}
                                     >
                                         Bridge
                                     </button>
