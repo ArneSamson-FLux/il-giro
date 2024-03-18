@@ -19,13 +19,15 @@ import useConfig from '../../store/useConfig.jsx';
 import { log } from '@tensorflow/tfjs';
 
 export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){  
-    
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    albedoTexture.anisotropy = 16;
 
-    const normalTexture = useTexture(materialUrl+"normal.jpg");
-    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnessTexture = useTexture(materialUrl+"metallic.jpg");
+    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
+        materialUrl+"albedo.jpg",
+        materialUrl+"normal.jpg",
+        materialUrl+"roughness.jpg",
+        materialUrl+"metallic.jpg"
+    ]);
+    
+    albedoTexture.anisotropy = 16;
 
     metallnessTexture.name = "metalnessMap";
 
