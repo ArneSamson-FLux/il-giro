@@ -2,14 +2,17 @@ import React, { useRef } from "react";
 import * as THREE from 'three'
 import { useGLTF, useTexture } from "@react-three/drei";
 
-export default function SinkBowl({props, materialUrl}) {
+export default function Reginox({props, materialUrl}) {
 
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    const normalTexture = useTexture(materialUrl+"normal.jpg");
-    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
-    const aoTexture = useTexture("./images/bakes/sink-bake.jpg");
-    aoTexture.flipY = false;
+    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
+        materialUrl+"albedo.jpg",
+        materialUrl+"normal.jpg",
+        materialUrl+"roughness.jpg",
+        materialUrl+"metallic.jpg"
+    ]);
+
+    // const aoTexture = useTexture("./images/bakes/Reginox.jpg");
+    // aoTexture.flipY = false;
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -17,15 +20,15 @@ export default function SinkBowl({props, materialUrl}) {
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
         roughness: 0,
-        aoMap: aoTexture,
-        aoMapIntensity: 1,
+        // aoMap: aoTexture,
+        // aoMapIntensity: 1,
     });
 
   
-    const { nodes, materials } = useGLTF("./models/sink-bowl.glb");
+    const { nodes, materials } = useGLTF("./models/Reginox.glb");
    
     return (
         <group 
@@ -46,4 +49,4 @@ export default function SinkBowl({props, materialUrl}) {
     );
     }
 
-useGLTF.preload("./models/sink-bowl.glb");
+useGLTF.preload("./models/Reginox.glb");

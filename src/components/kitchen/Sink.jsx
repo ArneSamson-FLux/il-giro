@@ -8,10 +8,11 @@ import { useDrag } from "@use-gesture/react";
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
 
-import SinkBowl from './accessoires/SinkBowl.jsx';
+import Reginox from './accessoires/ReginoxBowl.jsx';
 
 import TableTop from './accessoires/TableTop.jsx';
-import TableTopCut from './accessoires/TableTopCut.jsx';
+import TableTopCutFilled from './accessoires/TableTopCutFilled.jsx';
+import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
 
 import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
 
@@ -182,7 +183,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     materialUrl={materialUrl}
                 /> */}
 
-                <TableTopCut
+                {/* <TableTopCutFilled
                     props={
                         {
                             position: [0, 0, 0],
@@ -190,7 +191,32 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                         }
                     }
                     materialUrl={materialUrl}
-                />
+                /> */}
+
+                <>
+                    <TableTopCutOut
+                        props={
+                            {
+                                position: [0, 0, 0],
+                                rotation: [0, 0, 0],
+                            }
+                        }
+                        materialUrl={materialUrl}
+                    />
+
+                    {/* <Reginox
+                        props={
+                            {
+                                position: [0, 0.917, 0.26],
+                                rotation: [0, 0, 0],
+                            }
+                        }
+                        materialUrl={accessoryMaterialUrl}
+                    /> */}
+                </>
+
+
+
 
 
                 {tapType === '1' && 

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF } from '@react-three/drei'
 
-export default function TableTopCut({props, materialUrl}){
+export default function TableTopCutOut({props, materialUrl}){
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         materialUrl+"albedo.jpg",
@@ -23,7 +23,7 @@ export default function TableTopCut({props, materialUrl}){
     });
 
 
-    const { nodes, materials } = useGLTF("./models/table-top-cut.glb");
+    const { nodes, materials } = useGLTF("./models/table-top-cut-out.glb");
     return (
         <group
             name='tabletop'
@@ -33,8 +33,7 @@ export default function TableTopCut({props, materialUrl}){
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes['table-top-cut'].geometry}
-                // material={nodes['table-top-cut'].material}
+                geometry={nodes['table-top-cut-out'].geometry}
                 material={material}
                 scale={[1.111, 1, 1.111]}
             />
@@ -42,4 +41,4 @@ export default function TableTopCut({props, materialUrl}){
     );
 }
 
-useGLTF.preload('./models/table-top-cut.glb')
+useGLTF.preload('./models/table-top-cut-out.glb')
