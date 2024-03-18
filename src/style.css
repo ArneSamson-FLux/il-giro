@@ -178,10 +178,30 @@ input{
     color: var(--off-black);
 }
 input[type="checkbox"]{
+    margin-top: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+
+    font: inherit;
+    color: var(--off-black);
     width: 20px;
     height: 20px;
-    border-radius: 5px;
-    margin-top: 20px;
+    border: 0.15em solid var(--off-black);
+    border-radius: 0px;
+
+    display: grid;
+    place-items: center;
+}
+input[type="checkbox"]::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: transform 0.12s ease-in-out;
+    box-shadow: inset 1em 1em var(--off-black);
+}
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
 }
 input[type="range"]{
     appearance: none;
