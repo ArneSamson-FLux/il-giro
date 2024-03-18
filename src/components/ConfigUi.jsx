@@ -365,7 +365,7 @@ export default function ConfigUi() {
                             <details
                                 className='config-ui__details'
                             >
-                                <summary>Rounded: 
+                                <summary>curved: 
                                     <span>
                                         {sinkBevelled ? ' yes' : ' no'}
                                     </span>
@@ -376,31 +376,7 @@ export default function ConfigUi() {
                                     onChange={(e) => setSinkBevelled(e.target.checked)} 
                                 />
                             </details>
-
-                            <details
-                                className='config-ui__details'
-                            >
-                                <summary>Faucet material:
-                                    <span>
-                                        {' ' + tapMaterial.split('/').slice(-2, -1)[0]}
-                                    </span>
-                                </summary>
-
-                                <div className="config-ui__material-options ">
-                                    {allCategories.metal.map((material, index) => (
-                                        <div
-                                            key={index}
-                                            className={`config-ui__material-options__option ${tapMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                            style={{
-                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                            }}
-                                            onClick={() => setTapMaterial(material.url)}
-                                        ></div>
-                                    ))}
-                                </div>
-
-                            </details>
-
+                            
                             <details
                                 className='config-ui__details'
                             >
@@ -425,6 +401,30 @@ export default function ConfigUi() {
                                         Bridge
                                     </button>
                                 </div>
+                            </details>
+
+                            <details
+                                className='config-ui__details'
+                            >
+                                <summary>Faucet material:
+                                    <span>
+                                        {' ' + tapMaterial.split('/').slice(-2, -1)[0]}
+                                    </span>
+                                </summary>
+
+                                <div className="config-ui__material-options ">
+                                    {allCategories.metal.map((material, index) => (
+                                        <div
+                                            key={index}
+                                            className={`config-ui__material-options__option ${tapMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                            style={{
+                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                            }}
+                                            onClick={() => setTapMaterial(material.url)}
+                                        ></div>
+                                    ))}
+                                </div>
+
                             </details>
 
                             <details
@@ -519,7 +519,7 @@ export default function ConfigUi() {
                             <details
                                 className='config-ui__details'
                             >
-                                <summary>Rounded: 
+                                <summary>curved: 
                                     <span>
                                         {cooktopBevelled ? ' yes' : ' no'}
                                     </span>
@@ -627,7 +627,7 @@ export default function ConfigUi() {
                             <details
                                 className='config-ui__details'
                             >
-                                <summary>Rounded: 
+                                <summary>curved: 
                                     <span>
                                         {towerBevelled ? ' yes' : ' no'}
                                     </span>
