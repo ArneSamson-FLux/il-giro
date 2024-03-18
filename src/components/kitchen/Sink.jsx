@@ -10,6 +10,8 @@ import Tap2 from './accessoires/Tap2.jsx';
 
 import SinkBowl from './accessoires/SinkBowl.jsx';
 
+import TableTop from './accessoires/TableTop.jsx';
+
 import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
 
 import useScene from '../../store/useScene.jsx';
@@ -167,6 +169,26 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                         material={material}
                     />
                 </mesh>
+
+                <TableTop
+                    props={
+                        {
+                            position: [0, 0, 0],
+                            rotation: [0, 0, 0],
+                        }
+                    }
+                    materialUrl={materialUrl}
+                />
+
+                <Tap1
+                    props={
+                        {
+                            position: [0, 0, 0],
+                            rotation: [0, 0, 0],
+                        }
+                    }
+                    materialUrl={accessoryMaterialUrl}
+                />
 
             </group>
 
