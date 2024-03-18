@@ -51,7 +51,7 @@ export default create((set) => {
         towerBevelled: true,
 
         tapMaterial: "./placeholder/",
-        tapType: 'tap1',
+        tapType: '1',
 
         sinkBowlMaterial: "./placeholder/",
 
