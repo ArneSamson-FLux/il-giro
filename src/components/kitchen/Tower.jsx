@@ -39,6 +39,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
+        roughness: 1,
     });
 
     const towerMaterial = new THREE.MeshStandardMaterial({
@@ -49,6 +50,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         metalness: 1,
         aoMap: aoTexture,
         aoMapIntensity: 0.7,
+        roughness: 1,
     });
 
     const tower2material = new THREE.MeshStandardMaterial({
@@ -59,6 +61,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         metalness: 1,
         aoMap: aoTexture2,
         aoMapIntensity: 0.7,
+        roughness: 1,
     });
 
     const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
