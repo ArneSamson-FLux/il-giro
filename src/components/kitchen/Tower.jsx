@@ -5,8 +5,8 @@ import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
-import Fridge from './accessoires/Fridge.jsx';
-import Oven from './accessoires/Oven.jsx';
+// import Fridge from './accessoires/Fridge.jsx';
+// import Oven from './accessoires/Oven.jsx';
 import LiquorStand from './accessoires/LiquorStand.jsx';
 
 import {BakePlane} from '../lighting&shadows/ShadowPlanes.jsx'
@@ -64,7 +64,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         roughness: 1,
     });
 
-    const { nodes, materials } = useGLTF("./models/kitchen-high-hollow.glb");
+    const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
     const { setCurrentPage, currentPage, dragMode, isDraggingTower, setIsDraggingTower, setIsDragging } = useConfig();
     const { setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
@@ -79,7 +79,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const [position, setPosition] = useState([0, 0, -1]);
 
-    //animate sink and dragging_____________________________________________________________________________________
+    //animate tower and dragging_____________________________________________________________________________________
     const springProps = useSpring({
         // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
@@ -153,72 +153,103 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 {...(dragMode ? dragPos() : {})}           
             >
                 <mesh
-                    name='tower-mesh'
+                    name='cabinet'
                     castShadow
                     receiveShadow
-                    geometry={nodes["tower-straight"].geometry}
-                    material={towerMaterial}
+                    geometry={nodes.tower.geometry}
+                    material={material}
                 >
-                    {/* //door */}
                     <mesh
-                        name='door-mesh'
+                        name='door'
                         castShadow
                         receiveShadow
-                        geometry={nodes.door001.geometry}
+                        geometry={nodes.door.geometry}
                         material={material}
-                        position={[0.388, 1.088, 0.316]}
-                        scale={[1, 1.1, 1]}
+                        position={[0.425, 1.185, 0.339]}
                         rotation={[0, doorOpening, 0]}
+                    />
+                    <mesh
+                        castShadow
+                        receiveShadow
+                        geometry={nodes.inside.geometry}
+                        material={material}
                     >
                         <mesh
-                            name='door-bevel-mesh'
-                            visible={bevelled}
                             castShadow
                             receiveShadow
-                            geometry={nodes["door-bevel"].geometry}
-                            material={material}
-                        />
-                        <mesh
-                            name='door-straight-mesh'
-                            visible={!bevelled}
-                            castShadow
-                            receiveShadow
-                            geometry={nodes["door-straight"].geometry}
-                            material={material}
+                            geometry={nodes.grill002.geometry}
+                            material={materials['[Metal_Aluminum_Anodized]']}
+                            position={[-0.304, 0.055, 0.291]}
                         />
                     </mesh>
-
-                    {/* tower underside */}
-                    <mesh
-                        name='tower-bevel-mesh'
-                        visible={bevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes["tower-bevel"].geometry}
-                        material={material}
-                    />
-                    <mesh
-                        name='tower-straight-mesh'
-                        visible={!bevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes["tower-straight002"].geometry}
-                        material={tower2material}
-                    />
+                    <group
+                        position={[-0.053, 0.01, -0.026]}
+                        rotation={[0, -1.571, 0]}
+                        scale={[1, 1.008, 1]}
+                    >
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes['C-865mm_1-Door-cabinet'].geometry}
+                            material={materials.Steel_med}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes['C-865mm_1-Door-cabinet_1'].geometry}
+                            material={materials[' Steel_light']}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes['C-865mm_1-Door-cabinet_2'].geometry}
+                            material={materials['[0136_Charcoal]']}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes['C-865mm_1-Door-cabinet_3'].geometry}
+                            material={materials.Material}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes['C-865mm_1-Door-cabinet_4'].geometry}
+                            material={materials['[0133_Gray]']}
+                        />
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes['C-865mm_1-Door-cabinet_5'].geometry}
+                            material={materials['[0129_WhiteSmoke]']}
+                        />
+                        <group
+                            position={[0.313, 0.894, 0.233]}
+                            scale={[1, 0.992, 1]}
+                            rotation={[0, -doorOpening + 0.5, 0]}
+                        >
+                            <mesh
+                                castShadow
+                                receiveShadow
+                                geometry={nodes['G-Object070'].geometry}
+                                material={materials.Material}
+                            />
+                            <mesh
+                                castShadow
+                                receiveShadow
+                                geometry={nodes['G-Object070_1'].geometry}
+                                material={materials['[Translucent_Glass_Gray]']}
+                            />
+                            <mesh
+                                castShadow
+                                receiveShadow
+                                geometry={nodes['G-Object070_2'].geometry}
+                                material={materials[' Steel_light']}
+                            />
+                        </group>
+                    </group>
                 </mesh>
-
-                {fridgeOrOven === "fridge"
-                && <Fridge/>
-                }
-
-                {fridgeOrOven === "oven"
-                && <Oven/>
-                }
-
-                <LiquorStand
-                    materialUrl={accessoryMaterialUrl}
-                />
-
+            
             </group>
 
             <BakePlane
@@ -237,4 +268,4 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
     </>
 }
 
-useGLTF.preload('./models/kitchen-high-hollow.glb')
+useGLTF.preload('./models/base-island-high.glb')

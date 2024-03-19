@@ -117,16 +117,6 @@ export default function Scene() {
                 args={[10, 10, 0x000000, 0x000000]} 
             />
 
-            {/* <ReflectivePlane
-                props={
-                    {
-                        position: [0, -0.01, 0],
-                        rotation: [-Math.PI / 2, 0, 0],
-                        scale: [7, 7, 1],
-                    }
-                }
-            /> */}
-
             <color attach="background" args={dragMode ? [0xefefef] : [0xffffff]} />
 
 

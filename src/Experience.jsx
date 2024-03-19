@@ -107,15 +107,16 @@ export default function Experience() {
     <Environment
       files={"/HDR/4.hdr"}
       background={false}
+      blur={0.1}
     >
       <Lightformer
           visible={true}
           form="rect"
-          intensity={1}
+          intensity={0.8}
           position={new THREE.Vector3().setFromSphericalCoords(
             2, // distance
             1.2, // phi
-            1.59 // theta
+            1.75 // theta
           )}
           scale={[5, 2, 5]}
           target={[0, 0, 0]}
@@ -136,44 +137,38 @@ export default function Experience() {
           castShadow={false}
           receiveShadow={false}
         />
+
         <Lightformer
             visible={true}
             form="rect"
-            intensity={1}
+            intensity={0.3}
             position={new THREE.Vector3().setFromSphericalCoords(
             1, // distance
-            Math.PI, // phi (90 degrees, facing up)
+            Math.PI, // phi
             0 // theta
             )}
             scale={[5, 5, 5]}
             target={[0, 0, 0]}
             color={"#ffffff"}
         />
+        
         <Lightformer
             visible={true}
             form="rect"
             intensity={1}
             position={new THREE.Vector3().setFromSphericalCoords(
-            1, // distance
-            Math.PI / 12,
+            1.5, // distance
+            Math.PI / 13,
             0 // theta
             )}
             scale={[5, 5, 5]}
             target={[0, 0, 0]}
-            color={"#737373"}
+            color={"#595959"}
         />      
 
     </Environment>
       
     <Lights/>
-
-    {/* <ContactShadows opacity={0.2} scale={5} blur={0.1} far={10} resolution={512} color="#000000"  frames={1}/> */}
-
-        {/* <SoftShadows
-          size={50}
-          samples={20}
-          focus={2}
-        /> */}
 
     <Scene/>
 

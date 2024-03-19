@@ -40,9 +40,10 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
+        roughness: 1,
     });
 
-    const { nodes, materials } = useGLTF("./models/base-island-bevelled.glb");
+    const { nodes, materials } = useGLTF("./models/base-island.glb");
 
 
     const meshRef = useRef();
@@ -207,7 +208,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     <Reginox
                         props={
                             {
-                                position: [0, 0.917, 0.26],
+                                position: [0, 0, 0],
                                 rotation: [0, 0, 0],
                             }
                         }
@@ -260,4 +261,4 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     </>
 }
 
-useGLTF.preload('./models/base-island-bevelled.glb')
+useGLTF.preload('./models/base-island.glb')
