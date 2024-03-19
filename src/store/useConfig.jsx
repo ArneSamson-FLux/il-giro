@@ -57,7 +57,7 @@ export default create((set) => {
 
         stoveType: 'electric',
 
-        applianceType: 'oven',
+        applianceType: 'fridge',
 
         towerAccessoryMaterial: "./placeholder/",
 

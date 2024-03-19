@@ -168,87 +168,126 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         position={[0.425, 1.185, 0.339]}
                         rotation={[0, doorOpening, 0]}
                     />
-                    <mesh
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.inside.geometry}
-                        material={material}
-                    >
+                    {fridgeOrOven === 'fridge' && <>
                         <mesh
                             castShadow
                             receiveShadow
-                            geometry={nodes.grill002.geometry}
-                            material={materials['[Metal_Aluminum_Anodized]']}
-                            position={[-0.304, 0.055, 0.291]}
-                        />
-                    </mesh>
-                    <group
-                        position={[-0.053, 0.01, -0.026]}
-                        rotation={[0, -1.571, 0]}
-                        scale={[1, 1.008, 1]}
-                    >
-                        <mesh
+                            geometry={nodes['inside-cooler'].geometry}
+                            material={material}>
+                            <mesh
+                                castShadow
+                                receiveShadow
+                                geometry={nodes.grill002.geometry}
+                                material={materials['[Metal_Aluminum_Anodized]']}
+                                position={[-0.304, 0.055, 0.291]}
+                            />
+                            <group
+                                position={[-0.053, 0.01, -0.026]}
+                                rotation={[0, -1.571, 0]}
+                                scale={[1, 1.008, 1]}
+                            >
+                                <mesh
+                                    castShadow
+                                    receiveShadow
+                                    geometry={nodes['C-865mm_1-Door-cabinet'].geometry}
+                                    material={materials.Steel_med}
+                                />
+                                <mesh
+                                    castShadow
+                                    receiveShadow
+                                    geometry={nodes['C-865mm_1-Door-cabinet_1'].geometry}
+                                    material={materials[' Steel_light']}
+                                />
+                                <mesh
+                                    castShadow
+                                    receiveShadow
+                                    geometry={nodes['C-865mm_1-Door-cabinet_2'].geometry}
+                                    material={materials['[0136_Charcoal]']}
+                                />
+                                <mesh
+                                    castShadow
+                                    receiveShadow
+                                    geometry={nodes['C-865mm_1-Door-cabinet_3'].geometry}
+                                    material={materials.Material}
+                                />
+                                <mesh
+                                    castShadow
+                                    receiveShadow
+                                    geometry={nodes['C-865mm_1-Door-cabinet_4'].geometry}
+                                    material={materials['[0133_Gray]']}
+                                />
+                                <mesh
+                                    castShadow
+                                    receiveShadow
+                                    geometry={nodes['C-865mm_1-Door-cabinet_5'].geometry}
+                                    material={materials['[0129_WhiteSmoke]']}
+                                />
+                                <group
+                                    position={[0.313, 0.894, 0.233]}
+                                    scale={[1, 0.992, 1]}
+                                    rotation={[0, -doorOpening + 0.5, 0]}
+                                >
+                                    <mesh
+                                        castShadow
+                                        receiveShadow
+                                        geometry={nodes['G-Object070'].geometry}
+                                        material={materials.Material}
+                                    />
+                                    <mesh
+                                        castShadow
+                                        receiveShadow
+                                        geometry={nodes['G-Object070_1'].geometry}
+                                        material={materials['[Translucent_Glass_Gray]']}
+                                    />
+                                    <mesh
+                                        castShadow
+                                        receiveShadow
+                                        geometry={nodes['G-Object070_2'].geometry}
+                                        material={materials[' Steel_light']}
+                                    />
+                                </group>
+                            </group>
+                        </mesh>
+                        </>
+                    }
+
+                    {fridgeOrOven === 'oven' && <>
+                         <mesh
                             castShadow
                             receiveShadow
-                            geometry={nodes['C-865mm_1-Door-cabinet'].geometry}
-                            material={materials.Steel_med}
-                        />
-                        <mesh
-                            castShadow
-                            receiveShadow
-                            geometry={nodes['C-865mm_1-Door-cabinet_1'].geometry}
-                            material={materials[' Steel_light']}
-                        />
-                        <mesh
-                            castShadow
-                            receiveShadow
-                            geometry={nodes['C-865mm_1-Door-cabinet_2'].geometry}
-                            material={materials['[0136_Charcoal]']}
-                        />
-                        <mesh
-                            castShadow
-                            receiveShadow
-                            geometry={nodes['C-865mm_1-Door-cabinet_3'].geometry}
-                            material={materials.Material}
-                        />
-                        <mesh
-                            castShadow
-                            receiveShadow
-                            geometry={nodes['C-865mm_1-Door-cabinet_4'].geometry}
-                            material={materials['[0133_Gray]']}
-                        />
-                        <mesh
-                            castShadow
-                            receiveShadow
-                            geometry={nodes['C-865mm_1-Door-cabinet_5'].geometry}
-                            material={materials['[0129_WhiteSmoke]']}
-                        />
-                        <group
-                            position={[0.313, 0.894, 0.233]}
-                            scale={[1, 0.992, 1]}
-                            rotation={[0, -doorOpening + 0.5, 0]}
+                            geometry={nodes['inside-shelf'].geometry}
+                            material={material}
+                            position={[0, -0.048, 0]}
                         >
                             <mesh
                                 castShadow
                                 receiveShadow
-                                geometry={nodes['G-Object070'].geometry}
-                                material={materials.Material}
+                                geometry={nodes['shelf-bottom'].geometry}
+                                material={material}
+                                position={[0, 0.301, 0.059 + doorOpening/6]}
+                                rotation={[0, -1.571, 0]}
                             />
                             <mesh
                                 castShadow
                                 receiveShadow
-                                geometry={nodes['G-Object070_1'].geometry}
-                                material={materials['[Translucent_Glass_Gray]']}
+                                geometry={nodes['shelf-middle'].geometry}
+                                material={material}
+                                position={[0, 0.544, 0.059 + doorOpening/8]}
+                                rotation={[0, -1.571, 0]}
                             />
                             <mesh
                                 castShadow
                                 receiveShadow
-                                geometry={nodes['G-Object070_2'].geometry}
-                                material={materials[' Steel_light']}
+                                geometry={nodes['shelf-top'].geometry}
+                                material={material}
+                                position={[0, 0.788, 0.059 + doorOpening/12]}
+                                rotation={[0, -1.571, 0]}
                             />
-                        </group>
-                    </group>
+                        </mesh>
+                        </>
+                    }
                 </mesh>
+
             
             </group>
 
