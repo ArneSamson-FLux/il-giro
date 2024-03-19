@@ -449,7 +449,7 @@ summary span{
 .config-ui__material-options__option{
     width: 45px;
     height: 45px;
-
+    border-radius: 50%;
     border: 1px solid var(--off-black);
 
     &:hover{
