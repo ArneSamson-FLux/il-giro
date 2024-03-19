@@ -144,7 +144,7 @@ export default function Experience() {
             intensity={0.3}
             position={new THREE.Vector3().setFromSphericalCoords(
             1, // distance
-            Math.PI, // phi (90 degrees, facing up)
+            Math.PI, // phi
             0 // theta
             )}
             scale={[5, 5, 5]}
@@ -169,14 +169,6 @@ export default function Experience() {
     </Environment>
       
     <Lights/>
-
-    {/* <ContactShadows opacity={0.2} scale={5} blur={0.1} far={10} resolution={512} color="#000000"  frames={1}/> */}
-
-        {/* <SoftShadows
-          size={50}
-          samples={20}
-          focus={2}
-        /> */}
 
     <Scene/>
 
