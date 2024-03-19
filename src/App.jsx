@@ -58,12 +58,10 @@ root.render(
                 antialias: true,
                 toneMapping: THREE.ACESFilmicToneMapping,
                 outoutColorSpace: THREE.SRGBColorSpace,
+                toneMappingExposure: 1.25,
                 }}
                 shadows={true}
                 dpr={window.devicePixelRatio}
-                // style={{
-                //     height: '80vh',
-                // }}
             >
                 <Effects/>
 
