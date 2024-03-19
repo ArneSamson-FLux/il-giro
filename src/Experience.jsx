@@ -106,7 +106,7 @@ export default function Experience() {
 
     <Environment
       files={"/HDR/4.hdr"}
-      background={false}
+      background={true}
     >
       <Lightformer
           visible={true}
@@ -115,7 +115,7 @@ export default function Experience() {
           position={new THREE.Vector3().setFromSphericalCoords(
             2, // distance
             1.2, // phi
-            1.59 // theta
+            1.75 // theta
           )}
           scale={[5, 2, 5]}
           target={[0, 0, 0]}
