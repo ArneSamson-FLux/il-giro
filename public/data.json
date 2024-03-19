@@ -1,8 +1,7 @@
 {
     "categories": {
         "wood": ["oak"],
-        "metal": ["black metal", "innox", "gold", "bronze", "copper"],
-        "leather": ["leather"],
+        "metal": ["black metal", "innox", "inox", "gold", "bronze", "copper"],
         "solid surface": ["solid surface"],
         "micro topping": ["micro topping"]
     },
@@ -12,9 +11,6 @@
         },
         "black metal": {
             "url": "/materials/blackmetal/"
-        },
-        "leather": {
-            "url": "/materials/leather/"
         },
         "solid surface": {
             "url": "/materials/solidsurface/"
@@ -33,6 +29,9 @@
         },
         "copper":{
             "url": "/materials/copper/"
+        },
+        "inox": {
+            "url": "/materials/inox/"
         }
     }
 }
