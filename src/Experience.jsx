@@ -106,12 +106,13 @@ export default function Experience() {
 
     <Environment
       files={"/HDR/4.hdr"}
-      background={true}
+      background={false}
+      blur={0.1}
     >
       <Lightformer
           visible={true}
           form="rect"
-          intensity={1}
+          intensity={0.8}
           position={new THREE.Vector3().setFromSphericalCoords(
             2, // distance
             1.2, // phi
@@ -162,7 +163,7 @@ export default function Experience() {
             )}
             scale={[5, 5, 5]}
             target={[0, 0, 0]}
-            color={"#737373"}
+            color={"#595959"}
         />      
 
     </Environment>
