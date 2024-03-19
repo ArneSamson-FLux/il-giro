@@ -79,8 +79,8 @@ export default function ConfigUi() {
             setCooktopMaterial(allMaterials[5].url);
             setTowerMaterial(allMaterials[5].url);
             setTapMaterial(allMaterials[7].url);
-            setSinkBowlMaterial(allMaterials[8].url);
-            setTowerAccessoryMaterial(allMaterials[8].url);
+            setSinkBowlMaterial(allMaterials[7].url);
+            setTowerAccessoryMaterial(allMaterials[7].url);
 
         }
     }, [allMaterials,
@@ -257,6 +257,9 @@ export default function ConfigUi() {
                                             onClick={() => {
                                                 setMaterialCategory(category)
                                                 setIsSecondDetailsOpen(true)
+                                                setSinkMaterial(materials[0].url)
+                                                setCooktopMaterial(materials[0].url)
+                                                setTowerMaterial(materials[0].url)
                                             }}
                                             style={{
                                                 backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
@@ -330,6 +333,7 @@ export default function ConfigUi() {
                                             onClick={() => {
                                                 setIsSecondDetailsOpen(true)
                                                 setMaterialCategory(category)
+                                                setSinkMaterial(materials[0].url)
                                             }}
                                             style={{
                                                 backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
@@ -485,6 +489,7 @@ export default function ConfigUi() {
                                             onClick={() => {
                                                 setIsSecondDetailsOpen(true)
                                                 setMaterialCategory(category)
+                                                setCooktopMaterial(materials[0].url)
                                             }}
                                             style={{
                                                 backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
@@ -594,6 +599,7 @@ export default function ConfigUi() {
                                             onClick={() => {
                                                 setIsSecondDetailsOpen(true)
                                                 setMaterialCategory(category)
+                                                setTowerMaterial(materials[0].url)
                                             }}
                                             style={{
                                                 backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
