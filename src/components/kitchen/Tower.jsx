@@ -5,8 +5,8 @@ import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
-import Fridge from './accessoires/Fridge.jsx';
-import Oven from './accessoires/Oven.jsx';
+// import Fridge from './accessoires/Fridge.jsx';
+// import Oven from './accessoires/Oven.jsx';
 import LiquorStand from './accessoires/LiquorStand.jsx';
 
 import {BakePlane} from '../lighting&shadows/ShadowPlanes.jsx'
@@ -207,13 +207,13 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                     />
                 </mesh>
 
-                {fridgeOrOven === "fridge"
+                {/* {fridgeOrOven === "fridge"
                 && <Fridge/>
                 }
 
                 {fridgeOrOven === "oven"
                 && <Oven/>
-                }
+                } */}
 
                 <LiquorStand
                     materialUrl={accessoryMaterialUrl}

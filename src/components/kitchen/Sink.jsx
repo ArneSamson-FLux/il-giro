@@ -43,7 +43,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
         roughness: 1,
     });
 
-    const { nodes, materials } = useGLTF("./models/base-island-bevelled.glb");
+    const { nodes, materials } = useGLTF("./models/base-island.glb");
 
 
     const meshRef = useRef();
@@ -261,4 +261,4 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     </>
 }
 
-useGLTF.preload('./models/base-island-bevelled.glb')
+useGLTF.preload('./models/base-island.glb')
