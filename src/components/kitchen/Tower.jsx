@@ -79,7 +79,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const [position, setPosition] = useState([0, 0, -1]);
 
-    //animate sink and dragging_____________________________________________________________________________________
+    //animate tower and dragging_____________________________________________________________________________________
     const springProps = useSpring({
         // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
@@ -168,21 +168,31 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         position={[0.425, 1.185, 0.339]}
                         rotation={[0, doorOpening, 0]}
                     />
-
+                    <mesh
+                        castShadow
+                        receiveShadow
+                        geometry={nodes.inside.geometry}
+                        material={material}
+                    >
+                        <mesh
+                            castShadow
+                            receiveShadow
+                            geometry={nodes.grill002.geometry}
+                            material={materials['[Metal_Aluminum_Anodized]']}
+                            position={[-0.304, 0.055, 0.291]}
+                        />
+                    </mesh>
                     <group
-                        name='fridge-things'
                         position={[-0.053, 0.01, -0.026]}
                         rotation={[0, -1.571, 0]}
                         scale={[1, 1.008, 1]}
                     >
-                        {/* grill */}
                         <mesh
                             castShadow
                             receiveShadow
                             geometry={nodes['C-865mm_1-Door-cabinet'].geometry}
                             material={materials.Steel_med}
                         />
-                        {/* fridge stuff */}
                         <mesh
                             castShadow
                             receiveShadow
@@ -213,8 +223,11 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                             geometry={nodes['C-865mm_1-Door-cabinet_5'].geometry}
                             material={materials['[0129_WhiteSmoke]']}
                         />
-                        {/* fridge door */}
-                        <group position={[0.313, 0.894, 0.233]} scale={[1, 0.992, 1]}>
+                        <group
+                            position={[0.313, 0.894, 0.233]}
+                            scale={[1, 0.992, 1]}
+                            rotation={[0, -doorOpening + 0.5, 0]}
+                        >
                             <mesh
                                 castShadow
                                 receiveShadow
@@ -234,22 +247,6 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 material={materials[' Steel_light']}
                             />
                         </group>
-                        <mesh
-                            castShadow
-                            receiveShadow
-                            geometry={nodes['lower-slat'].geometry}
-                            material={material}
-                            position={[0.317, 0.044, 0.252]}
-                            rotation={[-Math.PI, 1.566, -Math.PI]}
-                            scale={[1, 0.992, 1]}
-                        >
-                            <mesh
-                                castShadow
-                                receiveShadow
-                                geometry={nodes.grill002.geometry}
-                                material={materials['[Metal_Aluminum_Anodized]']}
-                            />
-                        </mesh>
                     </group>
                 </mesh>
             
