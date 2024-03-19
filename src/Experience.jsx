@@ -141,7 +141,7 @@ export default function Experience() {
         <Lightformer
             visible={true}
             form="rect"
-            intensity={1}
+            intensity={0.3}
             position={new THREE.Vector3().setFromSphericalCoords(
             1, // distance
             Math.PI, // phi (90 degrees, facing up)

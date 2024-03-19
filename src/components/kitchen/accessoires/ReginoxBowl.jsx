@@ -42,8 +42,7 @@ export default function Reginox({props, materialUrl}) {
                 receiveShadow
                 geometry={nodes.Reginox.geometry}
                 material={material}
-                position={[0, 0.917, 0.26]}
-                scale={[0.197, 0.261, 0.197]}
+                position={[0, 0.782, 0.242]}
             />
         </group>
     );

@@ -208,7 +208,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                     <Reginox
                         props={
                             {
-                                position: [0, 0.917, 0.26],
+                                position: [0, 0, 0],
                                 rotation: [0, 0, 0],
                             }
                         }
