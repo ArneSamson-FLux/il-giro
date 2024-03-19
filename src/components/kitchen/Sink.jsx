@@ -204,7 +204,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                         materialUrl={materialUrl}
                     />
 
-                    {/* <Reginox
+                    <Reginox
                         props={
                             {
                                 position: [0, 0.917, 0.26],
@@ -212,7 +212,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                             }
                         }
                         materialUrl={accessoryMaterialUrl}
-                    /> */}
+                    />
                 </>
 
 
