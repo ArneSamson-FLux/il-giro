@@ -136,6 +136,7 @@ export default function Experience() {
           castShadow={false}
           receiveShadow={false}
         />
+
         <Lightformer
             visible={true}
             form="rect"
@@ -149,13 +150,14 @@ export default function Experience() {
             target={[0, 0, 0]}
             color={"#ffffff"}
         />
+        
         <Lightformer
             visible={true}
             form="rect"
             intensity={1}
             position={new THREE.Vector3().setFromSphericalCoords(
-            1, // distance
-            Math.PI / 12,
+            1.5, // distance
+            Math.PI / 13,
             0 // theta
             )}
             scale={[5, 5, 5]}

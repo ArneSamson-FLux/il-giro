@@ -40,6 +40,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
+        roughness: 1.5,
     });
 
     const { nodes, materials } = useGLTF("./models/base-island-bevelled.glb");
