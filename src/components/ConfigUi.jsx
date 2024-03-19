@@ -651,7 +651,7 @@ export default function ConfigUi() {
                             >
                                 <summary>Appliance type:
                                     <span>
-                                        {applianceType === 'oven' ? ' oven' : ' wine cooler'}
+                                        {applianceType === 'oven' ? ' shelves' : ' wine cooler'}
                                     </span>
                                 </summary>
 
@@ -662,7 +662,7 @@ export default function ConfigUi() {
                                         className={applianceType === 'oven' ? 'active-selection-button' : ''}
                                         onClick={() => setApplianceType('oven')}
                                     >
-                                        Oven
+                                        Shelves
                                     </button>
                                     <button
                                         className={applianceType === 'fridge' ? 'active-selection-button' : ''}
