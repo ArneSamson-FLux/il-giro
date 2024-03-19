@@ -40,7 +40,7 @@ export default function Reginox({props, materialUrl}) {
                 name="sink-bowl-mesh"
                 castShadow
                 receiveShadow
-                geometry={nodes.sink001.geometry}
+                geometry={nodes.Reginox.geometry}
                 material={material}
                 position={[0, 0.917, 0.26]}
                 scale={[0.197, 0.261, 0.197]}
