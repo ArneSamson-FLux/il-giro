@@ -96,7 +96,7 @@ export default function Experience() {
     <CameraControls
       ref={camera}
       draggingSmoothTime={0.2}
-      maxPolarAngle={Math.PI / 2}
+    //   maxPolarAngle={Math.PI / 2}
       maxZoom={4}
       maxDistance={4}
       minDistance={2}
@@ -106,27 +106,25 @@ export default function Experience() {
 
     <Environment
       files={"/HDR/4.hdr"}
-      background={false}
+      background={true}
     >
       <Lightformer
           visible={true}
           form="rect"
-          intensity={0.5}
+          intensity={1}
           position={new THREE.Vector3().setFromSphericalCoords(
             2, // distance
             1.2, // phi
-            1.5 // theta
+            1.59 // theta
           )}
-          rotation={[0, 0, 0]}
           scale={[5, 2, 5]}
           target={[0, 0, 0]}
-          castShadow={false}
-          receiveShadow={false}
+          color={"#ffffff"}
         />
         <Lightformer
           visible={true}
           form="rect"
-          intensity={0.5}
+          intensity={0.8}
           position={new THREE.Vector3().setFromSphericalCoords(
             1.5, // distance
             1, // phi
@@ -138,6 +136,33 @@ export default function Experience() {
           castShadow={false}
           receiveShadow={false}
         />
+        <Lightformer
+            visible={true}
+            form="rect"
+            intensity={1}
+            position={new THREE.Vector3().setFromSphericalCoords(
+            1, // distance
+            Math.PI, // phi (90 degrees, facing up)
+            0 // theta
+            )}
+            scale={[5, 5, 5]}
+            target={[0, 0, 0]}
+            color={"#ffffff"}
+        />
+        <Lightformer
+            visible={true}
+            form="rect"
+            intensity={1}
+            position={new THREE.Vector3().setFromSphericalCoords(
+            1, // distance
+            Math.PI / 12,
+            0 // theta
+            )}
+            scale={[5, 5, 5]}
+            target={[0, 0, 0]}
+            color={"#737373"}
+        />      
+
     </Environment>
       
     <Lights/>
