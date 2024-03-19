@@ -106,7 +106,7 @@ export default function Experience() {
 
     <Environment
       files={"/HDR/4.hdr"}
-      background={true}
+      background={false}
     >
       <Lightformer
           visible={true}
