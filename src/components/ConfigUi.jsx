@@ -206,7 +206,7 @@ export default function ConfigUi() {
                         <div
                             className='config-ui__title'
                         >
-                            <span><h2>Material Overview</h2></span>
+                            <span><h2>1. Materials</h2></span>
                         </div>
 
                         <div
@@ -293,7 +293,22 @@ export default function ConfigUi() {
 
                             </details>
 
+                        </div>
+                        </>
+                    }
+
+                    {currentPage === 1 && <>
+                        <div
+                            className='config-ui__title'
+                        >
+                            <span><h2>2. Tabletop</h2></span>
+                        </div>
+
+                        <div
+                            className='config-ui__options'
+                        >
                             <details
+                                open
                                 className='config-ui__details'
                             >
                                 <summary>Edge finish:
@@ -318,16 +333,14 @@ export default function ConfigUi() {
                                     </button>
                                 </div>
                             </details>
-
                         </div>
-                        </>
-                    }
+                        </>}
 
-                    {currentPage === 1 && <>
+                    {currentPage === 2 && <>
                         <div
                             className='config-ui__title'
                         >
-                            <span><h2>Extras Overview</h2></span>
+                            <span><h2>3. Extras</h2></span>
                         </div>
 
                         <div
@@ -349,16 +362,16 @@ export default function ConfigUi() {
                                 />
                             </details>
                         </div>
-                        </>
-                    }
+                        </>}
 
-                    {currentPage === 2 && <>
+                    {currentPage === 3 && <>
 
                         <div
                             className='config-ui__title'
-                        >
-                            <span><h1>The</h1></span>
-                            <span><h1>Sink</h1></span>
+                        >   
+                            <span><h2>4. The Sink</h2></span>
+                            {/* <span><h1>The</h1></span>
+                            <span><h1>Sink</h1></span> */}
                         </div>
 
 
@@ -397,13 +410,14 @@ export default function ConfigUi() {
                     </>
                     }
 
-                    {currentPage === 3 && <>
+                    {currentPage === 4 && <>
                        
                         <div
                             className='config-ui__title'
                         >
-                            <span><h1>The</h1></span>
-                            <span><h1>Cooktop</h1></span>
+                            <span><h2>5. The Cooktop</h2></span>
+                            {/* <span><h1>The</h1></span>
+                            <span><h1>Cooktop</h1></span> */}
                         </div>
                        
                         <div
@@ -441,13 +455,14 @@ export default function ConfigUi() {
 
                     </>}
 
-                    {currentPage === 4 && <>
+                    {currentPage === 5 && <>
 
                         <div
                             className='config-ui__title'
                         >
-                            <span><h1>The</h1></span>
-                            <span><h1>Tower</h1></span>
+                            <span><h2>6. The Tower</h2></span>
+                            {/* <span><h1>The</h1></span>
+                            <span><h1>Tower</h1></span> */}
                         </div>
 
                         <div

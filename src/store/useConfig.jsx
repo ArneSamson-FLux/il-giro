@@ -48,6 +48,7 @@ export default create((set) => {
         
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
+        tableTopMaterial: "./placeholder/",
 
         sinkBevelled: true,
         cooktopBevelled: false,
@@ -87,8 +88,10 @@ export default create((set) => {
         setSinkMaterial: (material) => set({sinkMaterial: material}),
         setCooktopMaterial: (material) => set({cooktopMaterial: material}),
         setTowerMaterial: (material) => set({towerMaterial: material}),
+
         setMainMaterial: (material) => set({mainMaterial: material}),
         setAccentMaterial: (material) => set({accentMaterial: material}),
+        setTableTopMaterial: (material) => set({tableTopMaterial: material}),
 
         //bevel
         setSinkBevelled: (bevelled) => set({sinkBevelled: bevelled}),
