@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 
 import useConfig from '../store/useConfig';
 import useScene from '../store/useScene';
+import { set } from 'mongoose';
 
 export default function ConfigUi() {
 
@@ -32,6 +33,8 @@ export default function ConfigUi() {
         setCooktopMaterial,
         towerMaterial,
         setTowerMaterial,
+        accentMaterial,
+        setAccentMaterial,
 
         sinkBevelled,
         setSinkBevelled,
@@ -39,6 +42,8 @@ export default function ConfigUi() {
         setCooktopBevelled,
         towerBevelled,
         setTowerBevelled,
+        allBevelled,
+        setAllBevelled,
 
         tapMaterial,
         setTapMaterial,
@@ -70,7 +75,9 @@ export default function ConfigUi() {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        if(allMaterials[0]){
+        const lastMaterial = allMaterials[allMaterials.length - 1];
+
+        if(lastMaterial){
             setLoaded(true);
 
             if(loaded) return;
@@ -78,9 +85,11 @@ export default function ConfigUi() {
             setSinkMaterial(allMaterials[5].url);
             setCooktopMaterial(allMaterials[5].url);
             setTowerMaterial(allMaterials[5].url);
-            setTapMaterial(allMaterials[7].url);
-            setSinkBowlMaterial(allMaterials[7].url);
-            setTowerAccessoryMaterial(allMaterials[7].url);
+            setAccentMaterial(allMaterials[6].url);
+
+            // setTapMaterial(allMaterials[7].url);
+            // setSinkBowlMaterial(allMaterials[7].url);
+            // setTowerAccessoryMaterial(allMaterials[7].url);
 
         }
     }, [allMaterials,
@@ -90,6 +99,8 @@ export default function ConfigUi() {
         setCooktopMaterial,
         towerMaterial,
         setTowerMaterial,
+        accentMaterial,
+        setAccentMaterial,
         tapMaterial,
         setTapMaterial,
         sinkBowlMaterial, 
@@ -297,6 +308,45 @@ export default function ConfigUi() {
                                 </div>
                             </details>
 
+                             <details
+                                className='config-ui__details'
+                            >
+                                <summary>curved: 
+                                    <span>
+                                        {allBevelled ? ' yes' : ' no'}
+                                    </span>
+                                </summary>
+                                <input 
+                                    type="checkbox" 
+                                    checked={allBevelled}
+                                    onChange={(e) => setAllBevelled(e.target.checked)} 
+                                />
+                            </details>
+
+                             <details
+                                className='config-ui__details'
+                            >
+                                <summary>Accent material:
+                                    <span>
+                                        {' ' + accentMaterial.split('/').slice(-2, -1)[0]}
+                                    </span>
+                                </summary>
+
+                                <div className="config-ui__material-options ">
+                                    {allCategories.metal.map((material, index) => (
+                                        <div
+                                            key={index}
+                                            className={`config-ui__material-options__option ${accentMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                            style={{
+                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                            }}
+                                            onClick={() => setAccentMaterial(material.url)}
+                                        ></div>
+                                    ))}
+                                </div>
+
+                            </details>
+
                         </div>
                         </>
                     }
@@ -315,57 +365,6 @@ export default function ConfigUi() {
                            className='config-ui__options'
                         >
 
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>Module material: 
-                                    <span>
-                                        {' ' + materialCategory}
-                                    </span>
-                                </summary>
-
-                                <div className="config-ui__material-options">
-                                    {Object.entries(allCategories).map(([category, materials]) => (
-                                        <div
-                                            key={category}
-                                            className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
-                                            onClick={() => {
-                                                setIsSecondDetailsOpen(true)
-                                                setMaterialCategory(category)
-                                                setSinkMaterial(materials[0].url)
-                                            }}
-                                            style={{
-                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
-                                            }}
-                                        ></div>
-                                    ))}
-                                </div>
-                            </details>
-
-                            <details
-                                open={isSecondDetailsOpen}
-                                className='config-ui__details'                                    
-                            >
-                                <summary>
-                                    Choices in
-                                    <span> {materialCategory}</span>
-                                </summary>
-
-                                <div className="config-ui__material-options">
-                                    {allCategories[materialCategory].map((material, index) => (
-                                        <div
-                                            key={index}
-                                            className={`config-ui__material-options__option ${sinkMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                            onClick={() => setSinkMaterial(material.url)}
-                                            style={{
-                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                            }}
-                                        ></div>
-                                        ))}
-                                </div>
-                            </details>
-                            
                             <details
                                 className='config-ui__details'
                             >

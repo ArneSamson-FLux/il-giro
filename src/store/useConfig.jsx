@@ -45,10 +45,12 @@ export default create((set) => {
         sinkMaterial: "./placeholder/",
         cooktopMaterial: "./placeholder/",
         towerMaterial: "./placeholder/",
+        accentMaterial: "./placeholder/",
 
         sinkBevelled: true,
         cooktopBevelled: false,
         towerBevelled: true,
+        allBevelled: false,
 
         tapMaterial: "./placeholder/",
         tapType: '1',
@@ -81,11 +83,13 @@ export default create((set) => {
         setSinkMaterial: (material) => set({sinkMaterial: material}),
         setCooktopMaterial: (material) => set({cooktopMaterial: material}),
         setTowerMaterial: (material) => set({towerMaterial: material}),
+        setAccentMaterial: (material) => set({accentMaterial: material}),
 
         //bevel
         setSinkBevelled: (bevelled) => set({sinkBevelled: bevelled}),
         setCooktopBevelled: (bevelled) => set({cooktopBevelled: bevelled}),
         setTowerBevelled: (bevelled) => set({towerBevelled: bevelled}),
+        setAllBevelled: (bevelled) => set({allBevelled: bevelled}),
 
         //tap
         setTapMaterial: (material) => set({tapMaterial: material}),
