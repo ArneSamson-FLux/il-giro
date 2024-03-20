@@ -8,11 +8,7 @@ import useScene from '../store/useScene';
 export default function ConfigUi() {
 
     const {
-        cameraCoords,
-        setCameraCoords,
-        cameraFocus,
         setCameraFocus,
-        isFocussedOnIsland,
         setIsFocussedOnIsland,
     } = useScene();
 
@@ -64,12 +60,6 @@ export default function ConfigUi() {
 
             if(loaded) return;
 
-            // for(let i = 0; i < allMaterials.length; i++){
-            //     //set eveyr material once to mainMaterial
-            //     setMainMaterial(allMaterials[i].url);
-            //     console.log(allMaterials[i].url);
-            // }
-
             setMainMaterial(allMaterials[5].url);
             setAccentMaterial(allMaterials[6].url);
             setTableTopMaterial(allCategories['micro topping'][0].url);
@@ -87,13 +77,6 @@ export default function ConfigUi() {
     useEffect(() => {
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
-
-    // useEffect(() => {
-    //     // console.log(mainMaterial);
-    //     // console.log(accentMaterial);
-    //     // console.log(materialCategory);
-    //     // console.log(allMaterials)
-    // }, [mainMaterial]);
 
     const handleNext = () => {
         if(currentPage === 5) return;
