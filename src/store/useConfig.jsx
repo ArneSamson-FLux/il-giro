@@ -45,6 +45,7 @@ export default create((set) => {
         sinkMaterial: "./placeholder/",
         cooktopMaterial: "./placeholder/",
         towerMaterial: "./placeholder/",
+        
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
 

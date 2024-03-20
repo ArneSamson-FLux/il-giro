@@ -3,7 +3,6 @@ import { useSpring, animated } from 'react-spring';
 
 import useConfig from '../store/useConfig';
 import useScene from '../store/useScene';
-import { set } from 'mongoose';
 
 export default function ConfigUi() {
 
@@ -79,7 +78,7 @@ export default function ConfigUi() {
     }, [currentPage, setCurrentPage]);
 
     const handleNext = () => {
-        if(currentPage === 3) return;
+        if(currentPage === 5) return;
         checkPage(currentPage + 1);
         setCurrentPage(currentPage + 1);
     }
@@ -190,8 +189,8 @@ export default function ConfigUi() {
                         </button>
   
                         <button
-                            style={currentPage === 3 ? {opacity: 0.1} : {opacity: 1}}
-                            className={currentPage === 3 ? 'config-ui__nav__button--disabled' : ''}
+                            style={currentPage === 5 ? {opacity: 0.1} : {opacity: 1}}
+                            className={currentPage === 5 ? 'config-ui__nav__button--disabled' : ''}
                             onClick={handleNext}
                         >
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -207,7 +206,7 @@ export default function ConfigUi() {
                         <div
                             className='config-ui__title'
                         >
-                            <span><h2>Overview</h2></span>
+                            <span><h2>Material Overview</h2></span>
                         </div>
 
                         <div
@@ -273,21 +272,6 @@ export default function ConfigUi() {
                              <details
                                 className='config-ui__details'
                             >
-                                <summary>curved: 
-                                    <span>
-                                        {allBevelled ? ' yes' : ' no'}
-                                    </span>
-                                </summary>
-                                <input 
-                                    type="checkbox" 
-                                    checked={allBevelled}
-                                    onChange={(e) => setAllBevelled(e.target.checked)} 
-                                />
-                            </details>
-
-                             <details
-                                className='config-ui__details'
-                            >
                                 <summary>Accent material:
                                     <span>
                                         {' ' + accentMaterial.split('/').slice(-2, -1)[0]}
@@ -340,6 +324,35 @@ export default function ConfigUi() {
                     }
 
                     {currentPage === 1 && <>
+                        <div
+                            className='config-ui__title'
+                        >
+                            <span><h2>Extras Overview</h2></span>
+                        </div>
+
+                        <div
+                            className='config-ui__options'
+                        >
+                            <details
+                                open
+                                className='config-ui__details'
+                            >
+                                <summary>curved: 
+                                    <span>
+                                        {allBevelled ? ' yes' : ' no'}
+                                    </span>
+                                </summary>
+                                <input 
+                                    type="checkbox" 
+                                    checked={allBevelled}
+                                    onChange={(e) => setAllBevelled(e.target.checked)} 
+                                />
+                            </details>
+                        </div>
+                        </>
+                    }
+
+                    {currentPage === 2 && <>
 
                         <div
                             className='config-ui__title'
@@ -384,7 +397,7 @@ export default function ConfigUi() {
                     </>
                     }
 
-                    {currentPage === 2 && <>
+                    {currentPage === 3 && <>
                        
                         <div
                             className='config-ui__title'
@@ -428,7 +441,7 @@ export default function ConfigUi() {
 
                     </>}
 
-                    {currentPage === 3 && <>
+                    {currentPage === 4 && <>
 
                         <div
                             className='config-ui__title'
@@ -442,6 +455,7 @@ export default function ConfigUi() {
                         >
 
                             <details
+                                open
                                 className='config-ui__details'
                             >
                                 <summary>Appliance type:
