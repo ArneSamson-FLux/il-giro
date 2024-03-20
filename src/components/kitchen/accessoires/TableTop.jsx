@@ -18,7 +18,7 @@ export default function TableTop({props, materialUrl}){
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
-        metalness: 0,
+        metalness: 1,
         roughness: 1,
     });
 

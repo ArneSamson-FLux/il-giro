@@ -80,6 +80,9 @@ export default function Scene() {
                     }
                 }
                 bevelled = {allBevelled}
+                tableTopMaterial={
+                    tableTopMaterial ? tableTopMaterial : allMaterials[2].url
+                }
                 stoveType={stoveType}
 
             />
