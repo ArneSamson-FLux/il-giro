@@ -79,6 +79,9 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const towerRef = useRef();
 
+    const doorRef = useRef();
+    const coolerRef = useRef();
+
     const [position, setPosition] = useState([0, 0, -1]);
 
     //animate tower and dragging_____________________________________________________________________________________
@@ -116,6 +119,15 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         }
     );
     //_____________________________________________________________________________________________________________
+    function lerp(start, end, t) {
+        return start * (1 - t) + end * t;
+    }   
+    useFrame((state, delta) => {
+        if(doorRef.current){
+            doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
+            coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpening, delta * 2);
+        }
+    });
 
     return <>
         <a.group 
@@ -162,13 +174,14 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                     material={material}
                 >
                     <mesh
+                        ref={doorRef}
                         name='door'
                         castShadow
                         receiveShadow
                         geometry={nodes.door.geometry}
                         material={material}
                         position={[0.425, 1.185, 0.339]}
-                        rotation={[0, doorOpening, 0]}
+                        // rotation={[0, doorOpening, 0]}
                     />
                     {fridgeOrOven === 'fridge' && <>
                         <mesh
@@ -225,9 +238,10 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                     material={materials['[0129_WhiteSmoke]']}
                                 />
                                 <group
+                                    ref={coolerRef}
                                     position={[0.313, 0.894, 0.233]}
                                     scale={[1, 0.992, 1]}
-                                    rotation={[0, Math.min(-doorOpening + 0.5, 0), 0]}
+                                    // rotation={[0, Math.min(-doorOpening + 0.5, 0), 0]}
                                 >
                                     <mesh
                                         castShadow

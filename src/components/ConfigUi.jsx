@@ -124,8 +124,6 @@ export default function ConfigUi() {
         }
     }
 
-
-
     return (
         <>
         <div
@@ -578,15 +576,25 @@ export default function ConfigUi() {
                             className='config-ui__slider'
                         >
                             <h5>Open doors and shelves:</h5>
-                            <input
+                            {/* <input
                                 type="range"
                                 min="0"
                                 max="2"
                                 step={0.01}
                                 value={doorOpeningRotation}
                                 onChange={(e) => setDoorOpeningRotation(e.target.value)}
-                            />
+                            /> */}
+                            <label className="config-ui__toggle">
+                                <input
+                                    type="checkbox"
+                                    checked={doorOpeningRotation === 1.5}
+                                    onChange={(e) => {
+                                        setDoorOpeningRotation(e.target.checked ? 1.5 : 0);
+                                    }}
 
+                                />
+                                <span className="config-ui__toggle-slider"></span>
+                            </label>
                         </div>
                     </>}
 
