@@ -6,7 +6,6 @@ import * as THREE from 'three';
 import Scene from './components/Scene.jsx';
 import Lights from './components/lighting&shadows/Lights.jsx';
 import Env from './components/lighting&shadows/Env.jsx';
-import TexturePreloader from './helper/TexturePreloaderHelper.jsx';
 
 import useScene from './store/useScene.jsx'
 import useConfig from './store/useConfig.jsx'
@@ -126,9 +125,7 @@ export default function Experience() {
     <Lights/>
 
     <Scene/>
-
-    {/* <TexturePreloader/> */}
-
+    
   </>
 
 }
