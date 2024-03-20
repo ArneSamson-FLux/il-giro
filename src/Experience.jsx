@@ -127,7 +127,7 @@ export default function Experience() {
 
     <Scene/>
 
-    <TexturePreloader/>
+    {/* <TexturePreloader/> */}
 
   </>
 
