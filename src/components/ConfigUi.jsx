@@ -20,42 +20,17 @@ export default function ConfigUi() {
         allMaterials,
         allCategories,
 
-        sinkAmount,
-        setSinkAmount,
-        cooktopAmount,
-        setCooktopAmount,
-        towerAmount,
-        setTowerAmount,
-
-        // sinkMaterial,
-        // setSinkMaterial,
-        // cooktopMaterial,
-        // setCooktopMaterial,
-        // towerMaterial,
-        // setTowerMaterial,
-
         mainMaterial,
         setMainMaterial,
 
         accentMaterial,
         setAccentMaterial,
 
-        // sinkBevelled,
-        // setSinkBevelled,
-        // cooktopBevelled,
-        // setCooktopBevelled,
-        // towerBevelled,
-        // setTowerBevelled,
         allBevelled,
         setAllBevelled,
 
-        // tapMaterial,
-        // setTapMaterial,
         tapType,
         setTapType,
-
-        // sinkBowlMaterial,
-        // setSinkBowlMaterial,
 
         stoveType,
         setStoveType,
@@ -63,8 +38,8 @@ export default function ConfigUi() {
         applianceType,
         setApplianceType,
 
-        // towerAccessoryMaterial,
-        // setTowerAccessoryMaterial,
+        edgeFinish,
+        setEdgeFinish,
 
         doorOpeningRotation,
         setDoorOpeningRotation,
@@ -86,25 +61,11 @@ export default function ConfigUi() {
 
             if(loaded) return;
 
-            // setSinkMaterial(allMaterials[5].url);
-            // setCooktopMaterial(allMaterials[5].url);
-            // setTowerMaterial(allMaterials[5].url);
-
             setMainMaterial(allMaterials[5].url);
             setAccentMaterial(allMaterials[6].url);
 
-            // setTapMaterial(allMaterials[7].url);
-            // setSinkBowlMaterial(allMaterials[7].url);
-            // setTowerAccessoryMaterial(allMaterials[7].url);
-
         }
     }, [allMaterials,
-        // sinkMaterial,
-        // setSinkMaterial,
-        // cooktopMaterial,
-        // setCooktopMaterial,
-        // towerMaterial,
-        // setTowerMaterial,
 
         mainMaterial,
         setMainMaterial,
@@ -273,9 +234,6 @@ export default function ConfigUi() {
                                             onClick={() => {
                                                 setMaterialCategory(category)
                                                 setIsSecondDetailsOpen(true)
-                                                // setSinkMaterial(materials[0].url)
-                                                // setCooktopMaterial(materials[0].url)
-                                                // setTowerMaterial(materials[0].url)
                                                 setMainMaterial(materials[0].url)
                                             }}
                                             style={{
@@ -302,9 +260,6 @@ export default function ConfigUi() {
                                             key={index}
                                             className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
-                                                // setSinkMaterial(material.url)
-                                                // setCooktopMaterial(material.url)
-                                                // setTowerMaterial(material.url)
                                                 setMainMaterial(material.url)
                                             }}
                                             style={{
@@ -359,23 +314,23 @@ export default function ConfigUi() {
                             >
                                 <summary>Edge finish:
                                     <span>
-                                        {tapType === '1' ? ' Brandwood 3' : ' Bridge'}
+                                        {edgeFinish === 'rect' ? ' square' : ' curved'}
                                     </span>
                                 </summary>
                                 <div
                                     className='config-ui__selection-buttons'
                                 >
                                     <button
-                                        className={tapType === '1' ? 'active-selection-button' : ''}
-                                        onClick={() => setTapType('1')}
+                                        className={edgeFinish === 'rect' ? 'active-selection-button' : ''}
+                                        onClick={() => setEdgeFinish('rect')}
                                     >
-                                        Brandwood 3
+                                        Square
                                     </button>
                                     <button
-                                        className={tapType === '2' ? 'active-selection-button' : ''}
-                                        onClick={() => setTapType('2')}
+                                        className={edgeFinish === 'curved' ? 'active-selection-button' : ''}
+                                        onClick={() => setEdgeFinish('curved')}
                                     >
-                                        Bridge
+                                        Curved
                                     </button>
                                 </div>
                             </details>
