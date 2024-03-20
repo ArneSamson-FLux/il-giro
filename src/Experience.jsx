@@ -53,25 +53,32 @@ export default function Experience() {
         }
     }
 
-    // const [prevScrollY, setPrevScrollY] = useState(window.scrollY);
+    const [prevCamDist, setPrevCamDist] = useState(4);
 
     useEffect(() => {
         const handleScroll = (e) => {
-            // const currentScrollY = window.scrollY;
-            // console.log(window.scrollY)
-            // console.log('current ' + currentScrollY);
-            // console.log('prev ' + prevScrollY);
-            // if (currentScrollY < prevScrollY && cameraPosition) {
-            if (cameraPosition) {
-                console.log('calculating distance');
+
+            const currentDistance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
+            const roundedCurrentDistance = Math.round(currentDistance * 100) / 100;
+
+            console.log('before ', + prevCamDist, roundedCurrentDistance);
+
+            if(prevCamDist < roundedCurrentDistance) {
+
                 const distance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
-                if (distance && distance > 3.9 && !isDragging) {
+                const roundedDistanceToCamera = Math.round(distance * 100) / 100;
+
+
+                if (roundedDistanceToCamera && roundedDistanceToCamera > 3.98 && !isDragging) {
                     setCameraFocus([0, 1, 0]);
                     setCurrentPage(0);
                     setIsFocussedOnIsland(false);
                 }
+                
             }
-            // setPrevScrollY(currentScrollY);
+            setPrevCamDist(roundedCurrentDistance);
+            console.log('after ', + prevCamDist, roundedCurrentDistance);
+            
         };
 
         window.addEventListener('wheel', handleScroll);
@@ -80,8 +87,14 @@ export default function Experience() {
             window.removeEventListener('wheel', handleScroll);
         };
     }, [
-        // prevScrollY, 
-        cameraPosition, isDragging, cameraFocus, setCameraFocus, setCurrentPage, setIsFocussedOnIsland]);
+        cameraPosition,
+        isDragging,
+        cameraFocus,
+        setCameraFocus,
+        setCurrentPage,
+        setIsFocussedOnIsland,
+        prevCamDist
+    ]);
 
     useFrame((state) => {
         if (camera.current) {
