@@ -61,7 +61,7 @@ export default function Experience() {
             const currentDistance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
             const roundedCurrentDistance = Math.round(currentDistance * 100) / 100;
 
-            console.log('before ', + prevCamDist, roundedCurrentDistance);
+            // console.log('before ', + prevCamDist, roundedCurrentDistance);
 
             if(prevCamDist < roundedCurrentDistance) {
 
@@ -77,7 +77,7 @@ export default function Experience() {
                 
             }
             setPrevCamDist(roundedCurrentDistance);
-            console.log('after ', + prevCamDist, roundedCurrentDistance);
+            // console.log('after ', + prevCamDist, roundedCurrentDistance);
             
         };
 
