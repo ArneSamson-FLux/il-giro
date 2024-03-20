@@ -65,6 +65,7 @@ export default function ConfigUi() {
 
             setMainMaterial(allMaterials[5].url);
             setAccentMaterial(allMaterials[6].url);
+            setTableTopMaterial(allCategories['micro topping'][0].url);
 
         }
     }, [allMaterials,
@@ -240,6 +241,20 @@ export default function ConfigUi() {
                                                 setMainMaterialCategory(category)
                                                 setIsSecondDetailsOpen(true)
                                                 setMainMaterial(materials[0].url)
+
+                                                console.log(category)
+
+                                                switch(category){
+                                                    case 'metal':
+                                                        setTableTopMaterial(allCategories['micro topping'][0].url)
+                                                    break;
+                                                    case 'micro topping':
+                                                        setTableTopMaterial(allCategories['wood'][0].url)
+                                                    break;
+                                                    case 'wood':
+                                                        setTableTopMaterial(allCategories['metal'][0].url)
+                                                    break;
+                                                }
                                             }}
                                             style={{
                                                 backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
