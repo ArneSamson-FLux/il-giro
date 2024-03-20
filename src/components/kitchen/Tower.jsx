@@ -225,7 +225,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 <group
                                     position={[0.313, 0.894, 0.233]}
                                     scale={[1, 0.992, 1]}
-                                    rotation={[0, -doorOpening + 0.5, 0]}
+                                    rotation={[0, Math.min(-doorOpening + 0.5, 0), 0]}
                                 >
                                     <mesh
                                         castShadow
@@ -263,7 +263,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 castShadow
                                 receiveShadow
                                 geometry={nodes['shelf-bottom'].geometry}
-                                material={material}
+                                material={nodes['inside-shelf'].material}
                                 position={[0, 0.301, 0.059 + doorOpening/6]}
                                 rotation={[0, -1.571, 0]}
                             />
@@ -271,7 +271,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 castShadow
                                 receiveShadow
                                 geometry={nodes['shelf-middle'].geometry}
-                                material={material}
+                                material={nodes['inside-shelf'].material}
                                 position={[0, 0.544, 0.059 + doorOpening/8]}
                                 rotation={[0, -1.571, 0]}
                             />
@@ -279,7 +279,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 castShadow
                                 receiveShadow
                                 geometry={nodes['shelf-top'].geometry}
-                                material={material}
+                                material={nodes['inside-shelf'].material}
                                 position={[0, 0.788, 0.059 + doorOpening/12]}
                                 rotation={[0, -1.571, 0]}
                             />
