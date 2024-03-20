@@ -25,6 +25,9 @@ export default function ConfigUi() {
         accentMaterial,
         setAccentMaterial,
 
+        tableTopMaterial,
+        setTableTopMaterial,
+
         allBevelled,
         setAllBevelled,
 
@@ -77,11 +80,11 @@ export default function ConfigUi() {
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
 
-    useEffect(() => {
-        console.log(mainMaterial);
-        console.log(accentMaterial);
-        console.log(materialCategory);
-    }, [mainMaterial]);
+    // useEffect(() => {
+    //     console.log(mainMaterial);
+    //     console.log(accentMaterial);
+    //     console.log(materialCategory);
+    // }, [mainMaterial]);
 
     const handleNext = () => {
         if(currentPage === 5) return;
@@ -170,10 +173,7 @@ export default function ConfigUi() {
 
         <div className='config-wrapper'>
 
-
-
             {!loaded && <p>Loading UI...</p>}
-
             
             {loaded &&    <div
                     className='config-ui'
@@ -314,9 +314,9 @@ export default function ConfigUi() {
                                             {allCategories['micro topping'].map((material, index) => (
                                                 <div
                                                     key={index}
-                                                    className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                    className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
                                                     onClick={() => {
-                                                        setMainMaterial(material.url)
+                                                        setTableTopMaterial(material.url)
                                                     }}
                                                     style={{
                                                         backgroundImage: `url(${material.url}albedo.jpg)`, 
@@ -331,9 +331,9 @@ export default function ConfigUi() {
                                         {allCategories['wood'].map((material, index) => (
                                             <div
                                                 key={index}
-                                                className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
                                                 onClick={() => {
-                                                    setMainMaterial(material.url)
+                                                    setTableTopMaterial(material.url)
                                                 }}
                                                 style={{
                                                     backgroundImage: `url(${material.url}albedo.jpg)`, 
@@ -349,9 +349,9 @@ export default function ConfigUi() {
                                         {allCategories['metal'].map((material, index) => (
                                             <div
                                                 key={index}
-                                                className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
                                                 onClick={() => {
-                                                    setMainMaterial(material.url)
+                                                    setTableTopMaterial(material.url)
                                                 }}
                                                 style={{
                                                     backgroundImage: `url(${material.url}albedo.jpg)`, 

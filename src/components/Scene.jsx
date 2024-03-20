@@ -18,22 +18,16 @@ export default function Scene() {
         cooktopAmount, 
         towerAmount, 
 
-        sinkMaterial,
-        cooktopMaterial,
-        towerMaterial, 
-
         mainMaterial,
         accentMaterial,
-        // sinkBevelled,
-        // cooktopBevelled,
-        // towerBevelled,
+        tableTopMaterial,
+
         allBevelled,
-        // tapMaterial,
+
         tapType,
         sinkBowlMaterial,
         stoveType,
         applianceType,
-        // towerAccessoryMaterial,
 
         edgeFinish,
         doorOpeningRotation,
@@ -61,13 +55,13 @@ export default function Scene() {
                     }
                 }
                 bevelled = {allBevelled}
-                accessoryMaterialUrl={
+                accentMaterial={
                     accentMaterial ? accentMaterial : allMaterials[1].url
                 }
-                tapType={tapType}
-                sinkBowlMaterial={
-                    sinkBowlMaterial ? sinkBowlMaterial : allMaterials[8].url
+                tableTopMaterial={
+                    tableTopMaterial ? tableTopMaterial : allMaterials[2].url
                 }
+                tapType={tapType}
             />
         )
     }
