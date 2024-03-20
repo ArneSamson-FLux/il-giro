@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react';
+import * as THREE from 'three';
 import { useSpring, animated } from 'react-spring';
 
 import useConfig from '../store/useConfig';
@@ -63,6 +64,12 @@ export default function ConfigUi() {
 
             if(loaded) return;
 
+            // for(let i = 0; i < allMaterials.length; i++){
+            //     //set eveyr material once to mainMaterial
+            //     setMainMaterial(allMaterials[i].url);
+            //     console.log(allMaterials[i].url);
+            // }
+
             setMainMaterial(allMaterials[5].url);
             setAccentMaterial(allMaterials[6].url);
             setTableTopMaterial(allCategories['micro topping'][0].url);
@@ -81,12 +88,12 @@ export default function ConfigUi() {
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
 
-    useEffect(() => {
-        // console.log(mainMaterial);
-        // console.log(accentMaterial);
-        // console.log(materialCategory);
-        // console.log(allMaterials)
-    }, [mainMaterial]);
+    // useEffect(() => {
+    //     // console.log(mainMaterial);
+    //     // console.log(accentMaterial);
+    //     // console.log(materialCategory);
+    //     // console.log(allMaterials)
+    // }, [mainMaterial]);
 
     const handleNext = () => {
         if(currentPage === 5) return;
@@ -242,8 +249,6 @@ export default function ConfigUi() {
                                                 setMainMaterialCategory(category)
                                                 setIsSecondDetailsOpen(true)
                                                 setMainMaterial(materials[0].url)
-
-                                                console.log(category)
 
                                                 switch(category){
                                                     case 'metal':

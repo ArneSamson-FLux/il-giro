@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from 'react';
 import * as THREE from 'three'
-import { useTexture, useGLTF, useCursor } from '@react-three/drei'
+import { useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
@@ -15,6 +15,8 @@ import TableTopCutFilled from './accessoires/TableTopCutFilled.jsx';
 import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
 
 import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
+
+import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';

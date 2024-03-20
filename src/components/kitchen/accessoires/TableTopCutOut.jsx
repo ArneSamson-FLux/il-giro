@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three'
-import { useTexture, useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
+
+import { useTexture } from '../../../helper/useTexture.tsx';
 
 export default function TableTopCutOut({props, materialUrl}){
 

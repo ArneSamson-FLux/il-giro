@@ -7,9 +7,6 @@ import Tower from './kitchen/Tower.jsx'
 
 import ReflectivePlane from './lighting&shadows/ReflectivePlane.jsx'
 
-import TexturePreloader from '../helper/TexturePreloaderHelper.jsx';
-
-
 import useConfig from '../store/useConfig.jsx'
 
 export default function Scene() {
@@ -126,8 +123,6 @@ export default function Scene() {
             />
 
             <color attach="background" args={dragMode ? [0xefefef] : [0xffffff]} />
-
-            <TexturePreloader/>
 
 
     </>
