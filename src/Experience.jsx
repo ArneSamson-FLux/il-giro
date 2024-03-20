@@ -5,6 +5,8 @@ import * as THREE from 'three';
 
 import Scene from './components/Scene.jsx';
 import Lights from './components/lighting&shadows/Lights.jsx';
+import Env from './components/lighting&shadows/Env.jsx';
+import TexturePreloader from './helper/TexturePreloaderHelper.jsx';
 
 import useScene from './store/useScene.jsx'
 import useConfig from './store/useConfig.jsx'
@@ -119,74 +121,13 @@ export default function Experience() {
       enabled={!isDragging}
     />
 
-
-    <Environment
-      files={"/HDR/4.hdr"}
-      background={false}
-      blur={0.1}
-    >
-      <Lightformer
-          visible={true}
-          form="rect"
-          intensity={0.8}
-          position={new THREE.Vector3().setFromSphericalCoords(
-            2, // distance
-            1.2, // phi
-            1.75 // theta
-          )}
-          scale={[5, 2, 5]}
-          target={[0, 0, 0]}
-          color={"#ffffff"}
-        />
-        <Lightformer
-          visible={true}
-          form="rect"
-          intensity={0.8}
-          position={new THREE.Vector3().setFromSphericalCoords(
-            1.5, // distance
-            1, // phi
-            4.2 // theta
-          )}
-          rotation={[0, 0, 0]}
-          scale={[5, 2, 5]}
-          target={[0, 0, 0]}
-          castShadow={false}
-          receiveShadow={false}
-        />
-
-        <Lightformer
-            visible={true}
-            form="rect"
-            intensity={0.3}
-            position={new THREE.Vector3().setFromSphericalCoords(
-            1, // distance
-            Math.PI, // phi
-            0 // theta
-            )}
-            scale={[5, 5, 5]}
-            target={[0, 0, 0]}
-            color={"#ffffff"}
-        />
-        
-        <Lightformer
-            visible={true}
-            form="rect"
-            intensity={1}
-            position={new THREE.Vector3().setFromSphericalCoords(
-            1.5, // distance
-            Math.PI / 13,
-            0 // theta
-            )}
-            scale={[5, 5, 5]}
-            target={[0, 0, 0]}
-            color={"#595959"}
-        />      
-
-    </Environment>
+    <Env/>
       
     <Lights/>
 
     <Scene/>
+
+    <TexturePreloader/>
 
   </>
 
