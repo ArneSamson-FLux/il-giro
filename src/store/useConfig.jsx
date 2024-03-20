@@ -45,10 +45,15 @@ export default create((set) => {
         sinkMaterial: "./placeholder/",
         cooktopMaterial: "./placeholder/",
         towerMaterial: "./placeholder/",
+        
+        mainMaterial: "./placeholder/",
+        accentMaterial: "./placeholder/",
+        tableTopMaterial: "./placeholder/",
 
         sinkBevelled: true,
         cooktopBevelled: false,
         towerBevelled: true,
+        allBevelled: false,
 
         tapMaterial: "./placeholder/",
         tapType: '1',
@@ -60,6 +65,8 @@ export default create((set) => {
         applianceType: 'fridge',
 
         towerAccessoryMaterial: "./placeholder/",
+
+        edgeFinish: 'rect',
 
         doorOpeningRotation: 1.5,
 
@@ -82,10 +89,15 @@ export default create((set) => {
         setCooktopMaterial: (material) => set({cooktopMaterial: material}),
         setTowerMaterial: (material) => set({towerMaterial: material}),
 
+        setMainMaterial: (material) => set({mainMaterial: material}),
+        setAccentMaterial: (material) => set({accentMaterial: material}),
+        setTableTopMaterial: (material) => set({tableTopMaterial: material}),
+
         //bevel
         setSinkBevelled: (bevelled) => set({sinkBevelled: bevelled}),
         setCooktopBevelled: (bevelled) => set({cooktopBevelled: bevelled}),
         setTowerBevelled: (bevelled) => set({towerBevelled: bevelled}),
+        setAllBevelled: (bevelled) => set({allBevelled: bevelled}),
 
         //tap
         setTapMaterial: (material) => set({tapMaterial: material}),
@@ -102,6 +114,9 @@ export default create((set) => {
 
         //tower accessory
         setTowerAccessoryMaterial: (material) => set({towerAccessoryMaterial: material}),
+
+        //edge finish
+        setEdgeFinish: (finish) => set({edgeFinish: finish}),
 
         //door opening
         setDoorOpeningRotation: (rotation) => set({doorOpeningRotation: rotation}),

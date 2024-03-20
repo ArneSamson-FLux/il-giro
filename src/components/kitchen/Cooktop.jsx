@@ -1,9 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import * as THREE from 'three'
 import { useTexture, useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
+
+import TableTop from './accessoires/TableTop.jsx';
 
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
@@ -13,7 +15,7 @@ import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Cooktop({materialUrl, bevelled, stoveType, props}){
+export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveType, props}){
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         materialUrl+"albedo.jpg",
@@ -34,11 +36,25 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
         metalness: 1,
     });
 
-    const tabletopMaterial = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-    });
+    const { nodes, materials } = useGLTF("./models/base-island.glb");
 
-    const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
+    const meshRef = useRef();
+
+    useEffect(() => {
+        
+        if(meshRef.current){
+            const geometry = meshRef.current.geometry;
+
+            const uvAttributeName = bevelled ? "uv1" : "uv2";
+            const uvAttribute = geometry.getAttribute(uvAttributeName);
+
+            if (uvAttribute) {
+                const uvBufferAttribute = new THREE.BufferAttribute(uvAttribute.array, uvAttribute.itemSize);
+                
+                geometry.setAttribute('uv', uvBufferAttribute);
+            }
+        }
+    }, [nodes, bevelled]);
 
     const { setCurrentPage, currentPage, dragMode, setIsDragging, isDraggingCooktop, setIsDraggingCooktop } = useConfig();
     const { setCameraFocus, setIsFocussedOnIsland } = useScene();
@@ -118,7 +134,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 onClick={
                     (e) => {
                         if(dragMode) return;
-                        setCurrentPage(2);
+                        setCurrentPage(4);
                         setCameraFocus([position[0], position[1] + 1, position[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
@@ -128,45 +144,43 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
             >
 
                 <mesh
-                    name='cooktop-mesh'
+                    ref={meshRef}
                     castShadow
                     receiveShadow
-                    geometry={nodes.top.geometry}
+                    geometry={nodes['island-low'].geometry}
                     material={material}
-                    position={[0, 1.193, 0]}
-                    rotation={[0, -1.484, 0]}
-                    scale={[1, 1.1, 1]}
                 >
                     <mesh
-                        name='cooktop-bevelled-mesh'
                         visible={bevelled}
                         castShadow
                         receiveShadow
-                        geometry={nodes["bevelled-under"].geometry}
+                        geometry={nodes.bevel.geometry}
                         material={material}
                     />
                     <mesh
-                        name='cooktop-straight-mesh'
                         visible={!bevelled}
                         castShadow
                         receiveShadow
-                        geometry={nodes["straight-under"].geometry}
+                        geometry={nodes.straight.geometry}
                         material={material}
                     />
-                    <mesh
-                        name='cooktop-tabletop-mesh'
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.tabletop.geometry}
-                        material={tabletopMaterial}
-                    />
                 </mesh>
+
+                <TableTop
+                    props={
+                        {
+                            position: [0, 0, 0],
+                            rotation: [0, 0, 0],
+                        }
+                    }
+                    materialUrl={tableTopMaterial}
+                />
 
                 {stoveType === "gas" &&
                     <GasStove
                         props={
                             {
-                                position: [0, 0.967, 0.12],
+                                position: [0, 0, 0],
                             }
                         }
                     />
@@ -199,4 +213,4 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
     </>
 }
 
-useGLTF.preload('./models/kitchen-low.glb')
+useGLTF.preload('./models/base-island.glb')

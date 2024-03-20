@@ -96,7 +96,7 @@ export default function Experience() {
     <CameraControls
       ref={camera}
       draggingSmoothTime={0.2}
-    //   maxPolarAngle={Math.PI / 2}
+      maxPolarAngle={Math.PI / 2}
       maxZoom={4}
       maxDistance={4}
       minDistance={2}

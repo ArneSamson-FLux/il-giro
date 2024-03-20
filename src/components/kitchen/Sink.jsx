@@ -19,7 +19,7 @@ import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){  
+export default function Sink({materialUrl, bevelled, accentMaterial, tapType , tableTopMaterial , props}){  
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         materialUrl+"albedo.jpg",
@@ -142,7 +142,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                 onClick={
                     (e) => {
                         if(dragMode) return;
-                        setCurrentPage(1);
+                        setCurrentPage(3);
                         setCameraFocus([position[0], position[1] + 1, position[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
@@ -202,7 +202,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={materialUrl}
+                        materialUrl={tableTopMaterial}
                     />
 
                     <Reginox
@@ -212,7 +212,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={accessoryMaterialUrl}
+                        materialUrl={accentMaterial}
                     />
                 </>
 
@@ -228,7 +228,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={accessoryMaterialUrl}
+                        materialUrl={accentMaterial}
                     />
                 }
 
@@ -241,7 +241,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={accessoryMaterialUrl}
+                        materialUrl={accentMaterial}
                     />
                 }
 
