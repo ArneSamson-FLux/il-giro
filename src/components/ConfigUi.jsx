@@ -81,11 +81,12 @@ export default function ConfigUi() {
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
 
-    // useEffect(() => {
-    //     console.log(mainMaterial);
-    //     console.log(accentMaterial);
-    //     console.log(materialCategory);
-    // }, [mainMaterial]);
+    useEffect(() => {
+        // console.log(mainMaterial);
+        // console.log(accentMaterial);
+        // console.log(materialCategory);
+        // console.log(allMaterials)
+    }, [mainMaterial]);
 
     const handleNext = () => {
         if(currentPage === 5) return;
@@ -315,12 +316,11 @@ export default function ConfigUi() {
                             </details>
 
                              <details
-                                open
                                 className='config-ui__details'
                             >
                                 <summary>Tabletop material:
                                     <span>
-                                        {' ' + accentMaterial.split('/').slice(-2, -1)[0]}
+                                        {' ' + tableTopMaterial.split('/').slice(-2, -1)[0]}
                                     </span>
                                 </summary>
 
@@ -362,16 +362,17 @@ export default function ConfigUi() {
 
                                     <div className="config-ui__material-options ">
                                         {allCategories['metal'].map((material, index) => (
-                                            <div
-                                                key={index}
-                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                onClick={() => {
-                                                    setTableTopMaterial(material.url)
-                                                }}
-                                                style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                }}
-                                            ></div>
+                                            material.url.includes('inox') &&
+                                                <div
+                                                    key={index}
+                                                    className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                    onClick={() => {
+                                                        setTableTopMaterial(material.url)
+                                                    }}
+                                                    style={{
+                                                        backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                    }}
+                                                ></div>
                                         ))}
                                     </div>
                                 </>}
@@ -431,23 +432,20 @@ export default function ConfigUi() {
                             <span><h2>3. Extras</h2></span>
                         </div>
 
-                        <div
-                            className='config-ui__options'
-                        >
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>curved: 
-                                    <span>
-                                        {allBevelled ? ' yes' : ' no'}
-                                    </span>
+                        <div className='config-ui__options'>
+                            <details open className='config-ui__details'>
+                                <summary>
+                                    curved:
+                                    <span>{allBevelled ? ' yes' : ' no'}</span>
                                 </summary>
-                                <input 
-                                    type="checkbox" 
-                                    checked={allBevelled}
-                                    onChange={(e) => setAllBevelled(e.target.checked)} 
-                                />
+                                <label className="config-ui__toggle">
+                                    <input
+                                        type="checkbox"
+                                        checked={allBevelled}
+                                        onChange={(e) => setAllBevelled(e.target.checked)}
+                                    />
+                                    <span className="config-ui__toggle-slider"></span>
+                                </label>
                             </details>
                         </div>
                         </>}

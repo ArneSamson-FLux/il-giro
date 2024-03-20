@@ -18,7 +18,9 @@ body,
     --off-black: #272727;
     --off-white: #fafafa;
 
+    --extra-light-grey: #e0e0e0;
     --light-grey: #9b9b9b;
+    --medium-grey: #6b6b6b;
     --dark-grey: #4d4d4d;
 
     --trans-grey: #eaeaeacc;
@@ -170,7 +172,7 @@ select{
     text-align: start;
 }
 
-input{
+/* input{
     border-width: 1px;
     border-style: solid;
     border-color: var(--trans-grey);
@@ -202,7 +204,61 @@ input[type="checkbox"]::before {
 }
 input[type="checkbox"]:checked::before {
     transform: scale(1);
+} */
+
+.config-ui__toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
 }
+
+.config-ui__toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.config-ui__toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--off-white);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: var(--off-black) 1px solid;
+}
+
+.config-ui__toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--off-white);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.config-ui__toggle input:checked+.config-ui__toggle-slider {
+    background-color: var(--off-black);
+}
+
+.config-ui__toggle input:not(:checked)+.config-ui__toggle-slider:before {
+    background-color: var(--dark-grey);
+}
+
+.config-ui__toggle input:checked+.config-ui__toggle-slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+
 input[type="range"]{
     appearance: none;
     -webkit-appearance: none;
