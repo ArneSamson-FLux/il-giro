@@ -118,7 +118,7 @@ export default function Cooktop({materialUrl, bevelled, stoveType, props}){
                 onClick={
                     (e) => {
                         if(dragMode) return;
-                        setCurrentPage(2);
+                        setCurrentPage(4);
                         setCameraFocus([position[0], position[1] + 1, position[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();

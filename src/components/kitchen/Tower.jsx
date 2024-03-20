@@ -144,7 +144,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 onClick={
                     (e) => {
                         if(dragMode) return;
-                        setCurrentPage(3);
+                        setCurrentPage(5);
                         setCameraFocus([position[0], position[1] + 1, position[2] ]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
