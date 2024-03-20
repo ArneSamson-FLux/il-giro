@@ -180,7 +180,7 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
                     <GasStove
                         props={
                             {
-                                position: [0, 0.95, 0.12],
+                                position: [0, 0, 0],
                             }
                         }
                     />
