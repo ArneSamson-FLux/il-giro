@@ -77,6 +77,12 @@ export default function ConfigUi() {
         checkPage(currentPage);
     }, [currentPage, setCurrentPage]);
 
+    useEffect(() => {
+        console.log(mainMaterial);
+        console.log(accentMaterial);
+        console.log(materialCategory);
+    }, [mainMaterial]);
+
     const handleNext = () => {
         if(currentPage === 5) return;
         checkPage(currentPage + 1);
@@ -98,7 +104,7 @@ export default function ConfigUi() {
         setDragMode(!dragMode);
     }
 
-    const [ materialCategory, setMaterialCategory ] = useState('metal');
+    const [ materialCategory, setMainMaterialCategory ] = useState('metal');
     const [ isSecondDetailsOpen, setIsSecondDetailsOpen ] = useState(false);
 
     const checkPage = (e) => {
@@ -231,7 +237,7 @@ export default function ConfigUi() {
                                             key={category}
                                             className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
                                             onClick={() => {
-                                                setMaterialCategory(category)
+                                                setMainMaterialCategory(category)
                                                 setIsSecondDetailsOpen(true)
                                                 setMainMaterial(materials[0].url)
                                             }}
@@ -269,7 +275,7 @@ export default function ConfigUi() {
                                 </div>
                             </details>
 
-                             <details
+                            <details
                                 className='config-ui__details'
                             >
                                 <summary>Accent material:
@@ -292,6 +298,73 @@ export default function ConfigUi() {
                                 </div>
 
                             </details>
+
+                             <details
+                                open
+                                className='config-ui__details'
+                            >
+                                <summary>Tabletop material:
+                                    <span>
+                                        {' ' + accentMaterial.split('/').slice(-2, -1)[0]}
+                                    </span>
+                                </summary>
+
+                                {materialCategory !== 'micro topping' && <>
+                                        <div className="config-ui__material-options ">
+                                            {allCategories['micro topping'].map((material, index) => (
+                                                <div
+                                                    key={index}
+                                                    className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                    onClick={() => {
+                                                        setMainMaterial(material.url)
+                                                    }}
+                                                    style={{
+                                                        backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                    }}
+                                                ></div>
+                                            ))}
+                                        </div>
+                                </>}
+
+                                {materialCategory !== 'wood' && <>
+                                    <div className="config-ui__material-options ">
+                                        {allCategories['wood'].map((material, index) => (
+                                            <div
+                                                key={index}
+                                                className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                onClick={() => {
+                                                    setMainMaterial(material.url)
+                                                }}
+                                                style={{
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                }}
+                                            ></div>
+                                        ))}
+                                    </div>
+                                </>}
+                                
+                                {materialCategory !== 'metal' && <>
+
+                                    <div className="config-ui__material-options ">
+                                        {allCategories['metal'].map((material, index) => (
+                                            <div
+                                                key={index}
+                                                className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                onClick={() => {
+                                                    setMainMaterial(material.url)
+                                                }}
+                                                style={{
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                }}
+                                            ></div>
+                                        ))}
+                                    </div>
+                                </>}
+
+                                
+
+                            </details>
+
 
                         </div>
                         </>
