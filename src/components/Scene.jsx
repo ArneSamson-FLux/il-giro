@@ -13,23 +13,29 @@ export default function Scene() {
 
     const {
         allMaterials,
+        
         sinkAmount, 
         cooktopAmount, 
         towerAmount, 
+
         sinkMaterial,
         cooktopMaterial,
         towerMaterial, 
+
+        mainMaterial,
         accentMaterial,
         // sinkBevelled,
         // cooktopBevelled,
         // towerBevelled,
         allBevelled,
-        tapMaterial,
+        // tapMaterial,
         tapType,
         sinkBowlMaterial,
         stoveType,
         applianceType,
-        towerAccessoryMaterial,
+        // towerAccessoryMaterial,
+
+        edgeFinish,
         doorOpeningRotation,
 
         currentPage,
@@ -45,7 +51,7 @@ export default function Scene() {
             <Sink
                 key={'sink'+i}
                 materialUrl={
-                    sinkMaterial ? sinkMaterial : allMaterials[0].url
+                    mainMaterial ? mainMaterial : allMaterials[0].url
                 }
                 props={
                     {
@@ -70,7 +76,7 @@ export default function Scene() {
             <Cooktop
                 key={'cooktop'+i}
                 materialUrl={
-                    cooktopMaterial ? cooktopMaterial : allMaterials[0].url
+                    mainMaterial ? mainMaterial : allMaterials[0].url
                 }
                 props={
                     {
@@ -90,7 +96,7 @@ export default function Scene() {
             <Tower
                 key={'tower'+i}
                 materialUrl={
-                    towerMaterial ? towerMaterial : allMaterials[4].url
+                    mainMaterial ? mainMaterial : allMaterials[4].url
                 }
                 props={
                     {
