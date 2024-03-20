@@ -15,9 +15,9 @@ import { update } from '@react-spring/three';
 export default function Experience() {
 
     const camera = useRef()
+    const [cameraPosition, setCameraPosition] = useState(null)
 
     const { cameraFocus, setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
-
     const { isDragging, setCurrentPage, currentPage } = useConfig();
 
     useEffect(() => {
@@ -34,38 +34,6 @@ export default function Experience() {
         
     }
     , [cameraFocus, setCameraFocus])
-
-    const defaultFocus = [0, 1, 0];
-    const [canZoomOut, setCanZoomOut] = useState(false);
-
-    useFrame((state) => {
-
-        if(!canZoomOut) {
-
-            const distance = state.camera.position.distanceTo(new THREE.Vector3(...cameraFocus));
-            if(distance > 3.8 && !isDragging) {
-
-                setCameraFocus(defaultFocus);
-                setCurrentPage(0);
-                setIsFocussedOnIsland(false);
-                setCanZoomOut(true);
-            }
-        }
-
-    });
-
-    useEffect(() => {
-
-        if(isFocussedOnIsland) {
-            
-            const timer = setTimeout(() => {
-                
-                setCanZoomOut(false);
-                
-            }, 2000);
-        }
-
-    }, [isFocussedOnIsland])
 
     useEffect(() => {
         if(camera.current) {
@@ -85,6 +53,41 @@ export default function Experience() {
         }
     }
 
+    // const [prevScrollY, setPrevScrollY] = useState(window.scrollY);
+
+    useEffect(() => {
+        const handleScroll = (e) => {
+            // const currentScrollY = window.scrollY;
+            // console.log(window.scrollY)
+            // console.log('current ' + currentScrollY);
+            // console.log('prev ' + prevScrollY);
+            // if (currentScrollY < prevScrollY && cameraPosition) {
+            if (cameraPosition) {
+                console.log('calculating distance');
+                const distance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
+                if (distance && distance > 3.9 && !isDragging) {
+                    setCameraFocus([0, 1, 0]);
+                    setCurrentPage(0);
+                    setIsFocussedOnIsland(false);
+                }
+            }
+            // setPrevScrollY(currentScrollY);
+        };
+
+        window.addEventListener('wheel', handleScroll);
+
+        return () => {
+            window.removeEventListener('wheel', handleScroll);
+        };
+    }, [
+        // prevScrollY, 
+        cameraPosition, isDragging, cameraFocus, setCameraFocus, setCurrentPage, setIsFocussedOnIsland]);
+
+    useFrame((state) => {
+        if (camera.current) {
+            setCameraPosition(state.camera.position);
+        }
+    });
 
   return <>
 
