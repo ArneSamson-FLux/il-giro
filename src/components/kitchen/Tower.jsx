@@ -5,28 +5,26 @@ import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
-// import Fridge from './accessoires/Fridge.jsx';
-// import Oven from './accessoires/Oven.jsx';
 import LiquorStand from './accessoires/LiquorStand.jsx';
 
-import {BakePlane} from '../lighting&shadows/ShadowPlanes.jsx'
+import { BakePlane } from '../lighting&shadows/ShadowPlanes.jsx'
 
 import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven , props, accessoryMaterialUrl}){
+export default function Tower({ materialUrl, bevelled, doorOpening, applianceType, props, accessoryMaterialUrl }) {
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl+"albedo.jpg",
-        materialUrl+"normal.jpg",
-        materialUrl+"roughness.jpg",
-        materialUrl+"metallic.jpg"
+        materialUrl + "albedo.jpg",
+        materialUrl + "normal.jpg",
+        materialUrl + "roughness.jpg",
+        materialUrl + "metallic.jpg"
     ]);
 
     albedoTexture.anisotropy = 16;
-    
+
     const aoTexture = useTexture("./images/bakes/tower-straight_Bake1_PBR_Ambient Occlusion.jpg");
     aoTexture.flipY = false;
 
@@ -90,10 +88,10 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         scale: isDraggingTower ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        config: { 
-                tension: 250, 
-                friction: 50,
-            }
+        config: {
+            tension: 250,
+            friction: 50,
+        }
     });
 
     const planeIntersectPoint = new THREE.Vector3();
@@ -101,10 +99,10 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const dragPos = useDrag(
         ({ active, event }) => {
-            setIsDraggingTower (active);
+            setIsDraggingTower(active);
             setIsDragging(active);
 
-            if(active){
+            if (active) {
                 event.ray.intersectPlane(floorPlane, planeIntersectPoint);
                 let newPosition = ([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
 
@@ -122,9 +120,9 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
     //_____________________________________________________________________________________________________________
     function lerp(start, end, t) {
         return start * (1 - t) + end * t;
-    }   
+    }
     useFrame((state, delta) => {
-        if(doorRef.current && coolerRef.current){
+        if (doorRef.current && coolerRef.current) {
             doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
             coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpening, delta * 2);
         }
@@ -134,22 +132,22 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         // }
 
         if (shelvesRef.current) {
-            if(doorOpening === 0){
-                
+            if (doorOpening === 0) {
+
                 doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
 
                 shelvesRef.current.children[0].position.z = lerp(shelvesRef.current.children[0].position.z, 0.059, delta * 2);
                 shelvesRef.current.children[1].position.z = lerp(shelvesRef.current.children[1].position.z, 0.059, delta * 2);
                 shelvesRef.current.children[2].position.z = lerp(shelvesRef.current.children[2].position.z, 0.059, delta * 2);
 
-            }else if(doorOpening === 1.5){
+            } else if (doorOpening === 1.5) {
 
                 doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
 
                 const bottomShelfZ = doorOpening / 3.5;
                 const middleShelfZ = doorOpening / 3.5 - 0.1; // Adjust as needed
                 const topShelfZ = doorOpening / 3.5 - 0.2; // Adjust as needed
-    
+
                 shelvesRef.current.children[0].position.z = lerp(shelvesRef.current.children[0].position.z, bottomShelfZ, delta * 2);
                 shelvesRef.current.children[1].position.z = lerp(shelvesRef.current.children[1].position.z, middleShelfZ, delta * 2);
                 shelvesRef.current.children[2].position.z = lerp(shelvesRef.current.children[2].position.z, topShelfZ, delta * 2);
@@ -160,10 +158,10 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
     });
 
     return <>
-        <a.group 
+        <a.group
             name='tower-group'
             ref={towerRef}
-            {...props} 
+            {...props}
             dispose={null}
             position={springProps.position}
             {...springProps}
@@ -173,7 +171,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 onPointerOver={
                     (e) => {
                         setNeedPointer(true);
-                        if(dragMode) return;
+                        if (dragMode) return;
                         setHover(true);
                         e.stopPropagation();
                     }
@@ -187,14 +185,14 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                 }
                 onClick={
                     (e) => {
-                        if(dragMode) return;
+                        if (dragMode) return;
                         setCurrentPage(5);
-                        setCameraFocus([position[0], position[1] + 1, position[2] ]);
+                        setCameraFocus([position[0], position[1] + 1, position[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }
                 }
-                {...(dragMode ? dragPos() : {})}           
+                {...(dragMode ? dragPos() : {})}
             >
                 <mesh
                     name='cabinet'
@@ -211,9 +209,9 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                         geometry={nodes.door.geometry}
                         material={material}
                         position={[0.425, 1.185, 0.339]}
-                        // rotation={[0, doorOpening, 0]}
+                    // rotation={[0, doorOpening, 0]}
                     />
-                    {fridgeOrOven === 'fridge' && <>
+                    {applianceType === 'fridge' && <>
                         <mesh
                             castShadow
                             receiveShadow
@@ -293,11 +291,11 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 </group>
                             </group>
                         </mesh>
-                        </>
+                    </>
                     }
 
-                    {fridgeOrOven === 'oven' && <>
-                         <mesh
+                    {applianceType === 'shelves' && <>
+                        <mesh
                             ref={shelvesRef}
 
                             castShadow
@@ -332,11 +330,11 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 rotation={[0, -1.571, 0]}
                             />
                         </mesh>
-                        </>
+                    </>
                     }
                 </mesh>
 
-            
+
             </group>
 
             <BakePlane
@@ -350,7 +348,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
         </a.group>
 
-        
+
 
     </>
 }

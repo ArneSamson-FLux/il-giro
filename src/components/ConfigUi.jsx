@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { useSpring, animated } from 'react-spring';
 
@@ -55,10 +55,10 @@ export default function ConfigUi() {
     useEffect(() => {
         const lastMaterial = allMaterials[allMaterials.length - 1];
 
-        if(lastMaterial){
+        if (lastMaterial) {
             setLoaded(true);
 
-            if(loaded) return;
+            if (loaded) return;
 
             setMainMaterial(allMaterials[5].url);
             setAccentMaterial(allMaterials[6].url);
@@ -79,19 +79,19 @@ export default function ConfigUi() {
     }, [currentPage, setCurrentPage]);
 
     const handleNext = () => {
-        if(currentPage === 5) return;
+        if (currentPage === 5) return;
         checkPage(currentPage + 1);
         setCurrentPage(currentPage + 1);
     }
 
     const handleBack = () => {
-        if(currentPage === 0) return;
+        if (currentPage === 0) return;
         checkPage(currentPage - 1);
         setCurrentPage(currentPage - 1);
     }
 
     const handleZoom = () => {
-        if(currentPage === 0) return;
+        if (currentPage === 0) return;
         checkPage(0);
     }
 
@@ -99,73 +99,73 @@ export default function ConfigUi() {
         setDragMode(!dragMode);
     }
 
-    const [ materialCategory, setMainMaterialCategory ] = useState('metal');
-    const [ isSecondDetailsOpen, setIsSecondDetailsOpen ] = useState(false);
+    const [materialCategory, setMainMaterialCategory] = useState('metal');
+    const [isSecondDetailsOpen, setIsSecondDetailsOpen] = useState(false);
 
     const checkPage = (e) => {
 
         setIsSecondDetailsOpen(false)
 
-        switch(e){
+        switch (e) {
             case 0:
                 setCurrentPage(0);
                 setCameraFocus([0, 1, 0]);
                 setIsFocussedOnIsland(false);
-            break;  
+                break;
             case 1:
                 setCurrentPage(1);
-            break;
+                break;
             case 2:
                 setCurrentPage(2);
-            break;
+                break;
             case 3:
                 setCurrentPage(3);
-            break;
+                break;
         }
     }
 
     return (
         <>
-        <div
-            className='extra-buttons'
-        >
             <div
-                className='extra-buttons__zoom-out'
+                className='extra-buttons'
             >
-                <button
-                    onClick={handleZoom}                        
+                <div
+                    className='extra-buttons__zoom-out'
                 >
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
-                        <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M19 19L14.65 14.65" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
+                    <button
+                        onClick={handleZoom}
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
+                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M19 19L14.65 14.65" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div
+                    className={dragMode ? 'extra-buttons__move--active' : 'extra-buttons__move'}
+                >
+                    <button
+                        onClick={handleDragMode}
+                    >
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className={dragMode ? 'move__image--active' : 'move__image'}>
+                            <path d="M4 8L1 11L4 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M8 4L11 1L14 4" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M14 18L11 21L8 18" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M18 8L21 11L18 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M1 11H21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M11 1V21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+                </div>
             </div>
 
-            <div
-                className={dragMode ? 'extra-buttons__move--active' : 'extra-buttons__move'}
-            >
-                <button
-                    onClick={handleDragMode}
-                >
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className={dragMode ? 'move__image--active' : 'move__image'}>
-                        <path d="M4 8L1 11L4 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M8 4L11 1L14 4" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M14 18L11 21L8 18" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M18 8L21 11L18 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M1 11H21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M11 1V21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
+            <div className='config-wrapper'>
 
-        <div className='config-wrapper'>
+                {!loaded && <p>Loading UI...</p>}
 
-            {!loaded && <p>Loading UI...</p>}
-            
-            {loaded &&    <div
+                {loaded && <div
                     className='config-ui'
                 >
 
@@ -174,24 +174,24 @@ export default function ConfigUi() {
                     >
 
                         <button
-                            style={currentPage === 0 ? {opacity: 0.1} : {opacity: 1}}
+                            style={currentPage === 0 ? { opacity: 0.1 } : { opacity: 1 }}
                             className={currentPage === 0 ? 'config-ui__nav__button--disabled' : ''}
                             onClick={handleBack}
                         >
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 8H1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                <path d="M8 15L1 8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M15 8H1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M8 15L1 8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
-  
+
                         <button
-                            style={currentPage === 5 ? {opacity: 0.1} : {opacity: 1}}
+                            style={currentPage === 5 ? { opacity: 0.1 } : { opacity: 1 }}
                             className={currentPage === 5 ? 'config-ui__nav__button--disabled' : ''}
                             onClick={handleNext}
                         >
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 8H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                <path d="M8 1L15 8L8 15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M1 8H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M8 1L15 8L8 15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
 
                         </button>
@@ -208,7 +208,7 @@ export default function ConfigUi() {
                         <div
                             className='config-ui__options'
                         >
-                            
+
                             <details
                                 open
                                 className='config-ui__details'
@@ -231,20 +231,20 @@ export default function ConfigUi() {
                                                 setIsSecondDetailsOpen(true)
                                                 setMainMaterial(materials[0].url)
 
-                                                switch(category){
+                                                switch (category) {
                                                     case 'metal':
                                                         setTableTopMaterial(allCategories['micro topping'][0].url)
-                                                    break;
+                                                        break;
                                                     case 'micro topping':
                                                         setTableTopMaterial(allCategories['wood'][0].url)
-                                                    break;
+                                                        break;
                                                     case 'wood':
                                                         setTableTopMaterial(allCategories['metal'][0].url)
-                                                    break;
+                                                        break;
                                                 }
                                             }}
                                             style={{
-                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`, 
+                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`,
                                             }}
                                         ></div>
                                     ))}
@@ -270,7 +270,7 @@ export default function ConfigUi() {
                                                 setMainMaterial(material.url)
                                             }}
                                             style={{
-                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                backgroundImage: `url(${material.url}albedo.jpg)`,
                                             }}
                                         ></div>
                                     ))}
@@ -292,7 +292,7 @@ export default function ConfigUi() {
                                             key={index}
                                             className={`config-ui__material-options__option ${accentMaterial === material.url ? 'selected-material-n-category' : ""}`}
                                             style={{
-                                                backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                backgroundImage: `url(${material.url}albedo.jpg)`,
                                             }}
                                             onClick={() => setAccentMaterial(material.url)}
                                         ></div>
@@ -301,7 +301,7 @@ export default function ConfigUi() {
 
                             </details>
 
-                             <details
+                            <details
                                 className='config-ui__details'
                             >
                                 <summary>Tabletop material:
@@ -311,20 +311,20 @@ export default function ConfigUi() {
                                 </summary>
 
                                 {materialCategory !== 'micro topping' && <>
-                                        <div className="config-ui__material-options ">
-                                            {allCategories['micro topping'].map((material, index) => (
-                                                <div
-                                                    key={index}
-                                                    className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                    onClick={() => {
-                                                        setTableTopMaterial(material.url)
-                                                    }}
-                                                    style={{
-                                                        backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                    }}
-                                                ></div>
-                                            ))}
-                                        </div>
+                                    <div className="config-ui__material-options ">
+                                        {allCategories['micro topping'].map((material, index) => (
+                                            <div
+                                                key={index}
+                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                onClick={() => {
+                                                    setTableTopMaterial(material.url)
+                                                }}
+                                                style={{
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`,
+                                                }}
+                                            ></div>
+                                        ))}
+                                    </div>
                                 </>}
 
                                 {materialCategory !== 'wood' && <>
@@ -337,39 +337,39 @@ export default function ConfigUi() {
                                                     setTableTopMaterial(material.url)
                                                 }}
                                                 style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`, 
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`,
                                                 }}
                                             ></div>
                                         ))}
                                     </div>
                                 </>}
-                                
+
                                 {materialCategory !== 'metal' && <>
 
                                     <div className="config-ui__material-options ">
                                         {allCategories['metal'].map((material, index) => (
                                             material.url.includes('inox') &&
-                                                <div
-                                                    key={index}
-                                                    className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                    onClick={() => {
-                                                        setTableTopMaterial(material.url)
-                                                    }}
-                                                    style={{
-                                                        backgroundImage: `url(${material.url}albedo.jpg)`, 
-                                                    }}
-                                                ></div>
+                                            <div
+                                                key={index}
+                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
+                                                onClick={() => {
+                                                    setTableTopMaterial(material.url)
+                                                }}
+                                                style={{
+                                                    backgroundImage: `url(${material.url}albedo.jpg)`,
+                                                }}
+                                            ></div>
                                         ))}
                                     </div>
                                 </>}
 
-                                
+
 
                             </details>
 
 
                         </div>
-                        </>
+                    </>
                     }
 
                     {currentPage === 1 && <>
@@ -409,7 +409,7 @@ export default function ConfigUi() {
                                 </div>
                             </details>
                         </div>
-                        </>}
+                    </>}
 
                     {currentPage === 2 && <>
                         <div
@@ -434,13 +434,13 @@ export default function ConfigUi() {
                                 </label>
                             </details>
                         </div>
-                        </>}
+                    </>}
 
                     {currentPage === 3 && <>
 
                         <div
                             className='config-ui__title'
-                        >   
+                        >
                             <span><h2>4. The Sink</h2></span>
                             {/* <span><h1>The</h1></span>
                             <span><h1>Sink</h1></span> */}
@@ -448,9 +448,9 @@ export default function ConfigUi() {
 
 
                         <div
-                           className='config-ui__options'
+                            className='config-ui__options'
                         >
-                            
+
                             <details
                                 open
                                 className='config-ui__details'
@@ -483,7 +483,7 @@ export default function ConfigUi() {
                     }
 
                     {currentPage === 4 && <>
-                       
+
                         <div
                             className='config-ui__title'
                         >
@@ -491,11 +491,11 @@ export default function ConfigUi() {
                             {/* <span><h1>The</h1></span>
                             <span><h1>Cooktop</h1></span> */}
                         </div>
-                       
+
                         <div
                             className='config-ui__options'
                         >
-                                
+
                             <details
                                 open
                                 className='config-ui__details'
@@ -558,13 +558,19 @@ export default function ConfigUi() {
                                         className={applianceType === 'oven' ? 'active-selection-button' : ''}
                                         onClick={() => setApplianceType('oven')}
                                     >
-                                        Shelves
+                                        Oven
                                     </button>
                                     <button
                                         className={applianceType === 'fridge' ? 'active-selection-button' : ''}
                                         onClick={() => setApplianceType('fridge')}
                                     >
                                         Wine cooler
+                                    </button>
+                                    <button
+                                        className={applianceType === 'shelves' ? 'active-selection-button' : ''}
+                                        onClick={() => setApplianceType('shelves')}
+                                    >
+                                        Shelves
                                     </button>
                                 </div>
                             </details>
@@ -614,9 +620,9 @@ export default function ConfigUi() {
                     </div> */}
 
                 </div>
-            }
-            
-        </div>
+                }
+
+            </div>
         </>
     );
 };

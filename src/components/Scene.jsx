@@ -13,10 +13,10 @@ export default function Scene() {
 
     const {
         allMaterials,
-        
-        sinkAmount, 
-        cooktopAmount, 
-        towerAmount, 
+
+        sinkAmount,
+        cooktopAmount,
+        towerAmount,
 
         mainMaterial,
         accentMaterial,
@@ -40,10 +40,10 @@ export default function Scene() {
 
     const islands = [];
 
-    for (let i = 0; i < sinkAmount; i++){
+    for (let i = 0; i < sinkAmount; i++) {
         islands.push(
             <Sink
-                key={'sink'+i}
+                key={'sink' + i}
                 materialUrl={
                     mainMaterial ? mainMaterial : allMaterials[0].url
                 }
@@ -54,7 +54,7 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {allBevelled}
+                bevelled={allBevelled}
                 accentMaterial={
                     accentMaterial ? accentMaterial : allMaterials[1].url
                 }
@@ -65,10 +65,10 @@ export default function Scene() {
             />
         )
     }
-    for(let i =0; i < cooktopAmount; i++){
+    for (let i = 0; i < cooktopAmount; i++) {
         islands.push(
             <Cooktop
-                key={'cooktop'+i}
+                key={'cooktop' + i}
                 materialUrl={
                     mainMaterial ? mainMaterial : allMaterials[0].url
                 }
@@ -79,7 +79,7 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {allBevelled}
+                bevelled={allBevelled}
                 tableTopMaterial={
                     tableTopMaterial ? tableTopMaterial : allMaterials[2].url
                 }
@@ -88,10 +88,10 @@ export default function Scene() {
             />
         )
     }
-    for(let i =0; i < towerAmount; i++){
+    for (let i = 0; i < towerAmount; i++) {
         islands.push(
             <Tower
-                key={'tower'+i}
+                key={'tower' + i}
                 materialUrl={
                     mainMaterial ? mainMaterial : allMaterials[4].url
                 }
@@ -102,9 +102,9 @@ export default function Scene() {
                         scale: [1, 1, 1],
                     }
                 }
-                bevelled = {allBevelled}
-                doorOpening = {doorOpeningRotation}
-                fridgeOrOven = {applianceType}
+                bevelled={allBevelled}
+                doorOpening={doorOpeningRotation}
+                applianceType={applianceType}
                 accessoryMaterialUrl={
                     accentMaterial ? accentMaterial : allMaterials[5].url
                 }
@@ -115,14 +115,14 @@ export default function Scene() {
 
     return <>
 
-            {islands}
+        {islands}
 
-            <gridHelper
-                visible={dragMode}
-                args={[10, 10, 0x000000, 0x000000]} 
-            />
+        <gridHelper
+            visible={dragMode}
+            args={[10, 10, 0x000000, 0x000000]}
+        />
 
-            <color attach="background" args={dragMode ? [0xefefef] : [0xffffff]} />
+        <color attach="background" args={dragMode ? [0xefefef] : [0xffffff]} />
 
 
     </>
