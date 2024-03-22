@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import * as THREE from 'three';
 import { useSpring, animated } from 'react-spring';
 
-import useConfig from '../store/useConfig';
-import useScene from '../store/useScene';
+import useConfig from '../store/useConfig.jsx';
+import useScene from '../store/useScene.jsx';
+
+import ConfigNav from './ui/ConfigNav.jsx';
+import ExtraButtons from './ui/ExtraButtons.jsx';
 
 export default function ConfigUi() {
 
@@ -46,10 +48,6 @@ export default function ConfigUi() {
         setDoorOpeningRotation,
 
         currentPage,
-        setCurrentPage,
-
-        dragMode,
-        setDragMode,
     } = useConfig();
 
     const [loaded, setLoaded] = useState(false);
@@ -76,92 +74,15 @@ export default function ConfigUi() {
         setAccentMaterial
     ]);
 
-    useEffect(() => {
-        checkPage(currentPage);
-    }, [currentPage, setCurrentPage]);
-
-    const handleNext = () => {
-        if (currentPage === 5) return;
-        checkPage(currentPage + 1);
-        setCurrentPage(currentPage + 1);
-    }
-
-    const handleBack = () => {
-        if (currentPage === 0) return;
-        checkPage(currentPage - 1);
-        setCurrentPage(currentPage - 1);
-    }
-
-    const handleZoom = () => {
-        if (currentPage === 0) return;
-        checkPage(0);
-    }
-
-    const handleDragMode = () => {
-        setDragMode(!dragMode);
-    }
 
     const [materialCategory, setMainMaterialCategory] = useState('metal');
     const [isSecondDetailsOpen, setIsSecondDetailsOpen] = useState(false);
 
-    const checkPage = (e) => {
-
-        setIsSecondDetailsOpen(false)
-
-        switch (e) {
-            case 0:
-                setCurrentPage(0);
-                setCameraFocus([0, 1, 0]);
-                setIsFocussedOnIsland(false);
-                break;
-            case 1:
-                setCurrentPage(1);
-                break;
-            case 2:
-                setCurrentPage(2);
-                break;
-            case 3:
-                setCurrentPage(3);
-                break;
-        }
-    }
 
     return (
         <>
-            <div
-                className='extra-buttons'
-            >
-                <div
-                    className='extra-buttons__zoom-out'
-                >
-                    <button
-                        onClick={handleZoom}
-                    >
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
-                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M19 19L14.65 14.65" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </button>
-                </div>
 
-                <div
-                    className={dragMode ? 'extra-buttons__move--active' : 'extra-buttons__move'}
-                >
-                    <button
-                        onClick={handleDragMode}
-                    >
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className={dragMode ? 'move__image--active' : 'move__image'}>
-                            <path d="M4 8L1 11L4 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M8 4L11 1L14 4" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M14 18L11 21L8 18" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M18 8L21 11L18 14" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M1 11H21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <path d="M11 1V21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+            <ExtraButtons />
 
             <div className='config-wrapper'>
 
@@ -171,33 +92,7 @@ export default function ConfigUi() {
                     className='config-ui'
                 >
 
-                    <div
-                        className='config-ui__nav'
-                    >
-
-                        <button
-                            style={currentPage === 0 ? { opacity: 0.1 } : { opacity: 1 }}
-                            className={currentPage === 0 ? 'config-ui__nav__button--disabled' : ''}
-                            onClick={handleBack}
-                        >
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 8H1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M8 15L1 8L8 1" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </button>
-
-                        <button
-                            style={currentPage === 5 ? { opacity: 0.1 } : { opacity: 1 }}
-                            className={currentPage === 5 ? 'config-ui__nav__button--disabled' : ''}
-                            onClick={handleNext}
-                        >
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1 8H15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M8 1L15 8L8 15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-
-                        </button>
-                    </div>
+                    <ConfigNav />
 
                     {currentPage === 0 && <>
 
@@ -368,7 +263,6 @@ export default function ConfigUi() {
 
 
                             </details>
-
 
                         </div>
                     </>}
