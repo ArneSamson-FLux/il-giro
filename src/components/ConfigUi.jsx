@@ -371,8 +371,7 @@ export default function ConfigUi() {
 
 
                         </div>
-                    </>
-                    }
+                    </>}
 
                     {currentPage === 1 && <>
                         <div
@@ -481,8 +480,7 @@ export default function ConfigUi() {
                             </details>
 
                         </div>
-                    </>
-                    }
+                    </>}
 
                     {currentPage === 4 && <>
 
@@ -639,21 +637,6 @@ export default function ConfigUi() {
                             </label>
                         </div>
                     </>}
-
-                    {/* <div
-                        className='config-ui__slider'
-                    >
-                        <h5>Open doors and shelves:</h5>
-                        <input
-                            type="range"
-                            min="0"
-                            max="2"
-                            step={0.01}
-                            value={doorOpeningRotation}
-                            onChange={(e) => setDoorOpeningRotation(e.target.value)}
-                        />
-
-                    </div> */}
 
                 </div>
                 }
