@@ -355,7 +355,7 @@ input[type=range]::-ms-track {
 }
 
 .config-ui__nav button path {
-    stroke-width: 2.5px;
+    stroke-width: 1.25px;
 }
 
 .config-ui__nav__button--disabled {
@@ -409,12 +409,12 @@ input[type=range]::-ms-track {
 
 .config-ui__selection-buttons button {
     padding: 10px;
-    border: 1px solid var(--off-white);
+    border: 1px solid var(--light-grey);
     cursor: pointer;
 }
 
 .config-ui__selection-buttons button.active-selection-button {
-    border: 3px solid var(--off-black);
+    border: 2px solid var(--off-black);
 }
 
 
