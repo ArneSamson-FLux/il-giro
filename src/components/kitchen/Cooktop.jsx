@@ -1,6 +1,6 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three'
-import {  useGLTF, useCursor } from '@react-three/drei'
+import { useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
@@ -10,20 +10,36 @@ import TableTop from './accessoires/TableTop.jsx';
 import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
 
-import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
+import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
 import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveType, props}){
+export default function Cooktop({ props }) {
+
+    const {
+        mainMaterial,
+        tableTopMaterial,
+
+        allBevelled,
+
+        stoveType,
+
+        setCurrentPage,
+
+        dragMode,
+        isDraggingCooktop,
+        setIsDraggingCooktop,
+        setIsDragging
+    } = useConfig();
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl+"albedo.jpg",
-        materialUrl+"normal.jpg",
-        materialUrl+"roughness.jpg",
-        materialUrl+"metallic.jpg"
+        mainMaterial + "albedo.jpg",
+        mainMaterial + "normal.jpg",
+        mainMaterial + "roughness.jpg",
+        mainMaterial + "metallic.jpg"
     ]);
 
     albedoTexture.anisotropy = 16;
@@ -43,22 +59,21 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
     const meshRef = useRef();
 
     useEffect(() => {
-        
-        if(meshRef.current){
+
+        if (meshRef.current) {
             const geometry = meshRef.current.geometry;
 
-            const uvAttributeName = bevelled ? "uv1" : "uv2";
+            const uvAttributeName = allBevelled ? "uv1" : "uv2";
             const uvAttribute = geometry.getAttribute(uvAttributeName);
 
             if (uvAttribute) {
                 const uvBufferAttribute = new THREE.BufferAttribute(uvAttribute.array, uvAttribute.itemSize);
-                
+
                 geometry.setAttribute('uv', uvBufferAttribute);
             }
         }
-    }, [nodes, bevelled]);
+    }, [nodes, allBevelled]);
 
-    const { setCurrentPage, currentPage, dragMode, setIsDragging, isDraggingCooktop, setIsDraggingCooktop } = useConfig();
     const { setCameraFocus, setIsFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
@@ -77,10 +92,10 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
         position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
         rotation: isDraggingCooktop ? [0, 0, 0] : [0, -0.5, 0],
-        config: { 
-                tension: 250, 
-                friction: 50,
-            }
+        config: {
+            tension: 250,
+            friction: 50,
+        }
     });
 
     const planeIntersectPoint = new THREE.Vector3();
@@ -88,17 +103,18 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
 
     const dragPos = useDrag(
         ({ active, event }) => {
-            setIsDraggingCooktop (active);
+            setIsDraggingCooktop(active);
             setIsDragging(active);
 
-            if(active){
+            if (active) {
                 event.ray.intersectPlane(floorPlane, planeIntersectPoint);
                 let newPosition = ([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
 
                 newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
                 newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
 
-                setPosition(newPosition);            }
+                setPosition(newPosition);
+            }
 
             event.stopPropagation();
 
@@ -108,20 +124,20 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
     //_____________________________________________________________________________________________________________
 
     return <>
-        <a.group 
+        <a.group
             name='cooktop-group'
             ref={cookTopRef}
-            {...props} 
+            {...props}
             dispose={null}
             {...springProps}
-            
+
         >
             <group
                 name='cooktop-hovers-group'
                 onPointerOver={
                     (e) => {
                         setNeedPointer(true);
-                        if(dragMode) return;
+                        if (dragMode) return;
                         setHover(true);
                         e.stopPropagation();
                     }
@@ -135,14 +151,14 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
                 }
                 onClick={
                     (e) => {
-                        if(dragMode) return;
+                        if (dragMode) return;
                         setCurrentPage(4);
                         setCameraFocus([position[0], position[1] + 1, position[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }
                 }
-                {...(dragMode ? dragPos() : {})}          
+                {...(dragMode ? dragPos() : {})}
             >
 
                 <mesh
@@ -153,14 +169,14 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
                     material={material}
                 >
                     <mesh
-                        visible={bevelled}
+                        visible={allBevelled}
                         castShadow
                         receiveShadow
                         geometry={nodes.bevel.geometry}
                         material={material}
                     />
                     <mesh
-                        visible={!bevelled}
+                        visible={!allBevelled}
                         castShadow
                         receiveShadow
                         geometry={nodes.straight.geometry}
@@ -187,7 +203,7 @@ export default function Cooktop({materialUrl, bevelled, tableTopMaterial, stoveT
                         }
                     />
                 }
-                
+
                 {stoveType === "electric" &&
                     <ElectricStove
                         props={

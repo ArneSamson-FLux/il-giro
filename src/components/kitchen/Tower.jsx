@@ -14,13 +14,29 @@ import { useTexture } from '../../helper/useTexture.tsx';
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Tower({ materialUrl, bevelled, doorOpening, applianceType, props, accessoryMaterialUrl, wineStandSize }) {
+export default function Tower({ props }) {
+
+    const {
+        mainMaterial,
+
+        applianceType,
+        doorOpeningRotation,
+
+        allBevelled,
+
+        setCurrentPage,
+
+        dragMode,
+        isDraggingTower,
+        setIsDraggingTower,
+        setIsDragging
+    } = useConfig();
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl + "albedo.jpg",
-        materialUrl + "normal.jpg",
-        materialUrl + "roughness.jpg",
-        materialUrl + "metallic.jpg"
+        mainMaterial + "albedo.jpg",
+        mainMaterial + "normal.jpg",
+        mainMaterial + "roughness.jpg",
+        mainMaterial + "metallic.jpg"
     ]);
 
     albedoTexture.anisotropy = 16;
@@ -66,7 +82,6 @@ export default function Tower({ materialUrl, bevelled, doorOpening, applianceTyp
 
     const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
-    const { setCurrentPage, currentPage, dragMode, isDraggingTower, setIsDraggingTower, setIsDragging } = useConfig();
     const { setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
@@ -123,26 +138,26 @@ export default function Tower({ materialUrl, bevelled, doorOpening, applianceTyp
     }
     useFrame((state, delta) => {
         if (doorRef.current && coolerRef.current) {
-            doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
-            coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpening, delta * 2);
+            doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
+            coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
         }
 
         if (shelvesRef.current) {
-            if (doorOpening === 0) {
+            if (doorOpeningRotation === 0) {
 
-                doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
+                doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
 
                 shelvesRef.current.children[0].position.z = lerp(shelvesRef.current.children[0].position.z, 0.059, delta * 2);
                 shelvesRef.current.children[1].position.z = lerp(shelvesRef.current.children[1].position.z, 0.059, delta * 2);
                 shelvesRef.current.children[2].position.z = lerp(shelvesRef.current.children[2].position.z, 0.059, delta * 2);
 
-            } else if (doorOpening === 1.5) {
+            } else if (doorOpeningRotation === 1.5) {
 
-                doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
+                doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
 
-                const bottomShelfZ = doorOpening / 3.5;
-                const middleShelfZ = doorOpening / 3.5 - 0.1; // Adjust as needed
-                const topShelfZ = doorOpening / 3.5 - 0.2; // Adjust as needed
+                const bottomShelfZ = doorOpeningRotation / 3.5;
+                const middleShelfZ = doorOpeningRotation / 3.5 - 0.1; // Adjust as needed
+                const topShelfZ = doorOpeningRotation / 3.5 - 0.2; // Adjust as needed
 
                 shelvesRef.current.children[0].position.z = lerp(shelvesRef.current.children[0].position.z, bottomShelfZ, delta * 2);
                 shelvesRef.current.children[1].position.z = lerp(shelvesRef.current.children[1].position.z, middleShelfZ, delta * 2);
@@ -335,8 +350,6 @@ export default function Tower({ materialUrl, bevelled, doorOpening, applianceTyp
                         rotation: [0, 0, 0],
                         scale: [1, 1, 1],
                     }}
-                    materialUrl={accessoryMaterialUrl}
-                    size={wineStandSize}
                 />
 
             </group>

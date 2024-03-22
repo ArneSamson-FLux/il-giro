@@ -14,10 +14,6 @@ export default function Scene() {
     const {
         allMaterials,
 
-        sinkAmount,
-        cooktopAmount,
-        towerAmount,
-
         mainMaterial,
         accentMaterial,
         tableTopMaterial,
@@ -25,99 +21,122 @@ export default function Scene() {
         allBevelled,
 
         tapType,
-        sinkBowlMaterial,
         stoveType,
-        applianceType,
-        wineStandSize,
-
-        edgeFinish,
-        doorOpeningRotation,
-
-        currentPage,
-        setCurrentPage,
 
         dragMode
     } = useConfig();
 
-    const islands = [];
+    console.log('hey');
 
-    for (let i = 0; i < sinkAmount; i++) {
-        islands.push(
-            <Sink
-                key={'sink' + i}
-                materialUrl={
-                    mainMaterial ? mainMaterial : allMaterials[0].url
-                }
-                props={
-                    {
-                        position: [-1.5 - i, 0, 0],
-                        rotation: [0, 0.5, 0],
-                        scale: [1, 1, 1],
-                    }
-                }
-                bevelled={allBevelled}
-                accentMaterial={
-                    accentMaterial ? accentMaterial : allMaterials[1].url
-                }
-                tableTopMaterial={
-                    tableTopMaterial ? tableTopMaterial : allMaterials[2].url
-                }
-                tapType={tapType}
-            />
-        )
-    }
-    for (let i = 0; i < cooktopAmount; i++) {
-        islands.push(
-            <Cooktop
-                key={'cooktop' + i}
-                materialUrl={
-                    mainMaterial ? mainMaterial : allMaterials[0].url
-                }
-                props={
-                    {
-                        position: [1.5 + i, 0, 0],
-                        rotation: [0, -0.5, 0],
-                        scale: [1, 1, 1],
-                    }
-                }
-                bevelled={allBevelled}
-                tableTopMaterial={
-                    tableTopMaterial ? tableTopMaterial : allMaterials[2].url
-                }
-                stoveType={stoveType}
+    // const islands = [];
 
-            />
-        )
-    }
-    for (let i = 0; i < towerAmount; i++) {
-        islands.push(
-            <Tower
-                key={'tower' + i}
-                materialUrl={
-                    mainMaterial ? mainMaterial : allMaterials[4].url
-                }
-                props={
-                    {
-                        position: [0, 0, -1 - i],
-                        rotation: [0, 0, 0],
-                        scale: [1, 1, 1],
-                    }
-                }
-                bevelled={allBevelled}
-                doorOpening={doorOpeningRotation}
-                applianceType={applianceType}
-                accessoryMaterialUrl={
-                    accentMaterial ? accentMaterial : allMaterials[5].url
-                }
-                wineStandSize={wineStandSize}
+    // for (let i = 0; i < sinkAmount; i++) {
+    //     islands.push(
+    //         <Sink
+    //             key={'sink' + i}
+    //             materialUrl={
+    //                 mainMaterial ? mainMaterial : allMaterials[0].url
+    //             }
+    //             props={
+    //                 {
+    //                     position: [-1.5 - i, 0, 0],
+    //                     rotation: [0, 0.5, 0],
+    //                     scale: [1, 1, 1],
+    //                 }
+    //             }
+    //             bevelled={allBevelled}
+    //             accentMaterial={
+    //                 accentMaterial ? accentMaterial : allMaterials[1].url
+    //             }
+    //             tableTopMaterial={
+    //                 tableTopMaterial ? tableTopMaterial : allMaterials[2].url
+    //             }
+    //             tapType={tapType}
+    //         />
+    //     )
+    // }
+    // for (let i = 0; i < cooktopAmount; i++) {
+    //     islands.push(
+    //         <Cooktop
+    //             key={'cooktop' + i}
+    //             materialUrl={
+    //                 mainMaterial ? mainMaterial : allMaterials[0].url
+    //             }
+    //             props={
+    //                 {
+    //                     position: [1.5 + i, 0, 0],
+    //                     rotation: [0, -0.5, 0],
+    //                     scale: [1, 1, 1],
+    //                 }
+    //             }
+    //             bevelled={allBevelled}
+    //             tableTopMaterial={
+    //                 tableTopMaterial ? tableTopMaterial : allMaterials[2].url
+    //             }
+    //             stoveType={stoveType}
 
-            />
-        )
-    }
+    //         />
+    //     )
+    // }
+    // for (let i = 0; i < towerAmount; i++) {
+    //     islands.push(
+    // <Tower
+    //     key={'tower'}
+    //     materialUrl={
+    //         mainMaterial ? mainMaterial : allMaterials[4].url
+    //     }
+    //     props={
+    //         {
+    //             position: [0, 0, -1],
+    //             rotation: [0, 0, 0],
+    //             scale: [1, 1, 1],
+    //         }
+    //     }
+    //     bevelled={allBevelled}
+    //     doorOpening={doorOpeningRotation}
+    //     applianceType={applianceType}
+    //     accessoryMaterialUrl={
+    //         accentMaterial ? accentMaterial : allMaterials[5].url
+    //     }
+    //     wineStandSize={wineStandSize}
+
+    // />
+    //     )
+    // }
 
     return <>
 
-        {islands}
+        {/* {islands} */}
+
+        <Sink
+            props={
+                {
+                    position: [-1.5, 0, 0],
+                    rotation: [0, 0.5, 0],
+                    scale: [1, 1, 1],
+                }
+            }
+        />
+
+        <Cooktop
+            props={
+                {
+                    position: [1.5, 0, 0],
+                    rotation: [0, -0.5, 0],
+                    scale: [1, 1, 1],
+                }
+            }
+        />
+
+        <Tower
+            props={
+                {
+                    position: [0, 0, -1],
+                    rotation: [0, 0, 0],
+                    scale: [1, 1, 1],
+                }
+            }
+        />
 
         <gridHelper
             visible={dragMode}

@@ -2,13 +2,21 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
+import useConfig from '../../../store/useConfig.jsx';
+
 import { useTexture } from '../../../helper/useTexture.tsx';
 
-export default function Tap1({materialUrl, bevelled, props}){
 
-    const [albedoTexture,  metallnessTexture] = useTexture([
-        materialUrl+"albedo.jpg",
-        materialUrl+"metallic.jpg"
+export default function Tap1({ props }) {
+
+    const {
+        accentMaterial,
+
+    } = useConfig();
+
+    const [albedoTexture, metallnessTexture] = useTexture([
+        accentMaterial + "albedo.jpg",
+        accentMaterial + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
@@ -20,13 +28,13 @@ export default function Tap1({materialUrl, bevelled, props}){
         roughness: 0
 
     });
-    
-    const { nodes, materials } = useGLTF("/models/tap2.glb");
-    return (
 
-        <group 
+    const { nodes, materials } = useGLTF("/models/tap2.glb");
+
+    return (
+        <group
             name="tap2-group-container"
-            {...props} 
+            {...props}
             dispose={null}
         >
             <mesh

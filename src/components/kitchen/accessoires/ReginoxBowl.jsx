@@ -2,16 +2,23 @@ import React, { useRef } from "react";
 import * as THREE from 'three'
 import { useGLTF } from "@react-three/drei";
 
+import useConfig from '../../../store/useConfig.jsx';
+
 import { useTexture } from '../../../helper/useTexture.tsx';
 
 
-export default function Reginox({ props, materialUrl }) {
+export default function Reginox({ props }) {
+
+    const {
+        accentMaterial,
+
+    } = useConfig();
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl + "albedo.jpg",
-        materialUrl + "normal.jpg",
-        materialUrl + "roughness.jpg",
-        materialUrl + "metallic.jpg"
+        accentMaterial + "albedo.jpg",
+        accentMaterial + "normal.jpg",
+        accentMaterial + "roughness.jpg",
+        accentMaterial + "metallic.jpg"
     ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;

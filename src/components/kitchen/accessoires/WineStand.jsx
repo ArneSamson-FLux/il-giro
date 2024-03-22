@@ -2,16 +2,25 @@ import React, { useRef } from 'react';
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
+import useConfig from '../../../store/useConfig.jsx';
+
 import { useTexture } from '../../../helper/useTexture.tsx';
 
-export default function WineStand({ props, materialUrl, size }) {
+export default function WineStand({ props }) {
 
-    const albedoTexture = useTexture(materialUrl + "albedo.jpg");
-    const normalTexture = useTexture(materialUrl + "normal.jpg");
-    const roughnessTexture = useTexture(materialUrl + "roughness.jpg");
-    const metallnesTexture = useTexture(materialUrl + "metallic.jpg");
-    const aoTexture = useTexture("./images/bakes/liquorstand-ao.jpg");
-    aoTexture.flipY = false;
+
+    const {
+        accentMaterial,
+        wineStandSize,
+
+    } = useConfig();
+
+    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
+        accentMaterial + "albedo.jpg",
+        accentMaterial + "normal.jpg",
+        accentMaterial + "roughness.jpg",
+        accentMaterial + "metallic.jpg"
+    ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -19,11 +28,10 @@ export default function WineStand({ props, materialUrl, size }) {
         map: albedoTexture,
         normalMap: normalTexture,
         roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
         roughness: 0,
-        aoMap: aoTexture,
-        aoMapIntensity: 0.9,
+
     });
 
 
@@ -34,7 +42,7 @@ export default function WineStand({ props, materialUrl, size }) {
             {...props}
             dispose={null}
         >
-            {size === 'tall' &&
+            {wineStandSize === 'tall' &&
                 <mesh
                     castShadow
                     receiveShadow
@@ -42,7 +50,7 @@ export default function WineStand({ props, materialUrl, size }) {
                     material={material}
                 />
             }
-            {size === 'medium' &&
+            {wineStandSize === 'medium' &&
                 <mesh
                     castShadow
                     receiveShadow
@@ -50,7 +58,7 @@ export default function WineStand({ props, materialUrl, size }) {
                     material={material}
                 />
             }
-            {size === 'small' &&
+            {wineStandSize === 'small' &&
                 <mesh
                     castShadow
                     receiveShadow

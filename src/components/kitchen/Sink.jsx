@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three'
 import { useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
@@ -14,22 +14,38 @@ import TableTop from './accessoires/TableTop.jsx';
 import TableTopCutFilled from './accessoires/TableTopCutFilled.jsx';
 import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
 
-import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
+import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
 import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Sink({materialUrl, bevelled, accentMaterial, tapType , tableTopMaterial , props}){  
+export default function Sink({ props }) {
+
+    const {
+        mainMaterial,
+        tableTopMaterial,
+
+        allBevelled,
+
+        tapType,
+
+        setCurrentPage,
+
+        dragMode,
+        isDraggingSink,
+        setIsDraggingSink,
+        setIsDragging
+    } = useConfig();
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl+"albedo.jpg",
-        materialUrl+"normal.jpg",
-        materialUrl+"roughness.jpg",
-        materialUrl+"metallic.jpg"
+        mainMaterial + "albedo.jpg",
+        mainMaterial + "normal.jpg",
+        mainMaterial + "roughness.jpg",
+        mainMaterial + "metallic.jpg"
     ]);
-    
+
     albedoTexture.anisotropy = 16;
 
     metallnessTexture.name = "metalnessMap";
@@ -51,30 +67,29 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
     const meshRef = useRef();
 
     useEffect(() => {
-        
-        if(meshRef.current){
+
+        if (meshRef.current) {
             const geometry = meshRef.current.geometry;
 
-            const uvAttributeName = bevelled ? "uv1" : "uv2";
+            const uvAttributeName = allBevelled ? "uv1" : "uv2";
             const uvAttribute = geometry.getAttribute(uvAttributeName);
 
             if (uvAttribute) {
                 const uvBufferAttribute = new THREE.BufferAttribute(uvAttribute.array, uvAttribute.itemSize);
-                
+
                 geometry.setAttribute('uv', uvBufferAttribute);
             }
         }
-    }, [nodes, bevelled]);
-            
-    const { setCurrentPage, currentPage, dragMode, isDraggingSink, setIsDraggingSink, setIsDragging } = useConfig();
+    }, [nodes, allBevelled]);
+
     const { setCameraFocus, setIsFocussedOnIsland } = useScene();
-    
+
     const [hovered, setHover] = useState(null);
 
     const [needPointer, setNeedPointer] = useState(false);
-    
+
     useCursor(needPointer, "pointer")
-    
+
     const sinkRef = useRef();
 
     const [position, setPosition] = useState([-1.5, 0, 0]);
@@ -85,10 +100,10 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
         position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
         rotation: isDraggingSink ? [0, 0, 0] : [0, 0.5, 0],
         scale: isDraggingSink ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        config: { 
-                tension: 250, 
-                friction: 50,
-            }
+        config: {
+            tension: 250,
+            friction: 50,
+        }
     });
 
     const planeIntersectPoint = new THREE.Vector3();
@@ -99,7 +114,7 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
             setIsDraggingSink(active);
             setIsDragging(active);
 
-            if(active){
+            if (active) {
                 event.ray.intersectPlane(floorPlane, planeIntersectPoint);
                 let newPosition = ([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
 
@@ -120,7 +135,7 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
         <a.group
             name='sink-group'
             ref={sinkRef}
-            {...props} 
+            {...props}
             dispose={null}
             {...springProps}
         >
@@ -129,7 +144,7 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
                 onPointerOver={
                     (e) => {
                         setNeedPointer(true);
-                        if(dragMode) return;
+                        if (dragMode) return;
                         setHover(true);
                         e.stopPropagation();
                     }
@@ -143,14 +158,14 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
                 }
                 onClick={
                     (e) => {
-                        if(dragMode) return;
+                        if (dragMode) return;
                         setCurrentPage(3);
                         setCameraFocus([position[0], position[1] + 1, position[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }
                 }
-                {...(dragMode ? dragPos() : {})}           
+                {...(dragMode ? dragPos() : {})}
 
             >
                 <mesh
@@ -161,40 +176,20 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
                     material={material}
                 >
                     <mesh
-                        visible={bevelled}
+                        visible={allBevelled}
                         castShadow
                         receiveShadow
                         geometry={nodes.bevel.geometry}
                         material={material}
                     />
                     <mesh
-                        visible={!bevelled}
+                        visible={!allBevelled}
                         castShadow
                         receiveShadow
                         geometry={nodes.straight.geometry}
                         material={material}
                     />
                 </mesh>
-
-                {/* <TableTop
-                    props={
-                        {
-                            position: [0, 0, 0],
-                            rotation: [0, 0, 0],
-                        }
-                    }
-                    materialUrl={materialUrl}
-                /> */}
-
-                {/* <TableTopCutFilled
-                    props={
-                        {
-                            position: [0, 0, 0],
-                            rotation: [0, 0, 0],
-                        }
-                    }
-                    materialUrl={materialUrl}
-                /> */}
 
                 <>
                     <TableTopCutOut
@@ -214,15 +209,11 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={accentMaterial}
                     />
                 </>
 
 
-
-
-
-                {tapType === '1' && 
+                {tapType === '1' &&
                     <Tap1
                         props={
                             {
@@ -230,7 +221,6 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={accentMaterial}
                     />
                 }
 
@@ -243,7 +233,6 @@ export default function Sink({materialUrl, bevelled, accentMaterial, tapType , t
                                 rotation: [0, 0, 0],
                             }
                         }
-                        materialUrl={accentMaterial}
                     />
                 }
 
