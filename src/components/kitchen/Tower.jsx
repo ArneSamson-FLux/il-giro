@@ -72,6 +72,7 @@ export default function Tower({ props }) {
     useEffect(() => {
 
         if (cabinetRef.current && doorRef.current) {
+
             const cabinetGeometry = cabinetRef.current.geometry;
             const doorGeometry = doorRef.current.geometry;
 
@@ -88,7 +89,6 @@ export default function Tower({ props }) {
                 doorGeometry.setAttribute('uv', uvBufferAttributeDoor);
             }
 
-            console.log(cabinetRef.current);
         }
     }, [nodes, allBevelled]);
 
