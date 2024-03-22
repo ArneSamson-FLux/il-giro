@@ -28,6 +28,7 @@ export default function Scene() {
         sinkBowlMaterial,
         stoveType,
         applianceType,
+        wineStandSize,
 
         edgeFinish,
         doorOpeningRotation,
@@ -108,6 +109,7 @@ export default function Scene() {
                 accessoryMaterialUrl={
                     accentMaterial ? accentMaterial : allMaterials[5].url
                 }
+                wineStandSize={wineStandSize}
 
             />
         )

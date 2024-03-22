@@ -5,7 +5,7 @@ import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
-import LiquorStand from './accessoires/LiquorStand.jsx';
+import WineStand from './accessoires/WineStand.jsx';
 
 import { BakePlane } from '../lighting&shadows/ShadowPlanes.jsx'
 
@@ -14,7 +14,7 @@ import { useTexture } from '../../helper/useTexture.tsx';
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfig.jsx';
 
-export default function Tower({ materialUrl, bevelled, doorOpening, applianceType, props, accessoryMaterialUrl }) {
+export default function Tower({ materialUrl, bevelled, doorOpening, applianceType, props, accessoryMaterialUrl, wineStandSize }) {
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         materialUrl + "albedo.jpg",
@@ -126,10 +126,6 @@ export default function Tower({ materialUrl, bevelled, doorOpening, applianceTyp
             doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
             coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpening, delta * 2);
         }
-        // if(doorRef.current && shelvesRef.current){
-        //     doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
-        //     shelvesRef.current.position.z = lerp(shelvesRef.current.position.z, doorOpening/3.5, delta * 2);
-        // }
 
         if (shelvesRef.current) {
             if (doorOpening === 0) {
@@ -333,6 +329,15 @@ export default function Tower({ materialUrl, bevelled, doorOpening, applianceTyp
                     }
                 </mesh>
 
+                <WineStand
+                    props={{
+                        position: [0, 0, 0],
+                        rotation: [0, 0, 0],
+                        scale: [1, 1, 1],
+                    }}
+                    materialUrl={accessoryMaterialUrl}
+                    size={wineStandSize}
+                />
 
             </group>
 
