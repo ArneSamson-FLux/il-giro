@@ -262,14 +262,14 @@ export default function Tower({ props }) {
                                 castShadow
                                 receiveShadow
                                 geometry={nodes['cooler-bevel'].geometry}
-                                material={nodes['cooler-bevel'].material}
+                                material={material}
                             />
                             <mesh name='cooler-straight'
                                 visible={!allBevelled}
                                 castShadow
                                 receiveShadow
                                 geometry={nodes['cooler-straight'].geometry}
-                                material={nodes['cooler-straight'].material}
+                                material={material}
                             />
 
                             <mesh
