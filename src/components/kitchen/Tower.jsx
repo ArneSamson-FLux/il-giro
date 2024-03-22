@@ -209,7 +209,6 @@ export default function Tower({ materialUrl, bevelled, doorOpening, applianceTyp
                         geometry={nodes.door.geometry}
                         material={material}
                         position={[0.425, 1.185, 0.339]}
-                    // rotation={[0, doorOpening, 0]}
                     />
                     {applianceType === 'fridge' && <>
                         <mesh

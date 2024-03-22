@@ -1,21 +1,18 @@
 import React, { useRef } from "react";
 import * as THREE from 'three'
-import { useGLTF} from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 
 import { useTexture } from '../../../helper/useTexture.tsx';
 
 
-export default function Reginox({props, materialUrl}) {
+export default function Reginox({ props, materialUrl }) {
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        materialUrl+"albedo.jpg",
-        materialUrl+"normal.jpg",
-        materialUrl+"roughness.jpg",
-        materialUrl+"metallic.jpg"
+        materialUrl + "albedo.jpg",
+        materialUrl + "normal.jpg",
+        materialUrl + "roughness.jpg",
+        materialUrl + "metallic.jpg"
     ]);
-
-    // const aoTexture = useTexture("./images/bakes/Reginox.jpg");
-    // aoTexture.flipY = false;
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
@@ -26,17 +23,15 @@ export default function Reginox({props, materialUrl}) {
         metalnessMap: metallnessTexture,
         metalness: 1,
         roughness: 0,
-        // aoMap: aoTexture,
-        // aoMapIntensity: 1,
     });
 
-  
+
     const { nodes, materials } = useGLTF("./models/Reginox.glb");
-   
+
     return (
-        <group 
+        <group
             name="sink-bowl-group"
-            {...props} 
+            {...props}
             dispose={null}
         >
             <mesh
@@ -49,6 +44,6 @@ export default function Reginox({props, materialUrl}) {
             />
         </group>
     );
-    }
+}
 
 useGLTF.preload("./models/Reginox.glb");
