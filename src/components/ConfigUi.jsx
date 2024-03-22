@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 
 import useConfig from '../store/useConfig.jsx';
-import useScene from '../store/useScene.jsx';
 
 import ConfigNav from './ui/ConfigNav.jsx';
 import ExtraButtons from './ui/ExtraButtons.jsx';
+import MaterialSelection from './ui/MaterialSelection.jsx';
 
 export default function ConfigUi() {
-
-    const {
-        setCameraFocus,
-        setIsFocussedOnIsland,
-    } = useScene();
 
     const {
         allMaterials,
@@ -106,47 +101,9 @@ export default function ConfigUi() {
                             className='config-ui__options'
                         >
 
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>Base material:
-                                    <span>
-                                        {' ' + materialCategory}
-                                    </span>
-                                </summary>
+                            <MaterialSelection
 
-                                <div
-                                    className="config-ui__material-options"
-                                >
-                                    {Object.entries(allCategories).map(([category, materials]) => (
-                                        <div
-                                            key={category}
-                                            className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
-                                            onClick={() => {
-                                                setMainMaterialCategory(category)
-                                                setIsSecondDetailsOpen(true)
-                                                setMainMaterial(materials[0].url)
-
-                                                switch (category) {
-                                                    case 'metal':
-                                                        setTableTopMaterial(allCategories['micro topping'][0].url)
-                                                        break;
-                                                    case 'micro topping':
-                                                        setTableTopMaterial(allCategories['wood'][0].url)
-                                                        break;
-                                                    case 'wood':
-                                                        setTableTopMaterial(allCategories['metal'][0].url)
-                                                        break;
-                                                }
-                                            }}
-                                            style={{
-                                                backgroundImage: `url(${materials[0].url}albedo.jpg)`,
-                                            }}
-                                        ></div>
-                                    ))}
-                                </div>
-                            </details>
+                            />
 
                             <details
                                 open={isSecondDetailsOpen}
