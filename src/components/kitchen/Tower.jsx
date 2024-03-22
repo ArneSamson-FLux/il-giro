@@ -81,6 +81,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
     const doorRef = useRef();
     const coolerRef = useRef();
+    const shelvesRef = useRef();
 
     const [position, setPosition] = useState([0, 0, -1]);
 
@@ -123,10 +124,39 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
         return start * (1 - t) + end * t;
     }   
     useFrame((state, delta) => {
-        if(doorRef.current){
+        if(doorRef.current && coolerRef.current){
             doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
             coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpening, delta * 2);
         }
+        // if(doorRef.current && shelvesRef.current){
+        //     doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
+        //     shelvesRef.current.position.z = lerp(shelvesRef.current.position.z, doorOpening/3.5, delta * 2);
+        // }
+
+        if (shelvesRef.current) {
+            if(doorOpening === 0){
+                
+                doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
+
+                shelvesRef.current.children[0].position.z = lerp(shelvesRef.current.children[0].position.z, 0.059, delta * 2);
+                shelvesRef.current.children[1].position.z = lerp(shelvesRef.current.children[1].position.z, 0.059, delta * 2);
+                shelvesRef.current.children[2].position.z = lerp(shelvesRef.current.children[2].position.z, 0.059, delta * 2);
+
+            }else if(doorOpening === 1.5){
+
+                doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpening, delta * 2);
+
+                const bottomShelfZ = doorOpening / 3.5;
+                const middleShelfZ = doorOpening / 3.5 - 0.1; // Adjust as needed
+                const topShelfZ = doorOpening / 3.5 - 0.2; // Adjust as needed
+    
+                shelvesRef.current.children[0].position.z = lerp(shelvesRef.current.children[0].position.z, bottomShelfZ, delta * 2);
+                shelvesRef.current.children[1].position.z = lerp(shelvesRef.current.children[1].position.z, middleShelfZ, delta * 2);
+                shelvesRef.current.children[2].position.z = lerp(shelvesRef.current.children[2].position.z, topShelfZ, delta * 2);
+
+            }
+        }
+
     });
 
     return <>
@@ -241,7 +271,6 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                     ref={coolerRef}
                                     position={[0.313, 0.894, 0.233]}
                                     scale={[1, 0.992, 1]}
-                                    // rotation={[0, Math.min(-doorOpening + 0.5, 0), 0]}
                                 >
                                     <mesh
                                         castShadow
@@ -269,6 +298,8 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
 
                     {fridgeOrOven === 'oven' && <>
                          <mesh
+                            ref={shelvesRef}
+
                             castShadow
                             receiveShadow
                             geometry={nodes['inside-shelf'].geometry}
@@ -276,11 +307,12 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                             position={[0, -0.048, 0]}
                         >
                             <mesh
+                                // ref={shelvesRef}
                                 castShadow
                                 receiveShadow
                                 geometry={nodes['shelf-bottom'].geometry}
                                 material={nodes['inside-shelf'].material}
-                                position={[0, 0.301, 0.059 + doorOpening/6]}
+                                position={[0, 0.301, 0.059]}
                                 rotation={[0, -1.571, 0]}
                             />
                             <mesh
@@ -288,7 +320,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 receiveShadow
                                 geometry={nodes['shelf-middle'].geometry}
                                 material={nodes['inside-shelf'].material}
-                                position={[0, 0.544, 0.059 + doorOpening/8]}
+                                position={[0, 0.544, shelvesRef.current ? shelvesRef.current.position.z : 0.059]}
                                 rotation={[0, -1.571, 0]}
                             />
                             <mesh
@@ -296,7 +328,7 @@ export default function Tower({materialUrl, bevelled, doorOpening, fridgeOrOven 
                                 receiveShadow
                                 geometry={nodes['shelf-top'].geometry}
                                 material={nodes['inside-shelf'].material}
-                                position={[0, 0.788, 0.059 + doorOpening/12]}
+                                position={[0, 0.788, shelvesRef.current ? shelvesRef.current.position.z : 0.059]}
                                 rotation={[0, -1.571, 0]}
                             />
                         </mesh>
