@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,7 +7,7 @@
 
 html,
 body,
-#root{
+#root {
     position: fixed;
     top: 0;
     left: 0;
@@ -70,17 +70,17 @@ body,
     background-size: cover;
 
     color: var(--off-black);
-    
+
 }
 
 
 
-.root-container{
+.root-container {
     width: 100%;
     height: 100%;
 }
 
-.canvas{
+.canvas {
     width: 50vw;
     box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.4);
     border: 1px solid var(--off-black);
@@ -88,21 +88,21 @@ body,
 
 
 
-h1{
+h1 {
     font-family: var(--heading-family);
     font-size: var(--heading1-size);
     font-weight: var(--heading1-weight);
     line-height: var(--heading1-line-height);
 }
 
-h2{
+h2 {
     font-family: var(--heading-family);
     font-size: var(--heading2-size);
     font-weight: var(--heading2-weight);
     line-height: var(--heading2-line-height);
 }
 
-h3{
+h3 {
     font-family: var(--heading-family);
     font-size: var(--heading3-size);
     font-weight: var(--heading3-weight);
@@ -110,32 +110,32 @@ h3{
     color: var(--light-grey);
 }
 
-h4{
+h4 {
     font-family: var(--heading-family);
     font-size: var(--heading4-size);
     font-weight: var(--heading4-weight);
     line-height: var(--heading4-line-height);
 }
 
-h5{
+h5 {
     font-family: var(--heading-family);
     font-size: var(--heading5-size);
     font-weight: var(--heading5-weight);
     line-height: var(--heading5-line-height);
 }
 
-strong{
+strong {
     font-weight: 700;
 }
 
-p{
+p {
     font-family: var(--body-family);
     font-size: var(--body-size);
     font-weight: var(--body-weight);
     line-height: var(--body-line-height);
 }
 
-a{
+a {
     font-family: var(--body-family);
     font-size: var(--link-size);
     font-weight: var(--link-weight);
@@ -143,24 +143,24 @@ a{
     color: var(--off-black);
     text-decoration: none;
 
-    &:hover{
+    &:hover {
         text-decoration: underline;
     }
 }
 
-button{
+button {
 
     padding: 20px 0px;
     border: none;
     background: transparent;
-    
+    border-radius: 15px;
 
-    &:hover{
+    &:hover {
         cursor: pointer;
     }
 }
 
-select{
+select {
     border-width: 1px;
     border-style: solid;
     border-color: var(--trans-grey);
@@ -171,40 +171,6 @@ select{
     width: 150px;
     text-align: start;
 }
-
-/* input{
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--trans-grey);
-    background-color: transparent;
-    color: var(--off-black);
-}
-input[type="checkbox"]{
-    margin-top: 20px;
-    appearance: none;
-    -webkit-appearance: none;
-
-    font: inherit;
-    color: var(--off-black);
-    width: 20px;
-    height: 20px;
-    border: 0.15em solid var(--off-black);
-    border-radius: 0px;
-
-    display: grid;
-    place-items: center;
-}
-input[type="checkbox"]::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    transform: scale(0);
-    transition: transform 0.12s ease-in-out;
-    box-shadow: inset 1em 1em var(--off-black);
-}
-input[type="checkbox"]:checked::before {
-    transform: scale(1);
-} */
 
 .config-ui__toggle {
     position: relative;
@@ -230,6 +196,7 @@ input[type="checkbox"]:checked::before {
     -webkit-transition: .4s;
     transition: .4s;
     border: var(--off-black) 1px solid;
+    border-radius: 10px;
 }
 
 .config-ui__toggle-slider:before {
@@ -242,6 +209,7 @@ input[type="checkbox"]:checked::before {
     background-color: var(--off-white);
     -webkit-transition: .4s;
     transition: .4s;
+    border-radius: 7px;
 }
 
 .config-ui__toggle input:checked+.config-ui__toggle-slider {
@@ -259,7 +227,7 @@ input[type="checkbox"]:checked::before {
 }
 
 
-input[type="range"]{
+input[type="range"] {
     appearance: none;
     -webkit-appearance: none;
     width: 100%;
@@ -267,6 +235,7 @@ input[type="range"]{
     border-radius: 5px;
     background-color: var(--trans-grey);
 }
+
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: 1px solid var(--off-black);
@@ -278,10 +247,11 @@ input[type=range]::-webkit-slider-thumb {
     margin-top: 0px;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
+
 input[type=range]::-ms-track {
     cursor: pointer;
-  
-    background: transparent; 
+
+    background: transparent;
     border-color: transparent;
     color: transparent;
 }
@@ -295,6 +265,7 @@ input[type=range]::-ms-track {
     top: 50%;
     left: 75px;
 }
+
 .extra-buttons__zoom-out button {
 
     &:hover {
@@ -304,6 +275,7 @@ input[type=range]::-ms-track {
 
     }
 }
+
 .extra-buttons__move button {
 
     &:hover {
@@ -313,20 +285,25 @@ input[type=range]::-ms-track {
 
     }
 }
+
 .zoom-out__image {
     width: 20px;
     height: 20px;
 }
+
 .zoom-out__image path {
     stroke: var(--dark-grey);
 }
+
 .move__image {
     width: 20px;
     height: 20px;
 }
+
 .move__image path {
     stroke: var(--dark-grey);
 }
+
 .move__image--active path {
     stroke: var(--light-grey);
 }
@@ -336,7 +313,7 @@ input[type=range]::-ms-track {
     top: 0;
     width: 25%;
     height: 100%;
-    right: 50px;
+    right: 0px;
 
     overflow-y: hidden;
     overflow-x: visible;
@@ -351,7 +328,7 @@ input[type=range]::-ms-track {
 }
 
 
-.config-ui{
+.config-ui {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -361,7 +338,8 @@ input[type=range]::-ms-track {
     margin-top: 0;
     height: 100%;
 }
-.config-ui::-webkit-scrollbar{
+
+.config-ui::-webkit-scrollbar {
     display: none;
 }
 
@@ -375,9 +353,11 @@ input[type=range]::-ms-track {
     margin-bottom: 20px;
     padding-left: 5px;
 }
+
 .config-ui__nav button path {
     stroke-width: 2.5px;
 }
+
 .config-ui__nav__button--disabled {
 
     &:hover {
@@ -386,52 +366,59 @@ input[type=range]::-ms-track {
 }
 
 
-.config-ui__title{
+.config-ui__title {
     display: flex;
     flex-direction: column;
     padding-left: 5px;
 }
-.config-ui__title span{
+
+.config-ui__title span {
     display: block;
 }
 
 
-.config-ui__options{
+.config-ui__options {
     height: 100%;
     width: 100%;
     overflow-y: scroll;
     padding-top: 15px;
 }
-.config-ui__options::-webkit-scrollbar{
+
+.config-ui__options::-webkit-scrollbar {
     display: none;
 }
-.config-ui__options::-webkit-scrollbar-thumb{
+
+.config-ui__options::-webkit-scrollbar-thumb {
     display: none;
 }
-.config-ui__options::-webkit-scrollbar-track{
+
+.config-ui__options::-webkit-scrollbar-track {
     display: none;
 }
-.config-ui__options::-webkit-scrollbar-thumb{
+
+.config-ui__options::-webkit-scrollbar-thumb {
     display: none;
 }
 
 
-.config-ui__selection-buttons{
+.config-ui__selection-buttons {
     margin-top: 20px;
     display: flex;
     gap: 20px;
 }
-.config-ui__selection-buttons button{
+
+.config-ui__selection-buttons button {
     padding: 10px;
     border: 1px solid var(--off-white);
     cursor: pointer;
 }
-.config-ui__selection-buttons button.active-selection-button{
+
+.config-ui__selection-buttons button.active-selection-button {
     border: 3px solid var(--off-black);
 }
 
 
-.config-ui__slider{
+.config-ui__slider {
     width: 100%;
     height: 200px;
     padding-top: 20px;
@@ -443,18 +430,21 @@ input[type=range]::-ms-track {
 }
 
 
-.config-ui__details{
+.config-ui__details {
     width: 100%;
     padding: 20px 0px 20px 5px;
     transition: opacity 0.5s ease-in-out;
 }
-.config-ui__details[open]{
+
+.config-ui__details[open] {
     opacity: 1;
 }
+
 .config-ui__details:not([open]) {
     opacity: 0.6;
 }
-.config-ui__details summary{
+
+.config-ui__details summary {
     font-family: var(--heading-family);
     font-size: var(--heading5-size);
     font-weight: var(--heading5-weight);
@@ -462,13 +452,16 @@ input[type=range]::-ms-track {
     cursor: pointer;
     transition: color 0.5s ease;
 }
-summary span{
+
+summary span {
     color: var(--dark-grey);
 }
+
 .config-ui__details summary::marker {
     font-size: 0px;
     content: '';
 }
+
 .config-ui__details summary::after {
     content: '+';
     float: right;
@@ -478,6 +471,7 @@ summary span{
     transition: transform 0.5s ease;
     transform: scale(1);
 }
+
 .config-ui__details[open] summary::after {
     content: '-';
     transform: scale(1.5);
@@ -485,50 +479,56 @@ summary span{
 
 
 
-.config-ui__material-options{
+.config-ui__material-options {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 20px;
 }
-.material-options__image{
+
+.material-options__image {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.material-options__category-wrapper{
+
+.material-options__category-wrapper {
     width: auto;
     height: auto;
 }
-.config-ui__material-options__option{
+
+.config-ui__material-options__option {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     border: 1px solid var(--off-black);
 
-    &:hover{
+    &:hover {
         cursor: pointer;
     }
 }
+
 .selected-material-n-category {
     outline: 3px solid var(--dark-grey);
     outline-offset: 2px;
 }
 
-@media(max-width: 1000px){
-    .config-wrapper{
+@media(max-width: 1000px) {
+    .config-wrapper {
         top: 55%;
         width: 100%;
         height: 45%;
         right: 0;
         padding: 0;
     }
-    .config-ui{
+
+    .config-ui {
         padding: 15px 50px 20px 50px;
     }
-    .config-ui__title{
+
+    .config-ui__title {
         flex-direction: row;
         gap: 5px;
         justify-content: center;
@@ -537,36 +537,39 @@ summary span{
         margin-left: auto;
         margin-right: auto;
     }
-    .config-ui__scroll-container{
+
+    .config-ui__scroll-container {
         padding-bottom: 100px;
     }
-    .config-ui__nav{
+
+    .config-ui__nav {
         top: 0;
     }
 
-    .extra-buttons{
+    .extra-buttons {
         flex-direction: row;
         gap: 20px;
         left: 50px;
         top: 49%;
     }
 
-    .config-ui__material-options__option{
+    .config-ui__material-options__option {
         width: 35px;
         height: 35px;
     }
 
-    .config-ui__slider{
+    .config-ui__slider {
         margin-top: 0px;
         padding-top: 10px;
         height: 120px;
     }
 
-    h1{
+    h1 {
         font-size: 30px;
         line-height: 60px;
     }
-    h2{
+
+    h2 {
         font-size: 30px;
         line-height: 60px;
     }
