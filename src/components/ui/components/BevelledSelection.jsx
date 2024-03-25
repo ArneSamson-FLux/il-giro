@@ -18,7 +18,6 @@ export default function BevelledSelection() {
                 className="landings-page__bevel-option__images"
             >
                 <div
-                    // className="landings-page__bevel-option__images__image--selected"
                     className={!allBevelled ? "landings-page__bevel-option__images__image--selected" : "landings-page__bevel-option__images__image"}
                 >
                     <img src="/images/UI/straight.webp" alt="render of straight module" />

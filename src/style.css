@@ -225,17 +225,21 @@ select {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 200px;
+    height: auto;
     width: 200px;
-    padding: 20px;
 
     &:hover {
         background-color: var(--light-grey);
 
-        h2 {
+        h4 {
             color: var(--off-white);
         }
     }
+}
+
+.landings-page__module h4 {
+    padding-bottom: 20px;
+    color: var(--off-black);
 }
 
 .landings-page__module__content {
@@ -260,7 +264,7 @@ select {
     background-color: var(--dark-grey);
 }
 
-.landings-page__module--chosen h2 {
+.landings-page__module--chosen h4 {
     color: var(--off-white);
 }
 
@@ -291,12 +295,13 @@ select {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
+    padding-bottom: 20px;
 }
 
 /* .landings-page__bevel-option__images__image {} */
 
 .landings-page__bevel-option__images__image--selected {
-    border-radius: 15px;
+    border-radius: 7px;
     outline: 2px solid var(--dark-grey);
     outline-offset: 5px;
 }

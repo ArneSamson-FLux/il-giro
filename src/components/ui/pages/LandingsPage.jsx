@@ -136,7 +136,7 @@ export default function LandingsPage() {
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    gap: '20px',
+                    gap: '50px',
                 }}
             >
                 <div>
@@ -150,15 +150,16 @@ export default function LandingsPage() {
                                 setSinkChosen(!sinkChosen);
                             }
                             }
-                            style={{
-                                backgroundImage: `url(/images/UI/sink.webp)`,
-                            }}
+                        // style={{
+                        //     backgroundImage: `url(/images/UI/sink.webp)`,
+                        // }}
                         >
-                            <div
+                            {/* <div
                                 className='landings-page__module__content'
-                            >
-                                <h2>The Sink</h2>
-                            </div>
+                            > */}
+                            <img src="/images/UI/sink.webp" alt="render of sink module" />
+                            <h4>The<br />Sink</h4>
+                            {/* </div> */}
                         </div>
                         <div
                             className={`landings-page__module ${cooktopChosen ? 'landings-page__module--chosen' : ''}`}
@@ -166,15 +167,16 @@ export default function LandingsPage() {
                                 setCooktopChosen(!cooktopChosen);
                             }
                             }
-                            style={{
-                                backgroundImage: `url(/images/UI/cooktop.webp)`,
-                            }}
+                        // style={{
+                        //     backgroundImage: `url(/images/UI/cooktop.webp)`,
+                        // }}
                         >
-                            <div
+                            {/* <div
                                 className='landings-page__module__content'
-                            >
-                                <h2>The Cooktop</h2>
-                            </div>
+                            > */}
+                            <img src="/images/UI/cooktop.webp" alt="render of cooktop module" />
+                            <h4>The<br />Cooktop</h4>
+                            {/* </div> */}
                         </div>
                         <div
                             className={`landings-page__module ${towerChosen ? 'landings-page__module--chosen' : ''}`}
@@ -182,15 +184,16 @@ export default function LandingsPage() {
                                 setTowerChosen(!towerChosen);
                             }
                             }
-                            style={{
-                                backgroundImage: `url(/images/UI/tower.webp)`,
-                            }}
+                        // style={{
+                        //     backgroundImage: `url(/images/UI/tower.webp)`,
+                        // }}
                         >
-                            <div
+                            {/* <div
                                 className='landings-page__module__content'
-                            >
-                                <h2>The Tower</h2>
-                            </div>
+                            > */}
+                            <img src="/images/UI/tower.webp" alt="render of tower module" />
+                            <h4>The<br />Tower</h4>
+                            {/* </div> */}
                         </div>
                         <div
                             className={`landings-page__module ${tableChosen ? 'landings-page__module--chosen' : ''}`}
@@ -199,7 +202,8 @@ export default function LandingsPage() {
                             }
                             }
                         >
-                            <h2>The Island</h2>
+                            <img src="/images/UI/table.webp" alt="render of table module" />
+                            <h4>The<br />Island</h4>
                         </div>
                     </div>
 
