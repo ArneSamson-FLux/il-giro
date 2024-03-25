@@ -213,14 +213,21 @@ select {
 .landings-page__module {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
+    justify-content: center;
+
     border: 1px solid var(--off-black);
     background-color: var(--off-white);
     border-radius: 15px;
 
     cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    width: 200px;
+    padding: 20px;
 
     &:hover {
         background-color: var(--light-grey);
@@ -229,6 +236,19 @@ select {
             color: var(--off-white);
         }
     }
+}
+
+.landings-page__module__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: var(--trans-white);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 15px;
+    height: 75%;
+
 }
 
 .landings-page__module img {

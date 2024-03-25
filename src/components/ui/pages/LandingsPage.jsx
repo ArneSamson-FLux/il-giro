@@ -138,9 +138,15 @@ export default function LandingsPage() {
                         setSinkChosen(!sinkChosen);
                     }
                     }
+                    style={{
+                        backgroundImage: `url(/images/UI/sink.webp)`,
+                    }}
                 >
-                    <h2>The Sink</h2>
-                    <img src="/images/UI/sink.webp" alt="sink render" />
+                    <div
+                        className='landings-page__module__content'
+                    >
+                        <h2>The Sink</h2>
+                    </div>
                 </div>
                 <div
                     className={`landings-page__module ${cooktopChosen ? 'landings-page__module--chosen' : ''}`}
@@ -148,9 +154,15 @@ export default function LandingsPage() {
                         setCooktopChosen(!cooktopChosen);
                     }
                     }
+                    style={{
+                        backgroundImage: `url(/images/UI/cooktop.webp)`,
+                    }}
                 >
-                    <h2>The Cooktop</h2>
-                    <img src="/images/UI/cooktop.webp" alt="cooktop render" />
+                    <div
+                        className='landings-page__module__content'
+                    >
+                        <h2>The Cooktop</h2>
+                    </div>
                 </div>
                 <div
                     className={`landings-page__module ${towerChosen ? 'landings-page__module--chosen' : ''}`}
@@ -158,9 +170,15 @@ export default function LandingsPage() {
                         setTowerChosen(!towerChosen);
                     }
                     }
+                    style={{
+                        backgroundImage: `url(/images/UI/tower.webp)`,
+                    }}
                 >
-                    <h2>The Tower</h2>
-                    <img src="/images/UI/tower.webp" alt="tower render" />
+                    <div
+                        className='landings-page__module__content'
+                    >
+                        <h2>The Tower</h2>
+                    </div>
                 </div>
                 <div
                     className={`landings-page__module ${tableChosen ? 'landings-page__module--chosen' : ''}`}
@@ -193,6 +211,6 @@ export default function LandingsPage() {
             </button>
 
 
-        </div>
+        </div >
     </>
 }
