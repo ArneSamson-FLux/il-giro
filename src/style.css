@@ -247,6 +247,10 @@ select {
     content: '' !important;
 }
 
+.landings-page__details summary::after {
+    content: '' !important;
+}
+
 
 
 

@@ -29,9 +29,9 @@ export default function LandingsPage() {
         setCameraFocus,
     } = useScene();
 
-    useEffect(() => {
-        setPositions();
-    }, [sinkChosen, cooktopChosen, towerChosen, tableChosen, setSinkPosition, setCooktopPosition, setTowerPosition, setTablePosition]);
+    // useEffect(() => {
+    //     setPositions();
+    // }, [sinkChosen, cooktopChosen, towerChosen, tableChosen, setSinkPosition, setCooktopPosition, setTowerPosition, setTablePosition]);
 
 
     function setPositions() {
@@ -48,12 +48,12 @@ export default function LandingsPage() {
                 setTowerPosition([0, 0, -1]);
                 break;
             case sinkChosen && cooktopChosen && tableChosen:
-                setSinkPosition([0, 0, 0]);
+                setSinkPosition([-1.5, 0, 0]);
                 setCooktopPosition([1.5, 0, 0]);
                 setTablePosition([0, 0, 0]);
                 break;
             case sinkChosen && towerChosen && tableChosen:
-                setSinkPosition([0, 0, 0]);
+                setSinkPosition([-1.5, 0, 0]);
                 setTowerPosition([0, 0, -1]);
                 setTablePosition([0, 0, 0]);
                 break;
@@ -71,7 +71,7 @@ export default function LandingsPage() {
                 setTowerPosition([1, 0, 0]);
                 break;
             case sinkChosen && tableChosen:
-                setSinkPosition([0, 0, 0]);
+                setSinkPosition([-1, 0, 0]);
                 setTablePosition([0, 0, 0]);
                 break;
             case cooktopChosen && towerChosen:
@@ -83,57 +83,23 @@ export default function LandingsPage() {
                 setTablePosition([0, 0, 0]);
                 break;
             case towerChosen && tableChosen:
-                setTowerPosition([0, 0, -1]);
+                setTowerPosition([-1, 0, -1]);
                 setTablePosition([0, 0, 0]);
                 break;
             case sinkChosen:
                 setSinkPosition([0, 0, 0]);
                 break;
             case cooktopChosen:
-                console.log('cooktop chosen');
                 setCooktopPosition([0, 0, 0]);
                 break;
             case towerChosen:
-                console.log('tower chosen');
                 setTowerPosition([0, 0, 0]);
                 break;
             case tableChosen:
-                console.log('table chosen');
                 setTablePosition([0, 0, 0]);
-                break;
-            default:
-                // handle the default case if needed
                 break;
         }
 
-        // if (sinkChosen) {
-        //     if (!cooktopChosen && !towerChosen && !tableChosen) {
-        //         setSinkPosition([0, 0, 0]);
-        //     } else {
-        //         setSinkPosition([-1.5, 0, 0]);
-        //     }
-        // }
-        // if (cooktopChosen) {
-        //     if (!sinkChosen && !towerChosen && !tableChosen) {
-        //         setCooktopPosition([0, 0, 0]);
-        //     } else {
-        //         setCooktopPosition([1.5, 0, 0]);
-        //     }
-        // }
-        // if (towerChosen) {
-        //     if (!sinkChosen && !cooktopChosen && !tableChosen) {
-        //         setTowerPosition([0, 0, 0]);
-        //     } else {
-        //         setTowerPosition([0, 0, -1]);
-        //     }
-        // }
-        // if (tableChosen) {
-        //     if (!sinkChosen && !cooktopChosen && !towerChosen) {
-        //         setTablePosition([0, 0, 0]);
-        //     } else {
-        //         setTablePosition([0, 0, 0]);
-        //     }
-        // }
     }
 
 
