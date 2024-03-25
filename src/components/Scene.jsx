@@ -31,7 +31,6 @@ export default function Scene() {
             <Sink
                 props={
                     {
-                        // position: { sinkPosition },
                         rotation: [0, 0.5, 0],
                         scale: [1, 1, 1],
                     }
@@ -43,7 +42,6 @@ export default function Scene() {
             <Cooktop
                 props={
                     {
-                        // position: { cooktopPosition },
                         rotation: [0, -0.5, 0],
                         scale: [1, 1, 1],
                     }
@@ -55,7 +53,6 @@ export default function Scene() {
             <Tower
                 props={
                     {
-                        // position: { towerPosition },
                         rotation: [0, 0, 0],
                         scale: [1, 1, 1],
                     }
