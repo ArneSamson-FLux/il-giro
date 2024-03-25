@@ -5,6 +5,7 @@ import useConfig from '../store/useConfig.jsx';
 
 import ConfigNav from './ui/ConfigNav.jsx';
 import ExtraButtons from './ui/ExtraButtons.jsx';
+import MaterialCategorySelection from './ui/MaterialCategorySelection.jsx';
 import MaterialSelection from './ui/MaterialSelection.jsx';
 
 export default function ConfigUi() {
@@ -15,6 +16,8 @@ export default function ConfigUi() {
 
         mainMaterial,
         setMainMaterial,
+
+        mainMaterialCategory,
 
         accentMaterial,
         setAccentMaterial,
@@ -70,9 +73,6 @@ export default function ConfigUi() {
     ]);
 
 
-    const [materialCategory, setMainMaterialCategory] = useState('metal');
-    const [isSecondDetailsOpen, setIsSecondDetailsOpen] = useState(false);
-
 
     return (
         <>
@@ -101,22 +101,26 @@ export default function ConfigUi() {
                             className='config-ui__options'
                         >
 
+                            <MaterialCategorySelection
+
+                            />
+
                             <MaterialSelection
 
                             />
 
-                            <details
+                            {/* <details
                                 open={isSecondDetailsOpen}
                                 className='config-ui__details'
                             >
                                 <summary>Choices in
-                                    <span> {materialCategory}</span>
+                                    <span> {mainMaterialCategory}</span>
                                 </summary>
 
                                 <div
                                     className="config-ui__material-options"
                                 >
-                                    {allCategories[materialCategory].map((material, index) => (
+                                    {allCategories[mainMaterialCategory].map((material, index) => (
                                         <div
                                             key={index}
                                             className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
@@ -129,7 +133,7 @@ export default function ConfigUi() {
                                         ></div>
                                     ))}
                                 </div>
-                            </details>
+                            </details> */}
 
                             <details
                                 className='config-ui__details'
@@ -164,7 +168,7 @@ export default function ConfigUi() {
                                     </span>
                                 </summary>
 
-                                {materialCategory !== 'micro topping' && <>
+                                {mainMaterialCategory !== 'micro topping' && <>
                                     <div className="config-ui__material-options ">
                                         {allCategories['micro topping'].map((material, index) => (
                                             <div
@@ -181,7 +185,7 @@ export default function ConfigUi() {
                                     </div>
                                 </>}
 
-                                {materialCategory !== 'wood' && <>
+                                {mainMaterialCategory !== 'wood' && <>
                                     <div className="config-ui__material-options ">
                                         {allCategories['wood'].map((material, index) => (
                                             <div
@@ -198,7 +202,7 @@ export default function ConfigUi() {
                                     </div>
                                 </>}
 
-                                {materialCategory !== 'metal' && <>
+                                {mainMaterialCategory !== 'metal' && <>
 
                                     <div className="config-ui__material-options ">
                                         {allCategories['metal'].map((material, index) => (

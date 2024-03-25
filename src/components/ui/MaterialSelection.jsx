@@ -8,52 +8,34 @@ export default function MaterialSelection() {
 
     const {
         allCategories,
+        mainMaterial,
         setMainMaterial,
-        setTableTopMaterial,
+        mainMaterialCategory,
+        isSecondDetailsOpen
     } = useConfig();
-
-    const [materialCategory, setMainMaterialCategory] = useState('metal');
-    const [isSecondDetailsOpen, setIsSecondDetailsOpen] = useState(false);
-
 
 
     return <>
         <details
-            open
+            open={isSecondDetailsOpen}
             className='config-ui__details'
         >
-            <summary>Base material:
-                <span>
-                    {' ' + materialCategory}
-                </span>
+            <summary>Choices in
+                <span> {mainMaterialCategory}</span>
             </summary>
 
             <div
                 className="config-ui__material-options"
             >
-                {Object.entries(allCategories).map(([category, materials]) => (
+                {allCategories[mainMaterialCategory].map((material, index) => (
                     <div
-                        key={category}
-                        className={`config-ui__material-options__option ${materialCategory === category ? 'selected-material-n-category' : ""}`}
+                        key={index}
+                        className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
                         onClick={() => {
-                            setMainMaterialCategory(category)
-                            setIsSecondDetailsOpen(true)
-                            setMainMaterial(materials[0].url)
-
-                            switch (category) {
-                                case 'metal':
-                                    setTableTopMaterial(allCategories['micro topping'][0].url)
-                                    break;
-                                case 'micro topping':
-                                    setTableTopMaterial(allCategories['wood'][0].url)
-                                    break;
-                                case 'wood':
-                                    setTableTopMaterial(allCategories['metal'][0].url)
-                                    break;
-                            }
+                            setMainMaterial(material.url)
                         }}
                         style={{
-                            backgroundImage: `url(${materials[0].url}albedo.jpg)`,
+                            backgroundImage: `url(${material.url}albedo.jpg)`,
                         }}
                     ></div>
                 ))}

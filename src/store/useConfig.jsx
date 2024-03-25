@@ -49,6 +49,7 @@ export default create((set) => {
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
         tableTopMaterial: "./placeholder/",
+        mainMaterialCategory: 'metal',
 
         sinkBevelled: true,
         cooktopBevelled: false,
@@ -72,6 +73,7 @@ export default create((set) => {
         doorOpeningRotation: 1.5,
 
         currentPage: 0,
+        isSecondDetailsOpen: false,
 
         dragMode: false,
         isDragging: false,
@@ -93,6 +95,7 @@ export default create((set) => {
         setMainMaterial: (material) => set({ mainMaterial: material }),
         setAccentMaterial: (material) => set({ accentMaterial: material }),
         setTableTopMaterial: (material) => set({ tableTopMaterial: material }),
+        setMainMaterialCategory: (category) => set({ mainMaterialCategory: category }),
 
         //bevel
         setSinkBevelled: (bevelled) => set({ sinkBevelled: bevelled }),
@@ -125,6 +128,7 @@ export default create((set) => {
 
         //page
         setCurrentPage: (page) => set({ currentPage: page }),
+        setIsSecondDetailsOpen: (open) => set({ isSecondDetailsOpen: open }),
 
         //drag mode
         setDragMode: (mode) => set({ dragMode: mode }),
