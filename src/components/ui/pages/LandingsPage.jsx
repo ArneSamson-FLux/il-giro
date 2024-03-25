@@ -178,15 +178,15 @@ export default function LandingsPage() {
             <BevelledSelection />
 
             <button
-                className="landings-page__start"
+                disabled={!(sinkChosen || cooktopChosen || towerChosen || tableChosen)}
+                onClick={() => {
+                    setLandingPageVisible(false);
+                    setCameraFocus([0, 1, 0]);
+                    setPositions();
+                }
+                }
             >
                 <h5
-                    onClick={() => {
-                        setLandingPageVisible(false);
-                        setCameraFocus([0, 1, 0]);
-                        setPositions();
-                    }
-                    }
                 >
                     Start configuring
                 </h5>
