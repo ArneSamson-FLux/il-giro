@@ -24,7 +24,6 @@ export default function Scene() {
     } = useConfig();
 
     console.log('hey');
-    console.log(sinkPosition, cooktopPosition, towerPosition);
 
     return <>
 

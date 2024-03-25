@@ -131,8 +131,6 @@ export default function Sink({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
-    console.log('sink', sinkPosition, cameraFocus);
-
     return <>
         <a.group
             name='sink-group'
