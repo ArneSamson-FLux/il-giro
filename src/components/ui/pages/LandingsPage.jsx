@@ -139,7 +139,8 @@ export default function LandingsPage() {
                     }
                     }
                 >
-                    <h3>The Sink</h3>
+                    <h2>The Sink</h2>
+                    <img src="/images/UI/sink.webp" alt="sink render" />
                 </div>
                 <div
                     className={`landings-page__module ${cooktopChosen ? 'landings-page__module--chosen' : ''}`}
@@ -148,7 +149,8 @@ export default function LandingsPage() {
                     }
                     }
                 >
-                    <h3>The Cooktop</h3>
+                    <h2>The Cooktop</h2>
+                    <img src="/images/UI/cooktop.webp" alt="cooktop render" />
                 </div>
                 <div
                     className={`landings-page__module ${towerChosen ? 'landings-page__module--chosen' : ''}`}
@@ -157,7 +159,8 @@ export default function LandingsPage() {
                     }
                     }
                 >
-                    <h3>The Tower</h3>
+                    <h2>The Tower</h2>
+                    <img src="/images/UI/tower.webp" alt="tower render" />
                 </div>
                 <div
                     className={`landings-page__module ${tableChosen ? 'landings-page__module--chosen' : ''}`}
@@ -166,23 +169,29 @@ export default function LandingsPage() {
                     }
                     }
                 >
-                    <h3>The Island</h3>
+                    <h2>The Island</h2>
                 </div>
             </div>
 
+            <p>*select at least one</p>
+
             <BevelledSelection />
 
-            <h5
-                className='landings-page__start'
-                onClick={() => {
-                    setLandingPageVisible(false);
-                    setCameraFocus([0, 1, 0]);
-                    setPositions();
-                }
-                }
+            <button
+                className="landings-page__start"
             >
-                Start configuring
-            </h5>
+                <h5
+                    onClick={() => {
+                        setLandingPageVisible(false);
+                        setCameraFocus([0, 1, 0]);
+                        setPositions();
+                    }
+                    }
+                >
+                    Start configuring
+                </h5>
+            </button>
+
 
         </div>
     </>
