@@ -123,8 +123,6 @@ export default function Cooktop({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
-    console.log(cooktopRotation)
-
     return <>
         <a.group
             name='cooktop-group'

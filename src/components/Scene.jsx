@@ -19,7 +19,7 @@ export default function Scene() {
         dragMode
     } = useConfig();
 
-    console.log('hey');
+    // console.log('hey');
 
     return <>
 
