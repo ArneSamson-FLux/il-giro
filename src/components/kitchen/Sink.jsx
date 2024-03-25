@@ -28,6 +28,7 @@ export default function Sink({ props }) {
         tableTopMaterial,
 
         sinkPosition,
+        sinkRotation,
 
         allBevelled,
 
@@ -98,7 +99,7 @@ export default function Sink({ props }) {
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
         position: hovered ? [sinkPosition[0], 0.1, sinkPosition[2]] : [sinkPosition[0], 0, sinkPosition[2]],
-        rotation: isDraggingSink ? [0, 0, 0] : [0, 0.5, 0],
+        rotation: isDraggingSink ? [0, 0, 0] : sinkRotation,
         scale: isDraggingSink ? [1.1, 1.1, 1.1] : [1, 1, 1],
         config: {
             tension: 250,
@@ -135,7 +136,7 @@ export default function Sink({ props }) {
         <a.group
             name='sink-group'
             ref={sinkRef}
-            {...props}
+            rotation={sinkRotation}
             position={sinkPosition}
             dispose={null}
             {...springProps}

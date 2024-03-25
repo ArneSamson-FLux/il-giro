@@ -18,6 +18,7 @@ export default function LandingsPage() {
         setTableChosen,
 
         setSinkPosition,
+        setSinkRotation,
         setCooktopPosition,
         setCooktopRotation,
         setTowerPosition,
@@ -39,6 +40,7 @@ export default function LandingsPage() {
         switch (true) {
             case sinkChosen && cooktopChosen && towerChosen && tableChosen:
                 setSinkPosition([-1.5, 0, 0]);
+                setSinkRotation([0, 0.5, 0]);
                 setCooktopPosition([1.5, 0, 0]);
                 setCooktopRotation([0, -0.5, 0]);
                 setTowerPosition([0, 0, -1]);
@@ -46,18 +48,21 @@ export default function LandingsPage() {
                 break;
             case sinkChosen && cooktopChosen && towerChosen:
                 setSinkPosition([-1.5, 0, 0]);
+                setSinkRotation([0, 0.5, 0]);
                 setCooktopPosition([1.5, 0, 0]);
                 setCooktopRotation([0, -0.5, 0]);
                 setTowerPosition([0, 0, -1]);
                 break;
             case sinkChosen && cooktopChosen && tableChosen:
                 setSinkPosition([-1.5, 0, 0]);
+                setSinkRotation([0, 0.5, 0]);
                 setCooktopPosition([1.5, 0, 0]);
                 setCooktopRotation([0, -0.5, 0]);
                 setTablePosition([0, 0, 0]);
                 break;
             case sinkChosen && towerChosen && tableChosen:
                 setSinkPosition([-1.5, 0, 0]);
+                setSinkRotation([0, 0.5, 0]);
                 setTowerPosition([0, 0, -1]);
                 setTablePosition([0, 0, 0]);
                 break;
@@ -69,15 +74,18 @@ export default function LandingsPage() {
                 break;
             case sinkChosen && cooktopChosen:
                 setSinkPosition([-1, 0, 0]);
+                setSinkRotation([0, 0.5, 0]);
                 setCooktopPosition([1, 0, 0]);
                 setCooktopRotation([0, -0.5, 0]);
                 break;
             case sinkChosen && towerChosen:
                 setSinkPosition([-1, 0, 0]);
+                setSinkRotation([0, 0.5, 0]);
                 setTowerPosition([1, 0, 0]);
                 break;
             case sinkChosen && tableChosen:
                 setSinkPosition([-1, 0, 0]);
+                setSinkRotation([0, 0.5, 0]);
                 setTablePosition([0, 0, 0]);
                 break;
             case cooktopChosen && towerChosen:
@@ -97,6 +105,7 @@ export default function LandingsPage() {
                 break;
             case sinkChosen:
                 setSinkPosition([0, 0, 0]);
+                setSinkRotation([0, 0, 0]);
                 break;
             case cooktopChosen:
                 setCooktopPosition([0, 0, 0]);

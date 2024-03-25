@@ -44,6 +44,7 @@ export default create((set) => {
         tableChosen: false,
 
         sinkPosition: [-1.5, 0, 0],
+        sinkRotation: [0, 0.5, 0],
         cooktopPosition: [1.5, 0, 0],
         cooktopRotation: [0, -0.5, 0],
         towerPosition: [0, 0, -1],
@@ -78,7 +79,7 @@ export default create((set) => {
         isDraggingCooktop: false,
         isDraggingTower: false,
 
-        //Actions_______________________________________________________________________________________
+        //Setters_______________________________________________________________________________________
 
         //are the modules chosen or not
         setSinkChosen: (chosen) => set({ sinkChosen: chosen }),
@@ -88,9 +89,13 @@ export default create((set) => {
 
         //position of the modules
         setSinkPosition: (position) => set({ sinkPosition: position }),
+        setSinkRotation: (rotation) => set({ sinkRotation: rotation }),
+
         setCooktopPosition: (position) => set({ cooktopPosition: position }),
         setCooktopRotation: (rotation) => set({ cooktopRotation: rotation }),
+
         setTowerPosition: (position) => set({ towerPosition: position }),
+
         setTablePosition: (position) => set({ tablePosition: position }),
 
         //all materials

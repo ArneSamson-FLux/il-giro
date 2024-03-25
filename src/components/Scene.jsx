@@ -25,11 +25,6 @@ export default function Scene() {
 
         {sinkChosen &&
             <Sink
-                props={
-                    {
-                        rotation: [0, 0.5, 0],
-                    }
-                }
             />
         }
 
