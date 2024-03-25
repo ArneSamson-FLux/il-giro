@@ -6,6 +6,7 @@ import useConfig from '../store/useConfig.jsx';
 import ConfigNav from './ui/components/ConfigNav.jsx';
 import ExtraButtons from './ui/components/ExtraButtons.jsx';
 
+import LandingsPage from './ui/pages/LandingsPage.jsx';
 import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
 
@@ -23,16 +24,10 @@ export default function ConfigUi() {
         mainMaterial,
         setMainMaterial,
 
-        mainMaterialCategory,
-
         accentMaterial,
         setAccentMaterial,
 
-        tableTopMaterial,
         setTableTopMaterial,
-
-        allBevelled,
-        setAllBevelled,
 
         tapType,
         setTapType,
@@ -44,9 +39,6 @@ export default function ConfigUi() {
         setApplianceType,
         wineStandSize,
         setWineStandSize,
-
-        edgeFinish,
-        setEdgeFinish,
 
         doorOpeningRotation,
         setDoorOpeningRotation,
@@ -84,6 +76,8 @@ export default function ConfigUi() {
         <>
 
             <ExtraButtons />
+
+
 
             <div className='config-wrapper'>
 
