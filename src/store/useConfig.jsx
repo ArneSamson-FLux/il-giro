@@ -41,32 +41,26 @@ export default create((set) => {
         sinkChosen: false,
         cooktopChosen: false,
         towerChosen: false,
+        tableChosen: false,
 
-        sinkMaterial: "./placeholder/",
-        cooktopMaterial: "./placeholder/",
-        towerMaterial: "./placeholder/",
+        sinkPosition: [-1.5, 0, 0],
+        cooktopPosition: [1.5, 0, 0],
+        towerPosition: [0, 0, -1],
+        tablePosition: [0, 0, 1],
 
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
         tableTopMaterial: "./placeholder/",
         mainMaterialCategory: 'metal',
 
-        sinkBevelled: true,
-        cooktopBevelled: false,
-        towerBevelled: true,
         allBevelled: false,
 
-        tapMaterial: "./placeholder/",
         tapType: '1',
-
-        sinkBowlMaterial: "./placeholder/",
 
         stoveType: 'electric',
 
         applianceType: 'fridge',
         wineStandSize: 'medium',
-
-        towerAccessoryMaterial: "./placeholder/",
 
         edgeFinish: 'rect',
 
@@ -84,42 +78,37 @@ export default create((set) => {
         isDraggingTower: false,
 
         //Actions_______________________________________________________________________________________
+
+        //are the modules chosen or not
         setSinkChosen: (chosen) => set({ sinkChosen: chosen }),
         setCooktopChosen: (chosen) => set({ cooktopChosen: chosen }),
         setTowerChosen: (chosen) => set({ towerChosen: chosen }),
+        setTableChosen: (chosen) => set({ tableChosen: chosen }),
 
-        //material
-        setSinkMaterial: (material) => set({ sinkMaterial: material }),
-        setCooktopMaterial: (material) => set({ cooktopMaterial: material }),
-        setTowerMaterial: (material) => set({ towerMaterial: material }),
+        //position of the modules
+        setSinkPosition: (position) => set({ sinkPosition: position }),
+        setCooktopPosition: (position) => set({ cooktopPosition: position }),
+        setTowerPosition: (position) => set({ towerPosition: position }),
+        setTablePosition: (position) => set({ tablePosition: position }),
 
+        //all materials
         setMainMaterial: (material) => set({ mainMaterial: material }),
         setAccentMaterial: (material) => set({ accentMaterial: material }),
         setTableTopMaterial: (material) => set({ tableTopMaterial: material }),
         setMainMaterialCategory: (category) => set({ mainMaterialCategory: category }),
 
         //bevel
-        setSinkBevelled: (bevelled) => set({ sinkBevelled: bevelled }),
-        setCooktopBevelled: (bevelled) => set({ cooktopBevelled: bevelled }),
-        setTowerBevelled: (bevelled) => set({ towerBevelled: bevelled }),
         setAllBevelled: (bevelled) => set({ allBevelled: bevelled }),
 
         //tap
-        setTapMaterial: (material) => set({ tapMaterial: material }),
         setTapType: (type) => set({ tapType: type }),
-
-        //sink
-        setSinkBowlMaterial: (material) => set({ sinkBowlMaterial: material }),
 
         //stove
         setStoveType: (type) => set({ stoveType: type }),
 
-        //appliance
+        //appliances and winestand in tower
         setApplianceType: (type) => set({ applianceType: type }),
         setWineStandSize: (size) => set({ wineStandSize: size }),
-
-        //tower accessory
-        setTowerAccessoryMaterial: (material) => set({ towerAccessoryMaterial: material }),
 
         //edge finish
         setEdgeFinish: (finish) => set({ edgeFinish: finish }),
