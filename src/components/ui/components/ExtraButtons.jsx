@@ -63,7 +63,7 @@ export default function ExtraButtons() {
                 </button>
             </div>
 
-            <div
+            {/* <div
                 className={dragMode ? 'extra-buttons__move--active' : 'extra-buttons__move'}
             >
                 <button
@@ -78,7 +78,7 @@ export default function ExtraButtons() {
                         <path d="M11 1V21" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </button>
-            </div>
+            </div> */}
         </div>
     </>
 }
