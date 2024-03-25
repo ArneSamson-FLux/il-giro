@@ -17,8 +17,17 @@ export default function BevelledSelection() {
             <div
                 className="landings-page__bevel-option__images"
             >
-                <img src="/images/UI/straight.webp" alt="render of straight module" />
-                <img src="/images/UI/bevel.webp" alt="render of bevelled module" />
+                <div
+                    // className="landings-page__bevel-option__images__image--selected"
+                    className={!allBevelled ? "landings-page__bevel-option__images__image--selected" : "landings-page__bevel-option__images__image"}
+                >
+                    <img src="/images/UI/straight.webp" alt="render of straight module" />
+                </div>
+                <div
+                    className={allBevelled ? "landings-page__bevel-option__images__image--selected" : "landings-page__bevel-option__images__image"}
+                >
+                    <img src="/images/UI/bevel.webp" alt="render of bevelled module" />
+                </div>
             </div>
             <summary>
                 curved:

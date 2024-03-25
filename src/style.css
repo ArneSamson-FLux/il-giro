@@ -288,10 +288,17 @@ select {
 }
 
 .landings-page__bevel-option__images {
-    /* display: flex;
+    display: flex;
     flex-direction: row;
     gap: 1.5rem;
-    margin-top: 20px; */
+}
+
+/* .landings-page__bevel-option__images__image {} */
+
+.landings-page__bevel-option__images__image--selected {
+    border-radius: 15px;
+    outline: 2px solid var(--dark-grey);
+    outline-offset: 5px;
 }
 
 .landings-page__bevel-option__images img {
