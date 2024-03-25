@@ -16,10 +16,6 @@ export default function Scene() {
         cooktopChosen,
         towerChosen,
 
-        sinkPosition,
-        cooktopPosition,
-        towerPosition,
-
         dragMode
     } = useConfig();
 
@@ -32,7 +28,6 @@ export default function Scene() {
                 props={
                     {
                         rotation: [0, 0.5, 0],
-                        scale: [1, 1, 1],
                     }
                 }
             />
@@ -40,23 +35,11 @@ export default function Scene() {
 
         {cooktopChosen &&
             <Cooktop
-                props={
-                    {
-                        rotation: [0, -0.5, 0],
-                        scale: [1, 1, 1],
-                    }
-                }
             />
         }
 
         {towerChosen &&
             <Tower
-                props={
-                    {
-                        rotation: [0, 0, 0],
-                        scale: [1, 1, 1],
-                    }
-                }
             />
         }
 

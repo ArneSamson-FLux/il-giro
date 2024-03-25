@@ -24,6 +24,7 @@ export default function Cooktop({ props }) {
         tableTopMaterial,
 
         cooktopPosition,
+        cooktopRotation,
 
         allBevelled,
 
@@ -90,7 +91,7 @@ export default function Cooktop({ props }) {
     const springProps = useSpring({
         position: hovered ? [cooktopPosition[0], 0.2, cooktopPosition[2]] : [cooktopPosition[0], 0, cooktopPosition[2]],
         scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        rotation: isDraggingCooktop ? [0, 0, 0] : [0, -0.5, 0],
+        rotation: isDraggingCooktop ? [0, 0, 0] : cooktopRotation,
         config: {
             tension: 250,
             friction: 50,
@@ -122,11 +123,13 @@ export default function Cooktop({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
+    console.log(cooktopRotation)
+
     return <>
         <a.group
             name='cooktop-group'
             ref={cookTopRef}
-            {...props}
+            rotation={cooktopRotation}
             position={cooktopPosition}
             dispose={null}
             {...springProps}

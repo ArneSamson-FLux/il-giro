@@ -19,6 +19,7 @@ export default function LandingsPage() {
 
         setSinkPosition,
         setCooktopPosition,
+        setCooktopRotation,
         setTowerPosition,
         setTablePosition,
 
@@ -39,17 +40,20 @@ export default function LandingsPage() {
             case sinkChosen && cooktopChosen && towerChosen && tableChosen:
                 setSinkPosition([-1.5, 0, 0]);
                 setCooktopPosition([1.5, 0, 0]);
+                setCooktopRotation([0, -0.5, 0]);
                 setTowerPosition([0, 0, -1]);
                 setTablePosition([0, 0, 0]);
                 break;
             case sinkChosen && cooktopChosen && towerChosen:
                 setSinkPosition([-1.5, 0, 0]);
                 setCooktopPosition([1.5, 0, 0]);
+                setCooktopRotation([0, -0.5, 0]);
                 setTowerPosition([0, 0, -1]);
                 break;
             case sinkChosen && cooktopChosen && tableChosen:
                 setSinkPosition([-1.5, 0, 0]);
                 setCooktopPosition([1.5, 0, 0]);
+                setCooktopRotation([0, -0.5, 0]);
                 setTablePosition([0, 0, 0]);
                 break;
             case sinkChosen && towerChosen && tableChosen:
@@ -59,12 +63,14 @@ export default function LandingsPage() {
                 break;
             case cooktopChosen && towerChosen && tableChosen:
                 setCooktopPosition([1.5, 0, 0]);
+                setCooktopRotation([0, -0.5, 0]);
                 setTowerPosition([0, 0, -1]);
                 setTablePosition([0, 0, 0]);
                 break;
             case sinkChosen && cooktopChosen:
                 setSinkPosition([-1, 0, 0]);
                 setCooktopPosition([1, 0, 0]);
+                setCooktopRotation([0, -0.5, 0]);
                 break;
             case sinkChosen && towerChosen:
                 setSinkPosition([-1, 0, 0]);
@@ -76,10 +82,13 @@ export default function LandingsPage() {
                 break;
             case cooktopChosen && towerChosen:
                 setCooktopPosition([-1, 0, 0]);
+                setCooktopRotation([0, -0.5, 0]);
                 setTowerPosition([1, 0, 0]);
+                setCooktopRotation([0, 0.5, 0]);
                 break;
             case cooktopChosen && tableChosen:
                 setCooktopPosition([1.5, 0, 0]);
+                setCooktopRotation([0, -0.5, 0]);
                 setTablePosition([0, 0, 0]);
                 break;
             case towerChosen && tableChosen:
@@ -91,6 +100,7 @@ export default function LandingsPage() {
                 break;
             case cooktopChosen:
                 setCooktopPosition([0, 0, 0]);
+                setCooktopRotation([0, 0, 0]);
                 break;
             case towerChosen:
                 setTowerPosition([0, 0, 0]);
