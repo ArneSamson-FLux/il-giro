@@ -11,7 +11,10 @@ export default function BevelledSelection() {
 
 
     return <>
-        <details open className='config-ui__details'>
+        <details
+            open
+            className='config-ui__details landings-page__details'
+        >
             <summary>
                 curved:
                 <span>{allBevelled ? ' yes' : ' no'}</span>
