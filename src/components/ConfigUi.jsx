@@ -3,10 +3,15 @@ import { useSpring, animated } from 'react-spring';
 
 import useConfig from '../store/useConfig.jsx';
 
-import ConfigNav from './ui/ConfigNav.jsx';
-import ExtraButtons from './ui/ExtraButtons.jsx';
-import MaterialCategorySelection from './ui/MaterialCategorySelection.jsx';
-import MaterialSelection from './ui/MaterialSelection.jsx';
+import ConfigNav from './ui/components/ConfigNav.jsx';
+import ExtraButtons from './ui/components/ExtraButtons.jsx';
+
+import UiPage1 from './ui/pages/UiPage1.jsx';
+
+import MaterialCategorySelection from './ui/components/MaterialCategorySelection.jsx';
+import MaterialSelection from './ui/components/MaterialSelection.jsx';
+import AccentMaterialSelection from './ui/components/AccentMaterialSelection.jsx';
+import TableTopMaterialSelection from './ui/components/TableTopMaterialSelection.jsx';
 
 export default function ConfigUi() {
 
@@ -91,141 +96,8 @@ export default function ConfigUi() {
 
                     {currentPage === 0 && <>
 
-                        <div
-                            className='config-ui__title'
-                        >
-                            <span><h2>1. Materials</h2></span>
-                        </div>
+                        <UiPage1 />
 
-                        <div
-                            className='config-ui__options'
-                        >
-
-                            <MaterialCategorySelection
-
-                            />
-
-                            <MaterialSelection
-
-                            />
-
-                            {/* <details
-                                open={isSecondDetailsOpen}
-                                className='config-ui__details'
-                            >
-                                <summary>Choices in
-                                    <span> {mainMaterialCategory}</span>
-                                </summary>
-
-                                <div
-                                    className="config-ui__material-options"
-                                >
-                                    {allCategories[mainMaterialCategory].map((material, index) => (
-                                        <div
-                                            key={index}
-                                            className={`config-ui__material-options__option ${mainMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                            onClick={() => {
-                                                setMainMaterial(material.url)
-                                            }}
-                                            style={{
-                                                backgroundImage: `url(${material.url}albedo.jpg)`,
-                                            }}
-                                        ></div>
-                                    ))}
-                                </div>
-                            </details> */}
-
-                            <details
-                                className='config-ui__details'
-                            >
-                                <summary>Accent material:
-                                    <span>
-                                        {' ' + accentMaterial.split('/').slice(-2, -1)[0]}
-                                    </span>
-                                </summary>
-
-                                <div className="config-ui__material-options ">
-                                    {allCategories.metal.map((material, index) => (
-                                        <div
-                                            key={index}
-                                            className={`config-ui__material-options__option ${accentMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                            style={{
-                                                backgroundImage: `url(${material.url}albedo.jpg)`,
-                                            }}
-                                            onClick={() => setAccentMaterial(material.url)}
-                                        ></div>
-                                    ))}
-                                </div>
-
-                            </details>
-
-                            <details
-                                className='config-ui__details'
-                            >
-                                <summary>Tabletop material:
-                                    <span>
-                                        {' ' + tableTopMaterial.split('/').slice(-2, -1)[0]}
-                                    </span>
-                                </summary>
-
-                                {mainMaterialCategory !== 'micro topping' && <>
-                                    <div className="config-ui__material-options ">
-                                        {allCategories['micro topping'].map((material, index) => (
-                                            <div
-                                                key={index}
-                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                onClick={() => {
-                                                    setTableTopMaterial(material.url)
-                                                }}
-                                                style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`,
-                                                }}
-                                            ></div>
-                                        ))}
-                                    </div>
-                                </>}
-
-                                {mainMaterialCategory !== 'wood' && <>
-                                    <div className="config-ui__material-options ">
-                                        {allCategories['wood'].map((material, index) => (
-                                            <div
-                                                key={index}
-                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                onClick={() => {
-                                                    setTableTopMaterial(material.url)
-                                                }}
-                                                style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`,
-                                                }}
-                                            ></div>
-                                        ))}
-                                    </div>
-                                </>}
-
-                                {mainMaterialCategory !== 'metal' && <>
-
-                                    <div className="config-ui__material-options ">
-                                        {allCategories['metal'].map((material, index) => (
-                                            material.url.includes('inox') &&
-                                            <div
-                                                key={index}
-                                                className={`config-ui__material-options__option ${tableTopMaterial === material.url ? 'selected-material-n-category' : ""}`}
-                                                onClick={() => {
-                                                    setTableTopMaterial(material.url)
-                                                }}
-                                                style={{
-                                                    backgroundImage: `url(${material.url}albedo.jpg)`,
-                                                }}
-                                            ></div>
-                                        ))}
-                                    </div>
-                                </>}
-
-
-
-                            </details>
-
-                        </div>
                     </>}
 
                     {currentPage === 1 && <>

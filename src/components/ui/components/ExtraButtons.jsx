@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 
-import useConfig from "../../store/useConfig.jsx";
-import useScene from "../../store/useScene.jsx";
+import useConfig from "../../../store/useConfig.jsx";
+import useScene from "../../../store/useScene.jsx";
 
 export default function ExtraButtons() {
 
