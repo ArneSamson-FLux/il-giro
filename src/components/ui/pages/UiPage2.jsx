@@ -2,7 +2,7 @@ import React from "react";
 
 import EdgeFinish from "../components/EdgeFinish";
 
-export default function UiPage1() {
+export default function UiPage2() {
 
     return <>
 
