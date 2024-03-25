@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 
 import useConfig from "../../../store/useConfig";
+import useScene from "../../../store/useScene";
+
+import BevelledSelection from "../components/BevelledSelection";
 
 export default function LandingsPage() {
 
@@ -15,9 +18,10 @@ export default function LandingsPage() {
         setLandingPageVisible,
     } = useConfig();
 
-    // useEffect(() => {
-    //     console.log('sinkChosen', sinkChosen);
-    // }, [sinkChosen]);
+    const {
+        setCameraFocus,
+    } = useScene();
+
 
     return <>
         <div
@@ -62,10 +66,13 @@ export default function LandingsPage() {
                 </div>
             </div>
 
+            <BevelledSelection />
+
             <h5
                 className='landings-page__start'
                 onClick={() => {
                     setLandingPageVisible(false);
+                    setCameraFocus([0, 1, 0]);
                 }
                 }
             >
