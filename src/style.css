@@ -172,6 +172,74 @@ select {
     text-align: start;
 }
 
+
+.landings-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--off-white);
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+}
+
+.landings-page__modules {
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.landings-page__module {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid var(--off-black);
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--light-grey);
+
+        h3 {
+            color: var(--off-white);
+        }
+    }
+}
+
+.landings-page__module--chosen {
+    background-color: var(--dark-grey);
+}
+
+.landings-page__module--chosen h3 {
+    color: var(--off-white);
+}
+
+.landings-page__start {
+    background-color: var(--off-white);
+    border: 2px solid var(--light-grey);
+    border-radius: 15px;
+    padding: 20px 40px;
+}
+
+
+
+
+
 .config-ui__toggle {
     position: relative;
     display: inline-block;

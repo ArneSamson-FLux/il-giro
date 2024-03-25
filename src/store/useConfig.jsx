@@ -38,9 +38,9 @@ export default create((set) => {
         allCategories: [],
 
         //config settings_______________________________________________________________________________
-        sinkAmount: 1,
-        cooktopAmount: 1,
-        towerAmount: 1,
+        sinkChosen: false,
+        cooktopChosen: false,
+        towerChosen: false,
 
         sinkMaterial: "./placeholder/",
         cooktopMaterial: "./placeholder/",
@@ -74,6 +74,7 @@ export default create((set) => {
 
         currentPage: 0,
         isSecondDetailsOpen: false,
+        landingPageVisible: true,
 
         dragMode: false,
         isDragging: false,
@@ -83,9 +84,9 @@ export default create((set) => {
         isDraggingTower: false,
 
         //Actions_______________________________________________________________________________________
-        setSinkAmount: (amount) => set({ sinkAmount: amount }),
-        setCooktopAmount: (amount) => set({ cooktopAmount: amount }),
-        setTowerAmount: (amount) => set({ towerAmount: amount }),
+        setSinkChosen: (chosen) => set({ sinkChosen: chosen }),
+        setCooktopChosen: (chosen) => set({ cooktopChosen: chosen }),
+        setTowerChosen: (chosen) => set({ towerChosen: chosen }),
 
         //material
         setSinkMaterial: (material) => set({ sinkMaterial: material }),
@@ -129,6 +130,7 @@ export default create((set) => {
         //page
         setCurrentPage: (page) => set({ currentPage: page }),
         setIsSecondDetailsOpen: (open) => set({ isSecondDetailsOpen: open }),
+        setLandingPageVisible: (visible) => set({ landingPageVisible: visible }),
 
         //drag mode
         setDragMode: (mode) => set({ dragMode: mode }),

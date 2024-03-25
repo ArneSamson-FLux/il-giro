@@ -12,17 +12,9 @@ import useConfig from '../store/useConfig.jsx'
 export default function Scene() {
 
     const {
-        allMaterials,
-
-        mainMaterial,
-        accentMaterial,
-        tableTopMaterial,
-
-        allBevelled,
-
-        tapType,
-        stoveType,
-
+        sinkChosen,
+        cooktopChosen,
+        towerChosen,
         dragMode
     } = useConfig();
 
@@ -30,35 +22,41 @@ export default function Scene() {
 
     return <>
 
-        <Sink
-            props={
-                {
-                    position: [-1.5, 0, 0],
-                    rotation: [0, 0.5, 0],
-                    scale: [1, 1, 1],
+        {sinkChosen &&
+            <Sink
+                props={
+                    {
+                        position: [-1.5, 0, 0],
+                        rotation: [0, 0.5, 0],
+                        scale: [1, 1, 1],
+                    }
                 }
-            }
-        />
+            />
+        }
 
-        <Cooktop
-            props={
-                {
-                    position: [1.5, 0, 0],
-                    rotation: [0, -0.5, 0],
-                    scale: [1, 1, 1],
+        {cooktopChosen &&
+            <Cooktop
+                props={
+                    {
+                        position: [1.5, 0, 0],
+                        rotation: [0, -0.5, 0],
+                        scale: [1, 1, 1],
+                    }
                 }
-            }
-        />
+            />
+        }
 
-        <Tower
-            props={
-                {
-                    position: [0, 0, -1],
-                    rotation: [0, 0, 0],
-                    scale: [1, 1, 1],
+        {towerChosen &&
+            <Tower
+                props={
+                    {
+                        position: [0, 0, -1],
+                        rotation: [0, 0, 0],
+                        scale: [1, 1, 1],
+                    }
                 }
-            }
-        />
+            />
+        }
 
         <gridHelper
             visible={dragMode}

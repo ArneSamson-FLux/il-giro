@@ -10,11 +10,6 @@ import LandingsPage from './ui/pages/LandingsPage.jsx';
 import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
 
-import MaterialCategorySelection from './ui/components/MaterialCategorySelection.jsx';
-import MaterialSelection from './ui/components/MaterialSelection.jsx';
-import AccentMaterialSelection from './ui/components/AccentMaterialSelection.jsx';
-import TableTopMaterialSelection from './ui/components/TableTopMaterialSelection.jsx';
-
 export default function ConfigUi() {
 
     const {
@@ -44,6 +39,7 @@ export default function ConfigUi() {
         setDoorOpeningRotation,
 
         currentPage,
+        landingPageVisible,
     } = useConfig();
 
     const [loaded, setLoaded] = useState(false);
@@ -74,10 +70,11 @@ export default function ConfigUi() {
 
     return (
         <>
+            {landingPageVisible &&
+                <LandingsPage />
+            }
 
             <ExtraButtons />
-
-
 
             <div className='config-wrapper'>
 
