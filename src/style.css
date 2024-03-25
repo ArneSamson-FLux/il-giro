@@ -270,7 +270,7 @@ select {
 
 .landings-page button {
     padding: 10px;
-    border: 1px solid var(--off-black);
+    border: 1px solid var(--dark-grey);
     cursor: pointer;
 
     &:hover {
@@ -298,12 +298,18 @@ select {
     padding-bottom: 20px;
 }
 
-/* .landings-page__bevel-option__images__image {} */
+.landings-page__bevel-option__images__image {
+    padding: 20px;
+    filter: grayscale(50%);
+
+}
 
 .landings-page__bevel-option__images__image--selected {
     border-radius: 7px;
-    outline: 2px solid var(--dark-grey);
-    outline-offset: 5px;
+    /* outline: 1px solid var(--dark-grey);
+    outline-offset: 5px; */
+    background-color: var(--extra-light-grey);
+    padding: 20px;
 }
 
 .landings-page__bevel-option__images img {
