@@ -11,9 +11,8 @@ export default function BevelledSelection() {
 
 
     return <>
-        <details
-            open
-            className='config-ui__details landings-page__details'
+        <div
+            className='landings-page__bevel-option'
         >
             <summary>
                 curved:
@@ -27,6 +26,12 @@ export default function BevelledSelection() {
                 />
                 <span className="config-ui__toggle-slider"></span>
             </label>
-        </details>
+            <div
+                className="landings-page__bevel-option__images"
+            >
+                <img src="/images/UI/straight.webp" alt="render of straight module" />
+                <img src="/images/UI/bevel.webp" alt="render of bevelled module" />
+            </div>
+        </div>
     </>
 }
