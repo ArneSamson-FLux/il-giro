@@ -203,7 +203,7 @@ export default function LandingsPage() {
                             }
                         >
                             <img src="/images/UI/table.webp" alt="render of table module" />
-                            <h4>The<br />Island</h4>
+                            <h4>The<br />Table</h4>
                         </div>
                     </div>
 
