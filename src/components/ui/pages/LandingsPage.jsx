@@ -127,73 +127,89 @@ export default function LandingsPage() {
         <div
             className='landings-page'
         >
+
             <h1>Choose the wanted modules</h1>
 
             <div
-                className='landings-page__modules'
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '20px',
+                }}
             >
-                <div
-                    className={`landings-page__module ${sinkChosen ? 'landings-page__module--chosen' : ''}`}
-                    onClick={() => {
-                        setSinkChosen(!sinkChosen);
-                    }
-                    }
-                    style={{
-                        backgroundImage: `url(/images/UI/sink.webp)`,
-                    }}
-                >
+                <div>
+
                     <div
-                        className='landings-page__module__content'
+                        className='landings-page__modules'
                     >
-                        <h2>The Sink</h2>
+                        <div
+                            className={`landings-page__module ${sinkChosen ? 'landings-page__module--chosen' : ''}`}
+                            onClick={() => {
+                                setSinkChosen(!sinkChosen);
+                            }
+                            }
+                            style={{
+                                backgroundImage: `url(/images/UI/sink.webp)`,
+                            }}
+                        >
+                            <div
+                                className='landings-page__module__content'
+                            >
+                                <h2>The Sink</h2>
+                            </div>
+                        </div>
+                        <div
+                            className={`landings-page__module ${cooktopChosen ? 'landings-page__module--chosen' : ''}`}
+                            onClick={() => {
+                                setCooktopChosen(!cooktopChosen);
+                            }
+                            }
+                            style={{
+                                backgroundImage: `url(/images/UI/cooktop.webp)`,
+                            }}
+                        >
+                            <div
+                                className='landings-page__module__content'
+                            >
+                                <h2>The Cooktop</h2>
+                            </div>
+                        </div>
+                        <div
+                            className={`landings-page__module ${towerChosen ? 'landings-page__module--chosen' : ''}`}
+                            onClick={() => {
+                                setTowerChosen(!towerChosen);
+                            }
+                            }
+                            style={{
+                                backgroundImage: `url(/images/UI/tower.webp)`,
+                            }}
+                        >
+                            <div
+                                className='landings-page__module__content'
+                            >
+                                <h2>The Tower</h2>
+                            </div>
+                        </div>
+                        <div
+                            className={`landings-page__module ${tableChosen ? 'landings-page__module--chosen' : ''}`}
+                            onClick={() => {
+                                setTableChosen(!tableChosen);
+                            }
+                            }
+                        >
+                            <h2>The Island</h2>
+                        </div>
                     </div>
+
+                    <p>*select at least one</p>
                 </div>
-                <div
-                    className={`landings-page__module ${cooktopChosen ? 'landings-page__module--chosen' : ''}`}
-                    onClick={() => {
-                        setCooktopChosen(!cooktopChosen);
-                    }
-                    }
-                    style={{
-                        backgroundImage: `url(/images/UI/cooktop.webp)`,
-                    }}
-                >
-                    <div
-                        className='landings-page__module__content'
-                    >
-                        <h2>The Cooktop</h2>
-                    </div>
-                </div>
-                <div
-                    className={`landings-page__module ${towerChosen ? 'landings-page__module--chosen' : ''}`}
-                    onClick={() => {
-                        setTowerChosen(!towerChosen);
-                    }
-                    }
-                    style={{
-                        backgroundImage: `url(/images/UI/tower.webp)`,
-                    }}
-                >
-                    <div
-                        className='landings-page__module__content'
-                    >
-                        <h2>The Tower</h2>
-                    </div>
-                </div>
-                <div
-                    className={`landings-page__module ${tableChosen ? 'landings-page__module--chosen' : ''}`}
-                    onClick={() => {
-                        setTableChosen(!tableChosen);
-                    }
-                    }
-                >
-                    <h2>The Island</h2>
-                </div>
+
+
+                <BevelledSelection />
+
             </div>
-
-            <p>*select at least one</p>
-
-            <BevelledSelection />
 
             <button
                 disabled={!(sinkChosen || cooktopChosen || towerChosen || tableChosen)}
