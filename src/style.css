@@ -253,8 +253,6 @@ select {
     }
 }
 
-/* .landings-page__start {} */
-
 .landings-page__details[open] summary::after {
     content: '' !important;
 }
