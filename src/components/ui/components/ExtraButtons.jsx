@@ -7,6 +7,12 @@ import useScene from "../../../store/useScene.jsx";
 export default function ExtraButtons() {
 
     const {
+
+        setSinkChosen,
+        setCooktopChosen,
+        setTowerChosen,
+        setTableChosen,
+
         currentPage,
         setCurrentPage,
         dragMode,
@@ -31,6 +37,10 @@ export default function ExtraButtons() {
 
     const handleBackHome = () => {
         setLandingPageVisible(true);
+        setSinkChosen(false);
+        setCooktopChosen(false);
+        setTowerChosen(false);
+        setTableChosen(false);
     }
 
     return <>

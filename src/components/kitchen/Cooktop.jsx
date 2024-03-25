@@ -23,6 +23,8 @@ export default function Cooktop({ props }) {
         mainMaterial,
         tableTopMaterial,
 
+        cooktopPosition,
+
         allBevelled,
 
         stoveType,
@@ -84,12 +86,9 @@ export default function Cooktop({ props }) {
 
     const cookTopRef = useRef();
 
-    const [position, setPosition] = useState([1.5, 0, 0]);
-
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
-        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        position: hovered ? [cooktopPosition[0], 0.2, cooktopPosition[2]] : [cooktopPosition[0], 0, cooktopPosition[2]],
         scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
         rotation: isDraggingCooktop ? [0, 0, 0] : [0, -0.5, 0],
         config: {
@@ -128,9 +127,9 @@ export default function Cooktop({ props }) {
             name='cooktop-group'
             ref={cookTopRef}
             {...props}
+            position={cooktopPosition}
             dispose={null}
             {...springProps}
-
         >
             <group
                 name='cooktop-hovers-group'
@@ -153,7 +152,7 @@ export default function Cooktop({ props }) {
                     (e) => {
                         if (dragMode) return;
                         setCurrentPage(4);
-                        setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        setCameraFocus([cooktopPosition[0], cooktopPosition[1] + 1, cooktopPosition[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }

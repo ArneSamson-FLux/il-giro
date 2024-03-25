@@ -11,9 +11,16 @@ export default function LandingsPage() {
         sinkChosen,
         cooktopChosen,
         towerChosen,
+        tableChosen,
         setSinkChosen,
         setCooktopChosen,
         setTowerChosen,
+        setTableChosen,
+
+        setSinkPosition,
+        setCooktopPosition,
+        setTowerPosition,
+        setTablePosition,
 
         setLandingPageVisible,
     } = useConfig();
@@ -21,6 +28,114 @@ export default function LandingsPage() {
     const {
         setCameraFocus,
     } = useScene();
+
+    useEffect(() => {
+        setPositions();
+    }, [sinkChosen, cooktopChosen, towerChosen, tableChosen, setSinkPosition, setCooktopPosition, setTowerPosition, setTablePosition]);
+
+
+    function setPositions() {
+        switch (true) {
+            case sinkChosen && cooktopChosen && towerChosen && tableChosen:
+                setSinkPosition([-1.5, 0, 0]);
+                setCooktopPosition([1.5, 0, 0]);
+                setTowerPosition([0, 0, -1]);
+                setTablePosition([0, 0, 0]);
+                break;
+            case sinkChosen && cooktopChosen && towerChosen:
+                setSinkPosition([-1.5, 0, 0]);
+                setCooktopPosition([1.5, 0, 0]);
+                setTowerPosition([0, 0, -1]);
+                break;
+            case sinkChosen && cooktopChosen && tableChosen:
+                setSinkPosition([0, 0, 0]);
+                setCooktopPosition([1.5, 0, 0]);
+                setTablePosition([0, 0, 0]);
+                break;
+            case sinkChosen && towerChosen && tableChosen:
+                setSinkPosition([0, 0, 0]);
+                setTowerPosition([0, 0, -1]);
+                setTablePosition([0, 0, 0]);
+                break;
+            case cooktopChosen && towerChosen && tableChosen:
+                setCooktopPosition([1.5, 0, 0]);
+                setTowerPosition([0, 0, -1]);
+                setTablePosition([0, 0, 0]);
+                break;
+            case sinkChosen && cooktopChosen:
+                setSinkPosition([-1, 0, 0]);
+                setCooktopPosition([1, 0, 0]);
+                break;
+            case sinkChosen && towerChosen:
+                setSinkPosition([-1, 0, 0]);
+                setTowerPosition([1, 0, 0]);
+                break;
+            case sinkChosen && tableChosen:
+                setSinkPosition([0, 0, 0]);
+                setTablePosition([0, 0, 0]);
+                break;
+            case cooktopChosen && towerChosen:
+                setCooktopPosition([-1, 0, 0]);
+                setTowerPosition([1, 0, 0]);
+                break;
+            case cooktopChosen && tableChosen:
+                setCooktopPosition([1.5, 0, 0]);
+                setTablePosition([0, 0, 0]);
+                break;
+            case towerChosen && tableChosen:
+                setTowerPosition([0, 0, -1]);
+                setTablePosition([0, 0, 0]);
+                break;
+            case sinkChosen:
+                setSinkPosition([0, 0, 0]);
+                break;
+            case cooktopChosen:
+                console.log('cooktop chosen');
+                setCooktopPosition([0, 0, 0]);
+                break;
+            case towerChosen:
+                console.log('tower chosen');
+                setTowerPosition([0, 0, 0]);
+                break;
+            case tableChosen:
+                console.log('table chosen');
+                setTablePosition([0, 0, 0]);
+                break;
+            default:
+                // handle the default case if needed
+                break;
+        }
+
+        // if (sinkChosen) {
+        //     if (!cooktopChosen && !towerChosen && !tableChosen) {
+        //         setSinkPosition([0, 0, 0]);
+        //     } else {
+        //         setSinkPosition([-1.5, 0, 0]);
+        //     }
+        // }
+        // if (cooktopChosen) {
+        //     if (!sinkChosen && !towerChosen && !tableChosen) {
+        //         setCooktopPosition([0, 0, 0]);
+        //     } else {
+        //         setCooktopPosition([1.5, 0, 0]);
+        //     }
+        // }
+        // if (towerChosen) {
+        //     if (!sinkChosen && !cooktopChosen && !tableChosen) {
+        //         setTowerPosition([0, 0, 0]);
+        //     } else {
+        //         setTowerPosition([0, 0, -1]);
+        //     }
+        // }
+        // if (tableChosen) {
+        //     if (!sinkChosen && !cooktopChosen && !towerChosen) {
+        //         setTablePosition([0, 0, 0]);
+        //     } else {
+        //         setTablePosition([0, 0, 0]);
+        //     }
+        // }
+    }
+
 
 
     return <>
@@ -60,7 +175,11 @@ export default function LandingsPage() {
                     <h3>The Tower</h3>
                 </div>
                 <div
-                    className='landings-page__module'
+                    className={`landings-page__module ${tableChosen ? 'landings-page__module--chosen' : ''}`}
+                    onClick={() => {
+                        setTableChosen(!tableChosen);
+                    }
+                    }
                 >
                     <h3>The Island</h3>
                 </div>
@@ -73,6 +192,7 @@ export default function LandingsPage() {
                 onClick={() => {
                     setLandingPageVisible(false);
                     setCameraFocus([0, 1, 0]);
+                    setPositions();
                 }
                 }
             >

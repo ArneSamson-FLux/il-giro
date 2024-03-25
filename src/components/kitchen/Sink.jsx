@@ -27,6 +27,8 @@ export default function Sink({ props }) {
         mainMaterial,
         tableTopMaterial,
 
+        sinkPosition,
+
         allBevelled,
 
         tapType,
@@ -82,7 +84,7 @@ export default function Sink({ props }) {
         }
     }, [nodes, allBevelled]);
 
-    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
+    const { cameraFocus, setCameraFocus, setIsFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -92,12 +94,10 @@ export default function Sink({ props }) {
 
     const sinkRef = useRef();
 
-    const [position, setPosition] = useState([-1.5, 0, 0]);
 
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
-        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        position: hovered ? [sinkPosition[0], 0.1, sinkPosition[2]] : [sinkPosition[0], 0, sinkPosition[2]],
         rotation: isDraggingSink ? [0, 0, 0] : [0, 0.5, 0],
         scale: isDraggingSink ? [1.1, 1.1, 1.1] : [1, 1, 1],
         config: {
@@ -131,11 +131,14 @@ export default function Sink({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
+    console.log('sink', sinkPosition, cameraFocus);
+
     return <>
         <a.group
             name='sink-group'
             ref={sinkRef}
             {...props}
+            position={sinkPosition}
             dispose={null}
             {...springProps}
         >
@@ -160,7 +163,7 @@ export default function Sink({ props }) {
                     (e) => {
                         if (dragMode) return;
                         setCurrentPage(3);
-                        setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }

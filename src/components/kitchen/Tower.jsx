@@ -19,6 +19,8 @@ export default function Tower({ props }) {
     const {
         mainMaterial,
 
+        towerPosition,
+
         applianceType,
         doorOpeningRotation,
 
@@ -92,12 +94,9 @@ export default function Tower({ props }) {
         }
     }, [nodes, allBevelled]);
 
-    const [position, setPosition] = useState([0, 0, -1]);
-
     //animate tower and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
-        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        position: hovered ? [towerPosition[0], 0.1, towerPosition[2]] : [towerPosition[0], 0, towerPosition[2]],
         scale: isDraggingTower ? [1.1, 1.1, 1.1] : [1, 1, 1],
         config: {
             tension: 250,
@@ -169,8 +168,8 @@ export default function Tower({ props }) {
             name='tower-group'
             ref={towerRef}
             {...props}
+            position={towerPosition}
             dispose={null}
-            position={springProps.position}
             {...springProps}
         >
             <group
@@ -194,7 +193,7 @@ export default function Tower({ props }) {
                     (e) => {
                         if (dragMode) return;
                         setCurrentPage(5);
-                        setCameraFocus([position[0], position[1] + 1, position[2]]);
+                        setCameraFocus([towerPosition[0], towerPosition[1] + 1, towerPosition[2]]);
                         setIsFocussedOnIsland(true);
                         e.stopPropagation();
                     }
