@@ -1,7 +1,5 @@
 import React from "react";
 
-import useConfig from "../../../store/useConfig.jsx";
-
 import MaterialCategorySelection from "../components/MaterialCategorySelection.jsx";
 import MaterialSelection from "../components/MaterialSelection.jsx";
 import AccentMaterialSelection from "../components/AccentMaterialSelection.jsx";

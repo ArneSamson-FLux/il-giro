@@ -7,6 +7,7 @@ import ConfigNav from './ui/components/ConfigNav.jsx';
 import ExtraButtons from './ui/components/ExtraButtons.jsx';
 
 import UiPage1 from './ui/pages/UiPage1.jsx';
+import UiPage2 from './ui/pages/UiPage2.jsx';
 
 import MaterialCategorySelection from './ui/components/MaterialCategorySelection.jsx';
 import MaterialSelection from './ui/components/MaterialSelection.jsx';
@@ -101,42 +102,7 @@ export default function ConfigUi() {
                     </>}
 
                     {currentPage === 1 && <>
-                        <div
-                            className='config-ui__title'
-                        >
-                            <span><h2>2. Tabletop</h2></span>
-                        </div>
-
-                        <div
-                            className='config-ui__options'
-                        >
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>Edge finish:
-                                    <span>
-                                        {edgeFinish === 'rect' ? ' square' : ' curved'}
-                                    </span>
-                                </summary>
-                                <div
-                                    className='config-ui__selection-buttons'
-                                >
-                                    <button
-                                        className={edgeFinish === 'rect' ? 'active-selection-button' : ''}
-                                        onClick={() => setEdgeFinish('rect')}
-                                    >
-                                        Square
-                                    </button>
-                                    <button
-                                        className={edgeFinish === 'curved' ? 'active-selection-button' : ''}
-                                        onClick={() => setEdgeFinish('curved')}
-                                    >
-                                        Curved
-                                    </button>
-                                </div>
-                            </details>
-                        </div>
+                        <UiPage2 />
                     </>}
 
                     {currentPage === 2 && <>
