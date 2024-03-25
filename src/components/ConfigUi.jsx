@@ -102,32 +102,13 @@ export default function ConfigUi() {
                     </>}
 
                     {currentPage === 1 && <>
+
                         <UiPage2 />
+
                     </>}
 
                     {currentPage === 2 && <>
-                        <div
-                            className='config-ui__title'
-                        >
-                            <span><h2>3. Extras</h2></span>
-                        </div>
 
-                        <div className='config-ui__options'>
-                            <details open className='config-ui__details'>
-                                <summary>
-                                    curved:
-                                    <span>{allBevelled ? ' yes' : ' no'}</span>
-                                </summary>
-                                <label className="config-ui__toggle">
-                                    <input
-                                        type="checkbox"
-                                        checked={allBevelled}
-                                        onChange={(e) => setAllBevelled(e.target.checked)}
-                                    />
-                                    <span className="config-ui__toggle-slider"></span>
-                                </label>
-                            </details>
-                        </div>
                     </>}
 
                     {currentPage === 3 && <>
@@ -136,8 +117,6 @@ export default function ConfigUi() {
                             className='config-ui__title'
                         >
                             <span><h2>4. The Sink</h2></span>
-                            {/* <span><h1>The</h1></span>
-                            <span><h1>Sink</h1></span> */}
                         </div>
 
 
@@ -181,8 +160,6 @@ export default function ConfigUi() {
                             className='config-ui__title'
                         >
                             <span><h2>5. The Cooktop</h2></span>
-                            {/* <span><h1>The</h1></span>
-                            <span><h1>Cooktop</h1></span> */}
                         </div>
 
                         <div
@@ -226,8 +203,6 @@ export default function ConfigUi() {
                             className='config-ui__title'
                         >
                             <span><h2>6. The Tower</h2></span>
-                            {/* <span><h1>The</h1></span>
-                            <span><h1>Tower</h1></span> */}
                         </div>
 
                         <div
@@ -309,14 +284,7 @@ export default function ConfigUi() {
                             className='config-ui__slider'
                         >
                             <h5>Open doors and shelves:</h5>
-                            {/* <input
-                                type="range"
-                                min="0"
-                                max="2"
-                                step={0.01}
-                                value={doorOpeningRotation}
-                                onChange={(e) => setDoorOpeningRotation(e.target.value)}
-                            /> */}
+
                             <label className="config-ui__toggle">
                                 <input
                                     type="checkbox"
