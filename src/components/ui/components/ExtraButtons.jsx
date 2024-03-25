@@ -11,6 +11,7 @@ export default function ExtraButtons() {
         setCurrentPage,
         dragMode,
         setDragMode,
+        setLandingPageVisible,
     } = useConfig();
 
     const {
@@ -28,10 +29,26 @@ export default function ExtraButtons() {
         setDragMode(!dragMode);
     }
 
+    const handleBackHome = () => {
+        setLandingPageVisible(true);
+    }
+
     return <>
         <div
             className='extra-buttons'
         >
+            <div
+                className='extra-buttons__zoom-out'
+            >
+                <button
+                    onClick={handleBackHome}
+                >
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.375 9.75L1 5.375M1 5.375L5.375 1M1 5.375H11.5C12.4283 5.375 13.3185 5.74375 13.9749 6.40013C14.6313 7.0565 15 7.94674 15 8.875V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                </button>
+            </div>
+
             <div
                 className='extra-buttons__zoom-out'
             >
