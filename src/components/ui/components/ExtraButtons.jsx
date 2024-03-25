@@ -37,10 +37,10 @@ export default function ExtraButtons() {
 
     const handleBackHome = () => {
         setLandingPageVisible(true);
-        setSinkChosen(false);
-        setCooktopChosen(false);
-        setTowerChosen(false);
-        setTableChosen(false);
+        // setSinkChosen(false);
+        // setCooktopChosen(false);
+        // setTowerChosen(false);
+        // setTableChosen(false);
     }
 
     return <>
