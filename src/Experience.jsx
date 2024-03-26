@@ -45,7 +45,7 @@ export default function Experience() {
 
     const updateViewOffset = () => {
         if (window.innerWidth > 1000) {
-            const widthOffset = 150;
+            const widthOffset = window.innerWidth * 0.1;
             camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, widthOffset, 0, window.innerWidth, window.innerHeight);
             camera.current.camera.updateProjectionMatrix();
         } else {
