@@ -53,7 +53,7 @@ export default create((set) => {
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
         tableTopMaterial: "./placeholder/",
-        mainMaterialCategory: 'metal',
+        mainMaterialCategory: 'wood',
 
         allBevelled: false,
 
