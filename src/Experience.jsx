@@ -45,12 +45,12 @@ export default function Experience() {
 
     const updateViewOffset = () => {
         if (window.innerWidth > 1000) {
-            const widthOffset = window.innerWidth * 0.1;
-            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, widthOffset, 0, window.innerWidth, window.innerHeight);
+            const widthOffset = (window.innerWidth * 0.25) * devicePixelRatio;
+            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, widthOffset / 2, 0, window.innerWidth, window.innerHeight);
             camera.current.camera.updateProjectionMatrix();
         } else {
-            const heightOffset = 180;
-            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 0, heightOffset, window.innerWidth, window.innerHeight);
+            const heightOffset = (window.innerHeight * 0.45) * devicePixelRatio;
+            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 0, heightOffset / 2, window.innerWidth, window.innerHeight);
             camera.current.camera.updateProjectionMatrix();
         }
     }
