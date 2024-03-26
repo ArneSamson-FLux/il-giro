@@ -75,7 +75,7 @@ export default function Experience() {
                 if (roundedDistanceToCamera && roundedDistanceToCamera > 3.98 && !isDragging) {
                     setCameraFocus([0, 1, 0]);
                     setCurrentPage(0);
-                    setIsFocussedOnIsland(false);
+                    setIsFocussedOnIsland(false, false, false);
                 }
 
             }

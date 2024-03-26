@@ -11,6 +11,7 @@ import GasStove from './accessoires/GasStove.jsx'
 import ElectricStove from './accessoires/ElectricStove.jsx';
 
 import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
+import Indicator from '../indicator/Indicator.jsx';
 
 import { useTexture } from '../../helper/useTexture.tsx';
 
@@ -18,7 +19,7 @@ import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
 import useUIStore from '../../store/useUIStore.jsx';
 
-export default function Cooktop({ props }) {
+export default function Cooktop() {
 
     const {
         mainMaterial,
@@ -78,7 +79,7 @@ export default function Cooktop({ props }) {
         }
     }, [nodes, allBevelled]);
 
-    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
+    const { setCameraFocus, setIsFocussedOnIsland, isFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -124,7 +125,12 @@ export default function Cooktop({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
+    const indicatorPosition = [cooktopPosition[0], 0.1, cooktopPosition[2]];
+
     return <>
+
+        {isFocussedOnIsland.cooktop && <Indicator position={indicatorPosition} />}
+
         <a.group
             name='cooktop-group'
             ref={cookTopRef}
@@ -155,9 +161,18 @@ export default function Cooktop({ props }) {
                         if (dragMode) return;
                         setCurrentPage(4);
                         setCameraFocus([cooktopPosition[0], cooktopPosition[1] + 1, cooktopPosition[2]]);
-                        setIsFocussedOnIsland(true);
+                        setIsFocussedOnIsland("cooktop", true);
                         e.stopPropagation();
                     }
+                }
+                //on misclick
+                onPointerMissed={
+                    (e) => {
+                        if (dragMode) return;
+                        setIsFocussedOnIsland("cooktop", false);
+                        e.stopPropagation();
+                    }
+
                 }
                 {...(dragMode ? dragPos() : {})}
             >

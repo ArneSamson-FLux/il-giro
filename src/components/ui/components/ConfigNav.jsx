@@ -36,7 +36,7 @@ export default function ConfigNav() {
             case 0:
                 setCurrentPage(0);
                 setCameraFocus([0, 1, 0]);
-                setIsFocussedOnIsland(false);
+                setIsFocussedOnIsland(false, false, false);
                 break;
             case 1:
                 setCurrentPage(1);
