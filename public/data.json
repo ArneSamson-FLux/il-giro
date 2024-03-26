@@ -1,13 +1,37 @@
 {
     "categories": {
-        "wood": ["oak"],
-        "metal": ["inox", "gold", "bronze", "copper"],
-        "solid surface": ["solid surface"],
-        "micro topping": ["micro topping", "concrete"]
+        "wood": [
+            "lightoak",
+            "chestnut",
+            "cherry",
+            "mahony"
+        ],
+        "metal": [
+            "inox",
+            "gold",
+            "bronze",
+            "copper"
+        ],
+        "solid surface": [
+            "solid surface"
+        ],
+        "micro topping": [
+            "micro topping",
+            "concrete"
+        ]
     },
-    "materials":{
-        "oak": {
-            "url": "/materials/oak/"
+    "materials": {
+        "lightoak": {
+            "url": "/materials/lightoak/"
+        },
+        "chestnut": {
+            "url": "/materials/chestnut/"
+        },
+        "cherry": {
+            "url": "/materials/cherry/"
+        },
+        "mahony": {
+            "url": "/materials/mahony/"
         },
         "solid surface": {
             "url": "/materials/solidsurface/"
@@ -24,7 +48,7 @@
         "bronze": {
             "url": "/materials/bronze/"
         },
-        "copper":{
+        "copper": {
             "url": "/materials/copper/"
         },
         "inox": {
