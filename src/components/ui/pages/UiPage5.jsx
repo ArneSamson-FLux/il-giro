@@ -3,6 +3,7 @@ import React from "react";
 import useConfigStore from "../../../store/useConfigStore";
 
 import DetailWithButtons from "../components/DetailWithButtons";
+import DoorRotationToggle from "../components/toggle/DoorRotationToggle";
 
 export default function UiPage5() {
 
@@ -38,19 +39,21 @@ export default function UiPage5() {
         >
 
             <DetailWithButtons
-                summary="Appliance type: "
-                options={applianceOptions}
-                selectedOption={applianceOptions.find(option => option.value === applianceType).label}
-                setOption={setApplianceType}
-            />
-
-            <DetailWithButtons
                 summary="Winestand size: "
                 options={winestandOptions}
                 selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
                 setOption={setWineStandSize}
             />
 
+            <DetailWithButtons
+                summary="Appliance type: "
+                options={applianceOptions}
+                selectedOption={applianceOptions.find(option => option.value === applianceType).label}
+                setOption={setApplianceType}
+            />
+
         </div>
+
+        <DoorRotationToggle />
     </>
 }

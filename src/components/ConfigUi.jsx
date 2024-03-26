@@ -29,11 +29,6 @@ export default function ConfigUi() {
 
         setTableTopMaterial,
 
-        applianceType,
-        setApplianceType,
-        wineStandSize,
-        setWineStandSize,
-
         doorOpeningRotation,
         setDoorOpeningRotation,
 
@@ -91,15 +86,11 @@ export default function ConfigUi() {
                     <ConfigNav />
 
                     {currentPage === 0 && <>
-
                         <UiPage1 />
-
                     </>}
 
                     {currentPage === 1 && <>
-
                         <UiPage2 />
-
                     </>}
 
                     {currentPage === 2 && <>
@@ -116,7 +107,7 @@ export default function ConfigUi() {
 
                     {currentPage === 5 && <>
 
-                        <div
+                        {/* <div
                             className='config-ui__slider'
                         >
                             <h5>Open doors and shelves:</h5>
@@ -132,7 +123,7 @@ export default function ConfigUi() {
                                 />
                                 <span className="config-ui__toggle-slider"></span>
                             </label>
-                        </div>
+                        </div> */}
                     </>}
 
                 </div>
