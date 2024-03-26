@@ -4,7 +4,7 @@ import useConfigStore from "../../../store/useConfigStore";
 
 import DetailWithButtons from "../components/DetailWithButtons";
 
-export default function UiPage4() {
+export default function UiPage5() {
 
     const {
         stoveType,
