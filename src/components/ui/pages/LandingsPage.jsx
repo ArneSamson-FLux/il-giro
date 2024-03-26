@@ -151,18 +151,11 @@ export default function LandingsPage() {
                             className={`landings-page__module ${sinkChosen ? 'landings-page__module--chosen' : ''}`}
                             onClick={() => {
                                 setSinkChosen(!sinkChosen);
-                            }
-                            }
-                        // style={{
-                        //     backgroundImage: `url(/images/UI/sink.webp)`,
-                        // }}
+                            }}
                         >
-                            {/* <div
-                                className='landings-page__module__content'
-                            > */}
-                            <img src="/images/UI/sink.webp" alt="render of sink module" />
+
                             <h4>The<br />Sink</h4>
-                            {/* </div> */}
+                            <img src="/svg/sink-icon.svg" alt="render of sink module" />
                         </div>
                         <div
                             className={`landings-page__module ${cooktopChosen ? 'landings-page__module--chosen' : ''}`}
@@ -170,16 +163,9 @@ export default function LandingsPage() {
                                 setCooktopChosen(!cooktopChosen);
                             }
                             }
-                        // style={{
-                        //     backgroundImage: `url(/images/UI/cooktop.webp)`,
-                        // }}
                         >
-                            {/* <div
-                                className='landings-page__module__content'
-                            > */}
-                            <img src="/images/UI/cooktop.webp" alt="render of cooktop module" />
                             <h4>The<br />Cooktop</h4>
-                            {/* </div> */}
+                            <img src="/svg/cooktop-icon.svg" alt="render of cooktop module" />
                         </div>
                         <div
                             className={`landings-page__module ${towerChosen ? 'landings-page__module--chosen' : ''}`}
@@ -187,16 +173,9 @@ export default function LandingsPage() {
                                 setTowerChosen(!towerChosen);
                             }
                             }
-                        // style={{
-                        //     backgroundImage: `url(/images/UI/tower.webp)`,
-                        // }}
                         >
-                            {/* <div
-                                className='landings-page__module__content'
-                            > */}
-                            <img src="/images/UI/tower.webp" alt="render of tower module" />
                             <h4>The<br />Tower</h4>
-                            {/* </div> */}
+                            <img src="/svg/tower-icon.svg" alt="render of tower module" />
                         </div>
                         <div
                             className={`landings-page__module ${tableChosen ? 'landings-page__module--chosen' : ''}`}
@@ -205,8 +184,8 @@ export default function LandingsPage() {
                             }
                             }
                         >
-                            <img src="/images/UI/table.webp" alt="render of table module" />
                             <h4>The<br />Table</h4>
+                            <img src="/svg/table-icon.svg" alt="render of table module" />
                         </div>
                     </div>
 
