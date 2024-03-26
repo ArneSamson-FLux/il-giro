@@ -116,54 +116,6 @@ export default function ConfigUi() {
 
                     {currentPage === 5 && <>
 
-                        {/* <div
-                            className='config-ui__title'
-                        >
-                            <span><h2>6. The Tower</h2></span>
-                        </div>
-
-                        <div
-                            className='config-ui__options'
-                        >
-
-
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>Winestand size:
-                                    <span>
-                                        {wineStandSize === 'tall' ? ' tall' : wineStandSize === 'medium' ? ' medium' : ' small'}
-                                    </span>
-                                </summary>
-
-                                <div
-                                    className='config-ui__selection-buttons'
-                                >
-                                    <button
-                                        className={wineStandSize === 'tall' ? 'active-selection-button' : ''}
-                                        onClick={() => setWineStandSize('tall')}
-                                    >
-                                        Tall
-                                    </button>
-                                    <button
-                                        className={wineStandSize === 'medium' ? 'active-selection-button' : ''}
-                                        onClick={() => setWineStandSize('medium')}
-                                    >
-                                        Medium
-                                    </button>
-                                    <button
-                                        className={wineStandSize === 'small' ? 'active-selection-button' : ''}
-                                        onClick={() => setWineStandSize('small')}
-                                    >
-                                        Small
-                                    </button>
-                                </div>
-                            </details>
-
-                        </div> */}
-
-
                         <div
                             className='config-ui__slider'
                         >
