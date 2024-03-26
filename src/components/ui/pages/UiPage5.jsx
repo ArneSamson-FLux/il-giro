@@ -54,6 +54,6 @@ export default function UiPage5() {
 
         </div>
 
-        <DoorRotationToggle />
+        {/* <DoorRotationToggle /> */}
     </>
 }
