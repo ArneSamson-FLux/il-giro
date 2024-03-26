@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 
-import useConfig from '../store/useConfig.jsx';
+import useConfig from '../store/useConfigStore.jsx';
 
 import ConfigNav from './ui/components/ConfigNav.jsx';
-import ExtraButtons from './ui/components/ExtraButtons.jsx';
+import ToolTipHandler from './ui/components/buttons/ToolTipHandler.jsx';
+import ExtraButtons from './ui/components/buttons/ExtraButtons.jsx';
 
 import LandingsPage from './ui/pages/LandingsPage.jsx';
 import UiPage1 from './ui/pages/UiPage1.jsx';
@@ -74,11 +75,11 @@ export default function ConfigUi() {
                 <LandingsPage />
             }
 
-            <ExtraButtons
-                props={{
-                    currentPage,
-                }}
-            />
+            <ToolTipHandler
+                tooltipText='Back to selection'
+            >
+                <ExtraButtons />
+            </ToolTipHandler>
 
             <div className='config-wrapper'>
 

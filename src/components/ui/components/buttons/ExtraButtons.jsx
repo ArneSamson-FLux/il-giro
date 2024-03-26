@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-import useConfig from "../../../store/useConfig.jsx";
-import useScene from "../../../store/useScene.jsx";
+import useConfig from "../../../../store/useConfigStore.jsx";
+import useScene from "../../../../store/useScene.jsx";
 
 export default function ExtraButtons({ props }) {
 
@@ -36,9 +36,6 @@ export default function ExtraButtons({ props }) {
         setLandingPageVisible(true);
     }
 
-    const [showTooltipHome, setShowTooltipHome] = useState(false);
-    const [showTooltipZoom, setShowTooltipZoom] = useState(false);
-
 
     return <>
         <div
@@ -49,14 +46,11 @@ export default function ExtraButtons({ props }) {
             >
                 <button
                     onClick={handleBackHome}
-                    onMouseEnter={() => setShowTooltipHome(true)}
-                    onMouseLeave={() => setShowTooltipHome(false)}
                 >
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5.375 9.75L1 5.375M1 5.375L5.375 1M1 5.375H11.5C12.4283 5.375 13.3185 5.74375 13.9749 6.40013C14.6313 7.0565 15 7.94674 15 8.875V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </button>
-                <span className={`tooltip ${showTooltipHome ? 'show' : ''}`}>Back to selection</span>
             </div>
 
             <div
@@ -64,8 +58,6 @@ export default function ExtraButtons({ props }) {
             >
                 <button
                     onClick={handleZoom}
-                    onMouseEnter={() => setShowTooltipZoom(true)}
-                    onMouseLeave={() => setShowTooltipZoom(false)}
                 >
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
                         <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -73,7 +65,6 @@ export default function ExtraButtons({ props }) {
                         <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </button>
-                <span className={`tooltip ${showTooltipZoom ? 'show' : ''}`}>Zoom out</span>
             </div>
 
             {/* <div
