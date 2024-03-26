@@ -12,8 +12,6 @@ export default function ToolTip() {
 
     const rect = toolTip.target.getBoundingClientRect();
 
-    console.log(toolTip.content, rect)
-
     return <>
         <div
             className={`tooltip ${toolTip.active ? 'active' : ''}`}

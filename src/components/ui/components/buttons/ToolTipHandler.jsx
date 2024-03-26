@@ -11,11 +11,9 @@ export default function ToolTipHandler({ children, content }) {
             className="tooltip-handler"
             onMouseEnter={(e) => {
                 setToolTip(e.currentTarget, content, true);
-                console.log(toolTip);
             }}
             onMouseLeave={(e) => {
                 setToolTip(e.currentTarget, content, false);
-                console.log(toolTip);
             }}
         >
             {children}
