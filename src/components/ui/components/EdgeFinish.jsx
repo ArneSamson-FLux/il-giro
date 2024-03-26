@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 
-import useConfig from "../../../store/useConfig.jsx";
+import useConfig from "../../../store/useConfigStore.jsx";
 
 export default function EdgeFinish() {
 

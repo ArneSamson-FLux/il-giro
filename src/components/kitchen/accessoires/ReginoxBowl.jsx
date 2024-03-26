@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import * as THREE from 'three'
 import { useGLTF } from "@react-three/drei";
 
-import useConfig from '../../../store/useConfig.jsx';
+import useConfig from '../../../store/useConfigStore.jsx';
 
 import { useTexture } from '../../../helper/useTexture.tsx';
 

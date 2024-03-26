@@ -12,7 +12,7 @@ import { BakePlane } from '../lighting&shadows/ShadowPlanes.jsx'
 import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
-import useConfig from '../../store/useConfig.jsx';
+import useConfig from '../../store/useConfigStore.jsx';
 
 export default function Tower({ props }) {
 

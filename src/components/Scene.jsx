@@ -7,7 +7,7 @@ import Tower from './kitchen/Tower.jsx'
 
 import ReflectivePlane from './lighting&shadows/ReflectivePlane.jsx'
 
-import useConfig from '../store/useConfig.jsx'
+import useConfig from '../store/useConfigStore.jsx'
 
 export default function Scene() {
 

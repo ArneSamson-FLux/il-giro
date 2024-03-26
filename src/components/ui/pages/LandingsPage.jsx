@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import useConfig from "../../../store/useConfig";
+import useConfig from "../../../store/useConfigStore";
 import useScene from "../../../store/useScene";
 
 import BevelledSelection from "../components/BevelledSelection";

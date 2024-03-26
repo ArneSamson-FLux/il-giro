@@ -1,6 +1,6 @@
 import React from "react";
 
-import useConfig from "../../../store/useConfig.jsx";
+import useConfig from "../../../store/useConfigStore.jsx";
 
 export default function BevelledSelection() {
 

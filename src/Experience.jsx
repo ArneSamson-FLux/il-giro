@@ -8,7 +8,7 @@ import Lights from './components/lighting&shadows/Lights.jsx';
 import Env from './components/lighting&shadows/Env.jsx';
 
 import useScene from './store/useScene.jsx'
-import useConfig from './store/useConfig.jsx'
+import useConfig from './store/useConfigStore.jsx'
 
 import { Perf } from 'r3f-perf'
 import { update } from '@react-spring/three';
@@ -22,7 +22,7 @@ export default function Experience() {
     const { isDragging, setCurrentPage, currentPage } = useConfig();
 
     useEffect(() => {
-        
+
         camera.current.moveTo(...cameraFocus, true);
 
         updateViewOffset();
@@ -32,22 +32,22 @@ export default function Experience() {
         return () => {
             window.removeEventListener('resize', updateViewOffset);
         }
-        
+
     }
-    , [cameraFocus, setCameraFocus])
+        , [cameraFocus, setCameraFocus])
 
     useEffect(() => {
-        if(camera.current) {
+        if (camera.current) {
             camera.current.dollyTo(4, false);
         }
     }, [camera.current])
 
     const updateViewOffset = () => {
-        if(window.innerWidth > 1000){
+        if (window.innerWidth > 1000) {
             const widthOffset = 150;
             camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, widthOffset, 0, window.innerWidth, window.innerHeight);
             camera.current.camera.updateProjectionMatrix();
-        }else{
+        } else {
             const heightOffset = 180;
             camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 0, heightOffset, window.innerWidth, window.innerHeight);
             camera.current.camera.updateProjectionMatrix();
@@ -64,7 +64,7 @@ export default function Experience() {
 
             // console.log('before ', + prevCamDist, roundedCurrentDistance);
 
-            if(prevCamDist < roundedCurrentDistance) {
+            if (prevCamDist < roundedCurrentDistance) {
 
                 const distance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
                 const roundedDistanceToCamera = Math.round(distance * 100) / 100;
@@ -75,11 +75,11 @@ export default function Experience() {
                     setCurrentPage(0);
                     setIsFocussedOnIsland(false);
                 }
-                
+
             }
             setPrevCamDist(roundedCurrentDistance);
             // console.log('after ', + prevCamDist, roundedCurrentDistance);
-            
+
         };
 
         window.addEventListener('wheel', handleScroll);
@@ -103,29 +103,29 @@ export default function Experience() {
         }
     });
 
-  return <>
+    return <>
 
-    {/* <Perf
+        {/* <Perf
         position="top-left"
         style={{ transform: 'translateX(15vw)'}}
     /> */}
 
-    <CameraControls
-      ref={camera}
-      draggingSmoothTime={0.2}
-      maxPolarAngle={Math.PI / 2}
-      maxZoom={4}
-      maxDistance={4}
-      minDistance={2}
-      enabled={!isDragging}
-    />
+        <CameraControls
+            ref={camera}
+            draggingSmoothTime={0.2}
+            maxPolarAngle={Math.PI / 2}
+            maxZoom={4}
+            maxDistance={4}
+            minDistance={2}
+            enabled={!isDragging}
+        />
 
-    <Env/>
-      
-    <Lights/>
+        <Env />
 
-    <Scene/>
-    
-  </>
+        <Lights />
+
+        <Scene />
+
+    </>
 
 }
