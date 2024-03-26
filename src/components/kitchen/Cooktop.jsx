@@ -90,7 +90,7 @@ export default function Cooktop({ props }) {
 
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        position: hovered ? [cooktopPosition[0], 0.2, cooktopPosition[2]] : [cooktopPosition[0], 0, cooktopPosition[2]],
+        position: hovered ? [cooktopPosition[0], 0.1, cooktopPosition[2]] : [cooktopPosition[0], 0, cooktopPosition[2]],
         scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
         rotation: isDraggingCooktop ? [0, 0, 0] : cooktopRotation,
         config: {
