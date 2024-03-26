@@ -3,33 +3,24 @@ import React from "react";
 import useConfigStore from "../../../store/useConfigStore.jsx";
 
 import MaterialCategorySelection from "../components/MaterialCategorySelection.jsx";
-import MaterialSelection from "../components/MaterialSelection.jsx";
-import AccentMaterialSelection from "../components/AccentMaterialSelection.jsx";
 import TableTopMaterialSelection from "../components/TableTopMaterialSelection.jsx";
 
 import DetailWithButtons from "../components/DetailWithButtons.jsx";
+import DetailWithMaterials from "../components/DetailWithMaterials.jsx";
 
 export default function UiPage1() {
 
     const {
-        applianceType,
-        setApplianceType,
-        wineStandSize,
-        setWineStandSize,
-        edgeFinish,
-        setEdgeFinish
+        allCategories,
+        setMainMaterial,
+        setMainMaterialCategory,
+        mainMaterialCategory,
+        mainMaterial,
+        accentMaterial,
+        setAccentMaterial,
+        tableTopMaterial,
+        setTableTopMaterial,
     } = useConfigStore();
-
-    const applianceTypeOptions = [
-        { label: "Oven", value: "oven" },
-        { label: "Wine Cooler", value: "fridge" },
-        { label: "Shelves", value: "shelves" }
-    ];
-
-    const edgeFinishOptions = [
-        { label: "Square", value: "rect" },
-        { label: "Curved", value: "curved" }
-    ];
 
     return <>
 
@@ -47,16 +38,22 @@ export default function UiPage1() {
 
             />
 
-            <MaterialSelection
-
-            />
-
-            <AccentMaterialSelection
-
+            <DetailWithMaterials
+                header="choices in "
+                materials={allCategories[mainMaterialCategory]}
+                selectedMaterial={mainMaterial}
+                setMaterial={setMainMaterial}
             />
 
             <TableTopMaterialSelection
 
+            />
+
+            <DetailWithMaterials
+                header="Accent material: "
+                materials={allCategories.metal}
+                selectedMaterial={accentMaterial}
+                setMaterial={setAccentMaterial}
             />
 
         </div>
