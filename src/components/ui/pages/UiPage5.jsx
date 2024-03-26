@@ -7,13 +7,22 @@ import DetailWithButtons from "../components/DetailWithButtons";
 export default function UiPage5() {
 
     const {
-        stoveType,
-        setStoveType,
+        applianceType,
+        setApplianceType,
+        wineStandSize,
+        setWineStandSize,
     } = useConfigStore();
 
-    const stoveOptions = [
-        { label: "Gas", value: "1" },
-        { label: "Electric", value: "2" }
+    const applianceOptions = [
+        { label: "Oven", value: "oven" },
+        { label: "Fridge", value: "fridge" },
+        { label: "Shelves", value: "shelves" },
+    ];
+
+    const winestandOptions = [
+        { label: "Small", value: "small" },
+        { label: "Medium", value: "medium" },
+        { label: "Large", value: "tall" },
     ];
 
     return <>
@@ -21,7 +30,7 @@ export default function UiPage5() {
         <div
             className='config-ui__title'
         >
-            <span><h2>The Cooktop</h2></span>
+            <span><h2>The Tower</h2></span>
         </div>
 
         <div
@@ -29,10 +38,17 @@ export default function UiPage5() {
         >
 
             <DetailWithButtons
-                summary="Stove type: "
-                options={stoveOptions}
-                selectedOption={stoveOptions.find(option => option.value === stoveType).label}
-                setOption={setStoveType}
+                summary="Appliance type: "
+                options={applianceOptions}
+                selectedOption={applianceOptions.find(option => option.value === applianceType).label}
+                setOption={setApplianceType}
+            />
+
+            <DetailWithButtons
+                summary="Winestand size: "
+                options={winestandOptions}
+                selectedOption={winestandOptions.find(option => option.value === wineStandSize).label}
+                setOption={setWineStandSize}
             />
 
         </div>

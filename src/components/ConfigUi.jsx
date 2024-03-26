@@ -13,6 +13,7 @@ import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
 import UiPage3 from './ui/pages/UiPage3.jsx';
 import UiPage4 from './ui/pages/UiPage4.jsx';
+import UiPage5 from './ui/pages/UiPage5.jsx';
 
 export default function ConfigUi() {
 
@@ -110,51 +111,12 @@ export default function ConfigUi() {
                     </>}
 
                     {currentPage === 4 && <>
-
-                        {/* <div
-                            className='config-ui__title'
-                        >
-                            <span><h2>5. The Cooktop</h2></span>
-                        </div>
-
-                        <div
-                            className='config-ui__options'
-                        >
-
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>Cooking fire type:
-                                    <span>
-                                        {stoveType === 'gas' ? ' gas' : ' electric'}
-                                    </span>
-                                </summary>
-
-                                <div
-                                    className='config-ui__selection-buttons'
-                                >
-                                    <button
-                                        className={stoveType === 'gas' ? 'active-selection-button' : ''}
-                                        onClick={() => setStoveType('gas')}
-                                    >
-                                        Gas
-                                    </button>
-                                    <button
-                                        className={stoveType === 'electric' ? 'active-selection-button' : ''}
-                                        onClick={() => setStoveType('electric')}
-                                    >
-                                        Electric
-                                    </button>
-                                </div>
-                            </details>
-                        </div> */}
-
+                        <UiPage5 />
                     </>}
 
                     {currentPage === 5 && <>
 
-                        <div
+                        {/* <div
                             className='config-ui__title'
                         >
                             <span><h2>6. The Tower</h2></span>
@@ -164,39 +126,6 @@ export default function ConfigUi() {
                             className='config-ui__options'
                         >
 
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>Appliance type:
-                                    <span>
-                                        {applianceType === 'oven' ? ' oven' : applianceType === 'fridge' ? ' wine cooler' : ' shelves'}
-                                    </span>
-                                </summary>
-
-                                <div
-                                    className='config-ui__selection-buttons'
-                                >
-                                    <button
-                                        className={applianceType === 'oven' ? 'active-selection-button' : ''}
-                                        onClick={() => setApplianceType('oven')}
-                                    >
-                                        Oven
-                                    </button>
-                                    <button
-                                        className={applianceType === 'fridge' ? 'active-selection-button' : ''}
-                                        onClick={() => setApplianceType('fridge')}
-                                    >
-                                        Wine cooler
-                                    </button>
-                                    <button
-                                        className={applianceType === 'shelves' ? 'active-selection-button' : ''}
-                                        onClick={() => setApplianceType('shelves')}
-                                    >
-                                        Shelves
-                                    </button>
-                                </div>
-                            </details>
 
                             <details
                                 open
@@ -232,7 +161,7 @@ export default function ConfigUi() {
                                 </div>
                             </details>
 
-                        </div>
+                        </div> */}
 
 
                         <div
