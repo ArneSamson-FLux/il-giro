@@ -20,6 +20,7 @@ import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
+import useUIStore from '../../store/useUIStore.jsx';
 
 export default function Sink({ props }) {
 
@@ -34,13 +35,14 @@ export default function Sink({ props }) {
 
         tapType,
 
-        setCurrentPage,
-
         dragMode,
         isDraggingSink,
         setIsDraggingSink,
         setIsDragging
     } = useConfig();
+
+    const { setCurrentPage } = useUIStore();
+
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         mainMaterial + "albedo.jpg",

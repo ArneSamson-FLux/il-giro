@@ -9,6 +9,7 @@ import Env from './components/lighting&shadows/Env.jsx';
 
 import useScene from './store/useScene.jsx'
 import useConfig from './store/useConfigStore.jsx'
+import useUIStore from './store/useUIStore.jsx';
 
 import { Perf } from 'r3f-perf'
 import { update } from '@react-spring/three';
@@ -19,7 +20,8 @@ export default function Experience() {
     const [cameraPosition, setCameraPosition] = useState(null)
 
     const { cameraFocus, setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
-    const { isDragging, setCurrentPage, currentPage } = useConfig();
+    const { isDragging } = useConfig();
+    const { currentPage, setCurrentPage } = useUIStore();
 
     useEffect(() => {
 

@@ -16,6 +16,7 @@ import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
+import useUIStore from '../../store/useUIStore.jsx';
 
 export default function Cooktop({ props }) {
 
@@ -30,13 +31,13 @@ export default function Cooktop({ props }) {
 
         stoveType,
 
-        setCurrentPage,
-
         dragMode,
         isDraggingCooktop,
         setIsDraggingCooktop,
         setIsDragging
     } = useConfig();
+
+    const { setCurrentPage } = useUIStore();
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         mainMaterial + "albedo.jpg",

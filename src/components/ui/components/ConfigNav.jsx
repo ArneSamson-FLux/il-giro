@@ -3,13 +3,11 @@ import { useEffect } from "react";
 
 import useConfig from "../../../store/useConfigStore.jsx";
 import useScene from "../../../store/useScene.jsx";
+import useUIStore from "../../../store/useUIStore.jsx";
 
 export default function ConfigNav() {
 
-    const {
-        currentPage,
-        setCurrentPage,
-    } = useConfig();
+    const { currentPage, setCurrentPage } = useUIStore();
 
     const {
         setCameraFocus,
