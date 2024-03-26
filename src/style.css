@@ -420,7 +420,7 @@ input[type=range]::-ms-track {
     font-size: 14px;
     pointer-events: none;
     z-index: 999;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.5s ease;
     opacity: 0;
 }
 
