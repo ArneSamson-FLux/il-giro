@@ -141,6 +141,29 @@ export default function Sink({ props }) {
 
     const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
 
+    const handleClick = () => {
+        if (dragMode) return;
+        setCurrentPage(2);
+        setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
+        setIsFocussedOnIsland(true, false, false);
+    }
+
+    const handlePointerOver = () => {
+        setNeedPointer(true);
+        if (dragMode) return;
+        setHover(true);
+    }
+
+    const handlePointerOut = () => {
+        setNeedPointer(false);
+        setHover(false);
+    }
+
+    const handlePointerMissed = () => {
+        if (dragMode) return;
+        setIsFocussedOnIsland(false, false, false);
+    }
+
 
     return <>
 
@@ -159,25 +182,19 @@ export default function Sink({ props }) {
                 name='sink-hovers-group'
                 onPointerOver={
                     (e) => {
-                        setNeedPointer(true);
-                        if (dragMode) return;
-                        setHover(true);
+                        handlePointerOver();
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
-                        setNeedPointer(false);
-                        setHover(false);
+                        handlePointerOut();
                         e.stopPropagation();
                     }
                 }
                 onClick={
                     (e) => {
-                        if (dragMode) return;
-                        setCurrentPage(3);
-                        setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
-                        setIsFocussedOnIsland(true, false, false);
+                        handleClick();
                         e.stopPropagation();
                     }
                 }

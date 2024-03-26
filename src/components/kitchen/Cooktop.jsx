@@ -127,6 +127,28 @@ export default function Cooktop() {
 
     const indicatorPosition = [cooktopPosition[0], 0.1, cooktopPosition[2]];
 
+    const handleClick = () => {
+        if (dragMode) return;
+        setCurrentPage(3);
+        setCameraFocus([cooktopPosition[0], cooktopPosition[1] + 1, cooktopPosition[2]]);
+        setIsFocussedOnIsland(false, true, false);
+    }
+
+    const handlePointerOver = () => {
+        if (dragMode) return;
+        setHover(true);
+    }
+
+    const handlePointerOut = () => {
+        if (dragMode) return;
+        setHover(false);
+    }
+
+    const handlePointerMissed = () => {
+        if (dragMode) return;
+        setIsFocussedOnIsland(false, false, false);
+    }
+
     return <>
 
         {/* {isFocussedOnIsland.cooktop && <Indicator position={indicatorPosition} />} */}
@@ -143,33 +165,26 @@ export default function Cooktop() {
                 name='cooktop-hovers-group'
                 onPointerOver={
                     (e) => {
-                        setNeedPointer(true);
-                        if (dragMode) return;
-                        setHover(true);
+                        handlePointerOver();
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
                         setNeedPointer(false);
-                        setHover(false);
                         e.stopPropagation();
                     }
                 }
                 onClick={
                     (e) => {
-                        if (dragMode) return;
-                        setCurrentPage(4);
-                        setCameraFocus([cooktopPosition[0], cooktopPosition[1] + 1, cooktopPosition[2]]);
-                        setIsFocussedOnIsland(false, true, false);
+                        handleClick();
                         e.stopPropagation();
                     }
                 }
                 //on misclick
                 onPointerMissed={
                     (e) => {
-                        if (dragMode) return;
-                        setIsFocussedOnIsland(false, false, false);
+                        handlePointerMissed();
                         e.stopPropagation();
                     }
 

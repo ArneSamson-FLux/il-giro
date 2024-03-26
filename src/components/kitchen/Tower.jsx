@@ -181,6 +181,28 @@ export default function Tower({ props }) {
 
     const indicatorPosition = [towerPosition[0], 0.1, towerPosition[2]];
 
+    const handleClick = () => {
+        if (dragMode) return;
+        setCurrentPage(4);
+        setCameraFocus([towerPosition[0], towerPosition[1] + 1, towerPosition[2]]);
+        setIsFocussedOnIsland(false, false, true);
+    }
+
+    const handlePointerOver = () => {
+        setNeedPointer(true);
+        if (dragMode) return;
+        setHover(true);
+    }
+
+    const handlePointerOut = () => {
+        setNeedPointer(false);
+        setHover(false);
+    }
+
+    const handlePointerMissed = () => {
+        if (dragMode) return;
+        setIsFocussedOnIsland(false, false, false);
+    }
 
     return <>
 
@@ -198,32 +220,25 @@ export default function Tower({ props }) {
                 name='tower-hovers-group'
                 onPointerOver={
                     (e) => {
-                        setNeedPointer(true);
-                        if (dragMode) return;
-                        setHover(true);
+                        handlePointerOver();
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
-                        setNeedPointer(false);
-                        setHover(false);
+                        handlePointerOut();
                         e.stopPropagation();
                     }
                 }
                 onClick={
                     (e) => {
-                        if (dragMode) return;
-                        setCurrentPage(5);
-                        setCameraFocus([towerPosition[0], towerPosition[1] + 1, towerPosition[2]]);
-                        setIsFocussedOnIsland(false, false, true);
+                        handleClick();
                         e.stopPropagation();
                     }
                 }
                 onPointerMissed={
                     (e) => {
-                        if (dragMode) return;
-                        setIsFocussedOnIsland(false, false, false);
+                        handlePointerMissed();
                         e.stopPropagation();
                     }
                 }
