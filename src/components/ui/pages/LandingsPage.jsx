@@ -31,9 +31,9 @@ export default function LandingsPage() {
         setCameraFocus,
     } = useScene();
 
-    useEffect(() => {
-        setPositions();
-    }, [sinkChosen, cooktopChosen, towerChosen, tableChosen, setSinkPosition, setCooktopPosition, setTowerPosition, setTablePosition]);
+    // useEffect(() => {
+    //     setPositions();
+    // }, [sinkChosen, cooktopChosen, towerChosen, tableChosen, setSinkPosition, setCooktopPosition, setTowerPosition, setTablePosition]);
 
 
     function setPositions() {
