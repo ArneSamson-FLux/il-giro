@@ -178,7 +178,7 @@ export default function Tower({ props }) {
             {...props}
             position={towerPosition}
             dispose={null}
-            {...springProps}
+        // {...springProps}
         >
             <group
                 name='tower-hovers-group'

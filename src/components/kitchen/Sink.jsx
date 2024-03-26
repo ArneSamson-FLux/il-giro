@@ -153,7 +153,7 @@ export default function Sink({ props }) {
             rotation={sinkRotation}
             position={sinkPosition}
             dispose={null}
-            {...springProps}
+        // {...springProps}
         >
             <group
                 name='sink-hovers-group'

@@ -137,7 +137,7 @@ export default function Cooktop() {
             rotation={cooktopRotation}
             position={cooktopPosition}
             dispose={null}
-            {...springProps}
+        // {...springProps}
         >
             <group
                 name='cooktop-hovers-group'
