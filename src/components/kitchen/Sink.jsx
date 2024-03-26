@@ -144,7 +144,7 @@ export default function Sink({ props }) {
 
     return <>
 
-        {isFocussedOnIsland.sink && <Indicator position={indicatorPosition} />}
+        {/* {isFocussedOnIsland.sink && <Indicator position={indicatorPosition} />} */}
 
 
         <a.group

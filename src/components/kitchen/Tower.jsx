@@ -170,7 +170,7 @@ export default function Tower({ props }) {
 
     return <>
 
-        {isFocussedOnIsland.tower && <Indicator position={indicatorPosition} />}
+        {/* {isFocussedOnIsland.tower && <Indicator position={indicatorPosition} />} */}
 
         <a.group
             name='tower-group'

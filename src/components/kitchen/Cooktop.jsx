@@ -129,7 +129,7 @@ export default function Cooktop() {
 
     return <>
 
-        {isFocussedOnIsland.cooktop && <Indicator position={indicatorPosition} />}
+        {/* {isFocussedOnIsland.cooktop && <Indicator position={indicatorPosition} />} */}
 
         <a.group
             name='cooktop-group'
