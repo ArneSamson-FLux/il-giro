@@ -52,9 +52,9 @@ export default function ConfigUi() {
 
             if (loaded) return;
 
-            setMainMaterial(allMaterials[5].url);
-            setAccentMaterial(allMaterials[6].url);
-            setTableTopMaterial(allCategories['micro topping'][0].url);
+            setMainMaterial(allMaterials[0].url);
+            setAccentMaterial(allCategories['metal'][0].url);
+            setTableTopMaterial(allCategories['metal'][0].url);
 
         }
     }, [allMaterials,
@@ -74,7 +74,11 @@ export default function ConfigUi() {
                 <LandingsPage />
             }
 
-            <ExtraButtons />
+            <ExtraButtons
+                props={{
+                    currentPage,
+                }}
+            />
 
             <div className='config-wrapper'>
 
