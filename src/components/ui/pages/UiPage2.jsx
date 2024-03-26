@@ -1,8 +1,20 @@
 import React from "react";
 
-import EdgeFinish from "../components/EdgeFinish";
+import useConfigStore from "../../../store/useConfigStore";
+
+import DetailWithButtons from "../components/DetailWithButtons";
 
 export default function UiPage2() {
+
+    const {
+        edgeFinish,
+        setEdgeFinish,
+    } = useConfigStore();
+
+    const edgeFinishOptions = [
+        { label: "Square", value: "rect" },
+        { label: "Curved", value: "curved" }
+    ];
 
     return <>
 
@@ -16,7 +28,12 @@ export default function UiPage2() {
             className='config-ui__options'
         >
 
-            <EdgeFinish />
+            <DetailWithButtons
+                summary="Edge finish:"
+                options={edgeFinishOptions}
+                selectedOption={edgeFinish}
+                setOption={setEdgeFinish}
+            />
 
         </div>
     </>
