@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import useConfig from "../../../store/useConfigStore.jsx";
 import useScene from "../../../store/useScene.jsx";
+import useUIStore from "../../../store/useUIStore.jsx";
 
 export default function MaterialCategorySelection() {
 
@@ -12,8 +13,9 @@ export default function MaterialCategorySelection() {
         setTableTopMaterial,
         mainMaterialCategory,
         setMainMaterialCategory,
-        setIsSecondDetailsOpen
     } = useConfig();
+
+    const { setIsSecondDetailsOpen } = useUIStore();
 
 
 

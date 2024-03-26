@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import useConfig from "../../../store/useConfigStore";
 import useScene from "../../../store/useScene";
+import useUIStore from "../../../store/useUIStore";
 
 import BevelledSelection from "../components/BevelledSelection";
 
@@ -23,13 +24,15 @@ export default function LandingsPage() {
         setCooktopRotation,
         setTowerPosition,
         setTablePosition,
-
-        setLandingPageVisible,
     } = useConfig();
 
     const {
         setCameraFocus,
     } = useScene();
+
+    const {
+        setLandingPageVisible,
+    } = useUIStore();
 
     // useEffect(() => {
     //     setPositions();

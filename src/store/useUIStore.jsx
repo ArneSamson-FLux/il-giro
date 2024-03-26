@@ -10,6 +10,8 @@ export default create((set) => {
             active: false,
         },
         currentPage: 0,
+        isSecondDetailsOpen: false,
+        landingPageVisible: true,
 
 
         setToolTip: (target, content, active) =>
@@ -21,6 +23,8 @@ export default create((set) => {
                 },
             })),
         setCurrentPage: (page) => set({ currentPage: page }),
+        setIsSecondDetailsOpen: (open) => set({ isSecondDetailsOpen: open }),
+        setLandingPageVisible: (visible) => set({ landingPageVisible: visible }),
 
 
     }

@@ -40,10 +40,12 @@ export default function ConfigUi() {
         doorOpeningRotation,
         setDoorOpeningRotation,
 
-        landingPageVisible,
     } = useConfig();
 
-    const { currentPage } = useUIStore();
+    const {
+        currentPage,
+        landingPageVisible,
+    } = useUIStore();
 
     const [loaded, setLoaded] = useState(false);
 

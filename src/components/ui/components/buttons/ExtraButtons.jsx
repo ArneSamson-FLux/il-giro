@@ -12,12 +12,12 @@ export default function ExtraButtons() {
     const {
         // dragMode,
         // setDragMode,
-        setLandingPageVisible,
     } = useConfig();
 
     const {
         currentPage,
-        setCurrentPage
+        setCurrentPage,
+        setLandingPageVisible,
     } = useUIStore();
 
     const {

@@ -68,9 +68,6 @@ export default create((set) => {
 
         doorOpeningRotation: 1.5,
 
-        isSecondDetailsOpen: false,
-        landingPageVisible: true,
-
         dragMode: false,
         isDragging: false,
 
@@ -121,10 +118,6 @@ export default create((set) => {
 
         //door opening
         setDoorOpeningRotation: (rotation) => set({ doorOpeningRotation: rotation }),
-
-        //page
-        setIsSecondDetailsOpen: (open) => set({ isSecondDetailsOpen: open }),
-        setLandingPageVisible: (visible) => set({ landingPageVisible: visible }),
 
         //drag mode
         setDragMode: (mode) => set({ dragMode: mode }),

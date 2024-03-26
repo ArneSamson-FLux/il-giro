@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import useConfig from "../../../store/useConfigStore.jsx";
 import useScene from "../../../store/useScene.jsx";
+import useUIStore from "../../../store/useUIStore.jsx";
 
 export default function MaterialSelection() {
 
@@ -11,8 +12,9 @@ export default function MaterialSelection() {
         mainMaterial,
         setMainMaterial,
         mainMaterialCategory,
-        isSecondDetailsOpen
     } = useConfig();
+
+    const { isSecondDetailsOpen } = useUIStore();
 
 
     return <>
