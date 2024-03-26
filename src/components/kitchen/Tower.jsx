@@ -10,6 +10,7 @@ import WineStand from './accessoires/WineStand.jsx';
 import { BakePlane } from '../lighting&shadows/ShadowPlanes.jsx'
 
 import { useTexture } from '../../helper/useTexture.tsx';
+import Indicator from '../indicator/Indicator.jsx';
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
@@ -164,7 +165,13 @@ export default function Tower({ props }) {
 
     });
 
+    const indicatorPosition = [towerPosition[0], 0.1, towerPosition[2]];
+
+
     return <>
+
+        {isFocussedOnIsland.tower && <Indicator position={indicatorPosition} />}
+
         <a.group
             name='tower-group'
             ref={towerRef}
@@ -195,7 +202,14 @@ export default function Tower({ props }) {
                         if (dragMode) return;
                         setCurrentPage(5);
                         setCameraFocus([towerPosition[0], towerPosition[1] + 1, towerPosition[2]]);
-                        setIsFocussedOnIsland(true);
+                        setIsFocussedOnIsland(false, false, true);
+                        e.stopPropagation();
+                    }
+                }
+                onPointerMissed={
+                    (e) => {
+                        if (dragMode) return;
+                        setIsFocussedOnIsland(false, false, false);
                         e.stopPropagation();
                     }
                 }

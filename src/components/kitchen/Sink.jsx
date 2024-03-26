@@ -15,6 +15,7 @@ import TableTopCutFilled from './accessoires/TableTopCutFilled.jsx';
 import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
 
 import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
+import Indicator from '../indicator/Indicator.jsx';
 
 import { useTexture } from '../../helper/useTexture.tsx';
 
@@ -40,6 +41,10 @@ export default function Sink({ props }) {
         setIsDraggingSink,
         setIsDragging
     } = useConfig();
+
+    const {
+        isFocussedOnIsland
+    } = useScene();
 
     const { setCurrentPage } = useUIStore();
 
@@ -134,7 +139,14 @@ export default function Sink({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
+    const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
+
+
     return <>
+
+        {isFocussedOnIsland.sink && <Indicator position={indicatorPosition} />}
+
+
         <a.group
             name='sink-group'
             ref={sinkRef}
@@ -165,9 +177,17 @@ export default function Sink({ props }) {
                         if (dragMode) return;
                         setCurrentPage(3);
                         setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
-                        setIsFocussedOnIsland(true);
+                        setIsFocussedOnIsland(true, false, false);
                         e.stopPropagation();
                     }
+                }
+                onPointerMissed={
+                    (e) => {
+                        if (dragMode) return;
+                        setIsFocussedOnIsland(false, false, false);
+                        e.stopPropagation();
+                    }
+
                 }
                 {...(dragMode ? dragPos() : {})}
 

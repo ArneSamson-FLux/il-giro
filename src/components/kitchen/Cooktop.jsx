@@ -161,7 +161,7 @@ export default function Cooktop() {
                         if (dragMode) return;
                         setCurrentPage(4);
                         setCameraFocus([cooktopPosition[0], cooktopPosition[1] + 1, cooktopPosition[2]]);
-                        setIsFocussedOnIsland("cooktop", true);
+                        setIsFocussedOnIsland(false, true, false);
                         e.stopPropagation();
                     }
                 }
@@ -169,7 +169,7 @@ export default function Cooktop() {
                 onPointerMissed={
                     (e) => {
                         if (dragMode) return;
-                        setIsFocussedOnIsland("cooktop", false);
+                        setIsFocussedOnIsland(false, false, false);
                         e.stopPropagation();
                     }
 
