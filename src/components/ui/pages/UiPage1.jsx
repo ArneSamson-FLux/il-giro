@@ -39,10 +39,11 @@ export default function UiPage1() {
             />
 
             <DetailWithMaterials
-                header="choices in "
+                header="Choices in "
                 materials={allCategories[mainMaterialCategory]}
                 selectedMaterial={mainMaterial}
                 setMaterial={setMainMaterial}
+                open={true}
             />
 
             <TableTopMaterialSelection
@@ -54,6 +55,7 @@ export default function UiPage1() {
                 materials={allCategories.metal}
                 selectedMaterial={accentMaterial}
                 setMaterial={setAccentMaterial}
+                open={false}
             />
 
         </div>

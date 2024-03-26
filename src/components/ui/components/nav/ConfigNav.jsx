@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
 
-import useConfig from "../../../store/useConfigStore.jsx";
-import useScene from "../../../store/useScene.jsx";
-import useUIStore from "../../../store/useUIStore.jsx";
+import useConfig from "../../../../store/useConfigStore.jsx";
+import useScene from "../../../../store/useScene.jsx";
+import useUIStore from "../../../../store/useUIStore.jsx";
 
 export default function ConfigNav() {
 

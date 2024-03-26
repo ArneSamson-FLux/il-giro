@@ -4,13 +4,14 @@ import { useSpring, animated } from 'react-spring';
 import useConfig from '../store/useConfigStore.jsx';
 import useUIStore from '../store/useUIStore.jsx';
 
-import ConfigNav from './ui/components/ConfigNav.jsx';
+import ConfigNav from './ui/components/nav/ConfigNav.jsx';
 import ExtraButtons from './ui/components/buttons/ExtraButtons.jsx';
 import ToolTip from './ui/components/buttons/ToolTip.jsx';
 
 import LandingsPage from './ui/pages/LandingsPage.jsx';
 import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
+import UiPage3 from './ui/pages/UiPage3.jsx';
 
 export default function ConfigUi() {
 
@@ -106,7 +107,7 @@ export default function ConfigUi() {
                     </>}
 
                     {currentPage === 2 && <>
-
+                        <UiPage3 />
                     </>}
 
                     {currentPage === 3 && <>

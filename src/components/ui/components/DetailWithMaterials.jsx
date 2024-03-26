@@ -5,10 +5,12 @@ export default function DetailWithMaterials({
     materials,
     selectedMaterial,
     setMaterial,
+    open
 }) {
     return (
         <details
             className="config-ui__details"
+            open={open}
         >
             <summary>
                 {header}

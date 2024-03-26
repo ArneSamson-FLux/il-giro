@@ -7,13 +7,13 @@ import DetailWithButtons from "../components/DetailWithButtons";
 export default function UiPage2() {
 
     const {
-        edgeFinish,
-        setEdgeFinish,
+        tapType,
+        setTapType,
     } = useConfigStore();
 
-    const edgeFinishOptions = [
-        { label: "Square", value: "rect" },
-        { label: "Curved", value: "curved" }
+    const faucetOptions = [
+        { label: "Brandwood 3", value: "1" },
+        { label: "Bridge", value: "2" }
     ];
 
     return <>
@@ -21,7 +21,7 @@ export default function UiPage2() {
         <div
             className='config-ui__title'
         >
-            <span><h2>2. Tabletop</h2></span>
+            <span><h2>The Sink</h2></span>
         </div>
 
         <div
@@ -29,10 +29,10 @@ export default function UiPage2() {
         >
 
             <DetailWithButtons
-                summary="Edge finish: "
-                options={edgeFinishOptions}
-                selectedOption={edgeFinishOptions.find(option => option.value === edgeFinish).label}
-                setOption={setEdgeFinish}
+                summary="Faucet type: "
+                options={faucetOptions}
+                selectedOption={faucetOptions.find(option => option.value === tapType).label}
+                setOption={setTapType}
             />
 
         </div>
