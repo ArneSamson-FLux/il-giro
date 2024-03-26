@@ -413,25 +413,19 @@ input[type=range]::-ms-track {
 
 .tooltip {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    /* margin-left: 10px; */
-    font-size: 12px;
-
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 4px 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 8px;
     border-radius: 4px;
-
-    z-index: 1;
-
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 999;
+    transition: opacity 0.2s ease;
     opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-.tooltip.show {
+.tooltip.active {
     opacity: 1;
-    /* Show the tooltip by setting opacity to 1 */
 }
 
 .extra-buttons__zoom-out button {
@@ -740,5 +734,9 @@ summary span {
     h2 {
         font-size: 30px;
         line-height: 60px;
+    }
+
+    .tooltip.active {
+        display: none;
     }
 }

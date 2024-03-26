@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 
-export default function ToolTipHandler({ children, tooltipText }) {
+import useUIStore from "../../../../store/useUIStore.jsx";
 
-    const [showTooltip, setShowTooltip] = useState(false);
+export default function ToolTipHandler({ children, content }) {
+
+    const { toolTip, setToolTip } = useUIStore();
 
     return <>
         <div
-            onMouseEnter={() => setShowTooltip(true)}
-            onMouseLeave={() => setShowTooltip(false)}
+            className="tooltip-handler"
+            onMouseEnter={(e) => {
+                setToolTip(e.currentTarget, content, true);
+                console.log(toolTip);
+            }}
+            onMouseLeave={(e) => {
+                setToolTip(e.currentTarget, content, false);
+                console.log(toolTip);
+            }}
         >
             {children}
-            <span className={`tooltip ${showTooltip ? 'show' : ''}`}>{tooltipText}</span>
         </div>
     </>
 }
-

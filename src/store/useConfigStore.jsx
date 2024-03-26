@@ -68,7 +68,6 @@ export default create((set) => {
 
         doorOpeningRotation: 1.5,
 
-        currentPage: 0,
         isSecondDetailsOpen: false,
         landingPageVisible: true,
 
@@ -124,7 +123,6 @@ export default create((set) => {
         setDoorOpeningRotation: (rotation) => set({ doorOpeningRotation: rotation }),
 
         //page
-        setCurrentPage: (page) => set({ currentPage: page }),
         setIsSecondDetailsOpen: (open) => set({ isSecondDetailsOpen: open }),
         setLandingPageVisible: (visible) => set({ landingPageVisible: visible }),
 

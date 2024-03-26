@@ -3,19 +3,22 @@ import { useEffect, useState } from "react";
 
 import useConfig from "../../../../store/useConfigStore.jsx";
 import useScene from "../../../../store/useScene.jsx";
+import useUIStore from "../../../../store/useUIStore.jsx";
 
-export default function ExtraButtons({ props }) {
+import ToolTipHandler from "./ToolTipHandler.jsx";
 
-
-    console.log('ExtraButtons props', props);
+export default function ExtraButtons() {
 
     const {
-        currentPage,
-        setCurrentPage,
         // dragMode,
         // setDragMode,
         setLandingPageVisible,
     } = useConfig();
+
+    const {
+        currentPage,
+        setCurrentPage
+    } = useUIStore();
 
     const {
         setCameraFocus,
@@ -41,31 +44,39 @@ export default function ExtraButtons({ props }) {
         <div
             className='extra-buttons'
         >
-            <div
-                className='extra-buttons__zoom-out'
+            <ToolTipHandler
+                content='Back to selection'
             >
-                <button
-                    onClick={handleBackHome}
+                <div
+                    className='extra-buttons__zoom-out'
                 >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.375 9.75L1 5.375M1 5.375L5.375 1M1 5.375H11.5C12.4283 5.375 13.3185 5.74375 13.9749 6.40013C14.6313 7.0565 15 7.94674 15 8.875V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </button>
-            </div>
+                    <button
+                        onClick={handleBackHome}
+                    >
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.375 9.75L1 5.375M1 5.375L5.375 1M1 5.375H11.5C12.4283 5.375 13.3185 5.74375 13.9749 6.40013C14.6313 7.0565 15 7.94674 15 8.875V15" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </ToolTipHandler>
 
-            <div
-                className='extra-buttons__zoom-out'
+            <ToolTipHandler
+                content='Zoom out'
             >
-                <button
-                    onClick={handleZoom}
+                <div
+                    className='extra-buttons__zoom-out'
                 >
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
-                        <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M19 19L14.65 14.65" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </button>
-            </div>
+                    <button
+                        onClick={handleZoom}
+                    >
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className='zoom-out__image'>
+                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M19 19L14.65 14.65" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M6 9H12" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </ToolTipHandler>
 
             {/* <div
                 className={dragMode ? 'extra-buttons__move--active' : 'extra-buttons__move'}
