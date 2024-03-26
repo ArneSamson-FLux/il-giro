@@ -35,8 +35,7 @@ export default function Experience() {
             window.removeEventListener('resize', updateViewOffset);
         }
 
-    }
-        , [cameraFocus, setCameraFocus])
+    }, [cameraFocus, setCameraFocus])
 
     useEffect(() => {
         if (camera.current) {
