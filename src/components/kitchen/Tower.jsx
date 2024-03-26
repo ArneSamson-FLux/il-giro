@@ -55,8 +55,22 @@ export default function Tower({ props }) {
         roughness: 1,
     });
 
-    const { nodes, materials } = useGLTF("./models/base-island-high.glb");
+    const towerAOMap = useTexture("./public/images/bakes/tower-ao.jpg");
+    towerAOMap.flipY = false;
 
+    const materialWithAo = new THREE.MeshStandardMaterial({
+        map: albedoTexture,
+        normalMap: normalTexture,
+        roughnessMap: roughnessTexture,
+        metalnessMap: metallnessTexture,
+        metalness: 1,
+        roughness: 1,
+        aoMap: towerAOMap,
+        aoMapIntensity: 0.8,
+    });
+
+
+    const { nodes, materials } = useGLTF("./models/base-island-high.glb");
 
     const { setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
 
@@ -220,7 +234,7 @@ export default function Tower({ props }) {
                     castShadow
                     receiveShadow
                     geometry={nodes.tower.geometry}
-                    material={material}
+                    material={materialWithAo}
                 >
 
                     <mesh name='tower-bevel'
