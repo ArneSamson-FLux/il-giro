@@ -12,6 +12,7 @@ import LandingsPage from './ui/pages/LandingsPage.jsx';
 import UiPage1 from './ui/pages/UiPage1.jsx';
 import UiPage2 from './ui/pages/UiPage2.jsx';
 import UiPage3 from './ui/pages/UiPage3.jsx';
+import UiPage4 from './ui/pages/UiPage4.jsx';
 
 export default function ConfigUi() {
 
@@ -26,12 +27,6 @@ export default function ConfigUi() {
         setAccentMaterial,
 
         setTableTopMaterial,
-
-        tapType,
-        setTapType,
-
-        stoveType,
-        setStoveType,
 
         applianceType,
         setApplianceType,
@@ -111,51 +106,12 @@ export default function ConfigUi() {
                     </>}
 
                     {currentPage === 3 && <>
-
-                        <div
-                            className='config-ui__title'
-                        >
-                            <span><h2>4. The Sink</h2></span>
-                        </div>
-
-
-                        <div
-                            className='config-ui__options'
-                        >
-
-                            <details
-                                open
-                                className='config-ui__details'
-                            >
-                                <summary>Faucet type:
-                                    <span>
-                                        {tapType === '1' ? ' Brandwood 3' : ' Bridge'}
-                                    </span>
-                                </summary>
-                                <div
-                                    className='config-ui__selection-buttons'
-                                >
-                                    <button
-                                        className={tapType === '1' ? 'active-selection-button' : ''}
-                                        onClick={() => setTapType('1')}
-                                    >
-                                        Brandwood 3
-                                    </button>
-                                    <button
-                                        className={tapType === '2' ? 'active-selection-button' : ''}
-                                        onClick={() => setTapType('2')}
-                                    >
-                                        Bridge
-                                    </button>
-                                </div>
-                            </details>
-
-                        </div>
+                        <UiPage4 />
                     </>}
 
                     {currentPage === 4 && <>
 
-                        <div
+                        {/* <div
                             className='config-ui__title'
                         >
                             <span><h2>5. The Cooktop</h2></span>
@@ -192,7 +148,7 @@ export default function ConfigUi() {
                                     </button>
                                 </div>
                             </details>
-                        </div>
+                        </div> */}
 
                     </>}
 

@@ -59,7 +59,7 @@ export default create((set) => {
 
         tapType: '1',
 
-        stoveType: 'electric',
+        stoveType: '1',
 
         applianceType: 'fridge',
         wineStandSize: 'medium',

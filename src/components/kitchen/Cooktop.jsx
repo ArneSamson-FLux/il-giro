@@ -210,7 +210,7 @@ export default function Cooktop() {
                     materialUrl={tableTopMaterial}
                 />
 
-                {stoveType === "gas" &&
+                {stoveType === "1" &&
                     <GasStove
                         props={
                             {
@@ -220,7 +220,7 @@ export default function Cooktop() {
                     />
                 }
 
-                {stoveType === "electric" &&
+                {stoveType === "2" &&
                     <ElectricStove
                         props={
                             {
