@@ -104,6 +104,13 @@ export default function Sink({ props }) {
     }
 
     const handlePointerOver = () => {
+        // sinkRef.current.children.forEach((child) => {
+        //     child.children.forEach((child) => {
+        //         if (child.name === "bakePlaneSmall-group") {
+        //             setNeedPointer(false);
+        //         };
+        //     });
+        // });
         setNeedPointer(true);
         if (dragMode) return;
         setHover(true);

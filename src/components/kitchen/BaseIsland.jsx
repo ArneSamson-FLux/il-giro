@@ -65,6 +65,7 @@ export default function BaseIsland({ props }) {
     return <>
 
         <mesh
+            name='base-island-mesh'
             ref={meshRef}
             castShadow
             receiveShadow
