@@ -1,42 +1,24 @@
+// ModuleSelectionButtons.jsx
 import React, { useEffect } from "react";
 
-import useConfig from "../../../store/useConfigStore";
-import useScene from "../../../store/useScene";
-import useUIStore from "../../../store/useUIStore";
+import useConfigStore from "../../../store/useConfigStore";
 
-import BevelledSelection from "../components/BevelledSelection";
-
-export default function LandingsPage() {
+export default function ModuleSelectionButtons({ summary, options }) {
 
     const {
         sinkChosen,
         cooktopChosen,
         towerChosen,
         tableChosen,
-        setSinkChosen,
-        setCooktopChosen,
-        setTowerChosen,
-        setTableChosen,
 
         setSinkPosition,
         setSinkRotation,
         setCooktopPosition,
         setCooktopRotation,
+
         setTowerPosition,
         setTablePosition,
-    } = useConfig();
-
-    const {
-        setCameraFocus,
-    } = useScene();
-
-    const {
-        setLandingPageVisible,
-    } = useUIStore();
-
-    // useEffect(() => {
-    //     setPositions();
-    // }, [sinkChosen, cooktopChosen, towerChosen, tableChosen, setSinkPosition, setCooktopPosition, setTowerPosition, setTablePosition]);
+    } = useConfigStore();
 
 
     function setPositions() {
@@ -124,29 +106,30 @@ export default function LandingsPage() {
 
     }
 
+    useEffect(() => {
+        setPositions()
+    }, [sinkChosen, cooktopChosen, towerChosen, tableChosen]);
 
 
-    return <>
-        <div
-            className='landings-page'
-        >
-
-            <button
-                // disabled={!(sinkChosen || cooktopChosen || towerChosen || tableChosen)}
-                onClick={() => {
-                    setLandingPageVisible(false);
-                    setCameraFocus([0, 1, 0]);
-                    setPositions();
-                }
-                }
-            >
-                <h5
-                >
-                    Start configuring
-                </h5>
-            </button>
-
-
-        </div >
-    </>
+    return (
+        <details open className="config-ui__details">
+            <summary>
+                {summary}
+            </summary>
+            <div className="config-ui__selection-buttons">
+                {options.map((option, index) => (
+                    <button
+                        key={index}
+                        className={option.chosen ? "active-selection-button" : ""}
+                        onClick={() => {
+                            option.setChosen(!option.chosen)
+                            setPositions()
+                        }}
+                    >
+                        {option.label}
+                    </button>
+                ))}
+            </div>
+        </details>
+    );
 }

@@ -14,6 +14,7 @@ import UiPage2 from './ui/pages/UiPage2.jsx';
 import UiPage3 from './ui/pages/UiPage3.jsx';
 import UiPage4 from './ui/pages/UiPage4.jsx';
 import UiPage5 from './ui/pages/UiPage5.jsx';
+import ModuleSelectionPage from './ui/pages/ModuleSelectionPage.jsx';
 
 export default function ConfigUi() {
 
@@ -67,9 +68,9 @@ export default function ConfigUi() {
 
     return (
         <>
-            {/* {landingPageVisible &&
+            {landingPageVisible &&
                 <LandingsPage />
-            } */}
+            }
 
             <ToolTip />
 
@@ -86,6 +87,7 @@ export default function ConfigUi() {
                     <ConfigNav />
 
                     {currentPage === 0 && <>
+                        <ModuleSelectionPage />
                     </>}
 
                     {currentPage === 1 && <>
