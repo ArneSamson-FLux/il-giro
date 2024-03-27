@@ -112,7 +112,10 @@ export default function ModuleSelectionButtons({ summary, options }) {
 
 
     return (
-        <details open className="config-ui__details">
+        <details
+            open
+            className="config-ui__details"
+        >
             <summary>
                 {summary}
             </summary>

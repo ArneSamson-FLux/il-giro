@@ -677,6 +677,21 @@ summary span {
     outline-offset: 2px;
 }
 
+@keyframes pulse {
+    0% {
+        border-color: var(--off-black);
+    }
+
+    50% {
+        border-color: transparent;
+    }
+
+    100% {
+        opacity: var(--off-black);
+    }
+}
+
+
 @media(max-width: 1000px) {
     .config-wrapper {
         top: 55%;
