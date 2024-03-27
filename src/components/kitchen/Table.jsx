@@ -94,12 +94,10 @@ export default function Table({ props }) {
 
     const handlePointerOver = () => {
         setNeedPointer(true);
-        setHover(true);
     }
 
     const handlePointerOut = () => {
         setNeedPointer(false);
-        setHover(false);
     }
 
     const handlePointerMissed = () => {

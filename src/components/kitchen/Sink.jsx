@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
+import BaseIsland from './BaseIsland.jsx';
+
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
 
@@ -209,28 +211,7 @@ export default function Sink({ props }) {
                 {...(dragMode ? dragPos() : {})}
 
             >
-                <mesh
-                    ref={meshRef}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes['island-low'].geometry}
-                    material={material}
-                >
-                    <mesh
-                        visible={allBevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.bevel.geometry}
-                        material={material}
-                    />
-                    <mesh
-                        visible={!allBevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.straight.geometry}
-                        material={material}
-                    />
-                </mesh>
+                <BaseIsland />
 
                 <>
                     <TableTopCutOut
