@@ -28,13 +28,10 @@ import useUIStore from '../../store/useUIStore.jsx';
 export default function Sink({ props }) {
 
     const {
-        mainMaterial,
         tableTopMaterial,
 
         sinkPosition,
         sinkRotation,
-
-        allBevelled,
 
         tapType,
 
@@ -50,51 +47,7 @@ export default function Sink({ props }) {
 
     const { setCurrentPage } = useUIStore();
 
-
-    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        mainMaterial + "albedo.jpg",
-        mainMaterial + "normal.jpg",
-        mainMaterial + "roughness.jpg",
-        mainMaterial + "metallic.jpg"
-    ]);
-
-    albedoTexture.anisotropy = 16;
-
-    metallnessTexture.name = "metalnessMap";
-
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
-
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        normalMap: normalTexture,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-        roughness: 1,
-    });
-
-    const { nodes, materials } = useGLTF("./models/base-island.glb");
-
-
-    const meshRef = useRef();
-
-    useEffect(() => {
-
-        if (meshRef.current) {
-            const geometry = meshRef.current.geometry;
-
-            const uvAttributeName = allBevelled ? "uv1" : "uv2";
-            const uvAttribute = geometry.getAttribute(uvAttributeName);
-
-            if (uvAttribute) {
-                const uvBufferAttribute = new THREE.BufferAttribute(uvAttribute.array, uvAttribute.itemSize);
-
-                geometry.setAttribute('uv', uvBufferAttribute);
-            }
-        }
-    }, [nodes, allBevelled]);
-
-    const { cameraFocus, setCameraFocus, setIsFocussedOnIsland } = useScene();
+    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -141,7 +94,7 @@ export default function Sink({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
-    const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
+    // const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
 
     const handleClick = () => {
         if (dragMode) return;
@@ -273,5 +226,3 @@ export default function Sink({ props }) {
 
     </>
 }
-
-useGLTF.preload('./models/base-island.glb')
