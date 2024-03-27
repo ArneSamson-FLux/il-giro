@@ -69,6 +69,7 @@ export default function BaseIsland({ props }) {
             receiveShadow
             geometry={nodes['island-low'].geometry}
             material={material}
+            {...props}
         >
             <mesh
                 visible={allBevelled}
