@@ -111,6 +111,20 @@ export default function Table({ props }) {
                     }}
                 />
 
+                {/* <mesh
+                    rotation={[-Math.PI / 2, 0, 0]}
+                    position={[0, 0.000001, 0]}
+                    receiveShadow={true}
+                    castShadow={false}
+                >
+                    <planeGeometry args={[4, 2]} />
+                    <meshStandardMaterial
+                        attach="material"
+                        color="#fff"
+                        roughness={0}
+                    />
+                </mesh> */}
+
             </group>
 
         </a.group>

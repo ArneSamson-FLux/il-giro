@@ -5,6 +5,7 @@ import * as THREE from 'three';
 
 import Scene from './components/Scene.jsx';
 import Lights from './components/lighting&shadows/Lights.jsx';
+import Shadows from './components/lighting&shadows/Shadows.jsx';
 import Env from './components/lighting&shadows/Env.jsx';
 
 import useScene from './store/useScene.jsx'
@@ -124,6 +125,8 @@ export default function Experience() {
         <Env />
 
         <Lights />
+
+        <Shadows />
 
         <Scene />
 
