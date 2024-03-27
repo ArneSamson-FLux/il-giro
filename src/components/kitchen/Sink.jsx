@@ -98,7 +98,7 @@ export default function Sink({ props }) {
 
     const handleClick = () => {
         if (dragMode) return;
-        setCurrentPage(2);
+        setCurrentPage(3);
         setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
         setIsFocussedOnIsland(true, false, false);
     }

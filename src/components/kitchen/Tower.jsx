@@ -198,7 +198,7 @@ export default function Tower({ props }) {
 
     const handleClick = () => {
         if (dragMode) return;
-        setCurrentPage(4);
+        setCurrentPage(5);
         setCameraFocus([towerPosition[0], towerPosition[1] + 1, towerPosition[2]]);
         setIsFocussedOnIsland(false, false, true);
     }

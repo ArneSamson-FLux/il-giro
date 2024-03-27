@@ -89,7 +89,7 @@ export default function Cooktop() {
 
     const handleClick = () => {
         if (dragMode) return;
-        setCurrentPage(3);
+        setCurrentPage(4);
         setCameraFocus([cooktopPosition[0], cooktopPosition[1] + 1, cooktopPosition[2]]);
         setIsFocussedOnIsland(false, true, false);
     }
