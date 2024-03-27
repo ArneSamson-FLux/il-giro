@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber';
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
+import BaseIsland from './BaseIsland.jsx';
+
 import TableTop from './accessoires/TableTop.jsx';
 
 import GasStove from './accessoires/GasStove.jsx'
@@ -22,13 +24,10 @@ import useUIStore from '../../store/useUIStore.jsx';
 export default function Cooktop() {
 
     const {
-        mainMaterial,
         tableTopMaterial,
 
         cooktopPosition,
         cooktopRotation,
-
-        allBevelled,
 
         stoveType,
 
@@ -39,45 +38,6 @@ export default function Cooktop() {
     } = useConfig();
 
     const { setCurrentPage } = useUIStore();
-
-    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        mainMaterial + "albedo.jpg",
-        mainMaterial + "normal.jpg",
-        mainMaterial + "roughness.jpg",
-        mainMaterial + "metallic.jpg"
-    ]);
-
-    albedoTexture.anisotropy = 16;
-
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
-
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        normalMap: normalTexture,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-    });
-
-    const { nodes, materials } = useGLTF("./models/base-island.glb");
-
-    const meshRef = useRef();
-
-    useEffect(() => {
-
-        if (meshRef.current) {
-            const geometry = meshRef.current.geometry;
-
-            const uvAttributeName = allBevelled ? "uv1" : "uv2";
-            const uvAttribute = geometry.getAttribute(uvAttributeName);
-
-            if (uvAttribute) {
-                const uvBufferAttribute = new THREE.BufferAttribute(uvAttribute.array, uvAttribute.itemSize);
-
-                geometry.setAttribute('uv', uvBufferAttribute);
-            }
-        }
-    }, [nodes, allBevelled]);
 
     const { setCameraFocus, setIsFocussedOnIsland, isFocussedOnIsland } = useScene();
 
@@ -125,7 +85,7 @@ export default function Cooktop() {
     );
     //_____________________________________________________________________________________________________________
 
-    const indicatorPosition = [cooktopPosition[0], 0.1, cooktopPosition[2]];
+    // const indicatorPosition = [cooktopPosition[0], 0.1, cooktopPosition[2]];
 
     const handleClick = () => {
         if (dragMode) return;
@@ -192,28 +152,7 @@ export default function Cooktop() {
                 {...(dragMode ? dragPos() : {})}
             >
 
-                <mesh
-                    ref={meshRef}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes['island-low'].geometry}
-                    material={material}
-                >
-                    <mesh
-                        visible={allBevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.bevel.geometry}
-                        material={material}
-                    />
-                    <mesh
-                        visible={!allBevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.straight.geometry}
-                        material={material}
-                    />
-                </mesh>
+                <BaseIsland />
 
                 <TableTop
                     props={
@@ -261,5 +200,3 @@ export default function Cooktop() {
 
     </>
 }
-
-useGLTF.preload('./models/base-island.glb')
