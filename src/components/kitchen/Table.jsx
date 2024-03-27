@@ -40,7 +40,7 @@ export default function Table({ props }) {
 
     const handleClick = () => {
         setCurrentPage(2);
-        setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
+        setCameraFocus([tablePosition[0], tablePosition[1] + 1, tablePosition[2]]);
         setIsFocussedOnIsland(true, false, false);
     }
 
@@ -60,14 +60,14 @@ export default function Table({ props }) {
     return <>
 
         <a.group
-            name='sink-group'
+            name='table-group'
             ref={tableRef}
             position={tablePosition}
             rotation={tableRotation}
             dispose={null}
         >
             <group
-                name='sink-hovers-group'
+                name='table-hovers-group'
                 onPointerOver={
                     (e) => {
                         handlePointerOver();
