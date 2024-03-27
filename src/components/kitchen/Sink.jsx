@@ -213,16 +213,6 @@ export default function Sink({ props }) {
 
             </group>
 
-            <BakePlaneSmall
-                props={
-                    {
-                        position: [0, 0, 0],
-                        rotation: [0, -0.5, 0],
-                    }
-                }
-
-            />
         </a.group>
-
     </>
 }

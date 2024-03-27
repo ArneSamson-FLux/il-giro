@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three'
 import { useGLTF, useCursor } from '@react-three/drei'
-
 import { useTexture } from '../../helper/useTexture.tsx';
+
+import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
 
 import useScene from '../../store/useScene.jsx';
 import useConfig from '../../store/useConfigStore.jsx';
@@ -69,6 +70,7 @@ export default function BaseIsland({ props }) {
             receiveShadow
             geometry={nodes['island-low'].geometry}
             material={material}
+            rotation={[0, Math.PI, 0]}
             {...props}
         >
             <mesh
@@ -86,6 +88,10 @@ export default function BaseIsland({ props }) {
                 material={material}
             />
         </mesh>
+
+        <BakePlaneSmall
+            props={{ ...props }}
+        />
 
     </>
 }

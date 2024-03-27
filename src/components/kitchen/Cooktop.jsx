@@ -95,12 +95,14 @@ export default function Cooktop() {
     }
 
     const handlePointerOver = () => {
+        setNeedPointer(true);
         if (dragMode) return;
         setHover(true);
     }
 
     const handlePointerOut = () => {
         if (dragMode) return;
+        setNeedPointer(false);
         setHover(false);
     }
 
@@ -131,7 +133,7 @@ export default function Cooktop() {
                 }
                 onPointerOut={
                     (e) => {
-                        setNeedPointer(false);
+                        handlePointerOut();
                         e.stopPropagation();
                     }
                 }
@@ -187,14 +189,6 @@ export default function Cooktop() {
                 }
             </group>
 
-            <BakePlaneSmall
-                props={
-                    {
-                        position: [0, 0, 0],
-                        rotation: [0, 0.5, 0],
-                    }
-                }
-            />
 
         </a.group>
 

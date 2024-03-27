@@ -476,17 +476,17 @@ export default function Tower({ props }) {
 
             </group>
 
-            <BakePlane
-                props={
-                    {
-                        position: [0, 0, 0],
-                    }
-                }
-
-            />
 
         </a.group>
 
+        <BakePlane
+            props={
+                {
+                    position: [towerPosition[0], 0.001, towerPosition[2]],
+                }
+            }
+
+        />
 
 
     </>
