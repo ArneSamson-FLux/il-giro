@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useConfigStore from "../../../store/useConfigStore.jsx";
 
 import ModuleSelectionButtons from "../components/ModuleSelectionButtons.jsx";
-import DoorRotationToggle from "../components/toggle/DoorRotationToggle.jsx";
+import BevelledSelection from "../components/BevelledSelection.jsx";
 
 export default function ModuleSelectionPage() {
 
@@ -41,6 +41,8 @@ export default function ModuleSelectionPage() {
                 summary="Select module(s): "
                 options={moduleOptions}
             />
+
+            <BevelledSelection />
 
 
         </div>

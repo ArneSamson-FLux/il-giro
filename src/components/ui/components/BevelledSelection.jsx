@@ -1,33 +1,17 @@
 import React from "react";
 
-import useConfig from "../../../store/useConfigStore.jsx";
+import useConfigStore from "../../../store/useConfigStore";
 
 export default function BevelledSelection() {
 
     const {
         allBevelled,
         setAllBevelled,
-    } = useConfig();
+    } = useConfigStore();
 
 
     return <>
-        <div
-            className='landings-page__bevel-option'
-        >
-            <div
-                className="landings-page__bevel-option__images"
-            >
-                <div
-                    className={!allBevelled ? "landings-page__bevel-option__images__image--selected" : "landings-page__bevel-option__images__image"}
-                >
-                    <img src="/images/UI/straight.webp" alt="render of straight module" />
-                </div>
-                <div
-                    className={allBevelled ? "landings-page__bevel-option__images__image--selected" : "landings-page__bevel-option__images__image"}
-                >
-                    <img src="/images/UI/bevel.webp" alt="render of bevelled module" />
-                </div>
-            </div>
+        <details open className='config-ui__details'>
             <summary>
                 curved:
                 <span>{allBevelled ? ' yes' : ' no'}</span>
@@ -40,7 +24,6 @@ export default function BevelledSelection() {
                 />
                 <span className="config-ui__toggle-slider"></span>
             </label>
-
-        </div>
+        </details>
     </>
 }
