@@ -22,6 +22,7 @@ export default function Tower({ props }) {
         mainMaterial,
 
         towerPosition,
+        towerRotation,
 
         applianceType,
         doorOpeningRotation,
@@ -227,6 +228,7 @@ export default function Tower({ props }) {
             ref={towerRef}
             {...props}
             position={towerPosition}
+            rotation={towerRotation}
             dispose={null}
         // {...springProps}
         >

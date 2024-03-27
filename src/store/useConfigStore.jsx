@@ -50,6 +50,7 @@ export default create((set) => {
         cooktopRotation: [0, -0.5, 0],
 
         towerPosition: [0, 0, -1],
+        towerRotation: [0, 0, 0],
 
         tablePosition: [0, 0, 1],
         tableRotation: [0, 0, 0],
@@ -95,6 +96,7 @@ export default create((set) => {
         setCooktopRotation: (rotation) => set({ cooktopRotation: rotation }),
 
         setTowerPosition: (position) => set({ towerPosition: position }),
+        setTowerRotation: (rotation) => set({ towerRotation: rotation }),
 
         setTablePosition: (position) => set({ tablePosition: position }),
         setTableRotation: (rotation) => set({ tableRotation: rotation }),
