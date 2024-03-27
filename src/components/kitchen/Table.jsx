@@ -17,6 +17,7 @@ export default function Table({ props }) {
         tableTopMaterial,
 
         tablePosition,
+        tableRotation,
 
         allBevelled,
     } = useConfig();
@@ -62,6 +63,7 @@ export default function Table({ props }) {
             name='sink-group'
             ref={tableRef}
             position={tablePosition}
+            rotation={tableRotation}
             dispose={null}
         >
             <group

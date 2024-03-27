@@ -45,10 +45,14 @@ export default create((set) => {
 
         sinkPosition: [-1.5, 0, 0],
         sinkRotation: [0, 0.5, 0],
+
         cooktopPosition: [1.5, 0, 0],
         cooktopRotation: [0, -0.5, 0],
+
         towerPosition: [0, 0, -1],
+
         tablePosition: [0, 0, 1],
+        tableRotation: [0, 0, 0],
 
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
@@ -93,6 +97,7 @@ export default create((set) => {
         setTowerPosition: (position) => set({ towerPosition: position }),
 
         setTablePosition: (position) => set({ tablePosition: position }),
+        setTableRotation: (rotation) => set({ tableRotation: rotation }),
 
         //all materials
         setMainMaterial: (material) => set({ mainMaterial: material }),
