@@ -27,11 +27,6 @@ export default function ModuleSelectionPage() {
     ];
     const anyModuleChosen = moduleOptions.some(option => option.chosen);
 
-    // const moduleSelectionButtonsStyle = {
-    //     border: anyModuleChosen ? "none" : "2px dashed var(--off-black)",
-    //     animation: anyModuleChosen ? "" : "pulse 1s infinite",
-    // };
-
     return <>
 
         <div

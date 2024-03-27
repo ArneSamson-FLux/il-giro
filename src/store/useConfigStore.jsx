@@ -38,10 +38,10 @@ export default create((set) => {
         allCategories: [],
 
         //config settings_______________________________________________________________________________
-        sinkChosen: false,
-        cooktopChosen: false,
-        towerChosen: false,
-        tableChosen: false,
+        sinkChosen: true,
+        cooktopChosen: true,
+        towerChosen: true,
+        tableChosen: true,
 
         sinkPosition: [-1.5, 0, 0],
         sinkRotation: [0, 0.5, 0],
