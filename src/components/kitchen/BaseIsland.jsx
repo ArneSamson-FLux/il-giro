@@ -13,8 +13,6 @@ export default function BaseIsland({ props }) {
     const {
         mainMaterial,
 
-        tablePosition,
-
         allBevelled,
     } = useConfig();
 
