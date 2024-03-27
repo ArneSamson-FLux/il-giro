@@ -58,6 +58,9 @@ export default function Tower({ props }) {
     const towerAOMap = useTexture("/images/bakes/tower-ao.jpg");
     towerAOMap.flipY = false;
 
+    const towerAOMapBevelled = useTexture("/images/bakes/tower-ao2.jpg");
+    towerAOMapBevelled.flipY = false;
+
     const materialWithAo = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
@@ -66,6 +69,17 @@ export default function Tower({ props }) {
         metalness: 1,
         roughness: 1,
         aoMap: towerAOMap,
+        aoMapIntensity: 0.8,
+    });
+
+    const materialWithAoBevelled = new THREE.MeshStandardMaterial({
+        map: albedoTexture,
+        normalMap: normalTexture,
+        roughnessMap: roughnessTexture,
+        metalnessMap: metallnessTexture,
+        metalness: 1,
+        roughness: 1,
+        aoMap: towerAOMapBevelled,
         aoMapIntensity: 0.8,
     });
 
@@ -249,7 +263,7 @@ export default function Tower({ props }) {
                     castShadow
                     receiveShadow
                     geometry={nodes.tower.geometry}
-                    material={materialWithAo}
+                    material={allBevelled ? materialWithAoBevelled : materialWithAo}
                 >
 
                     <mesh name='tower-bevel'
