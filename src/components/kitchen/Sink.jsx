@@ -103,14 +103,17 @@ export default function Sink({ props }) {
         setIsFocussedOnIsland(true, false, false);
     }
 
-    const handlePointerOver = () => {
-        // sinkRef.current.children.forEach((child) => {
-        //     child.children.forEach((child) => {
-        //         if (child.name === "bakePlaneSmall-group") {
-        //             setNeedPointer(false);
-        //         };
+    const handlePointerOver = (e) => {
+        e.stopPropagation();
+        // const hasBakePlaneChild = sinkRef.current.children.some((child) => {
+        //     return child.children.some((grandchild) => {
+        //         return grandchild.name === "bakePlaneSmall-group";
         //     });
         // });
+
+        // if (hasBakePlaneChild) {
+        //     return;
+        // }
         setNeedPointer(true);
         if (dragMode) return;
         setHover(true);
@@ -144,7 +147,7 @@ export default function Sink({ props }) {
                 name='sink-hovers-group'
                 onPointerOver={
                     (e) => {
-                        handlePointerOver();
+                        handlePointerOver(e);
                         e.stopPropagation();
                     }
                 }
