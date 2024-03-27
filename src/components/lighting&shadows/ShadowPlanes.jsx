@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three'
-import { useTexture, useGLTF, useCursor } from '@react-three/drei'
+import { useTexture, useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber';
 
 export function BakePlane({ props }) {
@@ -9,10 +9,6 @@ export function BakePlane({ props }) {
 
     const alphaMap1 = useTexture('./images/bakes/bake.jpg');
     alphaMap1.flipY = false;
-
-    const [needPointer, setNeedPointer] = useState(false);
-
-    useCursor(needPointer, "pointer")
 
     const bigPlaneRef = useRef();
 
@@ -41,9 +37,6 @@ export function BakePlane({ props }) {
             onClick={(e) => {
                 e.stopPropagation();
             }}
-            onPointerEnter={(e) => {
-                setNeedPointer(false);
-            }}
         >
             <mesh
                 name='bakePlane-mesh'
@@ -70,10 +63,6 @@ export function BakePlaneSmall({ props }) {
 
     const alphaMap1 = useTexture('./images/bakes/bake2.jpg');
     alphaMap1.flipY = false;
-
-    const [needPointer, setNeedPointer] = useState(false);
-
-    useCursor(needPointer, "pointer")
 
     const smallPlaneRef = useRef();
 
@@ -103,9 +92,6 @@ export function BakePlaneSmall({ props }) {
             dispose={null}
             onClick={(e) => {
                 e.stopPropagation();
-            }}
-            onPointerEnter={(e) => {
-                setNeedPointer(false);
             }}
         >
             <mesh
