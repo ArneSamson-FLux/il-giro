@@ -67,9 +67,9 @@ export default function ConfigUi() {
 
     return (
         <>
-            {landingPageVisible &&
+            {/* {landingPageVisible &&
                 <LandingsPage />
-            }
+            } */}
 
             <ToolTip />
 
@@ -86,28 +86,26 @@ export default function ConfigUi() {
                     <ConfigNav />
 
                     {currentPage === 0 && <>
-                        <UiPage1 />
                     </>}
 
                     {currentPage === 1 && <>
-                        <UiPage2 />
+                        <UiPage1 />
                     </>}
 
                     {currentPage === 2 && <>
-                        <UiPage3 />
+                        <UiPage2 />
                     </>}
 
                     {currentPage === 3 && <>
-                        <UiPage4 />
+                        <UiPage3 />
                     </>}
 
                     {currentPage === 4 && <>
-                        <UiPage5 />
+                        <UiPage4 />
                     </>}
 
                     {currentPage === 5 && <>
-
-
+                        <UiPage5 />
                     </>}
 
                 </div>
