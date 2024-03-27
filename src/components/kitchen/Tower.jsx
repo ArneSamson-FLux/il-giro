@@ -55,7 +55,7 @@ export default function Tower({ props }) {
         roughness: 1,
     });
 
-    const towerAOMap = useTexture("./public/images/bakes/tower-ao.jpg");
+    const towerAOMap = useTexture("/images/bakes/tower-ao.jpg");
     towerAOMap.flipY = false;
 
     const materialWithAo = new THREE.MeshStandardMaterial({
