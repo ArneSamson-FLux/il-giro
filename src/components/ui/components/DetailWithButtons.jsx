@@ -15,8 +15,10 @@ export default function DetailWithButtons({ summary, options, selectedOption, se
                 {options.map((option, index) => (
                     <button
                         key={index}
-                        className={selectedOption === option.value ? 'active-selection-button' : ''}
-                        onClick={() => setOption(option.value)}
+                        className={selectedOption === option.label ? 'active-selection-button' : ''}
+                        onClick={() => {
+                            setOption(option.value)
+                        }}
                     >
                         {option.label}
                     </button>
