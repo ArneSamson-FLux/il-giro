@@ -38,17 +38,22 @@ export default create((set) => {
         allCategories: [],
 
         //config settings_______________________________________________________________________________
-        sinkChosen: false,
-        cooktopChosen: false,
-        towerChosen: false,
-        tableChosen: false,
+        sinkChosen: true,
+        cooktopChosen: true,
+        towerChosen: true,
+        tableChosen: true,
 
-        sinkPosition: [-1.5, 0, 0],
-        sinkRotation: [0, 0.5, 0],
-        cooktopPosition: [1.5, 0, 0],
-        cooktopRotation: [0, -0.5, 0],
-        towerPosition: [0, 0, -1],
-        tablePosition: [0, 0, 1],
+        sinkPosition: [0, 0, 0],
+        sinkRotation: [0, 0, 0],
+
+        cooktopPosition: [0, 0, 0],
+        cooktopRotation: [0, 0, 0],
+
+        towerPosition: [0, 0, 0],
+        towerRotation: [0, 0, 0],
+
+        tablePosition: [0, 0, 0],
+        tableRotation: [0, 0, 0],
 
         mainMaterial: "./placeholder/",
         accentMaterial: "./placeholder/",
@@ -91,8 +96,10 @@ export default create((set) => {
         setCooktopRotation: (rotation) => set({ cooktopRotation: rotation }),
 
         setTowerPosition: (position) => set({ towerPosition: position }),
+        setTowerRotation: (rotation) => set({ towerRotation: rotation }),
 
         setTablePosition: (position) => set({ tablePosition: position }),
+        setTableRotation: (rotation) => set({ tableRotation: rotation }),
 
         //all materials
         setMainMaterial: (material) => set({ mainMaterial: material }),

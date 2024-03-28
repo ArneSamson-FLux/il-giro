@@ -72,51 +72,42 @@ export default function Experience() {
 
     const [prevCamDist, setPrevCamDist] = useState(4);
 
-    useEffect(() => {
-        const handleScroll = (e) => {
-            const currentDistance = cameraPosition.distanceTo(
-                new THREE.Vector3(...cameraFocus)
-            );
-            const roundedCurrentDistance =
-                Math.round(currentDistance * 100) / 100;
+    // useEffect(() => {
+    //     const handleScroll = (e) => {
 
-            // console.log('before ', + prevCamDist, roundedCurrentDistance);
+    //         const currentDistance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
+    //         const roundedCurrentDistance = Math.round(currentDistance * 100) / 100;
 
-            if (prevCamDist < roundedCurrentDistance) {
-                const distance = cameraPosition.distanceTo(
-                    new THREE.Vector3(...cameraFocus)
-                );
-                const roundedDistanceToCamera =
-                    Math.round(distance * 100) / 100;
+    //         if (prevCamDist < roundedCurrentDistance) {
 
-                if (
-                    roundedDistanceToCamera &&
-                    roundedDistanceToCamera > 3.98 &&
-                    !isDragging
-                ) {
-                    setCameraFocus([0, 1, 0]);
-                    setCurrentPage(0);
-                    setIsFocussedOnIsland(false, false, false);
-                }
-            }
-            setPrevCamDist(roundedCurrentDistance);
-            // console.log('after ', + prevCamDist, roundedCurrentDistance);
-        };
+    //             const distance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
+    //             const roundedDistanceToCamera = Math.round(distance * 100) / 100;
 
-        window.addEventListener("wheel", handleScroll);
 
-        return () => {
-            window.removeEventListener("wheel", handleScroll);
-        };
-    }, [
-        cameraPosition,
-        isDragging,
-        cameraFocus,
-        setCameraFocus,
-        setCurrentPage,
-        setIsFocussedOnIsland,
-        prevCamDist,
-    ]);
+    //             if (roundedDistanceToCamera && roundedDistanceToCamera > 3.98 && !isDragging) {
+    //                 setCameraFocus([0, 1, 0]);
+    //                 setCurrentPage(1);
+    //                 setIsFocussedOnIsland(false, false, false);
+    //             }
+
+    //         }
+    //         setPrevCamDist(roundedCurrentDistance);
+    //     };
+
+    //     window.addEventListener('wheel', handleScroll);
+
+    //     return () => {
+    //         window.removeEventListener('wheel', handleScroll);
+    //     };
+    // }, [
+    //     cameraPosition,
+    //     isDragging,
+    //     cameraFocus,
+    //     setCameraFocus,
+    //     setCurrentPage,
+    //     setIsFocussedOnIsland,
+    //     prevCamDist
+    // ]);
 
     useFrame((state) => {
         if (camera.current) {

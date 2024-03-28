@@ -4,6 +4,7 @@ import { GridHelper } from 'three'
 import Cooktop from './kitchen/Cooktop.jsx'
 import Sink from './kitchen/Sink.jsx'
 import Tower from './kitchen/Tower.jsx'
+import Table from './kitchen/Table.jsx'
 
 import ReflectivePlane from './lighting&shadows/ReflectivePlane.jsx'
 
@@ -15,6 +16,7 @@ export default function Scene() {
         sinkChosen,
         cooktopChosen,
         towerChosen,
+        tableChosen,
 
         dragMode
     } = useConfig();
@@ -35,6 +37,11 @@ export default function Scene() {
 
         {towerChosen &&
             <Tower
+            />
+        }
+
+        {tableChosen &&
+            <Table
             />
         }
 

@@ -22,6 +22,7 @@ export default function Tower({ props }) {
         mainMaterial,
 
         towerPosition,
+        towerRotation,
 
         applianceType,
         doorOpeningRotation,
@@ -207,7 +208,7 @@ export default function Tower({ props }) {
 
     const handleClick = () => {
         if (dragMode) return;
-        setCurrentPage(4);
+        setCurrentPage(5);
         setCameraFocus([towerPosition[0], towerPosition[1] + 1, towerPosition[2]]);
         setIsFocussedOnIsland(false, false, true);
     }
@@ -237,6 +238,7 @@ export default function Tower({ props }) {
             ref={towerRef}
             {...props}
             position={towerPosition}
+            rotation={towerRotation}
             dispose={null}
         // {...springProps}
         >
@@ -484,17 +486,17 @@ export default function Tower({ props }) {
 
             </group>
 
-            <BakePlane
-                props={
-                    {
-                        position: [0, 0, 0],
-                    }
-                }
-
-            />
 
         </a.group>
 
+        <BakePlane
+            props={
+                {
+                    position: [towerPosition[0], 0.001, towerPosition[2]],
+                }
+            }
+
+        />
 
 
     </>

@@ -5,6 +5,8 @@ import { useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
+import BaseIsland from './BaseIsland.jsx';
+
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
 
@@ -26,13 +28,10 @@ import useUIStore from '../../store/useUIStore.jsx';
 export default function Sink({ props }) {
 
     const {
-        mainMaterial,
         tableTopMaterial,
 
         sinkPosition,
         sinkRotation,
-
-        allBevelled,
 
         tapType,
 
@@ -48,53 +47,7 @@ export default function Sink({ props }) {
 
     const { setCurrentPage } = useUIStore();
 
-
-    const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
-        mainMaterial + "albedo.jpg",
-        mainMaterial + "normal.jpg",
-        mainMaterial + "roughness.jpg",
-        mainMaterial + "metallic.jpg"
-    ]);
-
-    albedoTexture.anisotropy = 16;
-
-    metallnessTexture.name = "metalnessMap";
-
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
-
-    const normalScale = new THREE.Vector2(0.5, 0.5);
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        normalMap: normalTexture,
-        normalScale: normalScale,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-        roughness: 1,
-    });
-
-    const { nodes, materials } = useGLTF("./models/base-island.glb");
-
-
-    const meshRef = useRef();
-
-    useEffect(() => {
-
-        if (meshRef.current) {
-            const geometry = meshRef.current.geometry;
-
-            const uvAttributeName = allBevelled ? "uv1" : "uv2";
-            const uvAttribute = geometry.getAttribute(uvAttributeName);
-
-            if (uvAttribute) {
-                const uvBufferAttribute = new THREE.BufferAttribute(uvAttribute.array, uvAttribute.itemSize);
-
-                geometry.setAttribute('uv', uvBufferAttribute);
-            }
-        }
-    }, [nodes, allBevelled]);
-
-    const { cameraFocus, setCameraFocus, setIsFocussedOnIsland } = useScene();
+    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -141,16 +94,26 @@ export default function Sink({ props }) {
     );
     //_____________________________________________________________________________________________________________
 
-    const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
+    // const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
 
     const handleClick = () => {
         if (dragMode) return;
-        setCurrentPage(2);
+        setCurrentPage(3);
         setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
         setIsFocussedOnIsland(true, false, false);
     }
 
-    const handlePointerOver = () => {
+    const handlePointerOver = (e) => {
+        e.stopPropagation();
+        // const hasBakePlaneChild = sinkRef.current.children.some((child) => {
+        //     return child.children.some((grandchild) => {
+        //         return grandchild.name === "bakePlaneSmall-group";
+        //     });
+        // });
+
+        // if (hasBakePlaneChild) {
+        //     return;
+        // }
         setNeedPointer(true);
         if (dragMode) return;
         setHover(true);
@@ -184,7 +147,7 @@ export default function Sink({ props }) {
                 name='sink-hovers-group'
                 onPointerOver={
                     (e) => {
-                        handlePointerOver();
+                        handlePointerOver(e);
                         e.stopPropagation();
                     }
                 }
@@ -211,28 +174,7 @@ export default function Sink({ props }) {
                 {...(dragMode ? dragPos() : {})}
 
             >
-                <mesh
-                    ref={meshRef}
-                    castShadow
-                    receiveShadow
-                    geometry={nodes['island-low'].geometry}
-                    material={material}
-                >
-                    <mesh
-                        visible={allBevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.bevel.geometry}
-                        material={material}
-                    />
-                    <mesh
-                        visible={!allBevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.straight.geometry}
-                        material={material}
-                    />
-                </mesh>
+                <BaseIsland />
 
                 <>
                     <TableTopCutOut
@@ -281,18 +223,6 @@ export default function Sink({ props }) {
 
             </group>
 
-            <BakePlaneSmall
-                props={
-                    {
-                        position: [0, 0, 0],
-                        rotation: [0, -0.5, 0],
-                    }
-                }
-
-            />
         </a.group>
-
     </>
 }
-
-useGLTF.preload('./models/base-island.glb')

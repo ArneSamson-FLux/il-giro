@@ -9,6 +9,8 @@ export default function ConfigNav() {
 
     const { currentPage, setCurrentPage } = useUIStore();
 
+    const pagesAmount = 6;
+
     const {
         setCameraFocus,
         setIsFocussedOnIsland,
@@ -19,7 +21,7 @@ export default function ConfigNav() {
     }, [currentPage, setCurrentPage]);
 
     const handleNext = () => {
-        if (currentPage === 5) return;
+        if (currentPage === pagesAmount) return;
         checkPage(currentPage + 1);
         setCurrentPage(currentPage + 1);
     }
@@ -67,8 +69,8 @@ export default function ConfigNav() {
             </button>
 
             <button
-                style={currentPage === 5 ? { opacity: 0.1 } : { opacity: 1 }}
-                className={currentPage === 5 ? 'config-ui__nav__button--disabled' : ''}
+                style={currentPage === pagesAmount ? { opacity: 0.1 } : { opacity: 1 }}
+                className={currentPage === pagesAmount ? 'config-ui__nav__button--disabled' : ''}
                 onClick={handleNext}
             >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

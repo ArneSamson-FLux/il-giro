@@ -25,6 +25,7 @@ export default function ModuleSelectionPage() {
         { label: "Tower", value: "tower", chosen: towerChosen, setChosen: setTowerChosen },
         { label: "Table", value: "table", chosen: tableChosen, setChosen: setTableChosen },
     ];
+    const anyModuleChosen = moduleOptions.some(option => option.chosen);
 
     return <>
 
@@ -37,14 +38,18 @@ export default function ModuleSelectionPage() {
         <div
             className='config-ui__options'
         >
-            <ModuleSelectionButtons
-                summary="Select module(s): "
-                options={moduleOptions}
-            />
+            <div
+                style={anyModuleChosen ? { border: "none" } : { border: "2px dashed var(--off-black)", borderWidth: "2px", animation: "pulse 1s infinite" }}
+            >
+                <ModuleSelectionButtons
+                    summary="Select module(s): "
+                    options={moduleOptions}
+                />
+            </div>
 
             <BevelledSelection />
 
 
-        </div>
+        </div >
     </>
 }
