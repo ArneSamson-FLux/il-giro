@@ -5,9 +5,9 @@ import { useFrame } from "@react-three/fiber";
 import { useSpring, a } from "@react-spring/three";
 import { useDrag } from "@use-gesture/react";
 
-import BaseIsland from './BaseIsland.jsx';
+import BaseIsland from "./BaseIsland.jsx";
 
-import TableTop from './accessoires/TableTop.jsx';
+import TableTop from "./accessoires/TableTop.jsx";
 
 import GasStove from "./accessoires/GasStove.jsx";
 import ElectricStove from "./accessoires/ElectricStove.jsx";
@@ -38,7 +38,8 @@ export default function Cooktop() {
 
     const { setCurrentPage } = useUIStore();
 
-    const { setCameraFocus, setIsFocussedOnIsland, isFocussedOnIsland } = useScene();
+    const { setCameraFocus, setIsFocussedOnIsland, isFocussedOnIsland } =
+        useScene();
 
     const [hovered, setHover] = useState(null);
 
@@ -89,7 +90,11 @@ export default function Cooktop() {
     const handleClick = () => {
         if (dragMode) return;
         setCurrentPage(4);
-        setCameraFocus([cooktopPosition[0], cooktopPosition[1] + 1, cooktopPosition[2]]);
+        setCameraFocus([
+            cooktopPosition[0],
+            cooktopPosition[1] + 1,
+            cooktopPosition[2],
+        ]);
         setIsFocussedOnIsland(false, true, false);
     };
 
@@ -127,10 +132,8 @@ export default function Cooktop() {
                     onPointerOver={(e) => {
                         handlePointerOver();
                         e.stopPropagation();
-                    }
-                }
-                onPointerOut={
-                    (e) => {
+                    }}
+                    onPointerOut={(e) => {
                         handlePointerOut();
                         e.stopPropagation();
                     }}
@@ -142,13 +145,10 @@ export default function Cooktop() {
                     onPointerMissed={(e) => {
                         handlePointerMissed();
                         e.stopPropagation();
-                    }
-
-                }
-                {...(dragMode ? dragPos() : {})}
-            >
-
-                <BaseIsland />
+                    }}
+                    {...(dragMode ? dragPos() : {})}
+                >
+                    <BaseIsland />
 
                     <TableTop
                         props={{
@@ -176,9 +176,7 @@ export default function Cooktop() {
                         />
                     )}
                 </group>
-
-
-        </a.group>
-
-    </>
+            </a.group>
+        </>
+    );
 }
