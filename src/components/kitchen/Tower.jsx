@@ -38,17 +38,25 @@ export default function Tower({ props }) {
 
     const [albedoTexture, normalTexture, roughnessTexture, metallnessTexture] = useTexture([
         mainMaterial + "albedo.jpg",
+        // "uv.jpg",
         mainMaterial + "normal.jpg",
         mainMaterial + "roughness.jpg",
         mainMaterial + "metallic.jpg"
-    ]);
+    ], textures => {
+        for(const texture of textures) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.needsUpdate = true;
+        }
+    });
 
     albedoTexture.anisotropy = 16;
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
+    const normalScale = new THREE.Vector2(0.5, 0.5);
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
+        normalScale: normalScale,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
@@ -64,6 +72,7 @@ export default function Tower({ props }) {
     const materialWithAo = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
+        normalScale: normalScale,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
@@ -75,6 +84,7 @@ export default function Tower({ props }) {
     const materialWithAoBevelled = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
+        normalScale: normalScale,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
@@ -164,7 +174,7 @@ export default function Tower({ props }) {
     useFrame((state, delta) => {
         if (doorRef.current && coolerRef.current) {
             doorRef.current.rotation.y = lerp(doorRef.current.rotation.y, doorOpeningRotation, delta * 2);
-            coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
+            // coolerRef.current.rotation.y = lerp(coolerRef.current.rotation.y, -doorOpeningRotation, delta * 2);
         }
 
         if (shelvesRef.current) {

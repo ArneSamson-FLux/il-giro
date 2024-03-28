@@ -62,9 +62,11 @@ export default function Sink({ props }) {
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
+    const normalScale = new THREE.Vector2(0.5, 0.5);
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
         normalMap: normalTexture,
+        normalScale: normalScale,
         roughnessMap: roughnessTexture,
         metalnessMap: metallnessTexture,
         metalness: 1,
