@@ -22,9 +22,17 @@ export default function Experience() {
         setCameraFocus,
         isFocussedOnIsland,
         setIsFocussedOnIsland,
-    } = useScene();
-    const { isDragging } = useConfig();
-    const { currentPage, setCurrentPage } = useUIStore();
+    } = useScene((state) => ({
+        cameraFocus: state.cameraFocus,
+        setCameraFocus: state.setCameraFocus,
+        isFocussedOnIsland: state.isFocussedOnIsland,
+        setIsFocussedOnIsland: state.setIsFocussedOnIsland,
+    }));
+    const isDragging = useConfig((state) => state.isDragging);
+    const { currentPage, setCurrentPage } = useUIStore((state) => ({
+        currentPage: state.currentPage,
+        setCurrentPage: state.setCurrentPage,
+    }));
 
     useEffect(() => {
         camera.current.moveTo(...cameraFocus, true);
@@ -83,7 +91,6 @@ export default function Experience() {
     //             const distance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
     //             const roundedDistanceToCamera = Math.round(distance * 100) / 100;
 
-
     //             if (roundedDistanceToCamera && roundedDistanceToCamera > 3.98 && !isDragging) {
     //                 setCameraFocus([0, 1, 0]);
     //                 setCurrentPage(1);
@@ -111,7 +118,8 @@ export default function Experience() {
 
     useFrame((state) => {
         if (camera.current) {
-            setCameraPosition(state.camera.position);
+            // FIX: turned off the lag-machine!
+            // setCameraPosition(state.camera.position);
         }
     });
 
