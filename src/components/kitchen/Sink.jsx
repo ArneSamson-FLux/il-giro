@@ -1,68 +1,72 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three'
-import { useTexture, useGLTF, useCursor } from '@react-three/drei'
+import { useGLTF, useCursor } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useSpring, a } from '@react-spring/three';
 import { useDrag } from "@use-gesture/react";
 
+import BaseIsland from './BaseIsland.jsx';
+
 import Tap1 from './accessoires/Tap1.jsx';
 import Tap2 from './accessoires/Tap2.jsx';
 
-import SinkBowl from './accessoires/SinkBowl.jsx';
+import Reginox from './accessoires/ReginoxBowl.jsx';
 
-import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
+import TableTop from './accessoires/TableTop.jsx';
+import TableTopCutFilled from './accessoires/TableTopCutFilled.jsx';
+import TableTopCutOut from './accessoires/TableTopCutOut.jsx';
+
+import { BakePlaneSmall } from '../lighting&shadows/ShadowPlanes.jsx'
+import Indicator from '../indicator/Indicator.jsx';
+
+import { useTexture } from '../../helper/useTexture.tsx';
 
 import useScene from '../../store/useScene.jsx';
-import useConfig from '../../store/useConfig.jsx';
+import useConfig from '../../store/useConfigStore.jsx';
+import useUIStore from '../../store/useUIStore.jsx';
 
-export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapType , sinkBowlMaterial , props}){  
-    
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    const normalTexture = useTexture(materialUrl+"normal.jpg");
-    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnessTexture = useTexture(materialUrl+"metallic.jpg");
+export default function Sink({ props }) {
 
-    metallnessTexture.name = "metalnessMap";
+    const {
+        tableTopMaterial,
 
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
+        sinkPosition,
+        sinkRotation,
 
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        normalMap: normalTexture,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnessTexture,
-        metalness: 1,
-    });
+        tapType,
 
-    const tabletopMaterial = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-    });
+        dragMode,
+        isDraggingSink,
+        setIsDraggingSink,
+        setIsDragging
+    } = useConfig();
 
-    const { nodes, materials } = useGLTF("./models/kitchen-low-sink.glb");
-    
-    const { setCurrentPage, currentPage, dragMode, isDraggingSink, setIsDraggingSink, setIsDragging } = useConfig();
+    const {
+        isFocussedOnIsland
+    } = useScene();
+
+    const { setCurrentPage } = useUIStore();
+
     const { setCameraFocus, setIsFocussedOnIsland } = useScene();
-    
+
     const [hovered, setHover] = useState(null);
 
     const [needPointer, setNeedPointer] = useState(false);
-    
+
     useCursor(needPointer, "pointer")
-    
+
     const sinkRef = useRef();
 
-    const [position, setPosition] = useState([-1.5, 0, 0]);
 
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
-        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
-        rotation: isDraggingSink ? [0, 0, 0] : [0, 0.5, 0],
+        position: hovered ? [sinkPosition[0], 0.1, sinkPosition[2]] : [sinkPosition[0], 0, sinkPosition[2]],
+        rotation: isDraggingSink ? [0, 0, 0] : sinkRotation,
         scale: isDraggingSink ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        config: { 
-                tension: 250, 
-                friction: 50,
-            }
+        config: {
+            tension: 250,
+            friction: 50,
+        }
     });
 
     const planeIntersectPoint = new THREE.Vector3();
@@ -73,7 +77,7 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
             setIsDraggingSink(active);
             setIsDragging(active);
 
-            if(active){
+            if (active) {
                 event.ray.intersectPlane(floorPlane, planeIntersectPoint);
                 let newPosition = ([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
 
@@ -90,109 +94,135 @@ export default function Sink({materialUrl, bevelled, accessoryMaterialUrl, tapTy
     );
     //_____________________________________________________________________________________________________________
 
+    // const indicatorPosition = [sinkPosition[0], 0.1, sinkPosition[2]];
+
+    const handleClick = () => {
+        if (dragMode) return;
+        setCurrentPage(3);
+        setCameraFocus([sinkPosition[0], sinkPosition[1] + 1, sinkPosition[2]]);
+        setIsFocussedOnIsland(true, false, false);
+    }
+
+    const handlePointerOver = (e) => {
+        e.stopPropagation();
+        // const hasBakePlaneChild = sinkRef.current.children.some((child) => {
+        //     return child.children.some((grandchild) => {
+        //         return grandchild.name === "bakePlaneSmall-group";
+        //     });
+        // });
+
+        // if (hasBakePlaneChild) {
+        //     return;
+        // }
+        setNeedPointer(true);
+        if (dragMode) return;
+        setHover(true);
+    }
+
+    const handlePointerOut = () => {
+        setNeedPointer(false);
+        setHover(false);
+    }
+
+    const handlePointerMissed = () => {
+        if (dragMode) return;
+        setIsFocussedOnIsland(false, false, false);
+    }
+
+
     return <>
+
+        {/* {isFocussedOnIsland.sink && <Indicator position={indicatorPosition} />} */}
+
+
         <a.group
             name='sink-group'
             ref={sinkRef}
-            {...props} 
+            rotation={sinkRotation}
+            position={sinkPosition}
             dispose={null}
-            {...springProps}
+        // {...springProps}
         >
             <group
                 name='sink-hovers-group'
                 onPointerOver={
                     (e) => {
-                        setNeedPointer(true);
-                        if(dragMode) return;
-                        setHover(true);
+                        handlePointerOver(e);
                         e.stopPropagation();
                     }
                 }
                 onPointerOut={
                     (e) => {
-                        setNeedPointer(false);
-                        setHover(false);
+                        handlePointerOut();
                         e.stopPropagation();
                     }
                 }
                 onClick={
                     (e) => {
-                        if(dragMode) return;
-                        setCurrentPage(1);
-                        setCameraFocus([position[0], position[1] + 1, position[2]]);
-                        setIsFocussedOnIsland(true);
+                        handleClick();
                         e.stopPropagation();
                     }
                 }
-                {...(dragMode ? dragPos() : {})}           
+                onPointerMissed={
+                    (e) => {
+                        if (dragMode) return;
+                        setIsFocussedOnIsland(false, false, false);
+                        e.stopPropagation();
+                    }
+
+                }
+                {...(dragMode ? dragPos() : {})}
 
             >
-                <mesh
-                    name='sink-mesh'
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.top.geometry}
-                    material={material}
-                    position={[0, 1.193, 0]}
-                    rotation={[0, -1.484, 0]}
-                    scale={[1, 1.1, 1]}
-                >
-                    <mesh
-                        name='sink-bevel-mesh'
-                        visible={bevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes["bevelled-under"].geometry}
-                        material={material}
-                    />
-                    <mesh
-                        name='sink-straight-mesh'
-                        visible={!bevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes["straight-under"].geometry}
-                        material={material}
-                    />
-                    <mesh
-                        name='sink-tabletop-mesh'
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.tabletop001.geometry}
-                        material={tabletopMaterial}
-                    />
-                </mesh>
+                <BaseIsland />
 
-                {tapType === "tap1" && <Tap1
-                        materialUrl={accessoryMaterialUrl}
-                        bevelled={bevelled}
-                        props={{rotation: [0, 0, 0]}}
+                <>
+                    <TableTopCutOut
+                        props={
+                            {
+                                position: [0, 0, 0],
+                                rotation: [0, 0, 0],
+                            }
+                        }
+                        materialUrl={tableTopMaterial}
                     />
-                }
-                {tapType === "tap2" && <Tap2
-                        materialUrl={accessoryMaterialUrl}
-                        bevelled={bevelled}
-                        props={{rotation: [0, 0, 0]}}
+
+                    <Reginox
+                        props={
+                            {
+                                position: [0, 0, 0],
+                                rotation: [0, 0, 0],
+                            }
+                        }
+                    />
+                </>
+
+
+                {tapType === '1' &&
+                    <Tap1
+                        props={
+                            {
+                                position: [0, 0.01, 0],
+                                rotation: [0, 0, 0],
+                            }
+                        }
                     />
                 }
 
-                <SinkBowl
-                    materialUrl={sinkBowlMaterial}
-                    props={{rotation: [0, 0, 0]}}
-                />
+                {tapType === '2' &&
+
+                    <Tap2
+                        props={
+                            {
+                                position: [0, 0, 0],
+                                rotation: [0, 0, 0],
+                            }
+                        }
+                    />
+                }
+
             </group>
 
-            <BakePlaneSmall
-                props={
-                    {
-                        position: [0, 0, 0],
-                        rotation: [0, -0.5, 0],
-                    }
-                }
-
-            />
         </a.group>
-
     </>
 }
-
-useGLTF.preload('./models/kitchen-low-sink.glb')

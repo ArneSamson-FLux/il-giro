@@ -1,198 +1,182 @@
-import React, {useRef, useState} from 'react';
-import * as THREE from 'three'
-import { useTexture, useGLTF, useCursor } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber';
-import { useSpring, a } from '@react-spring/three';
+import React, { useRef, useState, useEffect } from "react";
+import * as THREE from "three";
+import { useGLTF, useCursor } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useSpring, a } from "@react-spring/three";
 import { useDrag } from "@use-gesture/react";
 
-import GasStove from './accessoires/GasStove.jsx'
-import ElectricStove from './accessoires/ElectricStove.jsx';
+import BaseIsland from "./BaseIsland.jsx";
 
-import {BakePlaneSmall} from '../lighting&shadows/ShadowPlanes.jsx'
+import TableTop from "./accessoires/TableTop.jsx";
 
-import useScene from '../../store/useScene.jsx';
-import useConfig from '../../store/useConfig.jsx';
+import GasStove from "./accessoires/GasStove.jsx";
+import ElectricStove from "./accessoires/ElectricStove.jsx";
 
-export default function Cooktop({materialUrl, bevelled, stoveType, props}){
+import { BakePlaneSmall } from "../lighting&shadows/ShadowPlanes.jsx";
+import Indicator from "../indicator/Indicator.jsx";
 
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    const normalTexture = useTexture(materialUrl+"normal.jpg");
-    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
+import { useTexture } from "../../helper/useTexture.tsx";
 
-    albedoTexture.colorSpace = THREE.SRGBColorSpace;
+import useScene from "../../store/useScene.jsx";
+import useConfig from "../../store/useConfigStore.jsx";
+import useUIStore from "../../store/useUIStore.jsx";
 
-    const material = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-        normalMap: normalTexture,
-        roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
-        metalness: 1,
-    });
+export default function Cooktop() {
+    const {
+        tableTopMaterial,
 
-    const tabletopMaterial = new THREE.MeshStandardMaterial({
-        map: albedoTexture,
-    });
+        cooktopPosition,
+        cooktopRotation,
 
-    const { nodes, materials } = useGLTF("./models/kitchen-low.glb");
+        stoveType,
 
-    const { setCurrentPage, currentPage, dragMode, setIsDragging, isDraggingCooktop, setIsDraggingCooktop } = useConfig();
-    const { setCameraFocus, setIsFocussedOnIsland } = useScene();
+        dragMode,
+        isDraggingCooktop,
+        setIsDraggingCooktop,
+        setIsDragging,
+    } = useConfig();
+
+    const { setCurrentPage } = useUIStore();
+
+    const { setCameraFocus, setIsFocussedOnIsland, isFocussedOnIsland } =
+        useScene();
 
     const [hovered, setHover] = useState(null);
 
     const [needPointer, setNeedPointer] = useState(false);
 
-    useCursor(needPointer, "pointer")
+    useCursor(needPointer, "pointer");
 
     const cookTopRef = useRef();
 
-    const [position, setPosition] = useState([1.5, 0, 0]);
-
     //animate sink and dragging_____________________________________________________________________________________
     const springProps = useSpring({
-        // position: currentPage !== 1 && hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
-        position: hovered ? [position[0], 0.2, position[2]] : [position[0], 0, position[2]],
+        position: hovered
+            ? [cooktopPosition[0], 0.1, cooktopPosition[2]]
+            : [cooktopPosition[0], 0, cooktopPosition[2]],
         scale: isDraggingCooktop ? [1.1, 1.1, 1.1] : [1, 1, 1],
-        rotation: isDraggingCooktop ? [0, 0, 0] : [0, -0.5, 0],
-        config: { 
-                tension: 250, 
-                friction: 50,
-            }
+        rotation: isDraggingCooktop ? [0, 0, 0] : cooktopRotation,
+        config: {
+            tension: 250,
+            friction: 50,
+        },
     });
 
     const planeIntersectPoint = new THREE.Vector3();
     const floorPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
 
-    const dragPos = useDrag(
-        ({ active, event }) => {
-            setIsDraggingCooktop (active);
-            setIsDragging(active);
+    const dragPos = useDrag(({ active, event }) => {
+        setIsDraggingCooktop(active);
+        setIsDragging(active);
 
-            if(active){
-                event.ray.intersectPlane(floorPlane, planeIntersectPoint);
-                let newPosition = ([planeIntersectPoint.x, 0, planeIntersectPoint.z]);
+        if (active) {
+            event.ray.intersectPlane(floorPlane, planeIntersectPoint);
+            let newPosition = [planeIntersectPoint.x, 0, planeIntersectPoint.z];
 
-                newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
-                newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
+            newPosition[0] = THREE.MathUtils.clamp(newPosition[0], -4.5, 4.5);
+            newPosition[2] = THREE.MathUtils.clamp(newPosition[2], -4.5, 4.5);
 
-                setPosition(newPosition);            }
-
-            event.stopPropagation();
-
-            return;
+            setPosition(newPosition);
         }
-    );
+
+        event.stopPropagation();
+
+        return;
+    });
     //_____________________________________________________________________________________________________________
 
-    return <>
-        <a.group 
-            name='cooktop-group'
-            ref={cookTopRef}
-            {...props} 
-            dispose={null}
-            {...springProps}
-            
-        >
-            <group
-                name='cooktop-hovers-group'
-                onPointerOver={
-                    (e) => {
-                        setNeedPointer(true);
-                        if(dragMode) return;
-                        setHover(true);
-                        e.stopPropagation();
-                    }
-                }
-                onPointerOut={
-                    (e) => {
-                        setNeedPointer(false);
-                        setHover(false);
-                        e.stopPropagation();
-                    }
-                }
-                onClick={
-                    (e) => {
-                        if(dragMode) return;
-                        setCurrentPage(2);
-                        setCameraFocus([position[0], position[1] + 1, position[2]]);
-                        setIsFocussedOnIsland(true);
-                        e.stopPropagation();
-                    }
-                }
-                {...(dragMode ? dragPos() : {})}          
+    // const indicatorPosition = [cooktopPosition[0], 0.1, cooktopPosition[2]];
+
+    const handleClick = () => {
+        if (dragMode) return;
+        setCurrentPage(4);
+        setCameraFocus([
+            cooktopPosition[0],
+            cooktopPosition[1] + 1,
+            cooktopPosition[2],
+        ]);
+        setIsFocussedOnIsland(false, true, false);
+    };
+
+    const handlePointerOver = () => {
+        setNeedPointer(true);
+        if (dragMode) return;
+        setHover(true);
+    };
+
+    const handlePointerOut = () => {
+        if (dragMode) return;
+        setNeedPointer(false);
+        setHover(false);
+    };
+
+    const handlePointerMissed = () => {
+        if (dragMode) return;
+        setIsFocussedOnIsland(false, false, false);
+    };
+
+    return (
+        <>
+            {/* {isFocussedOnIsland.cooktop && <Indicator position={indicatorPosition} />} */}
+
+            <a.group
+                name="cooktop-group"
+                ref={cookTopRef}
+                rotation={cooktopRotation}
+                position={cooktopPosition}
+                dispose={null}
+                // {...springProps}
             >
-
-                <mesh
-                    name='cooktop-mesh'
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.top.geometry}
-                    material={material}
-                    position={[0, 1.193, 0]}
-                    rotation={[0, -1.484, 0]}
-                    scale={[1, 1.1, 1]}
+                <group
+                    name="cooktop-hovers-group"
+                    onPointerOver={(e) => {
+                        handlePointerOver();
+                        e.stopPropagation();
+                    }}
+                    onPointerOut={(e) => {
+                        handlePointerOut();
+                        e.stopPropagation();
+                    }}
+                    onClick={(e) => {
+                        handleClick();
+                        e.stopPropagation();
+                    }}
+                    //on misclick
+                    onPointerMissed={(e) => {
+                        handlePointerMissed();
+                        e.stopPropagation();
+                    }}
+                    {...(dragMode ? dragPos() : {})}
                 >
-                    <mesh
-                        name='cooktop-bevelled-mesh'
-                        visible={bevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes["bevelled-under"].geometry}
-                        material={material}
-                    />
-                    <mesh
-                        name='cooktop-straight-mesh'
-                        visible={!bevelled}
-                        castShadow
-                        receiveShadow
-                        geometry={nodes["straight-under"].geometry}
-                        material={material}
-                    />
-                    <mesh
-                        name='cooktop-tabletop-mesh'
-                        castShadow
-                        receiveShadow
-                        geometry={nodes.tabletop.geometry}
-                        material={tabletopMaterial}
-                    />
-                </mesh>
+                    <BaseIsland />
 
-                {stoveType === "gas" &&
-                    <GasStove
-                        props={
-                            {
-                                position: [0, 0.967, 0.12],
-                            }
-                        }
+                    <TableTop
+                        props={{
+                            position: [0, 0, 0],
+                            rotation: [0, 0, 0],
+                        }}
+                        materialUrl={tableTopMaterial}
                     />
-                }
-                
-                {stoveType === "electric" &&
-                    <ElectricStove
-                        props={
-                            {
+
+                    {stoveType === "1" && (
+                        <GasStove
+                            props={{
+                                position: [0, 0, 0],
+                            }}
+                        />
+                    )}
+
+                    {stoveType === "2" && (
+                        <ElectricStove
+                            props={{
                                 position: [0, 0.97, 0.1],
                                 scale: [0.9, 0.9, 0.9],
                                 rotation: [0, 0, 0],
-                            }
-                        }
-                    />
-                }
-            </group>
-
-            <BakePlaneSmall
-                props={
-                    {
-                        position: [0, 0, 0],
-                        rotation: [0, 0.5, 0],
-                    }
-                }
-            />
-
-        </a.group>
-
-    </>
+                            }}
+                        />
+                    )}
+                </group>
+            </a.group>
+        </>
+    );
 }
-
-useGLTF.preload('./models/kitchen-low.glb')

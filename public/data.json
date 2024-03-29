@@ -1,20 +1,42 @@
 {
     "categories": {
-        "wood": ["oak"],
-        "metal": ["black metal", "innox", "gold", "bronze", "copper"],
-        "leather": ["leather"],
-        "solid surface": ["solid surface"],
-        "micro topping": ["micro topping"]
+        "wood": [
+            "lightoak",
+            "chestnut",
+            "cherry",
+            "mahony",
+            "darkwood"
+        ],
+        "metal": [
+            "inox",
+            "gold",
+            "goldnew",
+            "bronze",
+            "copper"
+        ],
+        "solid surface": [
+            "solid surface"
+        ],
+        "micro topping": [
+            "micro topping",
+            "concrete"
+        ]
     },
-    "materials":{
-        "oak": {
-            "url": "/materials/oak/"
+    "materials": {
+        "lightoak": {
+            "url": "/materials/lightoak/"
         },
-        "black metal": {
-            "url": "/materials/blackmetal/"
+        "chestnut": {
+            "url": "/materials/chestnut/"
         },
-        "leather": {
-            "url": "/materials/leather/"
+        "cherry": {
+            "url": "/materials/cherry/"
+        },
+        "mahony": {
+            "url": "/materials/mahony/"
+        },
+        "darkwood": {
+            "url": "/materials/darkwood/"
         },
         "solid surface": {
             "url": "/materials/solidsurface/"
@@ -28,11 +50,20 @@
         "gold": {
             "url": "/materials/gold/"
         },
+        "goldnew": {
+            "url": "/materials/goldnew/"
+        },
         "bronze": {
             "url": "/materials/bronze/"
         },
-        "copper":{
+        "copper": {
             "url": "/materials/copper/"
+        },
+        "inox": {
+            "url": "/materials/inox/"
+        },
+        "concrete": {
+            "url": "/materials/concrete/"
         }
     }
 }

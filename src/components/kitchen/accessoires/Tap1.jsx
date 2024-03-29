@@ -1,40 +1,64 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three'
-import { useTexture, useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 
-export default function Tap1({materialUrl, bevelled, props}){
+import useConfig from '../../../store/useConfigStore.jsx';
 
-    const albedoTexture = useTexture(materialUrl+"albedo.jpg");
-    const normalTexture = useTexture(materialUrl+"normal.jpg");
-    const roughnessTexture = useTexture(materialUrl+"roughness.jpg");
-    const metallnesTexture = useTexture(materialUrl+"metallic.jpg");
+import { useTexture } from '../../../helper/useTexture.tsx';
+
+
+export default function Tap1({ props }) {
+
+    const {
+        accentMaterial,
+
+    } = useConfig();
+
+    const [albedoTexture, metallnessTexture] = useTexture([
+        accentMaterial + "albedo.jpg",
+        accentMaterial + "metallic.jpg"
+    ]);
 
     albedoTexture.colorSpace = THREE.SRGBColorSpace;
 
     const material = new THREE.MeshStandardMaterial({
         map: albedoTexture,
-        // normalMap: normalTexture,
-        // roughnessMap: roughnessTexture,
-        metalnessMap: metallnesTexture,
+        metalnessMap: metallnessTexture,
         metalness: 1,
         roughness: 0
+
     });
-    
-    const { nodes, materials } = useGLTF("/models//tap1.glb");
-    
+
+    const { nodes } = useGLTF("/models/tap1.glb");
+
     return (
-        <group 
+        <group
             name="tap1-group"
-            {...props} 
+            {...props}
             dispose={null}
         >
             <mesh
-                name="tap1-mesh"
                 castShadow
                 receiveShadow
-                geometry={nodes.Tap1.geometry}
+                geometry={nodes['3DGeom~3529_(C-3DGeom~3529_Defintion#3)'].geometry}
                 material={material}
-                position={[0, 0.973, 0]}
+                position={[-0.029, 0.883, -0.026]}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes['3DGeom~3771_(C-3DGeom~3771_Defintion#3)'].geometry}
+                material={material}
+                position={[-0.029, 0.874, -0.026]}
+                scale={1}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes['3DGeom~5954_(C-3DGeom~5954_Defintion#4)'].geometry}
+                material={material}
+                position={[-0.029, 0.874, -0.026]}
+                scale={1}
             />
         </group>
     );

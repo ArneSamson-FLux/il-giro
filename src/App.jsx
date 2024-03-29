@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import * as THREE from 'three'
-import {Canvas} from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { Loader } from '@react-three/drei'
 
 import { Leva } from 'leva'
@@ -16,11 +16,11 @@ import ConfigUi from './components/ConfigUi.jsx'
 const root = ReactDOM.createRoot(document.querySelector('#root'))
 
 const camSettings = {
-  fov: 75,
-  zoom: 1,
-  near: 0.1,
-  far: 200,
-  position: [0, 2, 4],
+    fov: 55,
+    zoom: 1,
+    near: 0.1,
+    far: 200,
+    position: [0, 2, 4],
 }
 
 const containerStyles = {
@@ -54,20 +54,19 @@ root.render(
             <Canvas
                 className="canvas"
                 camera={camSettings}
-                gl = {{
-                antialias: true,
-                toneMapping: THREE.ACESFilmicToneMapping,
-                outoutColorSpace: THREE.SRGBColorSpace,
+                gl={{
+                    antialias: true,
+                    // toneMapping: THREE.AgXToneMapping,
+                    outputColorSpace: THREE.SRGBColorSpace,
+                    toneMappingExposure: 1,
+                    alpha: true
                 }}
                 shadows={true}
                 dpr={window.devicePixelRatio}
-                // style={{
-                //     height: '80vh',
-                // }}
             >
-                <Effects/>
+                <Effects />
 
-                <Experience/>
+                <Experience />
             </Canvas>
 
             <Loader
@@ -78,12 +77,12 @@ root.render(
                 dataInterpolation={(p) => `Loading kitchen: ${p.toFixed(2)}%`}
             />
 
-            <ConfigUi/>
+            <ConfigUi />
 
 
             <Leva
                 collapsed
-                hidden
+                // hidden
             />
         </div>
     </>

@@ -1,157 +1,150 @@
-import React, { Suspense, useRef, useState, useEffect } from 'react';
-import { useThree, extend, useFrame } from '@react-three/fiber';
-import { OrbitControls, Html, Text, Environment, Lightformer, CameraControls, ContactShadows, SoftShadows } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, useState, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
+import { CameraControls } from "@react-three/drei";
+import * as THREE from "three";
 
-import Scene from './components/Scene.jsx';
-import Lights from './components/lighting&shadows/Lights.jsx';
+import Scene from "./components/Scene.jsx";
+import Lights from "./components/lighting&shadows/Lights.jsx";
+import Env from "./components/lighting&shadows/Env.jsx";
 
-import useScene from './store/useScene.jsx'
-import useConfig from './store/useConfig.jsx'
+import useScene from "./store/useScene.jsx";
+import useConfig from "./store/useConfigStore.jsx";
+import useUIStore from "./store/useUIStore.jsx";
 
-import { Perf } from 'r3f-perf'
-import { update } from '@react-spring/three';
+import { Perf } from "r3f-perf";
 
 export default function Experience() {
+    const camera = useRef();
+    const [cameraPosition, setCameraPosition] = useState(null);
 
-    const camera = useRef()
-
-    const { cameraCoords, cameraFocus, setCameraFocus, isFocussedOnIsland, setIsFocussedOnIsland } = useScene();
-
-    const { isDragging, setCurrentPage, currentPage } = useConfig();
+    const {
+        cameraFocus,
+        setCameraFocus,
+        isFocussedOnIsland,
+        setIsFocussedOnIsland,
+    } = useScene((state) => ({
+        cameraFocus: state.cameraFocus,
+        setCameraFocus: state.setCameraFocus,
+        isFocussedOnIsland: state.isFocussedOnIsland,
+        setIsFocussedOnIsland: state.setIsFocussedOnIsland,
+    }));
+    const isDragging = useConfig((state) => state.isDragging);
+    const { currentPage, setCurrentPage } = useUIStore((state) => ({
+        currentPage: state.currentPage,
+        setCurrentPage: state.setCurrentPage,
+    }));
 
     useEffect(() => {
-        
         camera.current.moveTo(...cameraFocus, true);
 
         updateViewOffset();
 
-        window.addEventListener('resize', updateViewOffset);
+        window.addEventListener("resize", updateViewOffset);
 
         return () => {
-            window.removeEventListener('resize', updateViewOffset);
-        }
-        
-    }
-    , [cameraFocus, setCameraFocus])
-
-    const defaultFocus = [0, 1, 0];
-    const [canZoomOut, setCanZoomOut] = useState(false);
-
-    useFrame((state) => {
-
-        if(!canZoomOut) {
-
-            const distance = state.camera.position.distanceTo(new THREE.Vector3(...cameraFocus));
-            if(distance > 3.8 && !isDragging) {
-
-                setCameraFocus(defaultFocus);
-                setCurrentPage(0);
-                setIsFocussedOnIsland(false);
-                setCanZoomOut(true);
-            }
-        }
-
-    });
+            window.removeEventListener("resize", updateViewOffset);
+        };
+    }, [cameraFocus, setCameraFocus]);
 
     useEffect(() => {
-
-        if(isFocussedOnIsland) {
-            
-            const timer = setTimeout(() => {
-                
-                setCanZoomOut(false);
-                
-            }, 2000);
-        }
-
-    }, [isFocussedOnIsland])
-
-    useEffect(() => {
-        if(camera.current) {
+        if (camera.current) {
             camera.current.dollyTo(4, false);
         }
-    }, [camera.current])
+    }, [camera.current]);
 
     const updateViewOffset = () => {
-        if(window.innerWidth > 1000){
-            const widthOffset = 150;
-            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, widthOffset, 0, window.innerWidth, window.innerHeight);
+        if (window.innerWidth > 1000) {
+            const widthOffset = window.innerWidth * 0.25 * devicePixelRatio;
+            camera.current.camera.setViewOffset(
+                window.innerWidth,
+                window.innerHeight,
+                widthOffset / 2,
+                0,
+                window.innerWidth,
+                window.innerHeight
+            );
             camera.current.camera.updateProjectionMatrix();
-        }else{
-            camera.current.camera.setViewOffset(window.innerWidth, window.innerHeight, 0, 0, window.innerWidth, window.innerHeight);
+        } else {
+            const heightOffset = window.innerHeight * 0.45 * devicePixelRatio;
+            camera.current.camera.setViewOffset(
+                window.innerWidth,
+                window.innerHeight,
+                0,
+                heightOffset / 2,
+                window.innerWidth,
+                window.innerHeight
+            );
             camera.current.camera.updateProjectionMatrix();
         }
-    }
+    };
 
+    const [prevCamDist, setPrevCamDist] = useState(4);
 
-  return <>
+    // useEffect(() => {
+    //     const handleScroll = (e) => {
 
-    {/* <Perf
-        position="top-left"
-        style={{ transform: 'translateX(15vw)'}}
-    /> */}
+    //         const currentDistance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
+    //         const roundedCurrentDistance = Math.round(currentDistance * 100) / 100;
 
-    <CameraControls
-      ref={camera}
-      draggingSmoothTime={0.2}
-      maxPolarAngle={Math.PI / 2}
-      maxZoom={4}
-      maxDistance={4}
-      minDistance={2}
-      enabled={!isDragging}
-    //   setOrbitPoint={[2, 0, 0]}
-    />
+    //         if (prevCamDist < roundedCurrentDistance) {
 
+    //             const distance = cameraPosition.distanceTo(new THREE.Vector3(...cameraFocus));
+    //             const roundedDistanceToCamera = Math.round(distance * 100) / 100;
 
-    <Environment
-      files={"/HDR/4.hdr"}
-      background={false}
-    >
-      <Lightformer
-          visible={true}
-          form="rect"
-          intensity={0.5}
-          position={new THREE.Vector3().setFromSphericalCoords(
-            2, // distance
-            1.2, // phi
-            1.5 // theta
-          )}
-          rotation={[0, 0, 0]}
-          scale={[5, 2, 5]}
-          target={[0, 0, 0]}
-          castShadow={false}
-          receiveShadow={false}
-        />
-        <Lightformer
-          visible={true}
-          form="rect"
-          intensity={0.5}
-          position={new THREE.Vector3().setFromSphericalCoords(
-            1.5, // distance
-            1, // phi
-            4.2 // theta
-          )}
-          rotation={[0, 0, 0]}
-          scale={[5, 2, 5]}
-          target={[0, 0, 0]}
-          castShadow={false}
-          receiveShadow={false}
-        />
-    </Environment>
-      
-    <Lights/>
+    //             if (roundedDistanceToCamera && roundedDistanceToCamera > 3.98 && !isDragging) {
+    //                 setCameraFocus([0, 1, 0]);
+    //                 setCurrentPage(1);
+    //                 setIsFocussedOnIsland(false, false, false);
+    //             }
 
-    {/* <ContactShadows opacity={0.2} scale={5} blur={0.1} far={10} resolution={512} color="#000000"  frames={1}/> */}
+    //         }
+    //         setPrevCamDist(roundedCurrentDistance);
+    //     };
 
-        {/* <SoftShadows
-          size={50}
-          samples={20}
-          focus={2}
-        /> */}
+    //     window.addEventListener('wheel', handleScroll);
 
-    <Scene/>
+    //     return () => {
+    //         window.removeEventListener('wheel', handleScroll);
+    //     };
+    // }, [
+    //     cameraPosition,
+    //     isDragging,
+    //     cameraFocus,
+    //     setCameraFocus,
+    //     setCurrentPage,
+    //     setIsFocussedOnIsland,
+    //     prevCamDist
+    // ]);
 
-  </>
+    useFrame((state) => {
+        if (camera.current) {
+            // FIX: turned off the lag-machine!
+            // setCameraPosition(state.camera.position);
+        }
+    });
 
+    return (
+        <>
+            <Perf
+                position="top-left"
+                style={{ transform: "translateX(15vw)" }}
+            />
+
+            <CameraControls
+                ref={camera}
+                draggingSmoothTime={0.2}
+                maxPolarAngle={Math.PI / 2}
+                maxZoom={4}
+                maxDistance={4}
+                minDistance={2}
+                enabled={!isDragging}
+            />
+
+            <Env />
+
+            <Lights />
+
+            <Scene />
+        </>
+    );
 }

@@ -9,12 +9,24 @@ export default create((set) => {
 
         isHovering: false,
 
-        isFocussedOnIsland: false,
+        isFocussedOnIsland: {
+            sink: false,
+            cooktop: false,
+            tower: false,
+        },
 
         setCameraCoords: (coords) => set({ cameraCoords: coords }),
         setCameraFocus: (coords) => set({ cameraFocus: coords }),
         setIsHovering: (bool) => set({ isHovering: bool }),
-        setIsFocussedOnIsland: (bool) => set({ isFocussedOnIsland: bool }),
+        setIsFocussedOnIsland: (sink, cooktop, tower) =>
+            set((state) => ({
+                isFocussedOnIsland: {
+                    sink,
+                    cooktop,
+                    tower,
+                },
+            })),
+
 
     }
 });
